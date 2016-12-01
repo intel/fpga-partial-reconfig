@@ -1,10 +1,9 @@
-# Altera Design Flows
+# Altera Partial Reconfiguration Design Flow
 
-Welcome to the Altera Design Flows Repository!
+This directory contains scripts, reference designs, and tutorials for the Altera Partial Reconfiguration design flow.
 
-This repository contains scripts, reference designs, and tutorials for Altera design flows. Each individual flow is organized into a separate subdirectory. The different branches of this repository correspond to the different releases of the Quartus Prime Pro software. 
 
-## Table of Contents
-
-[Partial Reconfiguration](partial_reconfig/)
+- [Tutorials](tutorials/) are located in the tutorials sub directory
+- [Reference Designs](ref_designs/) are located in the ref_designs sub directory
+- Scripts are located in the script sub directory
 
