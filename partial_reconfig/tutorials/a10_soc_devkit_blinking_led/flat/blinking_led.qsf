@@ -1,0 +1,46 @@
+# Copyright (c) 2001-2016 Intel Corporation
+#  
+# Permission is hereby granted, free of charge, to any person obtaining a
+# copy of this software and associated documentation files (the
+# "Software"), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to
+# permit persons to whom the Software is furnished to do so, subject to
+# the following conditions:
+#  
+# The above copyright notice and this permission notice shall be included
+# in all copies or substantial portions of the Software.
+#  
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+# OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+# IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+# CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+# TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+# SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+set_global_assignment -name FAMILY "Arria 10"
+set_global_assignment -name DEVICE 10AS066N3F40E2SGE2
+set_global_assignment -name TOP_LEVEL_ENTITY top
+set_global_assignment -name SYSTEMVERILOG_FILE top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE blinking_led.sv
+set_global_assignment -name SDC_FILE blinking_led.sdc
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_location_assignment PIN_AN18 -to clock
+set_location_assignment PIN_AR23 -to led_zero_on
+set_location_assignment PIN_AM21 -to led_two_on
+set_location_assignment PIN_AR22 -to led_one_on
+set_location_assignment PIN_AL20 -to led_three_on
+set_instance_assignment -name IO_STANDARD "1.8 V" -to led_zero_on
+set_instance_assignment -name IO_STANDARD "1.8 V" -to led_one_on
+set_instance_assignment -name IO_STANDARD "1.8 V" -to led_two_on
+set_instance_assignment -name IO_STANDARD "1.8 V" -to led_three_on
+set_instance_assignment -name SLEW_RATE 1 -to led_zero_on
+set_instance_assignment -name SLEW_RATE 1 -to led_one_on
+set_instance_assignment -name SLEW_RATE 1 -to led_two_on
+set_instance_assignment -name SLEW_RATE 1 -to led_three_on
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to clock
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_zero_on
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_one_on
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_two_on
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_three_on

@@ -1,0 +1,60 @@
+# Copyright (c) 2001-2016 Intel Corporation
+#  
+# Permission is hereby granted, free of charge, to any person obtaining a
+# copy of this software and associated documentation files (the
+# "Software"), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to
+# permit persons to whom the Software is furnished to do so, subject to
+# the following conditions:
+#  
+# The above copyright notice and this permission notice shall be included
+# in all copies or substantial portions of the Software.
+#  
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+# OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+# IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+# CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+# TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+# SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2016  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel MegaCore Function License Agreement, or other 
+# applicable license agreement, including, without limitation, 
+# that your use is for the sole purpose of programming logic 
+# devices manufactured by Intel and sold by Intel or its 
+# authorized distributors.  Please refer to the applicable 
+# agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 16.1.0 Build 189 09/07/2016 SJ Pro Edition
+# Date created = 16:05:56  September 29, 2016
+#
+# -------------------------------------------------------------------------- #
+
+QUARTUS_VERSION = "16.1"
+DATE = "16:05:56  September 29, 2016"
+
+# Revisions
+
+PROJECT_REVISION = "a10_pcie_devkit_cvp"
+PROJECT_REVISION = "pr_example_template_synth"
+PROJECT_REVISION = "pr_example_template_impl"
+PROJECT_REVISION = "a10_pcie_devkit_cvp_basic_arithmetic"
+PROJECT_REVISION = "a10_pcie_devkit_cvp_register_file"
+PROJECT_REVISION = "a10_pcie_devkit_cvp_ddr4_access"
+PROJECT_REVISION = "ddr4_access"
+PROJECT_REVISION = "basic_arithmetic"
+PROJECT_REVISION = "register_file"
