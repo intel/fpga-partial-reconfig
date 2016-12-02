@@ -1,8 +1,5 @@
 # Intel FPGA Partial Reconfiguration Design Flow
 
-----------
-
-
 This repository contains scripts, reference designs, and tutorials for the Intel FPGA Partial Reconfiguration design flow.
 
 
