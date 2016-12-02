@@ -1,6 +1,6 @@
-# Altera Partial Reconfiguration Reference Designs
+# Intel FPGA Partial Reconfiguration Reference Designs
 
-This directory contains reference designs related to the Altera Partial Reconfiguration design flow.
+This directory contains reference designs related to the Intel FPGA Partial Reconfiguration design flow.
 
 ## Table of Contents
 

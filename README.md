@@ -1,6 +1,6 @@
-# Altera Partial Reconfiguration Design Flow
+# Intel FPGA Partial Reconfiguration Design Flow
 
-This directory contains scripts, reference designs, and tutorials for the Altera Partial Reconfiguration design flow.
+This directory contains scripts, reference designs, and tutorials for the Intel FPGA Partial Reconfiguration design flow.
 
 
 - [Tutorials](tutorials/) are located in the tutorials sub directory
