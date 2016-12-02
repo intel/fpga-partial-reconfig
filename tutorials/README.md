@@ -7,4 +7,4 @@ This directory contains tutorials related to the Intel FPGA Partial Reconfigurat
 
 
 - [Arria 10 SoC Devkit Blinking LED Tutorial](a10_soc_devkit_blinking_led/)
-
+- [Arria 10 GX FPGA Devkit Blinking LED Tutorial](a10_pcie_devkit_blinking_led/)
