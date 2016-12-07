@@ -1,4 +1,4 @@
-# Intel FPGA Partial Reconfiguration Tutorials
+# Intel&reg; FPGA Partial Reconfiguration Tutorials
 
 This directory contains tutorials related to the Intel FPGA Partial Reconfiguration design flow.
 
