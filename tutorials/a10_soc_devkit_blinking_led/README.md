@@ -37,7 +37,7 @@ This readme file contains the following information:
                  
 ## Technical Documentation
 
-*  AN-770.pdf Application Note provides information about the reference design, and walks you through partially reconfiguring a flat design.
+*  AN-770.pdf Application Note provides information about the tutorial, and walks you through partially reconfiguring a flat design.
 *  This document is available on the GitHub: [here](AN-770.pdf)
 
 ## System Requirements
