@@ -37,6 +37,9 @@ This readme file contains the following information:
                  
 ## Technical Documentation
 
+*  AN-797.pdf Application Note provides information about the tutorial, and walks you through partially reconfiguring a flat design.
+*  This document is available on the GitHub: [here](AN-797.pdf)
+
 ## System Requirements
 
 *  Quartus Prime Pro Edition software version 16.1
