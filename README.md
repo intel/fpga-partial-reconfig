@@ -8,3 +8,5 @@ This repository contains scripts, reference designs, and tutorials for the Intel
 - Scripts are located in the script sub directory
 
 ![PR Logo](quartus-prime-partial-reconfiguration-diagram.jpg?raw=true)
+
+More information available at [http://www.01.org/fpga-partial-reconfig](http://www.01.org/fpga-partial-reconfig)
