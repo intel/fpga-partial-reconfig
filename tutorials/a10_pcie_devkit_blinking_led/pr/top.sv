@@ -1,4 +1,4 @@
-// Copyright (c) 2001-2016 Intel Corporation
+// Copyright (c) 2001-2017 Intel Corporation
 //  
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
@@ -89,14 +89,6 @@ module top
     wire          led_three_on_w;
 
     ////////////////////////////////////////////////////////////////////////
-    // The T-Flip Flop clock:
-    ////////////////////////////////////////////////////////////////////////
-    always_ff @(posedge clock)
-    begin
-        reg_clock <= ~reg_clock;
-    end
-
-    ////////////////////////////////////////////////////////////////////////
     // The counter:
     ////////////////////////////////////////////////////////////////////////
     always_ff @(posedge clock)
@@ -160,7 +152,7 @@ module top
     ////////////////////////////////////////////////////////////////////////
     pr_ip u_pr_ip
         (
-         .clk           (reg_clock),
+         .clk           (clock),
          .nreset        (1'b1),
          .freeze        (freeze),
          .pr_start      (1'b0),            // ignored for JTAG
