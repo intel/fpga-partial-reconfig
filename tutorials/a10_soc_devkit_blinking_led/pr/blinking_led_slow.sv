@@ -1,4 +1,4 @@
-// Copyright (c) 2001-2016 Intel Corporation
+// Copyright (c) 2001-2017 Intel Corporation
 //  
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
@@ -26,7 +26,7 @@
 `timescale 1 ps / 1 ps
 `default_nettype none
 
-module blinking_slow_led
+module blinking_led_slow
     (
 
      // Control signals for the LEDs
