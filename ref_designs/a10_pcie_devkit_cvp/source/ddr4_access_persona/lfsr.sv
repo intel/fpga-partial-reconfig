@@ -1,4 +1,4 @@
-// Copyright (c) 2001-2016 Intel Corporation
+// Copyright (c) 2001-2017 Intel Corporation
 //  
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
@@ -24,53 +24,39 @@
 
 // This is a Linear Feedback Shift Register that generates 32-bit pseudo-random data
 
-module lfsr (
-      input  wire         pr_logic_clk_clk,                 //       pr_logic_clk.clk
-      input  wire         sw_reset,
-      input  wire         load_seed,
-      input  wire [31:0]  seed,
-      output reg  [31:0]  rndm_data,
-      input  wire         pr_logic_reset_reset_n            //     pr_logic_reset.reset_n
+module lfsr 
+   (
+      input wire         clk,
+      input wire         rst,
+      input wire         load_seed,
+      input wire  [31:0] seed,
+      output wire [31:0] out
    );
 
-   reg [31:0] data;
+   reg [31:0] myreg;
 
-   // Ref equation from
-   // http://courses.cse.tamu.edu/csce680/walker/lfsr_table.pdf
-   always_comb
-   begin
-      data[31]    = rndm_data[0];
-      data[30]    = rndm_data[31];
-      data[29]    = ~(rndm_data[30] ^ rndm_data[0]);
-      data[28:26] = rndm_data[29:27];
-      data[25]    = ~(rndm_data[26] ^ rndm_data[0]);
-      data[24]    = ~(rndm_data[25] ^ rndm_data[0]);
-      data[23:0]  = rndm_data[24:1];
-   end
+   // nice looking max period polys selected from
+   // the internet
+   reg [31:0] poly;
+   wire [31:0] feedback;
+   assign feedback = {32{myreg[31]}} & poly;
 
-   always_ff @(posedge pr_logic_clk_clk or negedge pr_logic_reset_reset_n) begin
-
-      // Active low HW reset
-      if (  pr_logic_reset_reset_n == 1'b0 ) begin
-
-         rndm_data <= 'b0;
-
-      end
-      // Active high SW reset
-      else if ( sw_reset == 1'b1 ) begin
-
-         rndm_data <= 'b0;
-
+   // the inverter on the LSB causes 000... to be a 
+   // sequence member rather than the frozen state
+   always_ff @(posedge clk) begin
+      if ( rst==1'b1 ) begin
+         poly <= 32'h800007c3; 
+         myreg <= 0;
       end
       else begin
-
-         if ( load_seed == 1'b1 )
-            rndm_data <= seed;
-         else begin
-            rndm_data <= data;
+         if(load_seed == 1'b1) begin
+            poly <= seed;
          end
-
+         myreg <= ((myreg ^ feedback) << 1) | !myreg[31];
       end
    end
 
+   assign out = myreg;
+
 endmodule
+

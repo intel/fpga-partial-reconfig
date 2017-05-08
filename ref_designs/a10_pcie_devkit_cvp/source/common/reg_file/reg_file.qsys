@@ -10,7 +10,7 @@
    tool="QsysPro" />
  <parameter name="bonusData"><![CDATA[bonusData 
 {
-   element reg_file_clock_bridge_0
+   element clock_in
    {
       datum _sortIndex
       {
@@ -18,23 +18,31 @@
          type = "int";
       }
    }
+   element full_reset
+   {
+      datum _sortIndex
+      {
+         value = "1";
+         type = "int";
+      }
+   }
    element reg_file_control_register
    {
       datum _sortIndex
       {
-         value = "4";
+         value = "5";
          type = "int";
+      }
+   }
+   element reg_file_control_register.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
       }
    }
    element reg_file_host_pr_0
-   {
-      datum _sortIndex
-      {
-         value = "13";
-         type = "int";
-      }
-   }
-   element reg_file_host_pr_1
    {
       datum _sortIndex
       {
@@ -42,7 +50,15 @@
          type = "int";
       }
    }
-   element reg_file_host_pr_2
+   element reg_file_host_pr_0.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+   }
+   element reg_file_host_pr_1
    {
       datum _sortIndex
       {
@@ -50,7 +66,15 @@
          type = "int";
       }
    }
-   element reg_file_host_pr_3
+   element reg_file_host_pr_1.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+   }
+   element reg_file_host_pr_2
    {
       datum _sortIndex
       {
@@ -58,7 +82,15 @@
          type = "int";
       }
    }
-   element reg_file_host_pr_4
+   element reg_file_host_pr_2.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+   }
+   element reg_file_host_pr_3
    {
       datum _sortIndex
       {
@@ -66,7 +98,15 @@
          type = "int";
       }
    }
-   element reg_file_host_pr_5
+   element reg_file_host_pr_3.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+   }
+   element reg_file_host_pr_4
    {
       datum _sortIndex
       {
@@ -74,7 +114,15 @@
          type = "int";
       }
    }
-   element reg_file_host_pr_6
+   element reg_file_host_pr_4.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+   }
+   element reg_file_host_pr_5
    {
       datum _sortIndex
       {
@@ -82,7 +130,15 @@
          type = "int";
       }
    }
-   element reg_file_host_pr_7
+   element reg_file_host_pr_5.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+   }
+   element reg_file_host_pr_6
    {
       datum _sortIndex
       {
@@ -90,15 +146,31 @@
          type = "int";
       }
    }
-   element reg_file_mm_bridge_0
+   element reg_file_host_pr_6.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+   }
+   element reg_file_host_pr_7
    {
       datum _sortIndex
       {
-         value = "2";
+         value = "21";
          type = "int";
       }
    }
-   element reg_file_persona_id_register
+   element reg_file_host_pr_7.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+   }
+   element reg_file_mm_bridge
    {
       datum _sortIndex
       {
@@ -106,11 +178,27 @@
          type = "int";
       }
    }
+   element reg_file_persona_id_register
+   {
+      datum _sortIndex
+      {
+         value = "4";
+         type = "int";
+      }
+   }
+   element reg_file_persona_id_register.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+   }
    element reg_file_pr_host_0
    {
       datum _sortIndex
       {
-         value = "5";
+         value = "6";
          type = "int";
       }
    }
@@ -121,17 +209,12 @@
          value = "1";
          type = "boolean";
       }
-      datum baseAddress
-      {
-         value = "32";
-         type = "String";
-      }
    }
    element reg_file_pr_host_1
    {
       datum _sortIndex
       {
-         value = "6";
+         value = "7";
          type = "int";
       }
    }
@@ -147,7 +230,7 @@
    {
       datum _sortIndex
       {
-         value = "7";
+         value = "8";
          type = "int";
       }
    }
@@ -163,15 +246,23 @@
    {
       datum _sortIndex
       {
-         value = "8";
+         value = "9";
          type = "int";
+      }
+   }
+   element reg_file_pr_host_3.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
       }
    }
    element reg_file_pr_host_4
    {
       datum _sortIndex
       {
-         value = "9";
+         value = "10";
          type = "int";
       }
    }
@@ -192,7 +283,7 @@
    {
       datum _sortIndex
       {
-         value = "10";
+         value = "11";
          type = "int";
       }
    }
@@ -213,7 +304,7 @@
    {
       datum _sortIndex
       {
-         value = "11";
+         value = "12";
          type = "int";
       }
    }
@@ -234,7 +325,7 @@
    {
       datum _sortIndex
       {
-         value = "12";
+         value = "13";
          type = "int";
       }
    }
@@ -251,19 +342,11 @@
          type = "String";
       }
    }
-   element reg_file_reset_bridge_0
+   element register_clear
    {
       datum _sortIndex
       {
-         value = "1";
-         type = "int";
-      }
-   }
-   element reg_file_reset_bridge_1
-   {
-      datum _sortIndex
-      {
-         value = "21";
+         value = "2";
          type = "int";
       }
    }
@@ -281,7 +364,6 @@
  <parameter name="hideFromIPCatalog" value="false" />
  <parameter name="lockedInterfaceDefinition" value="" />
  <parameter name="maxAdditionalLatency" value="1" />
- <parameter name="projectName">/data/jbostick/builds/prbuilds/16.1/174.5/p4/ref_designs/a10_pcie_devkit_cvp/a10_pcie_devkit_cvp</parameter>
  <parameter name="sopcBorderPoints" value="false" />
  <parameter name="systemHash" value="0" />
  <parameter name="systemInfos"><![CDATA[<systemInfosDefinition>
@@ -299,9 +381,9 @@
             </value>
         </entry>
         <entry>
-            <key>reg_file_mm_bridge_0_s0</key>
+            <key>reg_file_mm_bridge_s0</key>
             <value>
-                <connectionPointName>reg_file_mm_bridge_0_s0</connectionPointName>
+                <connectionPointName>reg_file_mm_bridge_s0</connectionPointName>
                 <suppliedSystemInfos/>
                 <consumedSystemInfos>
                     <entry>
@@ -321,13 +403,14 @@
         </entry>
     </connPtSystemInfos>
 </systemInfosDefinition>]]></parameter>
+ <parameter name="systemScripts" value="" />
  <parameter name="testBenchDutName" value="" />
  <parameter name="timeStamp" value="0" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
  <interface
    name="reg_file_clock_clk"
-   internal="reg_file_clock_bridge_0.in_clk"
+   internal="clock_in.in_clk"
    type="clock"
    dir="end" />
  <interface
@@ -376,13 +459,18 @@
    type="conduit"
    dir="end" />
  <interface
-   name="reg_file_hw_rst_n"
-   internal="reg_file_reset_bridge_0.in_reset"
+   name="reg_file_hw_rst"
+   internal="full_reset.in_reset"
    type="reset"
    dir="end" />
  <interface
-   name="reg_file_mm_bridge_0_s0"
-   internal="reg_file_mm_bridge_0.s0"
+   name="reg_file_io_clr"
+   internal="register_clear.in_reset"
+   type="reset"
+   dir="end" />
+ <interface
+   name="reg_file_mm_bridge_s0"
+   internal="reg_file_mm_bridge.s0"
    type="avalon"
    dir="end" />
  <interface
@@ -430,13 +518,8 @@
    internal="reg_file_pr_host_7.external_connection"
    type="conduit"
    dir="end" />
- <interface
-   name="reg_file_sw_rst_n"
-   internal="reg_file_reset_bridge_1.in_reset"
-   type="reset"
-   dir="end" />
  <module
-   name="reg_file_clock_bridge_0"
+   name="clock_in"
    kind="altera_generic_component"
    version="1.0"
    enabled="1">
@@ -521,7 +604,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_clock_bridge</className>
-        <version>16.1</version>
+        <version>17.0</version>
         <displayName>Clock Bridge</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -567,29 +650,204 @@
     </systemInfos>
 </componentDefinition>]]></parameter>
   <parameter name="generationInfoDefinition"><![CDATA[<generationInfoDefinition>
-    <hdlLibraryName>reg_file_clock_bridge_0</hdlLibraryName>
+    <hdlLibraryName>reg_file_clock_bridge</hdlLibraryName>
     <fileSets>
         <fileSet>
-            <fileSetName>reg_file_clock_bridge_0</fileSetName>
-            <fileSetFixedName>reg_file_clock_bridge_0</fileSetFixedName>
+            <fileSetName>reg_file_clock_bridge</fileSetName>
+            <fileSetFixedName>reg_file_clock_bridge</fileSetFixedName>
             <fileSetKind>QUARTUS_SYNTH</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_clock_bridge_0</fileSetName>
-            <fileSetFixedName>reg_file_clock_bridge_0</fileSetFixedName>
+            <fileSetName>reg_file_clock_bridge</fileSetName>
+            <fileSetFixedName>reg_file_clock_bridge</fileSetFixedName>
             <fileSetKind>SIM_VERILOG</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_clock_bridge_0</fileSetName>
-            <fileSetFixedName>reg_file_clock_bridge_0</fileSetFixedName>
+            <fileSetName>reg_file_clock_bridge</fileSetName>
+            <fileSetFixedName>reg_file_clock_bridge</fileSetFixedName>
             <fileSetKind>SIM_VHDL</fileSetKind>
             <fileSetFiles/>
         </fileSet>
     </fileSets>
 </generationInfoDefinition>]]></parameter>
-  <parameter name="logicalView">ip/reg_file/reg_file_clock_bridge_0.ip</parameter>
+  <parameter name="hlsFile" value="" />
+  <parameter name="logicalView">ip/reg_file/reg_file_clock_bridge.ip</parameter>
+  <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
+    <assignmentValueMap/>
+</assignmentDefinition>]]></parameter>
+ </module>
+ <module
+   name="full_reset"
+   kind="altera_generic_component"
+   version="1.0"
+   enabled="1">
+  <parameter name="componentDefinition"><![CDATA[<componentDefinition>
+    <boundary>
+        <interfaces>
+            <interface>
+                <name>clk</name>
+                <type>clock</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>clk</name>
+                        <role>clk</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>clockRate</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>externallyDriven</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>ptfSchematicName</key>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
+                <name>in_reset</name>
+                <type>reset</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>in_reset</name>
+                        <role>reset</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>associatedClock</key>
+                            <value>clk</value>
+                        </entry>
+                        <entry>
+                            <key>synchronousEdges</key>
+                            <value>DEASSERT</value>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
+                <name>out_reset</name>
+                <type>reset</type>
+                <isStart>true</isStart>
+                <ports>
+                    <port>
+                        <name>out_reset</name>
+                        <role>reset</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>associatedClock</key>
+                            <value>clk</value>
+                        </entry>
+                        <entry>
+                            <key>associatedDirectReset</key>
+                            <value>in_reset</value>
+                        </entry>
+                        <entry>
+                            <key>associatedResetSinks</key>
+                            <value>in_reset</value>
+                        </entry>
+                        <entry>
+                            <key>synchronousEdges</key>
+                            <value>DEASSERT</value>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+        </interfaces>
+    </boundary>
+    <originalModuleInfo>
+        <className>altera_reset_bridge</className>
+        <version>17.0</version>
+        <displayName>Reset Bridge</displayName>
+    </originalModuleInfo>
+    <systemInfoParameterDescriptors>
+        <descriptors>
+            <descriptor>
+                <parameterDefaultValue>-1</parameterDefaultValue>
+                <parameterName>AUTO_CLK_CLOCK_RATE</parameterName>
+                <parameterType>java.lang.Long</parameterType>
+                <systemInfoArgs>clk</systemInfoArgs>
+                <systemInfotype>CLOCK_RATE</systemInfotype>
+            </descriptor>
+        </descriptors>
+    </systemInfoParameterDescriptors>
+    <systemInfos>
+        <connPtSystemInfos>
+            <entry>
+                <key>clk</key>
+                <value>
+                    <connectionPointName>clk</connectionPointName>
+                    <suppliedSystemInfos/>
+                    <consumedSystemInfos>
+                        <entry>
+                            <key>CLOCK_RATE</key>
+                            <value>0</value>
+                        </entry>
+                    </consumedSystemInfos>
+                </value>
+            </entry>
+        </connPtSystemInfos>
+    </systemInfos>
+</componentDefinition>]]></parameter>
+  <parameter name="generationInfoDefinition"><![CDATA[<generationInfoDefinition>
+    <hdlLibraryName>reg_file_reset_bridge</hdlLibraryName>
+    <fileSets>
+        <fileSet>
+            <fileSetName>reg_file_reset_bridge</fileSetName>
+            <fileSetFixedName>reg_file_reset_bridge</fileSetFixedName>
+            <fileSetKind>QUARTUS_SYNTH</fileSetKind>
+            <fileSetFiles/>
+        </fileSet>
+        <fileSet>
+            <fileSetName>reg_file_reset_bridge</fileSetName>
+            <fileSetFixedName>reg_file_reset_bridge</fileSetFixedName>
+            <fileSetKind>SIM_VERILOG</fileSetKind>
+            <fileSetFiles/>
+        </fileSet>
+        <fileSet>
+            <fileSetName>reg_file_reset_bridge</fileSetName>
+            <fileSetFixedName>reg_file_reset_bridge</fileSetFixedName>
+            <fileSetKind>SIM_VHDL</fileSetKind>
+            <fileSetFiles/>
+        </fileSet>
+    </fileSets>
+</generationInfoDefinition>]]></parameter>
+  <parameter name="hlsFile" value="" />
+  <parameter name="logicalView">ip/reg_file/reg_file_reset_bridge.ip</parameter>
   <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
     <assignmentValueMap/>
 </assignmentDefinition>]]></parameter>
@@ -659,6 +917,10 @@
                         </entry>
                         <entry>
                             <key>associatedReset</key>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
                         </entry>
                     </parameterValueMap>
                 </parameters>
@@ -853,8 +1115,20 @@
                             <value>0</value>
                         </entry>
                         <entry>
+                            <key>minimumReadLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>minimumResponseLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
                             <key>minimumUninterruptedRunLength</key>
                             <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>printableDevice</key>
@@ -891,6 +1165,10 @@
                         <entry>
                             <key>transparentBridge</key>
                             <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>waitrequestAllowance</key>
+                            <value>0</value>
                         </entry>
                         <entry>
                             <key>wellBehavedWaitrequest</key>
@@ -1042,7 +1320,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>16.1</version>
+        <version>17.0</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -1096,29 +1374,30 @@
     </systemInfos>
 </componentDefinition>]]></parameter>
   <parameter name="generationInfoDefinition"><![CDATA[<generationInfoDefinition>
-    <hdlLibraryName>reg_file_pio_1</hdlLibraryName>
+    <hdlLibraryName>reg_file_pio_out</hdlLibraryName>
     <fileSets>
         <fileSet>
-            <fileSetName>reg_file_pio_1</fileSetName>
-            <fileSetFixedName>reg_file_pio_1</fileSetFixedName>
+            <fileSetName>reg_file_pio_out</fileSetName>
+            <fileSetFixedName>reg_file_pio_out</fileSetFixedName>
             <fileSetKind>QUARTUS_SYNTH</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_1</fileSetName>
-            <fileSetFixedName>reg_file_pio_1</fileSetFixedName>
+            <fileSetName>reg_file_pio_out</fileSetName>
+            <fileSetFixedName>reg_file_pio_out</fileSetFixedName>
             <fileSetKind>SIM_VERILOG</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_1</fileSetName>
-            <fileSetFixedName>reg_file_pio_1</fileSetFixedName>
+            <fileSetName>reg_file_pio_out</fileSetName>
+            <fileSetFixedName>reg_file_pio_out</fileSetFixedName>
             <fileSetKind>SIM_VHDL</fileSetKind>
             <fileSetFiles/>
         </fileSet>
     </fileSets>
 </generationInfoDefinition>]]></parameter>
-  <parameter name="logicalView">ip/reg_file/reg_file_pio_1.ip</parameter>
+  <parameter name="hlsFile" value="" />
+  <parameter name="logicalView">ip/reg_file/reg_file_pio_out.ip</parameter>
   <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
     <assignmentValueMap>
         <entry>
@@ -1266,6 +1545,10 @@
                         <entry>
                             <key>associatedReset</key>
                         </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
                     </parameterValueMap>
                 </parameters>
             </interface>
@@ -1459,8 +1742,20 @@
                             <value>0</value>
                         </entry>
                         <entry>
+                            <key>minimumReadLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>minimumResponseLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
                             <key>minimumUninterruptedRunLength</key>
                             <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>printableDevice</key>
@@ -1497,6 +1792,10 @@
                         <entry>
                             <key>transparentBridge</key>
                             <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>waitrequestAllowance</key>
+                            <value>0</value>
                         </entry>
                         <entry>
                             <key>wellBehavedWaitrequest</key>
@@ -1648,7 +1947,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>16.1</version>
+        <version>17.0</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -1702,29 +2001,30 @@
     </systemInfos>
 </componentDefinition>]]></parameter>
   <parameter name="generationInfoDefinition"><![CDATA[<generationInfoDefinition>
-    <hdlLibraryName>reg_file_pio_1</hdlLibraryName>
+    <hdlLibraryName>reg_file_pio_out</hdlLibraryName>
     <fileSets>
         <fileSet>
-            <fileSetName>reg_file_pio_1</fileSetName>
-            <fileSetFixedName>reg_file_pio_1</fileSetFixedName>
+            <fileSetName>reg_file_pio_out</fileSetName>
+            <fileSetFixedName>reg_file_pio_out</fileSetFixedName>
             <fileSetKind>QUARTUS_SYNTH</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_1</fileSetName>
-            <fileSetFixedName>reg_file_pio_1</fileSetFixedName>
+            <fileSetName>reg_file_pio_out</fileSetName>
+            <fileSetFixedName>reg_file_pio_out</fileSetFixedName>
             <fileSetKind>SIM_VERILOG</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_1</fileSetName>
-            <fileSetFixedName>reg_file_pio_1</fileSetFixedName>
+            <fileSetName>reg_file_pio_out</fileSetName>
+            <fileSetFixedName>reg_file_pio_out</fileSetFixedName>
             <fileSetKind>SIM_VHDL</fileSetKind>
             <fileSetFiles/>
         </fileSet>
     </fileSets>
 </generationInfoDefinition>]]></parameter>
-  <parameter name="logicalView">ip/reg_file/reg_file_pio_1.ip</parameter>
+  <parameter name="hlsFile" value="" />
+  <parameter name="logicalView">ip/reg_file/reg_file_pio_out.ip</parameter>
   <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
     <assignmentValueMap>
         <entry>
@@ -1872,6 +2172,10 @@
                         <entry>
                             <key>associatedReset</key>
                         </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
                     </parameterValueMap>
                 </parameters>
             </interface>
@@ -2065,8 +2369,20 @@
                             <value>0</value>
                         </entry>
                         <entry>
+                            <key>minimumReadLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>minimumResponseLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
                             <key>minimumUninterruptedRunLength</key>
                             <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>printableDevice</key>
@@ -2103,6 +2419,10 @@
                         <entry>
                             <key>transparentBridge</key>
                             <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>waitrequestAllowance</key>
+                            <value>0</value>
                         </entry>
                         <entry>
                             <key>wellBehavedWaitrequest</key>
@@ -2254,7 +2574,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>16.1</version>
+        <version>17.0</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -2308,29 +2628,30 @@
     </systemInfos>
 </componentDefinition>]]></parameter>
   <parameter name="generationInfoDefinition"><![CDATA[<generationInfoDefinition>
-    <hdlLibraryName>reg_file_pio_1</hdlLibraryName>
+    <hdlLibraryName>reg_file_pio_out</hdlLibraryName>
     <fileSets>
         <fileSet>
-            <fileSetName>reg_file_pio_1</fileSetName>
-            <fileSetFixedName>reg_file_pio_1</fileSetFixedName>
+            <fileSetName>reg_file_pio_out</fileSetName>
+            <fileSetFixedName>reg_file_pio_out</fileSetFixedName>
             <fileSetKind>QUARTUS_SYNTH</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_1</fileSetName>
-            <fileSetFixedName>reg_file_pio_1</fileSetFixedName>
+            <fileSetName>reg_file_pio_out</fileSetName>
+            <fileSetFixedName>reg_file_pio_out</fileSetFixedName>
             <fileSetKind>SIM_VERILOG</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_1</fileSetName>
-            <fileSetFixedName>reg_file_pio_1</fileSetFixedName>
+            <fileSetName>reg_file_pio_out</fileSetName>
+            <fileSetFixedName>reg_file_pio_out</fileSetFixedName>
             <fileSetKind>SIM_VHDL</fileSetKind>
             <fileSetFiles/>
         </fileSet>
     </fileSets>
 </generationInfoDefinition>]]></parameter>
-  <parameter name="logicalView">ip/reg_file/reg_file_pio_1.ip</parameter>
+  <parameter name="hlsFile" value="" />
+  <parameter name="logicalView">ip/reg_file/reg_file_pio_out.ip</parameter>
   <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
     <assignmentValueMap>
         <entry>
@@ -2478,6 +2799,10 @@
                         <entry>
                             <key>associatedReset</key>
                         </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
                     </parameterValueMap>
                 </parameters>
             </interface>
@@ -2671,8 +2996,20 @@
                             <value>0</value>
                         </entry>
                         <entry>
+                            <key>minimumReadLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>minimumResponseLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
                             <key>minimumUninterruptedRunLength</key>
                             <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>printableDevice</key>
@@ -2709,6 +3046,10 @@
                         <entry>
                             <key>transparentBridge</key>
                             <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>waitrequestAllowance</key>
+                            <value>0</value>
                         </entry>
                         <entry>
                             <key>wellBehavedWaitrequest</key>
@@ -2860,7 +3201,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>16.1</version>
+        <version>17.0</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -2914,29 +3255,30 @@
     </systemInfos>
 </componentDefinition>]]></parameter>
   <parameter name="generationInfoDefinition"><![CDATA[<generationInfoDefinition>
-    <hdlLibraryName>reg_file_pio_1</hdlLibraryName>
+    <hdlLibraryName>reg_file_pio_out</hdlLibraryName>
     <fileSets>
         <fileSet>
-            <fileSetName>reg_file_pio_1</fileSetName>
-            <fileSetFixedName>reg_file_pio_1</fileSetFixedName>
+            <fileSetName>reg_file_pio_out</fileSetName>
+            <fileSetFixedName>reg_file_pio_out</fileSetFixedName>
             <fileSetKind>QUARTUS_SYNTH</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_1</fileSetName>
-            <fileSetFixedName>reg_file_pio_1</fileSetFixedName>
+            <fileSetName>reg_file_pio_out</fileSetName>
+            <fileSetFixedName>reg_file_pio_out</fileSetFixedName>
             <fileSetKind>SIM_VERILOG</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_1</fileSetName>
-            <fileSetFixedName>reg_file_pio_1</fileSetFixedName>
+            <fileSetName>reg_file_pio_out</fileSetName>
+            <fileSetFixedName>reg_file_pio_out</fileSetFixedName>
             <fileSetKind>SIM_VHDL</fileSetKind>
             <fileSetFiles/>
         </fileSet>
     </fileSets>
 </generationInfoDefinition>]]></parameter>
-  <parameter name="logicalView">ip/reg_file/reg_file_pio_1.ip</parameter>
+  <parameter name="hlsFile" value="" />
+  <parameter name="logicalView">ip/reg_file/reg_file_pio_out.ip</parameter>
   <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
     <assignmentValueMap>
         <entry>
@@ -3084,6 +3426,10 @@
                         <entry>
                             <key>associatedReset</key>
                         </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
                     </parameterValueMap>
                 </parameters>
             </interface>
@@ -3277,8 +3623,20 @@
                             <value>0</value>
                         </entry>
                         <entry>
+                            <key>minimumReadLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>minimumResponseLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
                             <key>minimumUninterruptedRunLength</key>
                             <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>printableDevice</key>
@@ -3315,6 +3673,10 @@
                         <entry>
                             <key>transparentBridge</key>
                             <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>waitrequestAllowance</key>
+                            <value>0</value>
                         </entry>
                         <entry>
                             <key>wellBehavedWaitrequest</key>
@@ -3466,7 +3828,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>16.1</version>
+        <version>17.0</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -3520,29 +3882,30 @@
     </systemInfos>
 </componentDefinition>]]></parameter>
   <parameter name="generationInfoDefinition"><![CDATA[<generationInfoDefinition>
-    <hdlLibraryName>reg_file_pio_1</hdlLibraryName>
+    <hdlLibraryName>reg_file_pio_out</hdlLibraryName>
     <fileSets>
         <fileSet>
-            <fileSetName>reg_file_pio_1</fileSetName>
-            <fileSetFixedName>reg_file_pio_1</fileSetFixedName>
+            <fileSetName>reg_file_pio_out</fileSetName>
+            <fileSetFixedName>reg_file_pio_out</fileSetFixedName>
             <fileSetKind>QUARTUS_SYNTH</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_1</fileSetName>
-            <fileSetFixedName>reg_file_pio_1</fileSetFixedName>
+            <fileSetName>reg_file_pio_out</fileSetName>
+            <fileSetFixedName>reg_file_pio_out</fileSetFixedName>
             <fileSetKind>SIM_VERILOG</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_1</fileSetName>
-            <fileSetFixedName>reg_file_pio_1</fileSetFixedName>
+            <fileSetName>reg_file_pio_out</fileSetName>
+            <fileSetFixedName>reg_file_pio_out</fileSetFixedName>
             <fileSetKind>SIM_VHDL</fileSetKind>
             <fileSetFiles/>
         </fileSet>
     </fileSets>
 </generationInfoDefinition>]]></parameter>
-  <parameter name="logicalView">ip/reg_file/reg_file_pio_1.ip</parameter>
+  <parameter name="hlsFile" value="" />
+  <parameter name="logicalView">ip/reg_file/reg_file_pio_out.ip</parameter>
   <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
     <assignmentValueMap>
         <entry>
@@ -3690,6 +4053,10 @@
                         <entry>
                             <key>associatedReset</key>
                         </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
                     </parameterValueMap>
                 </parameters>
             </interface>
@@ -3883,8 +4250,20 @@
                             <value>0</value>
                         </entry>
                         <entry>
+                            <key>minimumReadLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>minimumResponseLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
                             <key>minimumUninterruptedRunLength</key>
                             <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>printableDevice</key>
@@ -3921,6 +4300,10 @@
                         <entry>
                             <key>transparentBridge</key>
                             <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>waitrequestAllowance</key>
+                            <value>0</value>
                         </entry>
                         <entry>
                             <key>wellBehavedWaitrequest</key>
@@ -4072,7 +4455,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>16.1</version>
+        <version>17.0</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -4126,29 +4509,30 @@
     </systemInfos>
 </componentDefinition>]]></parameter>
   <parameter name="generationInfoDefinition"><![CDATA[<generationInfoDefinition>
-    <hdlLibraryName>reg_file_pio_1</hdlLibraryName>
+    <hdlLibraryName>reg_file_pio_out</hdlLibraryName>
     <fileSets>
         <fileSet>
-            <fileSetName>reg_file_pio_1</fileSetName>
-            <fileSetFixedName>reg_file_pio_1</fileSetFixedName>
+            <fileSetName>reg_file_pio_out</fileSetName>
+            <fileSetFixedName>reg_file_pio_out</fileSetFixedName>
             <fileSetKind>QUARTUS_SYNTH</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_1</fileSetName>
-            <fileSetFixedName>reg_file_pio_1</fileSetFixedName>
+            <fileSetName>reg_file_pio_out</fileSetName>
+            <fileSetFixedName>reg_file_pio_out</fileSetFixedName>
             <fileSetKind>SIM_VERILOG</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_1</fileSetName>
-            <fileSetFixedName>reg_file_pio_1</fileSetFixedName>
+            <fileSetName>reg_file_pio_out</fileSetName>
+            <fileSetFixedName>reg_file_pio_out</fileSetFixedName>
             <fileSetKind>SIM_VHDL</fileSetKind>
             <fileSetFiles/>
         </fileSet>
     </fileSets>
 </generationInfoDefinition>]]></parameter>
-  <parameter name="logicalView">ip/reg_file/reg_file_pio_1.ip</parameter>
+  <parameter name="hlsFile" value="" />
+  <parameter name="logicalView">ip/reg_file/reg_file_pio_out.ip</parameter>
   <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
     <assignmentValueMap>
         <entry>
@@ -4296,6 +4680,10 @@
                         <entry>
                             <key>associatedReset</key>
                         </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
                     </parameterValueMap>
                 </parameters>
             </interface>
@@ -4489,8 +4877,20 @@
                             <value>0</value>
                         </entry>
                         <entry>
+                            <key>minimumReadLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>minimumResponseLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
                             <key>minimumUninterruptedRunLength</key>
                             <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>printableDevice</key>
@@ -4527,6 +4927,10 @@
                         <entry>
                             <key>transparentBridge</key>
                             <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>waitrequestAllowance</key>
+                            <value>0</value>
                         </entry>
                         <entry>
                             <key>wellBehavedWaitrequest</key>
@@ -4678,7 +5082,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>16.1</version>
+        <version>17.0</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -4732,29 +5136,30 @@
     </systemInfos>
 </componentDefinition>]]></parameter>
   <parameter name="generationInfoDefinition"><![CDATA[<generationInfoDefinition>
-    <hdlLibraryName>reg_file_pio_1</hdlLibraryName>
+    <hdlLibraryName>reg_file_pio_out</hdlLibraryName>
     <fileSets>
         <fileSet>
-            <fileSetName>reg_file_pio_1</fileSetName>
-            <fileSetFixedName>reg_file_pio_1</fileSetFixedName>
+            <fileSetName>reg_file_pio_out</fileSetName>
+            <fileSetFixedName>reg_file_pio_out</fileSetFixedName>
             <fileSetKind>QUARTUS_SYNTH</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_1</fileSetName>
-            <fileSetFixedName>reg_file_pio_1</fileSetFixedName>
+            <fileSetName>reg_file_pio_out</fileSetName>
+            <fileSetFixedName>reg_file_pio_out</fileSetFixedName>
             <fileSetKind>SIM_VERILOG</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_1</fileSetName>
-            <fileSetFixedName>reg_file_pio_1</fileSetFixedName>
+            <fileSetName>reg_file_pio_out</fileSetName>
+            <fileSetFixedName>reg_file_pio_out</fileSetFixedName>
             <fileSetKind>SIM_VHDL</fileSetKind>
             <fileSetFiles/>
         </fileSet>
     </fileSets>
 </generationInfoDefinition>]]></parameter>
-  <parameter name="logicalView">ip/reg_file/reg_file_pio_1.ip</parameter>
+  <parameter name="hlsFile" value="" />
+  <parameter name="logicalView">ip/reg_file/reg_file_pio_out.ip</parameter>
   <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
     <assignmentValueMap>
         <entry>
@@ -4902,6 +5307,10 @@
                         <entry>
                             <key>associatedReset</key>
                         </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
                     </parameterValueMap>
                 </parameters>
             </interface>
@@ -5095,8 +5504,20 @@
                             <value>0</value>
                         </entry>
                         <entry>
+                            <key>minimumReadLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>minimumResponseLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
                             <key>minimumUninterruptedRunLength</key>
                             <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>printableDevice</key>
@@ -5133,6 +5554,10 @@
                         <entry>
                             <key>transparentBridge</key>
                             <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>waitrequestAllowance</key>
+                            <value>0</value>
                         </entry>
                         <entry>
                             <key>wellBehavedWaitrequest</key>
@@ -5284,7 +5709,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>16.1</version>
+        <version>17.0</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -5338,29 +5763,30 @@
     </systemInfos>
 </componentDefinition>]]></parameter>
   <parameter name="generationInfoDefinition"><![CDATA[<generationInfoDefinition>
-    <hdlLibraryName>reg_file_pio_1</hdlLibraryName>
+    <hdlLibraryName>reg_file_pio_out</hdlLibraryName>
     <fileSets>
         <fileSet>
-            <fileSetName>reg_file_pio_1</fileSetName>
-            <fileSetFixedName>reg_file_pio_1</fileSetFixedName>
+            <fileSetName>reg_file_pio_out</fileSetName>
+            <fileSetFixedName>reg_file_pio_out</fileSetFixedName>
             <fileSetKind>QUARTUS_SYNTH</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_1</fileSetName>
-            <fileSetFixedName>reg_file_pio_1</fileSetFixedName>
+            <fileSetName>reg_file_pio_out</fileSetName>
+            <fileSetFixedName>reg_file_pio_out</fileSetFixedName>
             <fileSetKind>SIM_VERILOG</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_1</fileSetName>
-            <fileSetFixedName>reg_file_pio_1</fileSetFixedName>
+            <fileSetName>reg_file_pio_out</fileSetName>
+            <fileSetFixedName>reg_file_pio_out</fileSetFixedName>
             <fileSetKind>SIM_VHDL</fileSetKind>
             <fileSetFiles/>
         </fileSet>
     </fileSets>
 </generationInfoDefinition>]]></parameter>
-  <parameter name="logicalView">ip/reg_file/reg_file_pio_1.ip</parameter>
+  <parameter name="hlsFile" value="" />
+  <parameter name="logicalView">ip/reg_file/reg_file_pio_out.ip</parameter>
   <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
     <assignmentValueMap>
         <entry>
@@ -5508,6 +5934,10 @@
                         <entry>
                             <key>associatedReset</key>
                         </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
                     </parameterValueMap>
                 </parameters>
             </interface>
@@ -5701,8 +6131,20 @@
                             <value>0</value>
                         </entry>
                         <entry>
+                            <key>minimumReadLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>minimumResponseLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
                             <key>minimumUninterruptedRunLength</key>
                             <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>printableDevice</key>
@@ -5739,6 +6181,10 @@
                         <entry>
                             <key>transparentBridge</key>
                             <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>waitrequestAllowance</key>
+                            <value>0</value>
                         </entry>
                         <entry>
                             <key>wellBehavedWaitrequest</key>
@@ -5890,7 +6336,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>16.1</version>
+        <version>17.0</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -5944,29 +6390,30 @@
     </systemInfos>
 </componentDefinition>]]></parameter>
   <parameter name="generationInfoDefinition"><![CDATA[<generationInfoDefinition>
-    <hdlLibraryName>reg_file_pio_1</hdlLibraryName>
+    <hdlLibraryName>reg_file_pio_out</hdlLibraryName>
     <fileSets>
         <fileSet>
-            <fileSetName>reg_file_pio_1</fileSetName>
-            <fileSetFixedName>reg_file_pio_1</fileSetFixedName>
+            <fileSetName>reg_file_pio_out</fileSetName>
+            <fileSetFixedName>reg_file_pio_out</fileSetFixedName>
             <fileSetKind>QUARTUS_SYNTH</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_1</fileSetName>
-            <fileSetFixedName>reg_file_pio_1</fileSetFixedName>
+            <fileSetName>reg_file_pio_out</fileSetName>
+            <fileSetFixedName>reg_file_pio_out</fileSetFixedName>
             <fileSetKind>SIM_VERILOG</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_1</fileSetName>
-            <fileSetFixedName>reg_file_pio_1</fileSetFixedName>
+            <fileSetName>reg_file_pio_out</fileSetName>
+            <fileSetFixedName>reg_file_pio_out</fileSetFixedName>
             <fileSetKind>SIM_VHDL</fileSetKind>
             <fileSetFiles/>
         </fileSet>
     </fileSets>
 </generationInfoDefinition>]]></parameter>
-  <parameter name="logicalView">ip/reg_file/reg_file_pio_1.ip</parameter>
+  <parameter name="hlsFile" value="" />
+  <parameter name="logicalView">ip/reg_file/reg_file_pio_out.ip</parameter>
   <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
     <assignmentValueMap>
         <entry>
@@ -6049,7 +6496,7 @@
 </assignmentDefinition>]]></parameter>
  </module>
  <module
-   name="reg_file_mm_bridge_0"
+   name="reg_file_mm_bridge"
    kind="altera_generic_component"
    version="1.0"
    enabled="1">
@@ -6138,7 +6585,7 @@
                         <name>m0_address</name>
                         <role>address</role>
                         <direction>Output</direction>
-                        <width>14</width>
+                        <width>9</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     </port>
@@ -6272,6 +6719,18 @@
                             <value>0</value>
                         </entry>
                         <entry>
+                            <key>minimumReadLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>minimumResponseLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
                             <key>readLatency</key>
                             <value>0</value>
                         </entry>
@@ -6294,6 +6753,10 @@
                         <entry>
                             <key>timingUnits</key>
                             <value>Cycles</value>
+                        </entry>
+                        <entry>
+                            <key>waitrequestAllowance</key>
+                            <value>0</value>
                         </entry>
                         <entry>
                             <key>writeWaitTime</key>
@@ -6381,7 +6844,7 @@
                         <name>s0_address</name>
                         <role>address</role>
                         <direction>Input</direction>
-                        <width>14</width>
+                        <width>9</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     </port>
@@ -6450,7 +6913,7 @@
                         </entry>
                         <entry>
                             <key>addressSpan</key>
-                            <value>16384</value>
+                            <value>512</value>
                         </entry>
                         <entry>
                             <key>addressUnits</key>
@@ -6478,7 +6941,7 @@
                         </entry>
                         <entry>
                             <key>bridgesToMaster</key>
-                            <value>reg_file_mm_bridge_0.m0</value>
+                            <value>reg_file_mm_bridge.m0</value>
                         </entry>
                         <entry>
                             <key>burstOnBurstBoundariesOnly</key>
@@ -6533,8 +6996,20 @@
                             <value>0</value>
                         </entry>
                         <entry>
+                            <key>minimumReadLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>minimumResponseLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
                             <key>minimumUninterruptedRunLength</key>
                             <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>printableDevice</key>
@@ -6573,6 +7048,10 @@
                             <value>false</value>
                         </entry>
                         <entry>
+                            <key>waitrequestAllowance</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
                             <key>wellBehavedWaitrequest</key>
                             <value>false</value>
                         </entry>
@@ -6595,7 +7074,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_mm_bridge</className>
-        <version>16.1</version>
+        <version>17.0</version>
         <displayName>Avalon-MM Pipeline Bridge</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -6646,29 +7125,30 @@
     </systemInfos>
 </componentDefinition>]]></parameter>
   <parameter name="generationInfoDefinition"><![CDATA[<generationInfoDefinition>
-    <hdlLibraryName>reg_file_mm_bridge_0</hdlLibraryName>
+    <hdlLibraryName>reg_file_mm_bridge</hdlLibraryName>
     <fileSets>
         <fileSet>
-            <fileSetName>reg_file_mm_bridge_0</fileSetName>
-            <fileSetFixedName>reg_file_mm_bridge_0</fileSetFixedName>
+            <fileSetName>reg_file_mm_bridge</fileSetName>
+            <fileSetFixedName>reg_file_mm_bridge</fileSetFixedName>
             <fileSetKind>QUARTUS_SYNTH</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_mm_bridge_0</fileSetName>
-            <fileSetFixedName>reg_file_mm_bridge_0</fileSetFixedName>
+            <fileSetName>reg_file_mm_bridge</fileSetName>
+            <fileSetFixedName>reg_file_mm_bridge</fileSetFixedName>
             <fileSetKind>SIM_VERILOG</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_mm_bridge_0</fileSetName>
-            <fileSetFixedName>reg_file_mm_bridge_0</fileSetFixedName>
+            <fileSetName>reg_file_mm_bridge</fileSetName>
+            <fileSetFixedName>reg_file_mm_bridge</fileSetFixedName>
             <fileSetKind>SIM_VHDL</fileSetKind>
             <fileSetFiles/>
         </fileSet>
     </fileSets>
 </generationInfoDefinition>]]></parameter>
-  <parameter name="logicalView">ip/reg_file/reg_file_mm_bridge_0.ip</parameter>
+  <parameter name="hlsFile" value="" />
+  <parameter name="logicalView">ip/reg_file/reg_file_mm_bridge.ip</parameter>
   <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
     <assignmentValueMap/>
 </assignmentDefinition>]]></parameter>
@@ -6738,6 +7218,10 @@
                         </entry>
                         <entry>
                             <key>associatedReset</key>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
                         </entry>
                     </parameterValueMap>
                 </parameters>
@@ -6908,8 +7392,20 @@
                             <value>0</value>
                         </entry>
                         <entry>
+                            <key>minimumReadLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>minimumResponseLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
                             <key>minimumUninterruptedRunLength</key>
                             <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>printableDevice</key>
@@ -6946,6 +7442,10 @@
                         <entry>
                             <key>transparentBridge</key>
                             <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>waitrequestAllowance</key>
+                            <value>0</value>
                         </entry>
                         <entry>
                             <key>wellBehavedWaitrequest</key>
@@ -7097,7 +7597,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>16.1</version>
+        <version>17.0</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -7151,29 +7651,30 @@
     </systemInfos>
 </componentDefinition>]]></parameter>
   <parameter name="generationInfoDefinition"><![CDATA[<generationInfoDefinition>
-    <hdlLibraryName>reg_file_pio_0</hdlLibraryName>
+    <hdlLibraryName>reg_file_pio_in</hdlLibraryName>
     <fileSets>
         <fileSet>
-            <fileSetName>reg_file_pio_0</fileSetName>
-            <fileSetFixedName>reg_file_pio_0</fileSetFixedName>
+            <fileSetName>reg_file_pio_in</fileSetName>
+            <fileSetFixedName>reg_file_pio_in</fileSetFixedName>
             <fileSetKind>QUARTUS_SYNTH</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_0</fileSetName>
-            <fileSetFixedName>reg_file_pio_0</fileSetFixedName>
+            <fileSetName>reg_file_pio_in</fileSetName>
+            <fileSetFixedName>reg_file_pio_in</fileSetFixedName>
             <fileSetKind>SIM_VERILOG</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_0</fileSetName>
-            <fileSetFixedName>reg_file_pio_0</fileSetFixedName>
+            <fileSetName>reg_file_pio_in</fileSetName>
+            <fileSetFixedName>reg_file_pio_in</fileSetFixedName>
             <fileSetKind>SIM_VHDL</fileSetKind>
             <fileSetFiles/>
         </fileSet>
     </fileSets>
 </generationInfoDefinition>]]></parameter>
-  <parameter name="logicalView">ip/reg_file/reg_file_pio_0.ip</parameter>
+  <parameter name="hlsFile" value="" />
+  <parameter name="logicalView">ip/reg_file/reg_file_pio_in.ip</parameter>
   <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
     <assignmentValueMap>
         <entry>
@@ -7321,6 +7822,10 @@
                         <entry>
                             <key>associatedReset</key>
                         </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
                     </parameterValueMap>
                 </parameters>
             </interface>
@@ -7490,8 +7995,20 @@
                             <value>0</value>
                         </entry>
                         <entry>
+                            <key>minimumReadLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>minimumResponseLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
                             <key>minimumUninterruptedRunLength</key>
                             <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>printableDevice</key>
@@ -7528,6 +8045,10 @@
                         <entry>
                             <key>transparentBridge</key>
                             <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>waitrequestAllowance</key>
+                            <value>0</value>
                         </entry>
                         <entry>
                             <key>wellBehavedWaitrequest</key>
@@ -7679,7 +8200,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>16.1</version>
+        <version>17.0</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -7733,29 +8254,30 @@
     </systemInfos>
 </componentDefinition>]]></parameter>
   <parameter name="generationInfoDefinition"><![CDATA[<generationInfoDefinition>
-    <hdlLibraryName>reg_file_pio_0</hdlLibraryName>
+    <hdlLibraryName>reg_file_pio_in</hdlLibraryName>
     <fileSets>
         <fileSet>
-            <fileSetName>reg_file_pio_0</fileSetName>
-            <fileSetFixedName>reg_file_pio_0</fileSetFixedName>
+            <fileSetName>reg_file_pio_in</fileSetName>
+            <fileSetFixedName>reg_file_pio_in</fileSetFixedName>
             <fileSetKind>QUARTUS_SYNTH</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_0</fileSetName>
-            <fileSetFixedName>reg_file_pio_0</fileSetFixedName>
+            <fileSetName>reg_file_pio_in</fileSetName>
+            <fileSetFixedName>reg_file_pio_in</fileSetFixedName>
             <fileSetKind>SIM_VERILOG</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_0</fileSetName>
-            <fileSetFixedName>reg_file_pio_0</fileSetFixedName>
+            <fileSetName>reg_file_pio_in</fileSetName>
+            <fileSetFixedName>reg_file_pio_in</fileSetFixedName>
             <fileSetKind>SIM_VHDL</fileSetKind>
             <fileSetFiles/>
         </fileSet>
     </fileSets>
 </generationInfoDefinition>]]></parameter>
-  <parameter name="logicalView">ip/reg_file/reg_file_pio_0.ip</parameter>
+  <parameter name="hlsFile" value="" />
+  <parameter name="logicalView">ip/reg_file/reg_file_pio_in.ip</parameter>
   <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
     <assignmentValueMap>
         <entry>
@@ -7903,6 +8425,10 @@
                         <entry>
                             <key>associatedReset</key>
                         </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
                     </parameterValueMap>
                 </parameters>
             </interface>
@@ -8072,8 +8598,20 @@
                             <value>0</value>
                         </entry>
                         <entry>
+                            <key>minimumReadLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>minimumResponseLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
                             <key>minimumUninterruptedRunLength</key>
                             <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>printableDevice</key>
@@ -8110,6 +8648,10 @@
                         <entry>
                             <key>transparentBridge</key>
                             <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>waitrequestAllowance</key>
+                            <value>0</value>
                         </entry>
                         <entry>
                             <key>wellBehavedWaitrequest</key>
@@ -8261,7 +8803,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>16.1</version>
+        <version>17.0</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -8315,29 +8857,30 @@
     </systemInfos>
 </componentDefinition>]]></parameter>
   <parameter name="generationInfoDefinition"><![CDATA[<generationInfoDefinition>
-    <hdlLibraryName>reg_file_pio_0</hdlLibraryName>
+    <hdlLibraryName>reg_file_pio_in</hdlLibraryName>
     <fileSets>
         <fileSet>
-            <fileSetName>reg_file_pio_0</fileSetName>
-            <fileSetFixedName>reg_file_pio_0</fileSetFixedName>
+            <fileSetName>reg_file_pio_in</fileSetName>
+            <fileSetFixedName>reg_file_pio_in</fileSetFixedName>
             <fileSetKind>QUARTUS_SYNTH</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_0</fileSetName>
-            <fileSetFixedName>reg_file_pio_0</fileSetFixedName>
+            <fileSetName>reg_file_pio_in</fileSetName>
+            <fileSetFixedName>reg_file_pio_in</fileSetFixedName>
             <fileSetKind>SIM_VERILOG</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_0</fileSetName>
-            <fileSetFixedName>reg_file_pio_0</fileSetFixedName>
+            <fileSetName>reg_file_pio_in</fileSetName>
+            <fileSetFixedName>reg_file_pio_in</fileSetFixedName>
             <fileSetKind>SIM_VHDL</fileSetKind>
             <fileSetFiles/>
         </fileSet>
     </fileSets>
 </generationInfoDefinition>]]></parameter>
-  <parameter name="logicalView">ip/reg_file/reg_file_pio_0.ip</parameter>
+  <parameter name="hlsFile" value="" />
+  <parameter name="logicalView">ip/reg_file/reg_file_pio_in.ip</parameter>
   <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
     <assignmentValueMap>
         <entry>
@@ -8485,6 +9028,10 @@
                         <entry>
                             <key>associatedReset</key>
                         </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
                     </parameterValueMap>
                 </parameters>
             </interface>
@@ -8654,8 +9201,20 @@
                             <value>0</value>
                         </entry>
                         <entry>
+                            <key>minimumReadLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>minimumResponseLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
                             <key>minimumUninterruptedRunLength</key>
                             <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>printableDevice</key>
@@ -8692,6 +9251,10 @@
                         <entry>
                             <key>transparentBridge</key>
                             <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>waitrequestAllowance</key>
+                            <value>0</value>
                         </entry>
                         <entry>
                             <key>wellBehavedWaitrequest</key>
@@ -8843,7 +9406,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>16.1</version>
+        <version>17.0</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -8897,29 +9460,30 @@
     </systemInfos>
 </componentDefinition>]]></parameter>
   <parameter name="generationInfoDefinition"><![CDATA[<generationInfoDefinition>
-    <hdlLibraryName>reg_file_pio_0</hdlLibraryName>
+    <hdlLibraryName>reg_file_pio_in</hdlLibraryName>
     <fileSets>
         <fileSet>
-            <fileSetName>reg_file_pio_0</fileSetName>
-            <fileSetFixedName>reg_file_pio_0</fileSetFixedName>
+            <fileSetName>reg_file_pio_in</fileSetName>
+            <fileSetFixedName>reg_file_pio_in</fileSetFixedName>
             <fileSetKind>QUARTUS_SYNTH</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_0</fileSetName>
-            <fileSetFixedName>reg_file_pio_0</fileSetFixedName>
+            <fileSetName>reg_file_pio_in</fileSetName>
+            <fileSetFixedName>reg_file_pio_in</fileSetFixedName>
             <fileSetKind>SIM_VERILOG</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_0</fileSetName>
-            <fileSetFixedName>reg_file_pio_0</fileSetFixedName>
+            <fileSetName>reg_file_pio_in</fileSetName>
+            <fileSetFixedName>reg_file_pio_in</fileSetFixedName>
             <fileSetKind>SIM_VHDL</fileSetKind>
             <fileSetFiles/>
         </fileSet>
     </fileSets>
 </generationInfoDefinition>]]></parameter>
-  <parameter name="logicalView">ip/reg_file/reg_file_pio_0.ip</parameter>
+  <parameter name="hlsFile" value="" />
+  <parameter name="logicalView">ip/reg_file/reg_file_pio_in.ip</parameter>
   <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
     <assignmentValueMap>
         <entry>
@@ -9067,6 +9631,10 @@
                         <entry>
                             <key>associatedReset</key>
                         </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
                     </parameterValueMap>
                 </parameters>
             </interface>
@@ -9236,8 +9804,20 @@
                             <value>0</value>
                         </entry>
                         <entry>
+                            <key>minimumReadLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>minimumResponseLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
                             <key>minimumUninterruptedRunLength</key>
                             <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>printableDevice</key>
@@ -9274,6 +9854,10 @@
                         <entry>
                             <key>transparentBridge</key>
                             <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>waitrequestAllowance</key>
+                            <value>0</value>
                         </entry>
                         <entry>
                             <key>wellBehavedWaitrequest</key>
@@ -9425,7 +10009,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>16.1</version>
+        <version>17.0</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -9479,29 +10063,30 @@
     </systemInfos>
 </componentDefinition>]]></parameter>
   <parameter name="generationInfoDefinition"><![CDATA[<generationInfoDefinition>
-    <hdlLibraryName>reg_file_pio_0</hdlLibraryName>
+    <hdlLibraryName>reg_file_pio_in</hdlLibraryName>
     <fileSets>
         <fileSet>
-            <fileSetName>reg_file_pio_0</fileSetName>
-            <fileSetFixedName>reg_file_pio_0</fileSetFixedName>
+            <fileSetName>reg_file_pio_in</fileSetName>
+            <fileSetFixedName>reg_file_pio_in</fileSetFixedName>
             <fileSetKind>QUARTUS_SYNTH</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_0</fileSetName>
-            <fileSetFixedName>reg_file_pio_0</fileSetFixedName>
+            <fileSetName>reg_file_pio_in</fileSetName>
+            <fileSetFixedName>reg_file_pio_in</fileSetFixedName>
             <fileSetKind>SIM_VERILOG</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_0</fileSetName>
-            <fileSetFixedName>reg_file_pio_0</fileSetFixedName>
+            <fileSetName>reg_file_pio_in</fileSetName>
+            <fileSetFixedName>reg_file_pio_in</fileSetFixedName>
             <fileSetKind>SIM_VHDL</fileSetKind>
             <fileSetFiles/>
         </fileSet>
     </fileSets>
 </generationInfoDefinition>]]></parameter>
-  <parameter name="logicalView">ip/reg_file/reg_file_pio_0.ip</parameter>
+  <parameter name="hlsFile" value="" />
+  <parameter name="logicalView">ip/reg_file/reg_file_pio_in.ip</parameter>
   <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
     <assignmentValueMap>
         <entry>
@@ -9649,6 +10234,10 @@
                         <entry>
                             <key>associatedReset</key>
                         </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
                     </parameterValueMap>
                 </parameters>
             </interface>
@@ -9818,8 +10407,20 @@
                             <value>0</value>
                         </entry>
                         <entry>
+                            <key>minimumReadLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>minimumResponseLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
                             <key>minimumUninterruptedRunLength</key>
                             <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>printableDevice</key>
@@ -9856,6 +10457,10 @@
                         <entry>
                             <key>transparentBridge</key>
                             <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>waitrequestAllowance</key>
+                            <value>0</value>
                         </entry>
                         <entry>
                             <key>wellBehavedWaitrequest</key>
@@ -10007,7 +10612,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>16.1</version>
+        <version>17.0</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -10061,29 +10666,30 @@
     </systemInfos>
 </componentDefinition>]]></parameter>
   <parameter name="generationInfoDefinition"><![CDATA[<generationInfoDefinition>
-    <hdlLibraryName>reg_file_pio_0</hdlLibraryName>
+    <hdlLibraryName>reg_file_pio_in</hdlLibraryName>
     <fileSets>
         <fileSet>
-            <fileSetName>reg_file_pio_0</fileSetName>
-            <fileSetFixedName>reg_file_pio_0</fileSetFixedName>
+            <fileSetName>reg_file_pio_in</fileSetName>
+            <fileSetFixedName>reg_file_pio_in</fileSetFixedName>
             <fileSetKind>QUARTUS_SYNTH</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_0</fileSetName>
-            <fileSetFixedName>reg_file_pio_0</fileSetFixedName>
+            <fileSetName>reg_file_pio_in</fileSetName>
+            <fileSetFixedName>reg_file_pio_in</fileSetFixedName>
             <fileSetKind>SIM_VERILOG</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_0</fileSetName>
-            <fileSetFixedName>reg_file_pio_0</fileSetFixedName>
+            <fileSetName>reg_file_pio_in</fileSetName>
+            <fileSetFixedName>reg_file_pio_in</fileSetFixedName>
             <fileSetKind>SIM_VHDL</fileSetKind>
             <fileSetFiles/>
         </fileSet>
     </fileSets>
 </generationInfoDefinition>]]></parameter>
-  <parameter name="logicalView">ip/reg_file/reg_file_pio_0.ip</parameter>
+  <parameter name="hlsFile" value="" />
+  <parameter name="logicalView">ip/reg_file/reg_file_pio_in.ip</parameter>
   <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
     <assignmentValueMap>
         <entry>
@@ -10231,6 +10837,10 @@
                         <entry>
                             <key>associatedReset</key>
                         </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
                     </parameterValueMap>
                 </parameters>
             </interface>
@@ -10400,8 +11010,20 @@
                             <value>0</value>
                         </entry>
                         <entry>
+                            <key>minimumReadLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>minimumResponseLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
                             <key>minimumUninterruptedRunLength</key>
                             <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>printableDevice</key>
@@ -10438,6 +11060,10 @@
                         <entry>
                             <key>transparentBridge</key>
                             <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>waitrequestAllowance</key>
+                            <value>0</value>
                         </entry>
                         <entry>
                             <key>wellBehavedWaitrequest</key>
@@ -10589,7 +11215,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>16.1</version>
+        <version>17.0</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -10643,29 +11269,30 @@
     </systemInfos>
 </componentDefinition>]]></parameter>
   <parameter name="generationInfoDefinition"><![CDATA[<generationInfoDefinition>
-    <hdlLibraryName>reg_file_pio_0</hdlLibraryName>
+    <hdlLibraryName>reg_file_pio_in</hdlLibraryName>
     <fileSets>
         <fileSet>
-            <fileSetName>reg_file_pio_0</fileSetName>
-            <fileSetFixedName>reg_file_pio_0</fileSetFixedName>
+            <fileSetName>reg_file_pio_in</fileSetName>
+            <fileSetFixedName>reg_file_pio_in</fileSetFixedName>
             <fileSetKind>QUARTUS_SYNTH</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_0</fileSetName>
-            <fileSetFixedName>reg_file_pio_0</fileSetFixedName>
+            <fileSetName>reg_file_pio_in</fileSetName>
+            <fileSetFixedName>reg_file_pio_in</fileSetFixedName>
             <fileSetKind>SIM_VERILOG</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_0</fileSetName>
-            <fileSetFixedName>reg_file_pio_0</fileSetFixedName>
+            <fileSetName>reg_file_pio_in</fileSetName>
+            <fileSetFixedName>reg_file_pio_in</fileSetFixedName>
             <fileSetKind>SIM_VHDL</fileSetKind>
             <fileSetFiles/>
         </fileSet>
     </fileSets>
 </generationInfoDefinition>]]></parameter>
-  <parameter name="logicalView">ip/reg_file/reg_file_pio_0.ip</parameter>
+  <parameter name="hlsFile" value="" />
+  <parameter name="logicalView">ip/reg_file/reg_file_pio_in.ip</parameter>
   <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
     <assignmentValueMap>
         <entry>
@@ -10813,6 +11440,10 @@
                         <entry>
                             <key>associatedReset</key>
                         </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
                     </parameterValueMap>
                 </parameters>
             </interface>
@@ -10982,8 +11613,20 @@
                             <value>0</value>
                         </entry>
                         <entry>
+                            <key>minimumReadLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>minimumResponseLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
                             <key>minimumUninterruptedRunLength</key>
                             <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>printableDevice</key>
@@ -11020,6 +11663,10 @@
                         <entry>
                             <key>transparentBridge</key>
                             <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>waitrequestAllowance</key>
+                            <value>0</value>
                         </entry>
                         <entry>
                             <key>wellBehavedWaitrequest</key>
@@ -11171,7 +11818,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>16.1</version>
+        <version>17.0</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -11225,29 +11872,30 @@
     </systemInfos>
 </componentDefinition>]]></parameter>
   <parameter name="generationInfoDefinition"><![CDATA[<generationInfoDefinition>
-    <hdlLibraryName>reg_file_pio_0</hdlLibraryName>
+    <hdlLibraryName>reg_file_pio_in</hdlLibraryName>
     <fileSets>
         <fileSet>
-            <fileSetName>reg_file_pio_0</fileSetName>
-            <fileSetFixedName>reg_file_pio_0</fileSetFixedName>
+            <fileSetName>reg_file_pio_in</fileSetName>
+            <fileSetFixedName>reg_file_pio_in</fileSetFixedName>
             <fileSetKind>QUARTUS_SYNTH</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_0</fileSetName>
-            <fileSetFixedName>reg_file_pio_0</fileSetFixedName>
+            <fileSetName>reg_file_pio_in</fileSetName>
+            <fileSetFixedName>reg_file_pio_in</fileSetFixedName>
             <fileSetKind>SIM_VERILOG</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_0</fileSetName>
-            <fileSetFixedName>reg_file_pio_0</fileSetFixedName>
+            <fileSetName>reg_file_pio_in</fileSetName>
+            <fileSetFixedName>reg_file_pio_in</fileSetFixedName>
             <fileSetKind>SIM_VHDL</fileSetKind>
             <fileSetFiles/>
         </fileSet>
     </fileSets>
 </generationInfoDefinition>]]></parameter>
-  <parameter name="logicalView">ip/reg_file/reg_file_pio_0.ip</parameter>
+  <parameter name="hlsFile" value="" />
+  <parameter name="logicalView">ip/reg_file/reg_file_pio_in.ip</parameter>
   <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
     <assignmentValueMap>
         <entry>
@@ -11395,6 +12043,10 @@
                         <entry>
                             <key>associatedReset</key>
                         </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
                     </parameterValueMap>
                 </parameters>
             </interface>
@@ -11564,8 +12216,20 @@
                             <value>0</value>
                         </entry>
                         <entry>
+                            <key>minimumReadLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>minimumResponseLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
                             <key>minimumUninterruptedRunLength</key>
                             <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>printableDevice</key>
@@ -11602,6 +12266,10 @@
                         <entry>
                             <key>transparentBridge</key>
                             <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>waitrequestAllowance</key>
+                            <value>0</value>
                         </entry>
                         <entry>
                             <key>wellBehavedWaitrequest</key>
@@ -11753,7 +12421,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>16.1</version>
+        <version>17.0</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -11807,29 +12475,30 @@
     </systemInfos>
 </componentDefinition>]]></parameter>
   <parameter name="generationInfoDefinition"><![CDATA[<generationInfoDefinition>
-    <hdlLibraryName>reg_file_pio_0</hdlLibraryName>
+    <hdlLibraryName>reg_file_pio_in</hdlLibraryName>
     <fileSets>
         <fileSet>
-            <fileSetName>reg_file_pio_0</fileSetName>
-            <fileSetFixedName>reg_file_pio_0</fileSetFixedName>
+            <fileSetName>reg_file_pio_in</fileSetName>
+            <fileSetFixedName>reg_file_pio_in</fileSetFixedName>
             <fileSetKind>QUARTUS_SYNTH</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_0</fileSetName>
-            <fileSetFixedName>reg_file_pio_0</fileSetFixedName>
+            <fileSetName>reg_file_pio_in</fileSetName>
+            <fileSetFixedName>reg_file_pio_in</fileSetFixedName>
             <fileSetKind>SIM_VERILOG</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_pio_0</fileSetName>
-            <fileSetFixedName>reg_file_pio_0</fileSetFixedName>
+            <fileSetName>reg_file_pio_in</fileSetName>
+            <fileSetFixedName>reg_file_pio_in</fileSetFixedName>
             <fileSetKind>SIM_VHDL</fileSetKind>
             <fileSetFiles/>
         </fileSet>
     </fileSets>
 </generationInfoDefinition>]]></parameter>
-  <parameter name="logicalView">ip/reg_file/reg_file_pio_0.ip</parameter>
+  <parameter name="hlsFile" value="" />
+  <parameter name="logicalView">ip/reg_file/reg_file_pio_in.ip</parameter>
   <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
     <assignmentValueMap>
         <entry>
@@ -11912,7 +12581,7 @@
 </assignmentDefinition>]]></parameter>
  </module>
  <module
-   name="reg_file_reset_bridge_0"
+   name="register_clear"
    kind="altera_generic_component"
    version="1.0"
    enabled="1">
@@ -11920,13 +12589,46 @@
     <boundary>
         <interfaces>
             <interface>
+                <name>clk</name>
+                <type>clock</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>clk</name>
+                        <role>clk</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>clockRate</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>externallyDriven</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>ptfSchematicName</key>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
                 <name>in_reset</name>
                 <type>reset</type>
                 <isStart>false</isStart>
                 <ports>
                     <port>
-                        <name>in_reset_n</name>
-                        <role>reset_n</role>
+                        <name>in_reset</name>
+                        <role>reset</role>
                         <direction>Input</direction>
                         <width>1</width>
                         <lowerBound>0</lowerBound>
@@ -11940,10 +12642,11 @@
                     <parameterValueMap>
                         <entry>
                             <key>associatedClock</key>
+                            <value>clk</value>
                         </entry>
                         <entry>
                             <key>synchronousEdges</key>
-                            <value>NONE</value>
+                            <value>DEASSERT</value>
                         </entry>
                     </parameterValueMap>
                 </parameters>
@@ -11954,8 +12657,8 @@
                 <isStart>true</isStart>
                 <ports>
                     <port>
-                        <name>out_reset_n</name>
-                        <role>reset_n</role>
+                        <name>out_reset</name>
+                        <role>reset</role>
                         <direction>Output</direction>
                         <width>1</width>
                         <lowerBound>0</lowerBound>
@@ -11969,6 +12672,7 @@
                     <parameterValueMap>
                         <entry>
                             <key>associatedClock</key>
+                            <value>clk</value>
                         </entry>
                         <entry>
                             <key>associatedDirectReset</key>
@@ -11980,7 +12684,7 @@
                         </entry>
                         <entry>
                             <key>synchronousEdges</key>
-                            <value>NONE</value>
+                            <value>DEASSERT</value>
                         </entry>
                     </parameterValueMap>
                 </parameters>
@@ -11989,7 +12693,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_reset_bridge</className>
-        <version>16.1</version>
+        <version>17.0</version>
         <displayName>Reset Bridge</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -12004,598 +12708,463 @@
         </descriptors>
     </systemInfoParameterDescriptors>
     <systemInfos>
-        <connPtSystemInfos/>
+        <connPtSystemInfos>
+            <entry>
+                <key>clk</key>
+                <value>
+                    <connectionPointName>clk</connectionPointName>
+                    <suppliedSystemInfos/>
+                    <consumedSystemInfos>
+                        <entry>
+                            <key>CLOCK_RATE</key>
+                            <value>0</value>
+                        </entry>
+                    </consumedSystemInfos>
+                </value>
+            </entry>
+        </connPtSystemInfos>
     </systemInfos>
 </componentDefinition>]]></parameter>
   <parameter name="generationInfoDefinition"><![CDATA[<generationInfoDefinition>
-    <hdlLibraryName>reg_file_reset_bridge_0</hdlLibraryName>
+    <hdlLibraryName>reg_file_reset_bridge</hdlLibraryName>
     <fileSets>
         <fileSet>
-            <fileSetName>reg_file_reset_bridge_0</fileSetName>
-            <fileSetFixedName>reg_file_reset_bridge_0</fileSetFixedName>
+            <fileSetName>reg_file_reset_bridge</fileSetName>
+            <fileSetFixedName>reg_file_reset_bridge</fileSetFixedName>
             <fileSetKind>QUARTUS_SYNTH</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_reset_bridge_0</fileSetName>
-            <fileSetFixedName>reg_file_reset_bridge_0</fileSetFixedName>
+            <fileSetName>reg_file_reset_bridge</fileSetName>
+            <fileSetFixedName>reg_file_reset_bridge</fileSetFixedName>
             <fileSetKind>SIM_VERILOG</fileSetKind>
             <fileSetFiles/>
         </fileSet>
         <fileSet>
-            <fileSetName>reg_file_reset_bridge_0</fileSetName>
-            <fileSetFixedName>reg_file_reset_bridge_0</fileSetFixedName>
+            <fileSetName>reg_file_reset_bridge</fileSetName>
+            <fileSetFixedName>reg_file_reset_bridge</fileSetFixedName>
             <fileSetKind>SIM_VHDL</fileSetKind>
             <fileSetFiles/>
         </fileSet>
     </fileSets>
 </generationInfoDefinition>]]></parameter>
-  <parameter name="logicalView">ip/reg_file/reg_file_reset_bridge_0.ip</parameter>
-  <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
-    <assignmentValueMap/>
-</assignmentDefinition>]]></parameter>
- </module>
- <module
-   name="reg_file_reset_bridge_1"
-   kind="altera_generic_component"
-   version="1.0"
-   enabled="1">
-  <parameter name="componentDefinition"><![CDATA[<componentDefinition>
-    <boundary>
-        <interfaces>
-            <interface>
-                <name>in_reset</name>
-                <type>reset</type>
-                <isStart>false</isStart>
-                <ports>
-                    <port>
-                        <name>in_reset_n</name>
-                        <role>reset_n</role>
-                        <direction>Input</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                </ports>
-                <assignments>
-                    <assignmentValueMap/>
-                </assignments>
-                <parameters>
-                    <parameterValueMap>
-                        <entry>
-                            <key>associatedClock</key>
-                        </entry>
-                        <entry>
-                            <key>synchronousEdges</key>
-                            <value>NONE</value>
-                        </entry>
-                    </parameterValueMap>
-                </parameters>
-            </interface>
-            <interface>
-                <name>out_reset</name>
-                <type>reset</type>
-                <isStart>true</isStart>
-                <ports>
-                    <port>
-                        <name>out_reset_n</name>
-                        <role>reset_n</role>
-                        <direction>Output</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                </ports>
-                <assignments>
-                    <assignmentValueMap/>
-                </assignments>
-                <parameters>
-                    <parameterValueMap>
-                        <entry>
-                            <key>associatedClock</key>
-                        </entry>
-                        <entry>
-                            <key>associatedDirectReset</key>
-                            <value>in_reset</value>
-                        </entry>
-                        <entry>
-                            <key>associatedResetSinks</key>
-                            <value>in_reset</value>
-                        </entry>
-                        <entry>
-                            <key>synchronousEdges</key>
-                            <value>NONE</value>
-                        </entry>
-                    </parameterValueMap>
-                </parameters>
-            </interface>
-        </interfaces>
-    </boundary>
-    <originalModuleInfo>
-        <className>altera_reset_bridge</className>
-        <version>16.1</version>
-        <displayName>Reset Bridge</displayName>
-    </originalModuleInfo>
-    <systemInfoParameterDescriptors>
-        <descriptors>
-            <descriptor>
-                <parameterDefaultValue>-1</parameterDefaultValue>
-                <parameterName>AUTO_CLK_CLOCK_RATE</parameterName>
-                <parameterType>java.lang.Long</parameterType>
-                <systemInfoArgs>clk</systemInfoArgs>
-                <systemInfotype>CLOCK_RATE</systemInfotype>
-            </descriptor>
-        </descriptors>
-    </systemInfoParameterDescriptors>
-    <systemInfos>
-        <connPtSystemInfos/>
-    </systemInfos>
-</componentDefinition>]]></parameter>
-  <parameter name="generationInfoDefinition"><![CDATA[<generationInfoDefinition>
-    <hdlLibraryName>reg_file_reset_bridge_0</hdlLibraryName>
-    <fileSets>
-        <fileSet>
-            <fileSetName>reg_file_reset_bridge_0</fileSetName>
-            <fileSetFixedName>reg_file_reset_bridge_0</fileSetFixedName>
-            <fileSetKind>QUARTUS_SYNTH</fileSetKind>
-            <fileSetFiles/>
-        </fileSet>
-        <fileSet>
-            <fileSetName>reg_file_reset_bridge_0</fileSetName>
-            <fileSetFixedName>reg_file_reset_bridge_0</fileSetFixedName>
-            <fileSetKind>SIM_VERILOG</fileSetKind>
-            <fileSetFiles/>
-        </fileSet>
-        <fileSet>
-            <fileSetName>reg_file_reset_bridge_0</fileSetName>
-            <fileSetFixedName>reg_file_reset_bridge_0</fileSetFixedName>
-            <fileSetKind>SIM_VHDL</fileSetKind>
-            <fileSetFiles/>
-        </fileSet>
-    </fileSets>
-</generationInfoDefinition>]]></parameter>
-  <parameter name="logicalView">ip/reg_file/reg_file_reset_bridge_0.ip</parameter>
+  <parameter name="hlsFile" value="" />
+  <parameter name="logicalView">ip/reg_file/reg_file_reset_bridge.ip</parameter>
   <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
     <assignmentValueMap/>
 </assignmentDefinition>]]></parameter>
  </module>
  <connection
    kind="avalon"
-   version="16.1"
-   start="reg_file_mm_bridge_0.m0"
+   version="17.0"
+   start="reg_file_mm_bridge.m0"
    end="reg_file_persona_id_register.s1">
-  <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0000" />
-  <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
-   version="16.1"
-   start="reg_file_mm_bridge_0.m0"
+   version="17.0"
+   start="reg_file_mm_bridge.m0"
    end="reg_file_control_register.s1">
-  <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0010" />
-  <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
-   version="16.1"
-   start="reg_file_mm_bridge_0.m0"
+   version="17.0"
+   start="reg_file_mm_bridge.m0"
    end="reg_file_pr_host_0.s1">
-  <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0020" />
-  <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
-   version="16.1"
-   start="reg_file_mm_bridge_0.m0"
+   version="17.0"
+   start="reg_file_mm_bridge.m0"
    end="reg_file_pr_host_1.s1">
-  <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0030" />
-  <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
-   version="16.1"
-   start="reg_file_mm_bridge_0.m0"
+   version="17.0"
+   start="reg_file_mm_bridge.m0"
    end="reg_file_pr_host_2.s1">
-  <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0040" />
-  <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
-   version="16.1"
-   start="reg_file_mm_bridge_0.m0"
+   version="17.0"
+   start="reg_file_mm_bridge.m0"
    end="reg_file_pr_host_3.s1">
-  <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0050" />
-  <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
-   version="16.1"
-   start="reg_file_mm_bridge_0.m0"
+   version="17.0"
+   start="reg_file_mm_bridge.m0"
    end="reg_file_pr_host_4.s1">
-  <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0060" />
-  <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
-   version="16.1"
-   start="reg_file_mm_bridge_0.m0"
+   version="17.0"
+   start="reg_file_mm_bridge.m0"
    end="reg_file_pr_host_5.s1">
-  <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0070" />
-  <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
-   version="16.1"
-   start="reg_file_mm_bridge_0.m0"
+   version="17.0"
+   start="reg_file_mm_bridge.m0"
    end="reg_file_pr_host_6.s1">
-  <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0080" />
-  <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
-   version="16.1"
-   start="reg_file_mm_bridge_0.m0"
+   version="17.0"
+   start="reg_file_mm_bridge.m0"
    end="reg_file_pr_host_7.s1">
-  <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0090" />
-  <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
-   version="16.1"
-   start="reg_file_mm_bridge_0.m0"
+   version="17.0"
+   start="reg_file_mm_bridge.m0"
    end="reg_file_host_pr_0.s1">
-  <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x00a0" />
-  <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
-   version="16.1"
-   start="reg_file_mm_bridge_0.m0"
+   version="17.0"
+   start="reg_file_mm_bridge.m0"
    end="reg_file_host_pr_7.s1">
-  <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0110" />
-  <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
-   version="16.1"
-   start="reg_file_mm_bridge_0.m0"
+   version="17.0"
+   start="reg_file_mm_bridge.m0"
    end="reg_file_host_pr_6.s1">
-  <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0100" />
-  <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
-   version="16.1"
-   start="reg_file_mm_bridge_0.m0"
+   version="17.0"
+   start="reg_file_mm_bridge.m0"
    end="reg_file_host_pr_5.s1">
-  <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x00f0" />
-  <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
-   version="16.1"
-   start="reg_file_mm_bridge_0.m0"
+   version="17.0"
+   start="reg_file_mm_bridge.m0"
    end="reg_file_host_pr_4.s1">
-  <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x00e0" />
-  <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
-   version="16.1"
-   start="reg_file_mm_bridge_0.m0"
+   version="17.0"
+   start="reg_file_mm_bridge.m0"
    end="reg_file_host_pr_3.s1">
-  <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x00d0" />
-  <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
-   version="16.1"
-   start="reg_file_mm_bridge_0.m0"
+   version="17.0"
+   start="reg_file_mm_bridge.m0"
    end="reg_file_host_pr_2.s1">
-  <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x00c0" />
-  <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
-   version="16.1"
-   start="reg_file_mm_bridge_0.m0"
+   version="17.0"
+   start="reg_file_mm_bridge.m0"
    end="reg_file_host_pr_1.s1">
-  <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x00b0" />
-  <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="clock"
-   version="16.1"
-   start="reg_file_clock_bridge_0.out_clk"
-   end="reg_file_mm_bridge_0.clk" />
+   version="17.0"
+   start="clock_in.out_clk"
+   end="reg_file_mm_bridge.clk" />
  <connection
    kind="clock"
-   version="16.1"
-   start="reg_file_clock_bridge_0.out_clk"
+   version="17.0"
+   start="clock_in.out_clk"
    end="reg_file_persona_id_register.clk" />
  <connection
    kind="clock"
-   version="16.1"
-   start="reg_file_clock_bridge_0.out_clk"
+   version="17.0"
+   start="clock_in.out_clk"
    end="reg_file_control_register.clk" />
  <connection
    kind="clock"
-   version="16.1"
-   start="reg_file_clock_bridge_0.out_clk"
+   version="17.0"
+   start="clock_in.out_clk"
    end="reg_file_pr_host_0.clk" />
  <connection
    kind="clock"
-   version="16.1"
-   start="reg_file_clock_bridge_0.out_clk"
+   version="17.0"
+   start="clock_in.out_clk"
    end="reg_file_pr_host_1.clk" />
  <connection
    kind="clock"
-   version="16.1"
-   start="reg_file_clock_bridge_0.out_clk"
+   version="17.0"
+   start="clock_in.out_clk"
    end="reg_file_pr_host_2.clk" />
  <connection
    kind="clock"
-   version="16.1"
-   start="reg_file_clock_bridge_0.out_clk"
+   version="17.0"
+   start="clock_in.out_clk"
    end="reg_file_pr_host_3.clk" />
  <connection
    kind="clock"
-   version="16.1"
-   start="reg_file_clock_bridge_0.out_clk"
+   version="17.0"
+   start="clock_in.out_clk"
    end="reg_file_pr_host_4.clk" />
  <connection
    kind="clock"
-   version="16.1"
-   start="reg_file_clock_bridge_0.out_clk"
+   version="17.0"
+   start="clock_in.out_clk"
    end="reg_file_pr_host_5.clk" />
  <connection
    kind="clock"
-   version="16.1"
-   start="reg_file_clock_bridge_0.out_clk"
+   version="17.0"
+   start="clock_in.out_clk"
    end="reg_file_pr_host_6.clk" />
  <connection
    kind="clock"
-   version="16.1"
-   start="reg_file_clock_bridge_0.out_clk"
+   version="17.0"
+   start="clock_in.out_clk"
    end="reg_file_pr_host_7.clk" />
  <connection
    kind="clock"
-   version="16.1"
-   start="reg_file_clock_bridge_0.out_clk"
+   version="17.0"
+   start="clock_in.out_clk"
    end="reg_file_host_pr_0.clk" />
  <connection
    kind="clock"
-   version="16.1"
-   start="reg_file_clock_bridge_0.out_clk"
+   version="17.0"
+   start="clock_in.out_clk"
    end="reg_file_host_pr_7.clk" />
  <connection
    kind="clock"
-   version="16.1"
-   start="reg_file_clock_bridge_0.out_clk"
+   version="17.0"
+   start="clock_in.out_clk"
    end="reg_file_host_pr_5.clk" />
  <connection
    kind="clock"
-   version="16.1"
-   start="reg_file_clock_bridge_0.out_clk"
+   version="17.0"
+   start="clock_in.out_clk"
    end="reg_file_host_pr_4.clk" />
  <connection
    kind="clock"
-   version="16.1"
-   start="reg_file_clock_bridge_0.out_clk"
+   version="17.0"
+   start="clock_in.out_clk"
    end="reg_file_host_pr_3.clk" />
  <connection
    kind="clock"
-   version="16.1"
-   start="reg_file_clock_bridge_0.out_clk"
+   version="17.0"
+   start="clock_in.out_clk"
    end="reg_file_host_pr_2.clk" />
  <connection
    kind="clock"
-   version="16.1"
-   start="reg_file_clock_bridge_0.out_clk"
+   version="17.0"
+   start="clock_in.out_clk"
    end="reg_file_host_pr_1.clk" />
  <connection
    kind="clock"
-   version="16.1"
-   start="reg_file_clock_bridge_0.out_clk"
+   version="17.0"
+   start="clock_in.out_clk"
    end="reg_file_host_pr_6.clk" />
  <connection
+   kind="clock"
+   version="17.0"
+   start="clock_in.out_clk"
+   end="full_reset.clk" />
+ <connection
+   kind="clock"
+   version="17.0"
+   start="clock_in.out_clk"
+   end="register_clear.clk" />
+ <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_0.out_reset"
+   version="17.0"
+   start="full_reset.out_reset"
    end="reg_file_persona_id_register.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_0.out_reset"
+   version="17.0"
+   start="full_reset.out_reset"
    end="reg_file_control_register.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_0.out_reset"
+   version="17.0"
+   start="full_reset.out_reset"
    end="reg_file_pr_host_0.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_0.out_reset"
+   version="17.0"
+   start="full_reset.out_reset"
    end="reg_file_pr_host_4.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_0.out_reset"
+   version="17.0"
+   start="full_reset.out_reset"
    end="reg_file_pr_host_5.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_0.out_reset"
+   version="17.0"
+   start="full_reset.out_reset"
    end="reg_file_pr_host_6.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_0.out_reset"
+   version="17.0"
+   start="full_reset.out_reset"
    end="reg_file_pr_host_3.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_0.out_reset"
+   version="17.0"
+   start="full_reset.out_reset"
    end="reg_file_pr_host_2.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_0.out_reset"
+   version="17.0"
+   start="full_reset.out_reset"
    end="reg_file_host_pr_0.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_0.out_reset"
+   version="17.0"
+   start="full_reset.out_reset"
    end="reg_file_pr_host_1.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_0.out_reset"
+   version="17.0"
+   start="full_reset.out_reset"
    end="reg_file_host_pr_7.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_0.out_reset"
+   version="17.0"
+   start="full_reset.out_reset"
    end="reg_file_host_pr_6.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_0.out_reset"
+   version="17.0"
+   start="full_reset.out_reset"
    end="reg_file_host_pr_5.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_0.out_reset"
+   version="17.0"
+   start="full_reset.out_reset"
    end="reg_file_host_pr_4.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_0.out_reset"
+   version="17.0"
+   start="full_reset.out_reset"
    end="reg_file_host_pr_3.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_0.out_reset"
+   version="17.0"
+   start="full_reset.out_reset"
    end="reg_file_host_pr_2.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_0.out_reset"
+   version="17.0"
+   start="full_reset.out_reset"
    end="reg_file_host_pr_1.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_0.out_reset"
+   version="17.0"
+   start="full_reset.out_reset"
    end="reg_file_pr_host_7.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_1.out_reset"
+   version="17.0"
+   start="register_clear.out_reset"
    end="reg_file_host_pr_6.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_1.out_reset"
+   version="17.0"
+   start="register_clear.out_reset"
    end="reg_file_host_pr_7.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_1.out_reset"
+   version="17.0"
+   start="register_clear.out_reset"
    end="reg_file_host_pr_5.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_1.out_reset"
+   version="17.0"
+   start="register_clear.out_reset"
    end="reg_file_host_pr_4.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_1.out_reset"
+   version="17.0"
+   start="register_clear.out_reset"
    end="reg_file_host_pr_3.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_1.out_reset"
+   version="17.0"
+   start="register_clear.out_reset"
    end="reg_file_host_pr_2.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_1.out_reset"
+   version="17.0"
+   start="register_clear.out_reset"
    end="reg_file_host_pr_1.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_1.out_reset"
+   version="17.0"
+   start="register_clear.out_reset"
    end="reg_file_host_pr_0.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_1.out_reset"
+   version="17.0"
+   start="register_clear.out_reset"
    end="reg_file_pr_host_7.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_1.out_reset"
+   version="17.0"
+   start="register_clear.out_reset"
    end="reg_file_pr_host_6.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_1.out_reset"
+   version="17.0"
+   start="register_clear.out_reset"
    end="reg_file_pr_host_5.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_1.out_reset"
+   version="17.0"
+   start="register_clear.out_reset"
    end="reg_file_pr_host_4.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_1.out_reset"
+   version="17.0"
+   start="register_clear.out_reset"
    end="reg_file_pr_host_3.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_1.out_reset"
+   version="17.0"
+   start="register_clear.out_reset"
    end="reg_file_pr_host_2.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_1.out_reset"
+   version="17.0"
+   start="register_clear.out_reset"
    end="reg_file_pr_host_1.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_1.out_reset"
+   version="17.0"
+   start="register_clear.out_reset"
    end="reg_file_pr_host_0.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_1.out_reset"
+   version="17.0"
+   start="register_clear.out_reset"
    end="reg_file_control_register.reset" />
  <connection
    kind="reset"
-   version="16.1"
-   start="reg_file_reset_bridge_0.out_reset"
-   end="reg_file_mm_bridge_0.reset" />
+   version="17.0"
+   start="full_reset.out_reset"
+   end="reg_file_mm_bridge.reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />

@@ -1,4 +1,4 @@
-// Copyright (c) 2001-2016 Intel Corporation
+// Copyright (c) 2001-2017 Intel Corporation
 //  
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
@@ -27,92 +27,80 @@
 // basic_arithmetic module it produces the result of the operation and writes
 // back in the register block.
 
-module basic_arithmetic_top (
-      input  wire         pr_logic_clk_clk,                 //       pr_logic_clk.clk
-      input  wire         iopll_locked,
-
+module basic_arithmetic_top 
+   #( parameter REG_FILE_IO_SIZE = 8 )
+   (
+      //clock
+      input wire         clk,
+      input wire         pr_logic_rst,
+      output reg         clr_io_reg,
+      //Persona identification register, used by host in host program
+      output reg [31:0]  persona_id,
+      //Host control register, used for control signals.
+      input wire [31:0]  host_cntrl_register,
+      // 8 registers for host -> PR logic communication
+      input wire [31:0]  host_pr [0:REG_FILE_IO_SIZE-1],
+      // 8 Registers for PR logic -> host communication
+      output wire [31:0] pr_host [0:REG_FILE_IO_SIZE-1],
       // DDR4 interface
-      input  wire         pr_logic_mm_waitrequest,          //       pr_logic_mm.waitrequest
-      input  wire [511:0] pr_logic_mm_readdata,             //                  .readdata
-      input  wire         pr_logic_mm_readdatavalid,        //                  .readdatavalid
-      output reg  [4:0]   pr_logic_mm_burstcount,           //                  .burstcount
-      output reg  [511:0] pr_logic_mm_writedata,            //                  .writedata
-      output reg  [30:0]  pr_logic_mm_address,              //                  .address
-      output reg          pr_logic_mm_write,                //                  .write
-      output reg          pr_logic_mm_read,                 //                  .read
-      output reg  [63:0]  pr_logic_mm_byteenable,           //                  .byteenable
-      output reg          pr_logic_mm_debugaccess,          //                  .debugaccess
-      input  wire         local_cal_success,
-      input  wire         local_cal_fail,   
-      input  wire         emif_out_clk,
-      input  wire         emif_out_reset,
-      output reg          ddr4a_global_reset,
-      output reg          pr_logic_reset,
-
-      // PCIe interface
-      output reg          pr_logic_cra_waitrequest,         //       pr_logic_cra.waitrequest
-      output wire [31:0]  pr_logic_cra_readdata,            //                   .readdata
-      output wire         pr_logic_cra_readdatavalid,       //                   .readdatavalid
-      input  wire [0:0]   pr_logic_cra_burstcount,          //                   .burstcount
-      input  wire [31:0]  pr_logic_cra_writedata,           //                   .writedata
-      input  wire [13:0]  pr_logic_cra_address,             //                   .address
-      input  wire         pr_logic_cra_write,               //                   .write
-      input  wire         pr_logic_cra_read,                //                   .read
-      input  wire [3:0]   pr_logic_cra_byteenable,          //                   .byteenable
-      input  wire         pr_logic_cra_debugaccess,         //                   .debugaccess
-      input  wire         pr_logic_reset_reset_n            //     pr_logic_reset.reset_n
+      input wire         emif_avmm_waitrequest, 
+      input wire [511:0] emif_avmm_readdata, 
+      input wire         emif_avmm_readdatavalid, 
+      output reg [4:0]   emif_avmm_burstcount, 
+      output reg [511:0] emif_avmm_writedata, 
+      output reg [24:0]  emif_avmm_address,
+      output reg         emif_avmm_write,
+      output reg         emif_avmm_read,
+      output reg [63:0]  emif_avmm_byteenable,
+      output reg         emif_avmm_debugaccess
    );
 
-   wire  [31:0]            result;
-   wire  [30:0]            pr_operand;
-   wire  [30:0]            increment;
+    wire [31:0]         result;
+    wire [31:0]         pr_operand;
+    wire [31:0]         increment;
 
-   // This is BasicAristhmetic persona.  Tie off all EMIF interface
+    // This is BasicAristhmetic persona.  Tie off all EMIF interface
+
    always_comb
    begin
-      ddr4a_global_reset = 1'b0;
-      pr_logic_reset = 1'b0;
-      pr_logic_mm_burstcount = '0;
-      pr_logic_mm_writedata = '0;
-      pr_logic_mm_address = '0;
-      pr_logic_mm_write = '0;
-      pr_logic_mm_read = '0;
-      pr_logic_mm_byteenable = '0;
-      pr_logic_mm_debugaccess = '0;
+     emif_avmm_burstcount  = 5'b0;
+     emif_avmm_writedata   = 512'b0;
+     emif_avmm_address     = 31'b0;
+     emif_avmm_write       = 1'b0;
+     emif_avmm_read        = 1'b0;
+     emif_avmm_byteenable  = 64'b0;
+     emif_avmm_debugaccess = 1'b0;
    end
 
-   basic_arithmetic_reg_blk u_basic_arithmetic_reg_blk (
-      .pr_logic_clk_clk             (pr_logic_clk_clk),              // pr_logic_clk.clk
-      .iopll_locked                 (iopll_locked),
-
+   basic_arithmetic_reg_blk  #( .REG_FILE_IO_SIZE(REG_FILE_IO_SIZE) ) 
+   u_basic_arithmetic_reg_blk
+   (
+      .clk                 ( clk ),              
+      .pr_logic_rst        ( pr_logic_rst ),
+      .clr_io_reg          ( clr_io_reg ),                
+      //Persona identification register, used by host in host program
+      .persona_id          ( persona_id ),                     
+      //Host control register, used for control signals.
+      .host_cntrl_register ( host_cntrl_register ),   
+      // 8 registers for host -> PR logic communication
+      .host_pr             ( host_pr ),
+      // 8 Registers for PR logic -> host communication
+      .pr_host             ( pr_host ),
       // Register Field input
-      .result                       (result),
-
+      .result              ( result ),
       // Register Field outputs
-      .pr_operand                   (pr_operand),
-      .increment                    (increment),
-
-       // PCIe interface
-      .pr_logic_cra_waitrequest     (pr_logic_cra_waitrequest),      // pr_logic_cra.waitrequest (hold to 1 during freeze)
-      .pr_logic_cra_readdata        (pr_logic_cra_readdata),         //     .readdata
-      .pr_logic_cra_readdatavalid   (pr_logic_cra_readdatavalid),    //     .readdatavalid (hold to 0 during freeze)
-      .pr_logic_cra_burstcount      (pr_logic_cra_burstcount),       //     .burstcount
-      .pr_logic_cra_writedata       (pr_logic_cra_writedata),        //     .writedata
-      .pr_logic_cra_address         (pr_logic_cra_address),          //     .address
-      .pr_logic_cra_write           (pr_logic_cra_write),            //     .write
-      .pr_logic_cra_read            (pr_logic_cra_read),             //     .read
-      .pr_logic_cra_byteenable      (pr_logic_cra_byteenable),       //     .byteenable
-      .pr_logic_cra_debugaccess     (pr_logic_cra_debugaccess),      //     .debugaccess
-      .pr_logic_reset_reset_n       (pr_logic_reset_reset_n)         // pr_logic_reset.reset_n
+      .pr_operand          ( pr_operand ),
+      .increment           ( increment )
    );
-   
-   basic_arithmetic u_basic_arithmetic (
-      .pr_logic_clk_clk             (pr_logic_clk_clk),              // pr_logic_clk.clk
-      .result                       (result),
-      .pr_operand                   (pr_operand),
-      .increment                    (increment),
-      .pr_logic_reset_reset_n       (pr_logic_reset_reset_n)         // pr_logic_reset.reset_n
+       
+   basic_arithmetic u_basic_arithmetic 
+   (
+      .pr_region_clk  ( clk ),              
+      .result         ( result ),
+      .pr_operand     ( pr_operand ),
+      .increment      ( increment ),
+      .pr_logic_rst   ( pr_logic_rst )         
    );
-   
+    
 
 endmodule

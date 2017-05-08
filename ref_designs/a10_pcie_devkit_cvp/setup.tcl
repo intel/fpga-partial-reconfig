@@ -1,4 +1,4 @@
-# Copyright (c) 2001-2016 Intel Corporation
+# Copyright (c) 2001-2017 Intel Corporation
 #  
 # Permission is hereby granted, free of charge, to any person obtaining a
 # copy of this software and associated documentation files (the
@@ -29,16 +29,16 @@ define_base_revision a10_pcie_devkit_cvp
 # Define each of the partial reconfiguration implementation revisions
 define_pr_impl_partition -impl_rev_name a10_pcie_devkit_cvp_ddr4_access \
 	-partition_name pr_partition \
-    -source_rev_name  ddr4_access
-
-define_pr_impl_partition -impl_rev_name a10_pcie_devkit_cvp_register_file \
-	-partition_name pr_partition \
-    -source_rev_name  register_file
+    -source_rev_name  synth_ddr4_access
 
 define_pr_impl_partition -impl_rev_name a10_pcie_devkit_cvp_basic_arithmetic \
     -partition_name pr_partition \
-    -source_rev_name  basic_arithmetic
+    -source_rev_name  synth_basic_arithmetic
 
-define_pr_impl_partition -impl_rev_name pr_example_template_impl \
+define_pr_impl_partition -impl_rev_name a10_pcie_devkit_cvp_basic_dsp \
     -partition_name pr_partition \
-    -source_rev_name  pr_example_template_synth
+    -source_rev_name  synth_basic_dsp
+
+define_pr_impl_partition -impl_rev_name a10_pcie_devkit_cvp_gol \
+    -partition_name pr_partition \
+    -source_rev_name  synth_gol

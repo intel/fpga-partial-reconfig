@@ -1,4 +1,4 @@
-// Copyright (c) 2001-2016 Intel Corporation
+// Copyright (c) 2001-2017 Intel Corporation
 //  
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
@@ -32,76 +32,54 @@
 // This module creates a 512-bit data from the 32-bit data that lfsr moduel
 // generates.
 
-module traffic_generator (
-      input  wire         pr_logic_clk_clk,                 //       pr_logic_clk.clk
-      input  wire         sw_reset,
+module traffic_generator 
+(
+   input wire         pr_region_clk,
+   input wire         clr_io_reg,
 
-      // interface to mem_access
-      input  wire         start_traffic_generator,
-      output reg          ddr_access_completed,
+   // interface to mem_access
+   input wire         start_traffic_generator,
+   output reg         ddr_access_completed,
 
-      // interface to register block
-      input  wire [1:0]   mode,
-      inout  wire [7:0]   limit,
-      input  wire [31:0]  mem_addr,
-      input  wire         post_wr_pulse,
-      input  wire [31:0]  seed,
-      input  wire         load_seed,
+   // interface to register block
+   input wire [31:0]  mem_addr,
+   input wire         post_wr_pulse,
+   input wire [31:0]  seed,
+   input wire         load_seed,
 
-      // interface to ddr_wr_rd module
-      output reg          start_ddr_wr_rd,
-      output reg  [30:0]  target_address,
-      output reg  [511:0] target_data,
-      input  wire         pass,
-      input  wire         fail,
+   // interface to ddr_wr_rd module
+   output reg         start_ddr_wr_rd,
+   output reg [24:0]  target_address,
+   output reg [511:0] target_data,
+   input wire         pass,
+   input wire         fail,
 
-      input  wire         pr_logic_reset_reset_n            //     pr_logic_reset.reset_n
-   );
+   input wire         pr_logic_rst, 
+   input wire [31:0]  final_addr
+);
 
-   wire [31:0]     rndm_data;
-   reg             start_traffic_generator_q;
-   reg  [31:0]     initial_addr;
-   reg  [31:0]     final_addr;
+   wire [31:0]         rndm_data;
+   reg                 start_traffic_generator_q;
+   reg [31:0]          initial_addr;
 
-   // using enum to create indices for one-hot encoding
-   typedef enum {
-      idle_indx,
-      active_indx,
-      wait_indx
-   } states_indx;
+   typedef enum reg [2:0] 
+   {
+      IDLE,
+      ACTIVE,
+      WAIT,
+      UNDEF
+   } states_definition_t;
 
-   // encoding one-hot states
-   typedef enum logic [2:0] {
-      IDLE       = 3'b1 << idle_indx,
-      ACTIVE     = 3'b1 << active_indx,
-      WAIT       = 3'b1 << wait_indx,
-      UNDEF      = 'x
-   } states_definition;
+   states_definition_t curr_state, next_state;
 
-   states_definition curr_state, next_state;
-
-   always_ff @(posedge pr_logic_clk_clk or negedge pr_logic_reset_reset_n) begin
-
-
-      // Active low HW reset
-      if (  pr_logic_reset_reset_n == 1'b0 ) begin
-
-
+   always_ff @(posedge pr_region_clk ) 
+   begin
+      if (  ( pr_logic_rst == 1'b1 ) || ( clr_io_reg == 1'b1 ) ) 
+      begin
          curr_state <= IDLE;
-
-      end
-      // Active high SW reset
-      else if (  sw_reset == 1'b1 ) begin
-
-
-         curr_state <= IDLE;
-
       end
       else begin
-
-
          curr_state <= next_state;
-
       end
    end
 
@@ -111,151 +89,98 @@ module traffic_generator (
 
       // Default next_state assignment of type undefined 
       next_state = UNDEF;
-
       unique case ( curr_state )
 
          IDLE: begin
-
-            if (( target_address == final_addr[30:0] )  && 
-               ( |target_address ))                                next_state = IDLE;
-            else if ( start_traffic_generator == 1'b1 )             next_state = ACTIVE;
-            else                                                    next_state = IDLE;
+            if (( target_address == final_addr[24:0] ) && ( |target_address ))   next_state = IDLE;
+            else if ( start_traffic_generator == 1'b1 )                          next_state = ACTIVE;
+            else                                                                 next_state = IDLE;
          end
 
          ACTIVE: begin
-
-            if ( target_address == final_addr[30:0] )               next_state = IDLE;
-            else                                                    next_state = WAIT;
+            if ( target_address == final_addr[24:0] )                            next_state = IDLE;
+            else                                                                 next_state = WAIT;
          end
 
          WAIT: begin
-
-            if ( pass | fail )                                      next_state = ACTIVE;
-            else                                                    next_state = WAIT;
+            if ( pass | fail )                                                   next_state = ACTIVE;
+            else                                                                 next_state = WAIT;
          end
 
-         default :                                                   next_state = UNDEF;
-   
+         default :                                                               next_state = UNDEF;
+         
       endcase
    end
 
    // Capture the value of the starting address
-   always_ff @(posedge pr_logic_clk_clk or negedge pr_logic_reset_reset_n) begin
+   always_ff @(posedge pr_region_clk ) begin
 
 
-      // Active low HW reset
-      if (  pr_logic_reset_reset_n == 1'b0 ) begin
-
-
+      if (  ( pr_logic_rst == 1'b1 ) || ( clr_io_reg == 1'b1 ) ) 
+      begin
          initial_addr <= '0;
-
       end
-      // initial_addr value does not get reset by sw_reset assertion since it works as the shadow register 
-      // Whenever the PR_MEM_ADDR gets updated, this shadow resgiters gets updated and gets loaded for the logic in Idle state
+
+      // Whenever the PR_MEM_ADDR gets updated, this gets updated and gets loaded for the logic in Idle state
       else if ( post_wr_pulse == 1'b1 )  begin
-
-
          initial_addr <= mem_addr;
-
       end
    end
 
+   always_ff @(posedge pr_region_clk ) begin
 
-   always_ff @(posedge pr_logic_clk_clk or negedge pr_logic_reset_reset_n) begin
-
-
-      // Active low HW reset
-      if (  pr_logic_reset_reset_n == 1'b0 ) begin
-
-
+      if (( pr_logic_rst == 1'b1 ) || ( clr_io_reg == 1'b1 )) 
+      begin
          ddr_access_completed <= '0;
          start_ddr_wr_rd <= 0;
-
       end
-      // Active high SW reset
-      else if (  sw_reset == 1'b1 )  begin
-
-
-         ddr_access_completed <= '0;
-         start_ddr_wr_rd <= 0;
-
-      end
-      else begin
-
-
+      else 
+      begin
          // default values
          ddr_access_completed <= '0;
          start_ddr_wr_rd <= 0;
-
          unique case ( next_state )
-
             IDLE: begin
-
                start_ddr_wr_rd <= 0;
-
-               if (( target_address == final_addr[30:0] ) && ( |target_address ))
-                  ddr_access_completed <= 1'b1;
+               if (( target_address == final_addr[24:0] ) && ( |target_address )) ddr_access_completed <= 1'b1;
             end
-            
             ACTIVE: begin
-
                start_ddr_wr_rd <= 1;
-
             end
             
             WAIT: begin
-
                start_ddr_wr_rd <= 1;
             end
 
             default : begin
-
-            
                ddr_access_completed <= '0;
                start_ddr_wr_rd <= 0;
-            
             end
-
          endcase
       end
    end
 
+   always_ff @(posedge pr_region_clk ) begin
 
-
-   always_ff @(posedge pr_logic_clk_clk or negedge pr_logic_reset_reset_n) begin
-
-      // Active low HW reset
-      if (  pr_logic_reset_reset_n == 1'b0 ) begin
-
-
+      if (( pr_logic_rst == 1'b1 ) || ( clr_io_reg == 1'b1 ))
+      begin
          start_traffic_generator_q <= 1'b0;
-         target_address     <= 'b0;
-
+         target_address <= 'b0;
       end
-      // Active high SW reset
-      else if (  sw_reset == 1'b1 ) begin
-
-
-         start_traffic_generator_q <= 1'b0;
-         target_address     <= 'b0;
-
-      end
-      else begin
-
-
+      else 
+      begin
          // load the initial_addr during Idle state
          if ( start_ddr_wr_rd == 0 ) begin
-
-            target_address     <= initial_addr[30:0];
+            target_address <= initial_addr[24:0];
          end
-         else if ( ( pass == 1'b1 ) || ( fail == 1'b1 ) ) begin
-
+         else if ( ( pass == 1'b1 ) || ( fail == 1'b1 ) ) 
+         begin
             // increment to the next address when ddr_wr_rd module
             // opertion completed (i.e. either pass or fail got asserted)
             target_address <= target_address + 1'b1;
          end
-         else  begin
-
+         else  
+         begin
             // hold the value of target_address if there is no "pass" generated
             target_address <= target_address;
          end
@@ -263,46 +188,27 @@ module traffic_generator (
          start_traffic_generator_q <= start_traffic_generator;
       end
    end
+   
+   always_ff @(posedge pr_region_clk) begin
 
-
-
-
-
-
-   always_ff @(posedge pr_logic_clk_clk) begin
-
-      if (( pass   == 1'b1 ) || ( ( start_traffic_generator == 1'b1 ) && ( start_traffic_generator_q == 1'b0 )))
+      if (( pass  == 1'b1 ) || ( ( start_traffic_generator == 1'b1 ) && ( start_traffic_generator_q == 1'b0 )))
          target_data = {
-                   ~{rndm_data[31:10]},~{rndm_data[9:0],rndm_data[31:22]},~{rndm_data[21:0]},
-                   ~{rndm_data[31:10]},~{rndm_data[9:0],rndm_data[31:22]}, {rndm_data[21:0]},
-                   ~{rndm_data[31:10]}, {rndm_data[9:0],rndm_data[31:22]},~{rndm_data[21:0]},
-                   ~{rndm_data[31:10]}, {rndm_data[9:0],rndm_data[31:22]}, {rndm_data[21:0]},
-                    {rndm_data[31:10]},~{rndm_data[9:0],rndm_data[31:22]},~{rndm_data[21:0]},
-                    {rndm_data[31:10]},~{rndm_data[9:0],rndm_data[31:22]}, {rndm_data[21:0]},
-                    {rndm_data[31:10]}, {rndm_data[9:0],rndm_data[31:22]},~{rndm_data[21:0]},
-                    {rndm_data[31:10]}, {rndm_data[9:0],rndm_data[31:22]}, {rndm_data[21:0]} };
-   end
-
-   always_comb begin
-
-      if ( mode == 2'b0 ) begin
-
-         final_addr = {9'b0,22'h3f_ffff};
-      end
-      else begin
-
-         final_addr = mem_addr + limit;
-      end
-
+         ~{rndm_data[31:10]},~{rndm_data[9:0],rndm_data[31:22]},~{rndm_data[21:0]},
+            ~{rndm_data[31:10]},~{rndm_data[9:0],rndm_data[31:22]}, {rndm_data[21:0]},
+            ~{rndm_data[31:10]}, {rndm_data[9:0],rndm_data[31:22]},~{rndm_data[21:0]},
+            ~{rndm_data[31:10]}, {rndm_data[9:0],rndm_data[31:22]}, {rndm_data[21:0]},
+            {rndm_data[31:10]},~{rndm_data[9:0],rndm_data[31:22]},~{rndm_data[21:0]},
+            {rndm_data[31:10]},~{rndm_data[9:0],rndm_data[31:22]}, {rndm_data[21:0]},
+            {rndm_data[31:10]}, {rndm_data[9:0],rndm_data[31:22]},~{rndm_data[21:0]},
+            {rndm_data[31:10]}, {rndm_data[9:0],rndm_data[31:22]}, {rndm_data[21:0]} };
    end
 
    lfsr u_lfsr (
-      .pr_logic_clk_clk                       ( pr_logic_clk_clk ),
-      .sw_reset                             ( sw_reset ),
-      .load_seed                              ( load_seed ),
-      .seed                                   ( seed ),
-      .rndm_data                              ( rndm_data ),
-      .pr_logic_reset_reset_n                 ( pr_logic_reset_reset_n )
-   );
+             .clk            ( pr_region_clk ),
+             .rst            ( clr_io_reg | pr_logic_rst ),
+             .load_seed      ( load_seed ),
+             .seed           ( seed ),
+             .out            ( rndm_data )
+             );
 
 endmodule

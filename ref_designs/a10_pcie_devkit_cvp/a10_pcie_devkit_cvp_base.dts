@@ -1,0 +1,46 @@
+/*
+ * This is a rudamentry device tree that describes the contents
+ * of the A10 PCIe Partial Reconfiguration Reference Design.
+ *
+ * Use the following command to create a device tree blob:
+ * 	dtc -I dts -O dtb -o a10_pcie_devkit_cvp_base.dtb \
+ * 		a10_pcie_devkit_cvp_base.dts
+ *
+ * Once in binary format, use the following command to create
+ * an intel hex version:
+ * 	nios2-elf-objcopy --input-target binary --output-target ihex \
+ * 		a10_pcie_devkit_cvp_base.dtb a10_pcie_devkit_cvp_base.dtb.ihex
+ *
+ * One last step to convert to Quartus HEX:
+ *	alt-file-convert -I ihex -O hex --out-data-width=32 \
+ *		--input=a10_pcie_devkit_cvp_base.dtb.ihex \
+ *		--output=a10_pcie_devkit_cvp_base.dtb.hex
+ */
+/dts-v1/;
+
+/ {
+	#address-cells = <2>;
+	#size-cells = <1>;
+
+	pr_region_4_0: pr-region@4_0 {
+		compatible = "fpga-region";
+		reg = <0x4 0x0 0x10000>;
+		fpga-mgr = <&fpga_mgr_2_1000>;
+		fpga-bridges = <&pr_cont_4_10000>;
+	};
+
+	pr_cont_4_10000: pr-cont@4_10000 {
+		compatible = "altr,freeze-bridge-controller";
+		reg = <0x4 0x10000 0x10>;
+	};
+
+	fpga_mgr_2_1000: fpga-mgr@2_1000 {
+		compatible = "altr,pr-ip-core";
+		reg = <0x2 0x1000 0x10>;
+	};
+
+	ddr_cal_4_11000: ddr-cal@4_11000 {
+		compatible = "intel,ddr-stat-reg";
+		reg = <0x4 0x11000 4>;
+	};
+};

@@ -1,4 +1,4 @@
-// Copyright (c) 2001-2016 Intel Corporation
+// Copyright (c) 2001-2017 Intel Corporation
 //  
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
@@ -24,37 +24,28 @@
 
 // This module is used to count number of PASS asserted by ddr_wr_rd module
 
-module perf_cntr (
-      input  wire         pr_logic_clk_clk,                 //       pr_logic_clk.clk
-      input  wire         sw_reset,
-      input  wire         pass,
-      output reg [31:0]   performance_cntr,
-      input  wire         pr_logic_reset_reset_n            //     pr_logic_reset.reset_n
-   );
+module perf_cntr 
+(
+   input wire        pr_region_clk, 
+   input wire        clr_io_reg,
+   input wire        pass,
+   output reg [31:0] performance_cntr,
+   input wire        pr_logic_rst            
+);
 
 
-   always_ff @(posedge pr_logic_clk_clk or negedge pr_logic_reset_reset_n) begin
+   always_ff @(posedge pr_region_clk) begin
 
-      // Active low HW reset
-      if (  pr_logic_reset_reset_n == 1'b0 ) begin
-
+      if (( pr_logic_rst == 1'b1 ) || ( clr_io_reg == 1'b1 )) 
+      begin
          performance_cntr <= 'b0;
-
       end
-      // Active high SW reset
-      else if (  sw_reset == 1'b1 ) begin
-
-         performance_cntr <= 'b0;
-
-      end
-      else begin
-
-         if ( pass == 1'b1 ) begin
-
+      else 
+      begin
+         if ( pass == 1'b1 ) 
+         begin
             performance_cntr <= performance_cntr + 1;
-            
          end
-
       end
    end
 

@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2016 Intel Corporation. All rights reserved.
+# Copyright (C) 2001-2017 Intel Corporation. All rights reserved.
 # Your use of Intel Corporation's design tools, logic functions
 # and other software and tools, and its AMPP partner logic
 # functions, and any output files from any of the foregoing
@@ -23,21 +23,24 @@ set_global_assignment -name DEVICE 10AX115S2F45I1SG
 #############################################################
 # Files and basic setup
 #############################################################
-set_global_assignment -name TOP_LEVEL_ENTITY top
-set_global_assignment -name SYSTEMVERILOG_FILE source/static_region/top.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/static_region/freeze_wrapper.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/ddr4_access_top.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/ddr_wr_rd.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/fault_detect.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/mem_access.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/perf_cntr.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/reg_blk.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/rst_blk.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/synchronizer.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/lfsr.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/traffic_generator.sv
-
+set_global_assignment -name TOP_LEVEL_ENTITY a10_pcie_ref_design
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+
+set_global_assignment -name SYSTEMVERILOG_FILE source/static_region/a10_pcie_ref_design.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/static_region/pr_logic_wrapper.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/static_region/ddr4_status_bus.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/static_region/synchronizer.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/static_region/tcd2um.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/static_region/global_rst_n_controller.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/ddr4_access_persona_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/ddr4_access_persona.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/ddr4_access_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/ddr4_access_persona_controller.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/mem_access.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/ddr_wr_rd.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/perf_cntr.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/traffic_generator.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/lfsr.sv
 
 #############################################################
 # SDC constraints - Note they are before the Qsys files
@@ -48,41 +51,50 @@ set_global_assignment -name SDC_FILE a10_pcie_devkit_cvp.sdc
 #############################################################
 # QSYS and IP Files
 #############################################################
-set_global_assignment -name IP_FILE source/static_region/iopll.ip
-set_global_assignment -name QSYS_FILE source/static_region/pcie_subsystem.qsys
-set_global_assignment -name IP_FILE source/static_region/ip/pcie_subsystem/pcie_subsystem_mm_clock_crossing_bridge_0.ip
-set_global_assignment -name IP_FILE source/static_region/ip/pcie_subsystem/pcie_subsystem_prlogic_reset_bridge.ip
-set_global_assignment -name IP_FILE source/static_region/ip/pcie_subsystem/pcie_subsystem_refclk.ip
-set_global_assignment -name IP_FILE source/static_region/ip/pcie_subsystem/pcie_subsystem_DK.ip
-set_global_assignment -name IP_FILE source/static_region/ip/pcie_subsystem/pcie_subsystem_prlogic_clock_bridge.ip
-set_global_assignment -name IP_FILE source/static_region/ip/pcie_subsystem/pcie_subsystem_alt_pr_clk.ip
-set_global_assignment -name IP_FILE source/static_region/ip/pcie_subsystem/pcie_subsystem_a10_pcie.ip
-set_global_assignment -name IP_FILE source/static_region/ip/pcie_subsystem/pcie_subsystem_clock_bridge_0.ip
-set_global_assignment -name IP_FILE source/static_region/ip/pcie_subsystem/pcie_subsystem_alt_pr.ip
-set_global_assignment -name QSYS_FILE source/static_region/ddr4_ctlr.qsys
-set_global_assignment -name IP_FILE source/static_region/ip/ddr4_ctlr/ddr4_ctlr_clock_in.ip
-set_global_assignment -name IP_FILE source/static_region/ip/ddr4_ctlr/ddr4_ctlr_mm_clock_bridge.ip
-set_global_assignment -name IP_FILE source/static_region/ip/ddr4_ctlr/ddr4_ctlr_reset_bridge_1.ip
-set_global_assignment -name IP_FILE source/static_region/ip/ddr4_ctlr/ddr4_ctlr_emif_0.ip
-set_global_assignment -name IP_FILE source/static_region/ip/ddr4_ctlr/ddr4_ctlr_reset_in.ip
-set_global_assignment -name IP_FILE source/static_region/ip/ddr4_ctlr/emif_clock_bridge.ip
-set_global_assignment -name IP_FILE source/static_region/ip/ddr4_ctlr/emif_reset_bridge.ip
-#############################################################
+set_global_assignment -name QSYS_FILE source/static_region/bsp_top.qsys
+set_global_assignment -name IP_FILE source/static_region/ip/bsp_top/top_dk.ip
+set_global_assignment -name IP_FILE source/static_region/ip/bsp_top/top_a10_pcie.ip
+set_global_assignment -name IP_FILE source/static_region/ip/bsp_top/ddr4_emif.ip
+
+set_global_assignment -name QSYS_FILE source/static_region/design_top.qsys
+set_global_assignment -name IP_FILE source/static_region/ip/design_top/top_iopll.ip
+set_global_assignment -name IP_FILE source/static_region/ip/design_top/alt_pr_ip.ip
+set_global_assignment -name IP_FILE source/static_region/ip/design_top/avalon_mm_clk.ip
+set_global_assignment -name IP_FILE source/static_region/ip/design_top/avalon_system_config.ip
+set_global_assignment -name IP_FILE source/static_region/ip/design_top/ddr4_calibration_pio.ip
+set_global_assignment -name IP_FILE source/static_region/ip/design_top/ddr4_ctlr_mm_clock_bridge.ip
+set_global_assignment -name IP_FILE source/static_region/ip/design_top/emif_clock.ip
+set_global_assignment -name IP_FILE source/static_region/ip/design_top/emif_reset_n.ip
+set_global_assignment -name IP_FILE source/static_region/ip/design_top/global_rst_n.ip
+set_global_assignment -name IP_FILE source/static_region/ip/design_top/pcie_mm_clock_crossing_bridge.ip
+set_global_assignment -name IP_FILE source/static_region/ip/design_top/pcie_rst_n.ip
+set_global_assignment -name IP_FILE source/static_region/ip/design_top/pr_subsystem_pll_ref_clk.ip
+set_global_assignment -name IP_FILE source/static_region/ip/design_top/pcie_avmm_pbridge.ip
+set_global_assignment -name IP_FILE source/static_region/ip/design_top/emif_avmm_pbridge.ip
+set_global_assignment -name IP_FILE source/static_region/ip/design_top/bar2_avmm_pipeline_bridge.ip
+set_global_assignment -name IP_FILE source/static_region/ip/design_top/pcie_bar_2_mm_clock_crossing_bridge.ip
+
+set_global_assignment -name QSYS_FILE source/static_region/pr_subsystem.qsys
+set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/pr_subsystem_clock_bridge_0.ip
+set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/pr_subsystem_reset_bridge_0.ip
+set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/pr_subsystem_pr_region_controller_0.ip
+set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/pr_subsystem_freeze_bridge_cra.ip
+set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/pr_subsystem_freeze_bridge_ddr4.ip
+
+set_global_assignment -name QSYS_FILE source/common/reg_file/reg_file.qsys
+set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_clock_bridge.ip
+set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_mm_bridge.ip
+set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_pio_in.ip
+set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_pio_out.ip
+set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_reset_bridge.ip
+
+set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/pr_subsystem_sld_jtag_bridge_agent.ip
+set_global_assignment -name IP_FILE source/common/sld_jtag_host/ip/sld_jtag_host.ip
 
 #############################################################
 # SDC constraints - Note they are after the Qsys files
 #############################################################
 set_global_assignment -name SDC_FILE auxiliary.sdc
-
-#############################################################
-# Clocks
-#############################################################
-set_instance_assignment -name GLOBAL_SIGNAL GLOBAL_CLOCK -to u_pcie_subsystem|a10_pcie|altpcie_a10_hip_pipen1b|wys~CORE_CLK_OUT
-set_instance_assignment -name GLOBAL_SIGNAL GLOBAL_CLOCK -to u_iopll|iopll|altera_iopll_i|twentynm_pll|outclk[0]
-
-# Resets
-set_instance_assignment -name GLOBAL_SIGNAL GLOBAL_CLOCK -to u_freeze_wrapper|u_pr_logic|u_reg_blk|sw_reset
-
 
 #############################################################
 # Pinouts
@@ -140,6 +152,8 @@ set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to board_pins_lane_acti
 ## DDR4A
 set_location_assignment PIN_F34 -to pll_ref_clk
 set_location_assignment PIN_F35 -to "pll_ref_clk(n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "pll_ref_clk(n)"
+
 set_location_assignment PIN_J34 -to oct_rzqin
 set_location_assignment PIN_F33 -to mem_ba[0]
 set_location_assignment PIN_G35 -to mem_ba[1]
@@ -293,8 +307,9 @@ set_instance_assignment -name IO_STANDARD "1.8 V" -to pcie_rstn_npor
 
 set_location_assignment PIN_AL37 -to ref_clk_clk
 set_location_assignment PIN_AL38 -to "ref_clk_clk(n)"
-set_instance_assignment -name IO_STANDARD HCSL -to ref_clk_clk
-set_instance_assignment -name XCVR_IO_PIN_TERMINATION 100_OHMS -to ref_clk_clk
+set_instance_assignment -name IO_STANDARD LVDS -to "ref_clk_clk(n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ref_clk_clk
+set_instance_assignment -name INPUT_TERMINATION DIFFERENTIAL -to ref_clk_clk
 
 set_location_assignment PIN_AT40 -to xcvr_rx_in0
 set_location_assignment PIN_AT39 -to "xcvr_rx_in0(n)"
@@ -368,49 +383,41 @@ set_instance_assignment -name XCVR_A10_RX_ADP_CTLE_ACGAIN_4S RADP_CTLE_ACGAIN_4S
 set_instance_assignment -name XCVR_A10_RX_ADP_VGA_SEL RADP_VGA_SEL_4 -to xcvr_rx_in7
 set_instance_assignment -name XCVR_VCCR_VCCT_VOLTAGE 1_0V -to xcvr_rx_in7
 
-set_instance_assignment -name XCVR_IO_PIN_TERMINATION 100_OHMS -to xcvr_tx_out0
 set_location_assignment PIN_BB43 -to "xcvr_tx_out0(n)"
 set_location_assignment PIN_BB44 -to xcvr_tx_out0
 set_instance_assignment -name IO_STANDARD "HSSI DIFFERENTIAL I/O" -to xcvr_tx_out0
 set_instance_assignment -name XCVR_VCCR_VCCT_VOLTAGE 1_0V -to xcvr_tx_out0
 
-set_instance_assignment -name XCVR_IO_PIN_TERMINATION 100_OHMS -to xcvr_tx_out1
 set_location_assignment PIN_BA41 -to "xcvr_tx_out1(n)"
 set_location_assignment PIN_BA42 -to xcvr_tx_out1
 set_instance_assignment -name IO_STANDARD "HSSI DIFFERENTIAL I/O" -to xcvr_tx_out1
 set_instance_assignment -name XCVR_VCCR_VCCT_VOLTAGE 1_0V -to xcvr_tx_out1
 
-set_instance_assignment -name XCVR_IO_PIN_TERMINATION 100_OHMS -to xcvr_tx_out2
 set_location_assignment PIN_AY43 -to "xcvr_tx_out2(n)"
 set_location_assignment PIN_AY44 -to xcvr_tx_out2
 set_instance_assignment -name IO_STANDARD "HSSI DIFFERENTIAL I/O" -to xcvr_tx_out2
 set_instance_assignment -name XCVR_VCCR_VCCT_VOLTAGE 1_0V -to xcvr_tx_out2
 
-set_instance_assignment -name XCVR_IO_PIN_TERMINATION 100_OHMS -to xcvr_tx_out3
 set_location_assignment PIN_AW41 -to "xcvr_tx_out3(n)"
 set_location_assignment PIN_AW42 -to xcvr_tx_out3
 set_instance_assignment -name IO_STANDARD "HSSI DIFFERENTIAL I/O" -to xcvr_tx_out3
 set_instance_assignment -name XCVR_VCCR_VCCT_VOLTAGE 1_0V -to xcvr_tx_out3
 
-set_instance_assignment -name XCVR_IO_PIN_TERMINATION 100_OHMS -to xcvr_tx_out4
 set_location_assignment PIN_AV43 -to "xcvr_tx_out4(n)"
 set_location_assignment PIN_AV44 -to xcvr_tx_out4
 set_instance_assignment -name IO_STANDARD "HSSI DIFFERENTIAL I/O" -to xcvr_tx_out4
 set_instance_assignment -name XCVR_VCCR_VCCT_VOLTAGE 1_0V -to xcvr_tx_out4
 
-set_instance_assignment -name XCVR_IO_PIN_TERMINATION 100_OHMS -to xcvr_tx_out5
 set_location_assignment PIN_AU41 -to "xcvr_tx_out5(n)"
 set_location_assignment PIN_AU42 -to xcvr_tx_out5
 set_instance_assignment -name IO_STANDARD "HSSI DIFFERENTIAL I/O" -to xcvr_tx_out5
 set_instance_assignment -name XCVR_VCCR_VCCT_VOLTAGE 1_0V -to xcvr_tx_out5
 
-set_instance_assignment -name XCVR_IO_PIN_TERMINATION 100_OHMS -to xcvr_tx_out6
 set_location_assignment PIN_AT43 -to "xcvr_tx_out6(n)"
 set_location_assignment PIN_AT44 -to xcvr_tx_out6
 set_instance_assignment -name IO_STANDARD "HSSI DIFFERENTIAL I/O" -to xcvr_tx_out6
-
 set_instance_assignment -name XCVR_VCCR_VCCT_VOLTAGE 1_0V -to xcvr_tx_out6
-set_instance_assignment -name XCVR_IO_PIN_TERMINATION 100_OHMS -to xcvr_tx_out7
+
 set_location_assignment PIN_AR41 -to "xcvr_tx_out7(n)"
 set_location_assignment PIN_AR42 -to xcvr_tx_out7
 set_instance_assignment -name IO_STANDARD "HSSI DIFFERENTIAL I/O" -to xcvr_tx_out7
@@ -426,26 +433,26 @@ set_global_assignment -name OPTIMIZATION_TECHNIQUE SPEED
 #############################################################
 # SignalTap
 #############################################################
-# Note that enabling SignalTap may require changing the floorplan
-#set_global_assignment -name ENABLE_SIGNALTAP ON
-#set_global_assignment -name USE_SIGNALTAP_FILE a10_pcie_devkit_cvp.stp
-#set_global_assignment -name SIGNALTAP_FILE a10_pcie_devkit_cvp.stp
 
 #############################################################
 # PR setup
 #############################################################
 set_global_assignment -name REVISION_TYPE PR_BASE
-set_instance_assignment -name PARTITION pr_partition -to u_freeze_wrapper|u_pr_logic
-set_instance_assignment -name PARTIAL_RECONFIGURATION_PARTITION ON -to u_freeze_wrapper|u_pr_logic
 
-set_instance_assignment -name PLACE_REGION "122 1 224 224;33 5 121 99;70 100 79 164;0 100 69 224;80 100 121 224;70 165 74 165;75 165 75 208;76 165 79 224;70 196 74 208;70 209 75 224" -to u_freeze_wrapper|u_pr_logic
+set_instance_assignment -name PARTITION pr_partition -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
+set_instance_assignment -name PARTIAL_RECONFIGURATION_PARTITION ON -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
 
-set_instance_assignment -name RESERVE_PLACE_REGION ON -to u_freeze_wrapper|u_pr_logic
-set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to u_freeze_wrapper|u_pr_logic
+set_instance_assignment -name PLACE_REGION "X32 Y0 X87 Y19;X0 Y0 X31 Y28;X88 Y1 X90 Y19;X91 Y1 X224 Y98;X32 Y20 X32 Y28;X33 Y20 X48 Y40;X49 Y20 X90 Y58;X0 Y29 X32 Y40;X81 Y59 X90 Y98;X49 Y59 X80 Y109;X81 Y99 X109 Y109;X110 Y99 X224 Y224;X50 Y110 X78 Y126;X49 Y110 X49 Y129;X79 Y110 X109 Y224;X32 Y117 X48 Y129;X0 Y117 X31 Y224;X36 Y130 X49 Y181;X32 Y130 X35 Y224;X50 Y172 X63 Y181;X36 Y182 X63 Y224;X64 Y215 X78 Y224" -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
+
+set_instance_assignment -name RESERVE_PLACE_REGION ON -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
 # Use a routing region of the whole chip
-set_instance_assignment -name ROUTE_REGION "0 0 224 224" -to u_freeze_wrapper|u_pr_logic
+set_instance_assignment -name ROUTE_REGION "X0 Y0 X224 Y224" -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
 
-set_instance_assignment -name PLACE_REGION "13 87 32 99" -to u_pcie_subsystem|pcie_subsystem_mm_clock_crossing_bridge_0|pcie_subsystem_mm_clock_crossing_bridge_0
-set_instance_assignment -name RESERVE_PLACE_REGION OFF -to u_pcie_subsystem|pcie_subsystem_mm_clock_crossing_bridge_0|pcie_subsystem_mm_clock_crossing_bridge_0
-set_instance_assignment -name CORE_ONLY_PLACE_REGION OFF -to u_pcie_subsystem|pcie_subsystem_mm_clock_crossing_bridge_0|pcie_subsystem_mm_clock_crossing_bridge_0
-
+#############################################################
+# Additional Floorplanning
+#############################################################
+set_instance_assignment -name PLACE_REGION "X0 Y41 X48 Y116" -to a10_pcie
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to a10_pcie
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to a10_pcie
+set_instance_assignment -name REGION_MEMBER ON -from a10_pcie -to u_top|a10_pcie

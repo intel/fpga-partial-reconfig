@@ -1,4 +1,4 @@
-// Copyright (c) 2001-2016 Intel Corporation
+// Copyright (c) 2001-2017 Intel Corporation
 //  
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
@@ -26,24 +26,20 @@
 // This module conducts the arithmetic operation on the pr_operand and
 // increment operand it receives and produces the result.
 
-module basic_arithmetic (
-      input  wire         pr_logic_clk_clk,       // pr_logic_clk.clk
-      output reg  [31:0]  result,
-      input  wire [30:0]  pr_operand,
-      input  wire [30:0]  increment,
-      input  wire         pr_logic_reset_reset_n  // pr_logic_reset.reset_n
+module basic_arithmetic 
+   (
+      input wire        pr_region_clk, 
+      output reg [31:0] result,
+      input wire [31:0] pr_operand,
+      input wire [31:0] increment,
+      input wire        pr_logic_rst   
    );
-   always_ff @(posedge pr_logic_clk_clk or negedge pr_logic_reset_reset_n) begin
-      // Active low HW reset
-      if ( pr_logic_reset_reset_n == 1'b0 ) begin
-
-         result <= 'b0;
-      
-      end
-      else begin
-
-         result <= pr_operand + increment;
-
-      end
-   end
+    always_ff @(posedge pr_region_clk) begin
+        if ( pr_logic_rst ) begin
+            result <= 'b0;
+        end
+        else begin
+            result <= pr_operand + increment;
+        end
+    end
 endmodule

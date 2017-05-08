@@ -1,4 +1,4 @@
-# Copyright (c) 2001-2016 Intel Corporation
+# Copyright (c) 2001-2017 Intel Corporation
 #  
 # Permission is hereby granted, free of charge, to any person obtaining a
 # copy of this software and associated documentation files (the
@@ -21,8 +21,7 @@
 
 derive_pll_clocks -create_base_clocks
 
-#set_clock_groups -asynchronous -group {u_pcie_subsystem|a10_pcie|a10_pcie|wys~CORE_CLK_OUT} -group {u_mem_ctlr|ddr4a|ddr4a_*_clk*}
-#set_clock_groups -asynchronous -group {u_mem_ctlr|ddr4a|ddr4a_*_clk*} -group {u_iopll|iopll_0|outclk1}
+# PCIe IP sdc assignments
 
 if { [ get_collection_size [get_registers -nocase -nowarn {*altpcie_test_in_static_signal_to_be_false_path[0]}]] > 0 } {
    set_false_path -from [get_registers {*altpcie_test_in_static_signal_to_be_false_path[0]}] -to *
