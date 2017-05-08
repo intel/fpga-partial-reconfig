@@ -30,11 +30,14 @@ define_project blinking_led
 define_base_revision blinking_led
 
 # Define each of the partial reconfiguration implementation revisions
-define_pr_revision -impl_rev_name blinking_led_pr_alpha \
-	-impl_block [list pr_partition blinking_led_default]
+define_pr_impl_partition -impl_rev_name blinking_led_pr_alpha \
+    -partition_name pr_partition \
+    -source_rev_name blinking_led_default
 
-define_pr_revision -impl_rev_name blinking_led_pr_bravo \
-	-impl_block [list pr_partition blinking_slow_led]
+define_pr_impl_partition -impl_rev_name blinking_led_pr_bravo \
+    -partition_name pr_partition \
+    -source_rev_name blinking_led_slow
 
-define_pr_revision -impl_rev_name blinking_led_pr_charlie \
-	-impl_block [list pr_partition blinking_led_empty]
+define_pr_impl_partition -impl_rev_name blinking_led_pr_charlie \
+    -partition_name pr_partition \
+    -source_rev_name blinking_led_empty
