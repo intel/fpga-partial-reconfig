@@ -36,7 +36,7 @@ define_pr_impl_partition -impl_rev_name blinking_led_pr_alpha \
 
 define_pr_impl_partition -impl_rev_name blinking_led_pr_bravo \
     -partition_name pr_partition \
-    -source_rev_name blinking_slow_led
+    -source_rev_name blinking_led_slow
 
 define_pr_impl_partition -impl_rev_name blinking_led_pr_charlie \
     -partition_name pr_partition \
