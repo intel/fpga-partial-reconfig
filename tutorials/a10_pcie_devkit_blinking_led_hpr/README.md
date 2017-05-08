@@ -18,11 +18,33 @@ This readme file contains the following information:
 	* blinking_led.qsf--Quartus Prime settings file containing the assignments and settings for the project.
 
 *  **hpr/** - This directory contains the hierarchical PR version of the design. The following are the complete set of files you will be creating with this tutorial:
+	* blinking_led.sv--System Verilog file that causes the LEDs to blink using a 32-bit counter.
+	* blinking_led.qpf--Quartus Prime project file containing the synthesis revision information for the personas.
+	* blinking_led.qsf--Quartus Prime settings file containing the assignments and settings for the PR project.
+	* blinking_led.sdc--Defines the timing constraints for the PR project.
+	* blinking_led_default.qsf--Quartus Prime settings file containing the assignments and settings for the blinking_led_default persona.
+	* blinking_led_empty.qsf--Quartus Prime project file containing the assignments and settings for blinking_led_empty persona.
+	* blinking_led_empty.sv--System Verilog file that causes the LEDs to stay ON.
+	* blinking_led_parent.qsf
+	* blinking_led_parent.sv
+	* blinking_led_parent_slow.qsf
+	* blinking_led_parent_slow.sv
+	* blinking_led_pr_alpha.qsf--Quartus Prime settings file containing the assignments and settings for the blinking_led project.
+	* blinking_led_pr_bravo.qsf--Quartus Prime settings file containing the assignments and settings for the blinking_led project.
+	* blinking_led_pr_charlie.qsf--Quartus Prime settings file containing the assignments and settings for the blinking_led project.
+	* blinking_led_pr_delta.qsf
+	* blinking_led_pr_emma.qsf
+	* blinking_slow_led.qsf--Quartus Prime project file containing the assignments and settings for blinking_led_slow persona.
+	* blinking_slow_led.sv--System Verilog file that causes the LEDs to blink slower.
+	* jtag.sdc--Timing constraints for JTAG
+	* pr_ip.ip--IP variation file for instantiating PR IP core in the design
+	* setup.tcl--contains configuration for the a10_hier_partial_reconfig.tcl flow script   
+	* top.sv--top-level file containing the PR implementation of the design.
 
 ## Technical Documentation
 
-*  AN-???.pdf Application Note provides information about the hierarchical PR tutorial, and walks you through partially reconfiguring a flat design using HPR.
-
+*  AN-806.pdf Application Note provides information about the hierarchical PR tutorial, and walks you through partially reconfiguring a flat design using HPR.
+   *  This document is available on the GitHub: [here](AN-806.pdf)
 
 ## System Requirements
 
