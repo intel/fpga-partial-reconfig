@@ -6,6 +6,7 @@ This repository contains scripts, reference designs, and tutorials for the Intel
 
 - [Tutorials](tutorials/) are located in the tutorials sub directory
 - [Reference Designs](ref_designs/) are located in the ref_designs sub directory
+- [Software](software/) and Linux drivers are located in the software sub directory 
 - Scripts are located in the script sub directory
 
 ![PR Logo](quartus-prime-partial-reconfiguration-diagram.jpg?raw=true)
