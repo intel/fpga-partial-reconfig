@@ -1,0 +1,112 @@
+#! /bin/bash 
+_this_script=$(cd ${0%[\\/]*} && echo $(pwd 2>/dev/null)/${0##*/})
+
+SCRIPT_NAME="$(basename ${_this_script})"
+SOF=''
+CABLE=0
+PCIE_CARD=''
+
+function usage()
+{
+	echo
+	echo "Usage:" 
+	echo "-f=, --file="
+	echo "sof:   path to sof file to load"
+	echo "-c=, --cable="
+	echo "cable: non-zero jtag cable index"
+	echo "(e.g.  1)"
+	echo "-d=, --device="
+	echo "card:  pci id for card to load (e.g. 0000:03:00.0)"
+	echo "(e.g $SCRIPT_NAME -f=<sof> --cable=1 --device=0000:03:00.0)" 
+	echo
+	exit 1
+}
+
+for i in "$@"
+do
+case $i in
+	--file=*|-f=*)
+	SOF="${i#*=}"
+	echo "SOF is $SOF" 
+	;;
+	-d=*|--device=*)
+	PCIE_CARD="${i#*=}"
+	echo "PCIe device is $PCIE_CARD"
+	;;
+	-c=*|--cable=*)
+	CABLE=${i#*=}
+	echo "Cable is $CABLE"
+	;;
+	-h|--help=*)
+	echo "Printing usage"
+	usage
+	;;
+	*)
+	echo "Error in parameters"
+	usage
+	;;
+esac
+done
+
+
+
+if [ -z "$SOF" ]
+then
+	echo 
+	echo "ERROR! No sof specified."
+	usage
+fi
+
+if  [  ! -e $SOF  ]
+then
+	echo
+	echo "ERROR! sof specified does not exist."
+	usage
+fi
+
+
+if [ 0 -eq $CABLE ]
+then
+	echo
+	echo "ERROR! No cable or invalid cable specified."
+	usage
+fi
+
+if [ -z "$PCIE_CARD" ]
+then
+	echo
+	echo "ERROR! No PCIe device specified using the -d= or --device= option"
+	usage
+fi
+
+STATE=/sys/kernel/debug/fpga_pcie/$PCIE_CARD/state
+
+if [ -e $STATE ]
+then
+	echo "found state for $PCIE_CARD"
+else
+	echo "cannot find state for $PCIE_CARD"
+	usage
+fi
+
+echo
+echo "Setting jtag clock to 6MHz"
+jtagconfig --setparam "$CABLE" JtagClock 6M
+
+echo -n 1 > $STATE 2> /dev/null
+if [ $? != "0" ]
+then
+	echo
+	echo "Failed to disable upstream Advanced Error Reporting"
+	exit 1
+fi
+
+quartus_pgm -c "$CABLE" -m jtag -o "P;$SOF@1"
+
+echo -n 0 > $STATE 2> /dev/null
+if [ $? != "0" ]
+then
+	echo
+	echo "Failed to enable upstream Advanced Error Reporting"
+	exit 1
+fi

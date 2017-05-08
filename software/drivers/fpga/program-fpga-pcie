@@ -1,0 +1,124 @@
+#! /bin/bash
+
+_this_script=$(cd ${0%[\\/]*} && echo $(pwd 2>/dev/null)/${0##*/})
+_this_dir=$(dirname ${_this_script})
+
+SCRIPT_NAME="$(basename ${_this_script})"
+set -e
+RBF=""
+PCIE_CARD=""
+REGION=""
+function usage()
+{
+	echo
+	echo "Usage:" 
+	echo "-f=, --file="
+	echo "rbf:   path to rbf file to load"
+	echo "-d=, --device="
+	echo "Device:  pci id for card to load (e.g. 0000:03:00.0)"
+	echo "-r=, --region="
+	echo "Region: offset for the target region controller, unsigned integer"
+	echo "(e.g $SCRIPT_NAME -f=<rbf> --device=0000:03:00.0 -r=100)" 
+	echo
+	exit 1
+}
+
+for i in "$@"
+do
+case $i in
+	--file=*|-f=*)
+	RBF="${i#*=}"
+	echo "RBF is $RBF" 
+	;;
+	-d=*|--device=*)
+	PCIE_CARD="${i#*=}"
+	echo "PCIe device is $PCIE_CARD"
+	;;
+	-r=*|--region=*)
+	REGION="${i#*=}"
+	echo "Region offset is 0x$REGION"
+	;;
+	-h|--help=*)
+	echo "Printing usage"
+	usage
+	;;
+	*)
+	echo "Error in parameters"
+	usage
+	;;
+esac
+done
+
+if [ -z "$REGION" ]
+then
+	echo
+	echo "ERROR! No Region offset specified"
+	usage
+fi
+if [ -z "$RBF" ]
+then
+	echo 
+	echo "ERROR! No rbf specified."
+	usage
+fi
+
+if  [  ! -e $RBF  ]
+then
+	echo
+	echo "ERROR! rbf specified does not exist."
+	usage
+fi
+
+if [ -z "$PCIE_CARD" ]
+then
+	echo
+	echo "ERROR! No PCIe device specified using the -d= or --device= option"
+	usage
+fi
+
+FPGA_MGR=/sys/kernel/debug/fpga_manager/$PCIE_CARD
+STATE=/sys/kernel/debug/fpga_pcie/$PCIE_CARD/state
+
+if [ -e $STATE ]
+then
+	echo "found $STATE"
+else
+	echo "cannot find $STATE"
+	exit 1
+fi
+
+# probe pr ip and pr controller
+echo 3 > $STATE 2> /dev/null
+if [ $? != 0 ]
+then
+	echo "could not probe PR components"
+	exit 1
+fi
+
+if [ -e $FPGA_MGR ]
+then
+	echo "found fpga manager for $PCIE_CARD"
+else
+	echo "cannot find fpga manager for $PCIE_CARD"
+	exit 1
+fi
+
+
+cp $RBF /lib/firmware
+FW=$(basename $RBF)
+
+echo 1 > $FPGA_MGR/flags
+echo 10 > $FPGA_MGR/config_to
+
+$_this_dir/fpga_region_controller $PCIE_CARD enable $REGION
+
+echo $FW > $FPGA_MGR/firmware_name
+
+if [ $? != "0" ]
+then
+	echo
+	echo "Partial Reconfigured FAILED"
+	exit 1
+fi
+
+$_this_dir/fpga_region_controller $PCIE_CARD disable $REGION
