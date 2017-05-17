@@ -17,7 +17,7 @@ The Partial Reconfiguration Design Flow is supported in the Intel Quartus Prime&
    - Quartus Prime documentation for *Creating a Partial Reconfiguration Design* is available in the [Quartus Prime Pro Edition Handbook Volume 1](https://www.altera.com/content/dam/altera-www/global/en_US/pdfs/literature/hb/qts/qts-qpp-5v1.pdf)
 
 
-[Releases](releases/) are created for each major version of Quartus Prime Software. It is recommended to use the release for your version of Quartus Prime.
+[Releases](https://github.com/01org/fpga-partial-reconfig/releases) are created for each major version of Quartus Prime Software. It is recommended to use the release for your version of Quartus Prime.
 
 
 ![PR Logo](quartus-prime-partial-reconfiguration-diagram.jpg?raw=true)
