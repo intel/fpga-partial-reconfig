@@ -408,9 +408,9 @@ static int do_basic_dsp_persona(struct test_handle *th,
 #define DDR4_BUSY_REGISTER PR_HOST_REGISTER_1
 #define DDR4_START_MASK 2
 #define DDR4_LOAD_SEED_MASK 1
-#define DDR4_ADDRESS_MAX 67108864
+#define DDR4_ADDRESS_MAX 1 << 25
 #define DDR4_CAL_MASK 3
-#define DDR4_CAL_OFFSET 0x10100
+#define DDR4_CAL_OFFSET 0x10010
 static int run_ddr4_address_sweep(struct test_handle *th, uint32_t base_address, uint32_t final_offset, uint32_t calibration, uint32_t verbose)
 {
 	uint32_t data = 0;
@@ -453,8 +453,6 @@ static int do_ddr4_access_persona (struct  test_handle *th, uint32_t seed, uint3
 		calibration = 1;
 
 	VERBOSE_MESSAGE("\tDDR4 Calibration Check Successful\n");
-	VERBOSE_MESSAGE("\tDDR4 lfsr Seed 0x%08X Loading\n", seed);
-	VERBOSE_MESSAGE("\tDDR4 lfsr Seed 0x%08X Successfully loaded \n", seed);
 	VERBOSE_MESSAGE("\tStarting Test cases\n");
 
 	for( i = 1; i <= number_of_runs; i++) {
@@ -462,9 +460,8 @@ static int do_ddr4_access_persona (struct  test_handle *th, uint32_t seed, uint3
 		printf("Beginning test %d of %d\n", i, number_of_runs);
 		uint32_t rand_ready = 0;
 		data = seed;
+		VERBOSE_MESSAGE("\tDDR4 lfsr Seed 0x%08X Loading\n", seed);
 		(*th->write_u32)(th->arg, DDR4_SEED_ADDRESS, data);
-		data = 0 | (1 << DDR4_LOAD_SEED_MASK);
-		(*th->write_u32)(th->arg, PR_CONTROL_REGISTER, data);
 		data = 0 | (1 << DDR4_LOAD_SEED_MASK);
 		(*th->write_u32)(th->arg, PR_CONTROL_REGISTER, data);
 		data = 0;
@@ -474,6 +471,7 @@ static int do_ddr4_access_persona (struct  test_handle *th, uint32_t seed, uint3
 			printf("ERROR: failed to load seed \n");
 			exit(EXIT_FAILURE);
 		}
+		VERBOSE_MESSAGE("\tDDR4 lfsr Seed 0x%08X Successfully loaded \n", seed);
 
 		while(!rand_ready) {
 			base_address = rand();
