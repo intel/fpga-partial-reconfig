@@ -44,5 +44,3 @@ set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_zero_on
 set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_one_on
 set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_two_on
 set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_three_on
-
-set_global_assignment -name LAST_QUARTUS_VERSION "17.1.0 Pro Edition"

@@ -20,6 +20,7 @@ set_global_assignment -name DEVICE 10AS066N3F40E2SG
 set_global_assignment -name TOP_LEVEL_ENTITY top
 set_global_assignment -name SYSTEMVERILOG_FILE top.sv
 set_global_assignment -name SYSTEMVERILOG_FILE blinking_led.sv
+set_global_assignment -name SYSTEMVERILOG_FILE top_counter.sv
 set_global_assignment -name SDC_FILE blinking_led.sdc
 set_global_assignment -name SDC_FILE jtag.sdc
 
