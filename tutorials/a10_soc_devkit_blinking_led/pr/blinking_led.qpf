@@ -24,30 +24,29 @@
 # associated documentation or information are expressly subject 
 # to the terms and conditions of the Intel Program License 
 # Subscription Agreement, the Intel Quartus Prime License Agreement,
-# the Intel MegaCore Function License Agreement, or other 
-# applicable license agreement, including, without limitation, 
-# that your use is for the sole purpose of programming logic 
-# devices manufactured by Intel and sold by Intel or its 
-# authorized distributors.  Please refer to the applicable 
-# agreement for further details.
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details.
 #
 # -------------------------------------------------------------------------- #
 #
 # Quartus Prime
-# Version 17.0.0 Internal Build 220 02/02/2017 TO Pro Edition
-# Date created = 13:40:25  February 06, 2017
+# Version 17.1.0 Internal Build 109 05/31/2017 TO Pro Edition
+# Date created = 11:18:38  June 07, 2017
 #
 # -------------------------------------------------------------------------- #
 
-QUARTUS_VERSION = "17.0"
-DATE = "13:40:25  February 06, 2017"
+QUARTUS_VERSION = "17.1"
+DATE = "11:18:38  June 07, 2017"
 
 # Revisions
 
-PROJECT_REVISION = "blinking_led_slow"
-PROJECT_REVISION = "blinking_led"
 PROJECT_REVISION = "blinking_led_pr_charlie"
 PROJECT_REVISION = "blinking_led_pr_bravo"
 PROJECT_REVISION = "blinking_led_pr_alpha"
 PROJECT_REVISION = "blinking_led_default"
+PROJECT_REVISION = "blinking_led_slow"
 PROJECT_REVISION = "blinking_led_empty"
+PROJECT_REVISION = "blinking_led"

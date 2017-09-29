@@ -15,7 +15,7 @@
 
 
 set_global_assignment -name FAMILY "Arria 10"
-set_global_assignment -name DEVICE 10AS066N3F40E2SG
+set_global_assignment -name DEVICE 10AS066N3F40E2SGE2
 set_global_assignment -name TOP_LEVEL_ENTITY blinking_led_empty
 set_global_assignment -name SYSTEMVERILOG_FILE blinking_led_empty.sv
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
