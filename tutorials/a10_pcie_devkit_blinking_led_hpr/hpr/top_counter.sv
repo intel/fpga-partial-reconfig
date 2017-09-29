@@ -22,37 +22,21 @@
 `timescale 1 ps / 1 ps
 `default_nettype none
 
-module blinking_led_parent_slow(
-        // Control signals for the LEDs
-        led_two_on,
-        led_three_on,
-
-        // clock 
-        clock
+module top_counter(
+      // Control signals for the LEDs
+      output wire led_one_on,
+      output wire [31:0] count,
+      // clock 
+      input wire clock
 );
+   localparam COUNTER_TAP = 23;
 
-// assuming single bit control signal to turn LED 'on'
-output  wire    led_two_on;
-output  wire    led_three_on;
+   reg [31:0]      count_d;
 
-// clock 
-input   wire    clock;
-
-reg [31:0]      count;
-
-localparam COUNTER_TAP = 26;
-
-// The counter:
-always_ff @(posedge clock)
-begin
-        count <= count + 1;
-end
-
-assign  led_two_on    = count[COUNTER_TAP];
-
-blinking_led u_blinking_led(
-        .led_three_on           (led_three_on),
-        .clock                  (clock)
-);
-
+   assign count      =  count_d;
+   assign led_one_on =  count_d[COUNTER_TAP];
+   always_ff @(posedge clock) begin
+         
+      count_d <= count_d + 1;
+   end
 endmodule

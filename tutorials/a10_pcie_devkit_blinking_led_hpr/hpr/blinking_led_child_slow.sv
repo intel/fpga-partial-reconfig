@@ -19,40 +19,32 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+///////////////////////////////////////////////////////////
+// blinking_led_child_slow.v
+// Leds blink at a lower frequency
+///////////////////////////////////////////////////////////
 `timescale 1 ps / 1 ps
 `default_nettype none
 
-module blinking_led_parent(
-        // Control signals for the LEDs
-        led_two_on,
-        led_three_on,
+module blinking_led_child_slow (
 
-        // clock 
-        clock
+   // clock
+   input wire clock,
+   input wire [31:0] counter,
+
+
+   // Control signals for the LEDs
+   output wire led_three_on
 );
 
-// assuming single bit control signal to turn LED 'on'
-output  wire    led_two_on;
-output  wire    led_three_on;
+   localparam COUNTER_TAP = 27;
+   reg led_three_on_r;
 
-// clock 
-input   wire    clock;
 
-reg [31:0]      count;
-
-localparam COUNTER_TAP = 23;
-
-// The counter:
-always_ff @(posedge clock)
-begin
-        count <= count + 1;
-end
-
-assign  led_two_on    = count[COUNTER_TAP];
-
-blinking_led u_blinking_led(
-        .led_three_on           (led_three_on),
-        .clock                  (clock)
-);
+   assign led_three_on = led_three_on_r;
+   
+   always_ff @(posedge clock) begin
+      led_three_on_r   <= counter[COUNTER_TAP];
+   end
 
 endmodule

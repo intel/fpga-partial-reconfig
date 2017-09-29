@@ -44,7 +44,7 @@ define_pr_impl_partition -impl_rev_name blinking_led_pr_alpha \
 
 define_pr_impl_partition -impl_rev_name blinking_led_pr_bravo \
 	-partition_name pr_partition \
-	-source_rev_name blinking_led_slow \
+	-source_rev_name blinking_led_child_slow \
 	-source_partition root_partition \
 	-source_snapshot synthesized
 
@@ -56,7 +56,7 @@ define_pr_impl_partition -impl_rev_name blinking_led_pr_bravo \
 
 define_pr_impl_partition -impl_rev_name blinking_led_pr_charlie \
 	-partition_name pr_partition \
-	-source_rev_name blinking_led_empty \
+	-source_rev_name blinking_led_child_empty \
 	-source_partition root_partition \
 	-source_snapshot synthesized
 
@@ -68,7 +68,7 @@ define_pr_impl_partition -impl_rev_name blinking_led_pr_charlie \
 
 define_pr_impl_partition -impl_rev_name blinking_led_pr_delta \
 	-partition_name pr_partition \
-	-source_rev_name blinking_led_slow \
+	-source_rev_name blinking_led_child_slow \
 	-source_partition root_partition \
 	-source_snapshot synthesized
 
@@ -80,7 +80,7 @@ define_pr_impl_partition -impl_rev_name blinking_led_pr_delta \
 
 define_pr_impl_partition -impl_rev_name blinking_led_pr_emma \
 	-partition_name pr_partition \
-	-source_rev_name blinking_led_empty \
+	-source_rev_name blinking_led_child_empty \
 	-source_partition root_partition \
 	-source_snapshot synthesized
 

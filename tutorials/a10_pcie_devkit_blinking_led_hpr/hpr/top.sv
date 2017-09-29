@@ -23,8 +23,6 @@
 // top.v
 // a simple design to get LEDs blink using a 32-bit counter
 //
-// Some of the lines of code are commented out. They are not
-// needed since this is the flat implementation of the design
 //
 // As the accompanied application note document explains, the commented lines
 // would be needed as the design implementation migrates from flat to
@@ -35,130 +33,111 @@
 
 module top (
 
-    ////////////////////////////////////////////////////////////////////////
-    // Control signals for the LEDs
-    ////////////////////////////////////////////////////////////////////////
-    led_zero_on,
-    led_one_on,
-    led_two_on,
-    led_three_on,
+   ////////////////////////////////////////////////////////////////////////
+   // clock
+   ////////////////////////////////////////////////////////////////////////
+   input wire clock,
+   ////////////////////////////////////////////////////////////////////////
+   // Control signals for the LEDs
+   ////////////////////////////////////////////////////////////////////////
+   output reg led_zero_on,
+   output reg led_one_on,
+   output reg led_two_on,
+   output reg led_three_on
 
-    ////////////////////////////////////////////////////////////////////////
-    // clock
-    ////////////////////////////////////////////////////////////////////////
-    clock
 );
+   localparam COUNTER_TAP = 23;
+   ////////////////////////////////////////////////////////////////////////
+   // When moving from flat design to PR the following lines need to be 
+   // uncommented and commented respectively, the parameter ENABLE_PR
+   // controls the generation of necessary logic/modules to support PR
+   //
+   ////////////////////////////////////////////////////////////////////////
 
-    ////////////////////////////////////////////////////////////////////////
-    // assuming single bit control signal to turn LED 'on'
-    ////////////////////////////////////////////////////////////////////////
-    output  reg   led_zero_on;
-    output  reg   led_one_on;
-    output  reg   led_two_on;
-    output  reg   led_three_on;
+   ////////////////////////////////////////////////////////////////////////
+   // the 32-bit counters
+   ////////////////////////////////////////////////////////////////////////
+   reg      [31:0] count_d;
+   ////////////////////////////////////////////////////////////////////////
+   // wire declarations
+   ////////////////////////////////////////////////////////////////////////
+   wire            freeze;          // freeze is used during PR
+   wire      [2:0] pr_ip_status;
+   
+   wire     [31:0] count_u;
+   
+   wire            pr_led_two_on;
+   wire            pr_led_three_on;
 
-    ////////////////////////////////////////////////////////////////////////
-    // clock
-    ////////////////////////////////////////////////////////////////////////
-    input   wire    clock;
+   wire            led_zero_on_w;
+   wire            led_one_on_w;
+   wire            led_two_on_w;
+   wire            led_three_on_w;
 
-    ////////////////////////////////////////////////////////////////////////
-    // the half speed clock
-    ////////////////////////////////////////////////////////////////////////
-
-    localparam COUNTER_TAP = 24;
-
-    ////////////////////////////////////////////////////////////////////////
-    // the 32-bit counter
-    ////////////////////////////////////////////////////////////////////////
-    reg      [31:0] count;
-
-    ////////////////////////////////////////////////////////////////////////
-    // wire declarations
-    ////////////////////////////////////////////////////////////////////////
-    wire            freeze;          // freeze is not used until design is changed to PR
-    wire      [2:0] pr_ip_status;
-    wire            pr_led_two_on;
-    wire            pr_led_three_on;
-
-    wire            led_zero_on_w;
-    wire            led_one_on_w;
-    wire            led_two_on_w;
-    wire            led_three_on_w;
-
-
-    ////////////////////////////////////////////////////////////////////////
-    // The counter:
-    ////////////////////////////////////////////////////////////////////////
-    always_ff @(posedge clock)
-    begin
-        count <= count + 1;
-    end
   
-    ////////////////////////////////////////////////////////////////////////
-    // Register the LED outputs
-    ////////////////////////////////////////////////////////////////////////
-    always_ff @(posedge clock)
-    begin
-        led_zero_on <= led_zero_on_w;
-		  led_one_on <= led_one_on_w;
-		  led_two_on <= led_two_on_w;
-		  led_three_on <= led_three_on_w;
-    end
+   ////////////////////////////////////////////////////////////////////////
+   // Register the LED outputs and SUPR PR communication signals
+   ////////////////////////////////////////////////////////////////////////
+   always_ff @(posedge clock)
+   begin
+      led_zero_on <= led_zero_on_w;
+      led_one_on <= led_one_on_w;
+      led_two_on <= led_two_on_w;
+      led_three_on <= led_three_on_w;
+      count_d <= count_u;
+   end
 
-    ////////////////////////////////////////////////////////////////////////
-    // driving LEDs to show PR as the rest of logic is running
-    ////////////////////////////////////////////////////////////////////////
-    assign  led_zero_on_w   = count[COUNTER_TAP];
-    assign  led_one_on_w    = count[COUNTER_TAP];
+   //Static Region Driven LED
+   assign  led_zero_on_w   = count_d[COUNTER_TAP];
+   
 
-    ////////////////////////////////////////////////////////////////////////
-    // When moving from flat design to PR the following two
-    // lines of assign statements need to be used.  
-    // User needs to uncomment them.
-    //
-    // The output ports driven by PR logic need to stablized
-    // during PR reprograming.  Using "freeze" control signal,
-    // from PR IP, to drive these output to logic 1 during
-    // reconfiguration. The logic 1 is chosen because LED is active low.
-    ////////////////////////////////////////////////////////////////////////
-    // The following line is used in PR implementation
-    //assign led_two_on_w    = freeze ? 1'b1 : pr_led_two_on;
-    assign led_two_on_w = pr_led_two_on;
-    // The following line is used in PR implementation
-    //assign led_three_on_w  = freeze ? 1'b1 : pr_led_three_on;
-    assign led_three_on_w = pr_led_three_on;
-    ////////////////////////////////////////////////////////////////////////
-    // instance of the default persona
-    ////////////////////////////////////////////////////////////////////////
-    blinking_led_parent u_blinking_led_parent
-    (
-//      .led_two_on    (led_two_on),       // used in flat implementation
-        .led_two_on    (pr_led_two_on),    // used in PR implementation
+   ////////////////////////////////////////////////////////////////////////
+   // Only freeze child output, to see that parent still functions during
+   // PR
+   ////////////////////////////////////////////////////////////////////////
+   assign led_two_on_w    = pr_led_two_on;
+   assign led_three_on_w  = freeze ? 1'b1 : pr_led_three_on;
 
-//      .led_three_on  (led_three_on),     // used in flat implementation
-        .led_three_on  (pr_led_three_on),  // used in PR implementation
 
-        .clock         (clock)
-    );
+   ////////////////////////////////////////////////////////////////////////
+   // instance of the default counter
+   ////////////////////////////////////////////////////////////////////////
 
-    ////////////////////////////////////////////////////////////////////////
-    // when moving from flat design to PR then the following
-    // pr_ip needs to be instantiated in order to be able to
-    // partially reconfigure the design.
-    // 
-    // This tutorial implements PR over JTAG
-    ////////////////////////////////////////////////////////////////////////
-    pr_ip u_pr_ip
-    (
-        .clk           (clock),
-        .nreset        (1'b1),
-        .freeze        (freeze),
-        .pr_start      (1'b0),            // ignored for JTAG
-        .status        (pr_ip_status),
-        .data          (16'b0),
-        .data_valid    (1'b0),
-        .data_ready    ()
-    );
+   top_counter u_top_counter
+   (
+      .clock         (clock),
+      .count         (count_u),
+      .led_one_on    (led_one_on_w)
+   );
+   ////////////////////////////////////////////////////////////////////////
+   // instance of the default persona
+   ////////////////////////////////////////////////////////////////////////
+   blinking_led u_blinking_led
+   (
+      .clock         (clock),
+      .counter       (count_d),
+      .led_two_on    (pr_led_two_on),
+      .led_three_on  (pr_led_three_on)
+
+   );
+
+   ////////////////////////////////////////////////////////////////////////
+   // when moving from flat design to PR then the following
+   // pr_ip needs to be instantiated in order to be able to
+   // partially reconfigure the design.
+   // 
+   // This tutorial implements PR over JTAG
+   ////////////////////////////////////////////////////////////////////////
+   pr_ip u_pr_ip
+   (
+      .clk           (clock),
+      .nreset        (1'b1),
+      .freeze        (freeze),
+      .pr_start      (1'b0),            // ignored for JTAG
+      .status        (pr_ip_status),
+      .data          (16'b0),
+      .data_valid    (1'b0),
+      .data_ready    ()
+   );
 
 endmodule

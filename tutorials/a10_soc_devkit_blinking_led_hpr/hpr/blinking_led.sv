@@ -19,39 +19,34 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
- ///////////////////////////////////////////////////////////
-// blinking_led.v
-// a simple design to get LEDs blink using a 32-bit counter
-///////////////////////////////////////////////////////////
 `timescale 1 ps / 1 ps
 `default_nettype none
 
-module blinking_led (
-
-    // Control signals for the LEDs
-    led_three_on,
-
-    // clock 
-    clock
+module blinking_led(
+   // clock
+   input wire clock,
+   input wire [31:0] counter,
+   // Control signals for the LEDs
+   output wire led_two_on,
+   output wire led_three_on
 );
 
-    // assuming single bit control signal to turn LED 'on'
-    output  wire    led_three_on;
 
-    // clock 
-    input   wire    clock;
+   localparam COUNTER_TAP = 23;
+   
+   reg led_two_on_r;
+   assign  led_two_on    = led_two_on_r;
 
-    // the 32-bit counter
-    reg      [31:0] count;
+   // The counter:
+   always_ff @(posedge clock) begin
+         led_two_on_r <= counter[COUNTER_TAP];
+   end
 
-    localparam COUNTER_TAP = 23;
 
-    // The counter:
-    always_ff @(posedge clock)
-    begin
-        count <= count + 1;
-    end
-
-   assign  led_three_on  = count[COUNTER_TAP];
+   blinking_led_child u_blinking_led_child (
+         .led_three_on           (led_three_on),
+         .counter                (counter),
+         .clock                  (clock)
+   );
 
 endmodule

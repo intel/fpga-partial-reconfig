@@ -19,10 +19,14 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+///////////////////////////////////////////////////////////
+// blinking_led_child.v
+// a persona to drive LEDs ON
+///////////////////////////////////////////////////////////
 `timescale 1 ps / 1 ps
 `default_nettype none
 
-module blinking_led_slow(
+module blinking_led_child (
 
    // clock
    input wire clock,
@@ -30,26 +34,17 @@ module blinking_led_slow(
 
 
    // Control signals for the LEDs
-   output wire led_two_on,
    output wire led_three_on
 
 );
+   localparam COUNTER_TAP = 23;
+   reg led_three_on_r;
 
 
-   localparam COUNTER_TAP = 27;
-   reg led_two_on_r;
-   assign  led_two_on    = led_two_on_r;
-
-   // The counter:
+   assign led_three_on   = led_three_on_r;
+   
    always_ff @(posedge clock) begin
-         led_two_on_r <= counter[COUNTER_TAP];
+      led_three_on_r   <= counter[COUNTER_TAP];
    end
-
-
-   blinking_led_child u_blinking_led_child(
-         .led_three_on           (led_three_on),
-         .counter             (counter),
-         .clock                  (clock)
-   );
 
 endmodule

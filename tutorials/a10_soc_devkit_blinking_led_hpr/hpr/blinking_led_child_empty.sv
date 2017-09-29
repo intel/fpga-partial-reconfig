@@ -20,28 +20,26 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ///////////////////////////////////////////////////////////
-// blinking_led_empty.v
-// a persona to drive LEDs ON
+// blinking_led_child_empty.v
+// LED's remain always off
 ///////////////////////////////////////////////////////////
 `timescale 1 ps / 1 ps
 `default_nettype none
 
-module blinking_led_empty (
+module blinking_led_child_empty (
 
-    // Control signals for the LEDs
-    led_three_on,
+   // clock
+   input wire clock,
+   input wire [31:0] counter,
 
-    // clock
-    clock
+
+   // Control signals for the LEDs
+   output wire led_three_on
+
 );
 
-    // Control signal to turn LED 'on'
-    output  wire    led_three_on;
 
-    // clock
-    input   wire    clock;
-
-    // LED is active low
-    assign  led_three_on  = 1'b0;
+   // LED is active low
+   assign  led_three_on  = 1'b0;
 
 endmodule
