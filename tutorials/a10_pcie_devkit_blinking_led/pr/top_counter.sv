@@ -19,29 +19,24 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-///////////////////////////////////////////////////////////
-// blinking_led_empty.v
-// LED's remain always
-///////////////////////////////////////////////////////////
 `timescale 1 ps / 1 ps
 `default_nettype none
 
-module blinking_led_empty (
-
-   // clock
-   input wire clock,
-   input wire [31:0] counter,
-
-
-   // Control signals for the LEDs
-   output wire led_two_on,
-   output wire led_three_on
-
+module top_counter(
+      // Control signals for the LEDs
+      output wire led_one_on,
+      output wire [31:0] count,
+      // clock 
+      input wire clock
 );
+   localparam COUNTER_TAP = 23;
 
+   reg [31:0]      count_d;
 
-   // LED is active low
-   assign  led_two_on  = 1'b0;
-   assign  led_three_on  = 1'b0;
-
+   assign count      =  count_d;
+   assign led_one_on =  count_d[COUNTER_TAP];
+   always_ff @(posedge clock) begin
+         
+      count_d <= count_d + 1;
+   end
 endmodule

@@ -21,41 +21,34 @@
 
 ///////////////////////////////////////////////////////////
 // blinking_led.v
-// a simple design to get LEDs blink using a 32-bit counter
+// a persona to drive LEDs ON
 ///////////////////////////////////////////////////////////
 `timescale 1 ps / 1 ps
 `default_nettype none
 
-module blinking_led
-    (
+module blinking_led (
 
-     // Control signals for the LEDs
-     led_two_on,
-     led_three_on,
+   // clock
+   input wire clock,
+   input wire [31:0] counter,
 
-     // clock 
-     clock
-     );
 
-    // assuming single bit control signal to turn LED 'on'
-    output  wire    led_two_on;
-    output  wire    led_three_on;
+   // Control signals for the LEDs
+   output wire led_two_on,
+   output wire led_three_on
 
-    // clock 
-    input   wire    clock;
+);
+   localparam COUNTER_TAP = 23;
+   reg led_two_on_r;
+   reg led_three_on_r;
 
-    // the 32-bit counter
-    reg [31:0]      count;
 
-    localparam COUNTER_TAP = 23;
-
-    // The counter:
-    always_ff @(posedge clock)
-    begin
-        count <= count + 1;
-    end
-
-    assign  led_two_on    = count[COUNTER_TAP];
-    assign  led_three_on  = ~count[COUNTER_TAP];
+   assign led_two_on   = led_two_on_r;
+   assign led_three_on = led_three_on_r;
+   
+   always_ff @(posedge clock) begin
+      led_three_on_r <= counter[COUNTER_TAP];
+      led_two_on_r   <= counter[COUNTER_TAP];
+   end
 
 endmodule
