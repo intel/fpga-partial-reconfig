@@ -25,6 +25,7 @@
 class pr_region_base_seq_c extends uvm_sequence #(pr_region_pkg::pr_region_seq_item_c);
    `uvm_object_utils(pr_region_base_seq_c)
 
+   int pr_region_id;
    // persona_select should be set after the object is created
    int persona_select;
 
@@ -32,6 +33,7 @@ class pr_region_base_seq_c extends uvm_sequence #(pr_region_pkg::pr_region_seq_i
       super.new(name);
 
       persona_select = -1;
+      pr_region_id = -1;
    endfunction
 
    function set_persona_select(int sel);
@@ -43,7 +45,7 @@ endclass
 
 class pr_region_set_persona_seq_c extends pr_region_base_seq_c;
    `uvm_object_utils(pr_region_set_persona_seq_c)
-
+   
    function new(string name = "Set persona sequence (No PR)");
       super.new(name);
    endfunction
@@ -61,6 +63,7 @@ class pr_region_set_persona_seq_c extends pr_region_base_seq_c;
       tr.pr_activate_enabled = 0;
       tr.persona_select = persona_select;
       tr.persona_select_enabled = 1;
+      tr.pr_region_id = pr_region_id;
       finish_item(tr);
    endtask
 
@@ -84,6 +87,7 @@ class pr_region_assert_pr_to_persona_seq_c extends pr_region_base_seq_c;
       tr.pr_activate_enabled = 1;
       tr.persona_select = persona_select;
       tr.persona_select_enabled = 1;
+      tr.pr_region_id = pr_region_id;
       finish_item(tr);
    endtask
 
@@ -105,6 +109,7 @@ class pr_region_assert_pr_seq_c extends pr_region_base_seq_c;
       tr.pr_activate = 1;
       tr.pr_activate_enabled = 1;
       tr.persona_select_enabled = 0;
+      tr.pr_region_id = pr_region_id;
       finish_item(tr);
    endtask
 
@@ -126,6 +131,7 @@ class pr_region_deassert_pr_seq_c extends pr_region_base_seq_c;
       tr.pr_activate = 0;
       tr.pr_activate_enabled = 1;
       tr.persona_select_enabled = 0;
+      tr.pr_region_id = pr_region_id;
       finish_item(tr);
    endtask
 

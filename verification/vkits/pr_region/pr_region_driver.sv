@@ -26,6 +26,7 @@ class pr_region_driver_c extends uvm_driver #(pr_region_seq_item_c);
 
    `uvm_component_utils(pr_region_driver_c)
 
+   bit enable_region_id = 0;
    int pr_region_id = -1;
    REQ req;
    int default_persona_select = 0;
@@ -49,14 +50,24 @@ class pr_region_driver_c extends uvm_driver #(pr_region_seq_item_c);
       forever begin
          seq_item_port.get_next_item(req);
 
+         `uvm_info("PR region tr: ", req.convert2string(), UVM_MEDIUM)
+         `uvm_info("pr_drv", $sformatf("PR region tr:\n%s", req.sprint()), UVM_HIGH);
+         if (enable_region_id) begin
+            `altr_assert(req.pr_region_id != -1)
+         end
+
+
          // Only process for this region ID
-         if (req.pr_region_id == pr_region_id) begin
+         if ((req.pr_region_id == pr_region_id) || !enable_region_id) begin
             if (req.pr_activate_enabled) begin
                vif.pr_activate <= req.pr_activate;
             end
             if (req.persona_select_enabled) begin
                vif.persona_select <= req.persona_select;
             end
+         end
+         else begin
+            `uvm_info("pr_drv", $sformatf("Ignoring transaction as pr_region_id != %0d : PR region tr:\n%s", pr_region_id, req.sprint()), UVM_HIGH);
          end
 
          seq_item_port.item_done();

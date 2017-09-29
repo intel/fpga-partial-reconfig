@@ -32,11 +32,21 @@ class pr_region_seq_item_c extends uvm_sequence_item;
 
    int pr_region_id;
 
-   `uvm_object_utils(pr_region_seq_item_c)
+   `uvm_object_utils_begin(pr_region_seq_item_c)
+
+   `uvm_field_int(pr_activate, UVM_DEFAULT)
+   `uvm_field_int(pr_activate_enabled, UVM_DEFAULT | UVM_DEC)
+   `uvm_field_int(persona_select, UVM_DEFAULT)
+   `uvm_field_int(persona_select_enabled, UVM_DEFAULT | UVM_DEC)
+   `uvm_field_int(pr_region_id, UVM_DEFAULT | UVM_DEC)
+
+   `uvm_object_utils_end
+
 
    function new(string name = "pr_region_seq_item");
       super.new(name);
 
+      pr_region_id = -1;
       pr_activate_enabled = 0;
       persona_select_enabled = 0;
 
@@ -46,18 +56,11 @@ class pr_region_seq_item_c extends uvm_sequence_item;
    function void do_copy(uvm_object rhs);
       pr_region_seq_item_c rhs_;
 
+      super.do_copy(rhs);
+
       if (!$cast(rhs_, rhs)) begin
          `uvm_fatal("do_copy", "cast failed, check types");
       end
-
-      pr_activate = rhs_.pr_activate;
-      pr_activate_enabled = rhs_.pr_activate_enabled;
-
-      persona_select = rhs_.persona_select;
-      persona_select_enabled = rhs_.persona_select_enabled;
-
-      pr_region_id = rhs_.pr_region_id;
-
    endfunction
 
    function bit do_compare(uvm_object rhs, uvm_comparer comparer);
@@ -68,19 +71,17 @@ class pr_region_seq_item_c extends uvm_sequence_item;
          `uvm_fatal("do_copy", "cast failed, check types");
       end
 
-      eq = super.do_compare(rhs, comparer);
-
-      eq &= (pr_activate_enabled === tr.pr_activate_enabled);
+      eq &= (pr_activate_enabled == tr.pr_activate_enabled);
       if (pr_activate_enabled) begin
-         eq &=(pr_activate === tr.pr_activate);
+         eq &=(pr_activate == tr.pr_activate);
       end
 
-      eq &= (persona_select_enabled === tr.persona_select_enabled);
+      eq &= (persona_select_enabled == tr.persona_select_enabled);
       if (persona_select_enabled) begin
-         eq &=(persona_select === tr.persona_select);
+         eq &=(persona_select == tr.persona_select);
       end
 
-      eq &= (pr_region_id === tr.pr_region_id);
+      eq &= (pr_region_id == tr.pr_region_id);
 
       return (eq);
    endfunction
