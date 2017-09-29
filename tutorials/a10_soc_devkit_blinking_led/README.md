@@ -1,6 +1,6 @@
 # Arria 10 Blinking LED Partial Reconfiguration Tutorial for the Arria 10 SoC Development Kit
 
-This readme file accompanies the Arria 10 Blinking LED Partial Reconfiguration Tutorial for the Arria 10 SoC Development Kit. This directory contains the design files for the traditional PR tutorial. This version of the design has been verified using Quartus Prime Pro v17.0.
+This readme file accompanies the Arria 10 Blinking LED Partial Reconfiguration Tutorial for the Arria 10 SoC Development Kit. This directory contains the design files for the traditional PR tutorial. This version of the design has been verified using Quartus Prime Pro v17.1.
 
 This readme file contains the following information:
 
@@ -43,6 +43,6 @@ This readme file contains the following information:
 
 ## System Requirements
 
-*  Quartus Prime Pro Edition software version 17.0
+*  Quartus Prime Pro Edition software version 17.1
 *  [Arria 10 SoC development kit](https://www.altera.com/products/boards_and_kits/dev-kits/altera/arria-10-soc-development-kit.html)
 
