@@ -15,6 +15,7 @@ The Partial Reconfiguration Design Flow is supported in the Intel Quartus Prime&
    - Simulation of Partial Reconfiguration that allows you to observe the resulting change and the intermediate effect in a reconfiguration partition
    - Signal Tap debug with simultaneous acquisition of both the Static region and Partial Reconfiguration regions
    - Quartus Prime documentation for *Creating a Partial Reconfiguration Design* is available in the [Quartus Prime Pro Edition Handbook Volume 1](https://www.altera.com/content/dam/altera-www/global/en_US/pdfs/literature/hb/qts/qts-qpp-5v1.pdf)
+   - Refer to the [Partial Reconfiguration Solutions IP User Guide](https://www.altera.com/content/dam/altera-www/global/en_US/pdfs/literature/ug/ug-20066.pdf) for information about the Intel FPGA Partial Reconfiguration IP cores
 
 
 [Releases](https://github.com/01org/fpga-partial-reconfig/releases) are created for each major version of Quartus Prime Software. It is recommended to use the release for your version of Quartus Prime.
