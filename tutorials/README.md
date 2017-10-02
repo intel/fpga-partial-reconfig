@@ -6,7 +6,14 @@ This directory contains tutorials related to the Intel FPGA Partial Reconfigurat
 
 
 
-- [Arria 10 SoC Devkit Blinking LED PR Tutorial](a10_soc_devkit_blinking_led/) - Contains traditional PR tutorial
-- [Arria 10 SoC Devkit Blinking LED HPR Tutorial](a10_soc_devkit_blinking_led_hpr/) - Contains hierarchical PR tutorial
-- [Arria 10 GX FPGA Devkit Blinking PR LED Tutorial](a10_pcie_devkit_blinking_led/) - Contains traditional PR tutorial
-- [Arria 10 GX FPGA Devkit Blinking HPR LED Tutorial](a10_pcie_devkit_blinking_led_hpr/) - Contains hierarchical PR tutorial
+### Arria 10
+- [Arria 10 SoC Devkit Blinking LED PR Tutorial](a10_soc_devkit_blinking_led/) - Contains Arria 10 traditional PR tutorial
+- [Arria 10 SoC Devkit Blinking LED HPR Tutorial](a10_soc_devkit_blinking_led_hpr/) - Contains Arria 10 hierarchical PR tutorial
+- [Arria 10 GX FPGA Devkit Blinking LED PR Tutorial](a10_pcie_devkit_blinking_led/) - Contains Arria 10 traditional PR tutorial
+- [Arria 10 GX FPGA Devkit Blinking LED HPR Tutorial](a10_pcie_devkit_blinking_led_hpr/) - Contains Arria 10 hierarchical PR (HPR) tutorial
+- [Arria 10 GX FPGA Devkit Blinking LED SUPR Tutorial](a10_pcie_devkit_blinking_led_supr/) - Contains Arria 10 static update PR (SUPR) tutorial
+
+### Stratix 10
+- [Stratix 10 GX FPGA Devkit Blinking LED PR Tutorial](s10_pcie_devkit_blinking_led/) - Contains Stratix 10 traditional PR tutorial
+- [Stratix 10 GX FPGA Devkit Blinking LED HPR Tutorial](s10_pcie_devkit_blinking_led_hpr/) - Contains Stratix 10 hierarchical PR (HPR) tutorial
+- [Stratix 10 GX FPGA Devkit Blinking LED SUPR Tutorial](s10_pcie_devkit_blinking_led_supr/) - Contains Stratix 10 static update PR (SUPR) tutorial
