@@ -297,6 +297,7 @@ static int freeze_bridge_enable (struct  device_handle *dh, uint32_t ctlr_offset
 		return -EINVAL;
 	}
 	
+	printf("Asserting region freeze\n");
 	(*dh->write_u32)(dh->arg, (ctlr_offset + FREEZE_CTRL_OFFSET), FREEZE_REQ);
 	freeze_bridge_req_ack(dh, ctlr_offset, FREEZE_REQ_DONE);
 	printf("Asserting region reset\n");
@@ -322,10 +323,14 @@ static int freeze_bridge_disable (struct  device_handle *dh, uint32_t ctlr_offse
 		printf("\t%s bridge is still frozen %d\n", __func__, status);
 		return -EINVAL;
 	}
-	
+
+	printf("Removing region reset\n");
+	(*dh->read_u32)(dh->arg, (ctlr_offset + FREEZE_CTRL_OFFSET), &status);
+        status = status ^ RESET_REQ;
+        (*dh->write_u32)(dh->arg, (ctlr_offset + FREEZE_CTRL_OFFSET), status);
 	(*dh->write_u32)(dh->arg, (ctlr_offset + FREEZE_CTRL_OFFSET), UNFREEZE_REQ);
 	freeze_bridge_req_ack(dh, ctlr_offset, UNFREEZE_REQ_DONE);
-	printf("Removing region reset\n");
+	printf("Removing region freeze\n");
 	(*dh->write_u32)(dh->arg, (ctlr_offset + FREEZE_CTRL_OFFSET), 0);
 	printf("Device Ready\n");
 	return 0;
