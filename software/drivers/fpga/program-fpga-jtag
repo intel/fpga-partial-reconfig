@@ -28,6 +28,7 @@
 #     OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 #     EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
+
 _this_script=$(cd ${0%[\\/]*} && echo $(pwd 2>/dev/null)/${0##*/})
 
 SCRIPT_NAME="$(basename ${_this_script})"
