@@ -24,33 +24,32 @@
 
 // This is a dsp persona, two 27 bit inputs to a dsp that produces a 54 bit product
 
-module basic_dsp_persona 
-   (
-    input wire         pr_region_clk , 
-    input wire         pr_logic_rst , 
-    // DDR4 interface
-    input wire         emif_avmm_waitrequest , 
-    input wire [511:0] emif_avmm_readdata , 
-    input wire         emif_avmm_readdatavalid , 
-    output reg [4:0]   emif_avmm_burstcount , 
-    output reg [511:0] emif_avmm_writedata , 
-    output reg [24:0]  emif_avmm_address , 
-    output reg         emif_avmm_write , 
-    output reg         emif_avmm_read , 
-    output reg [63:0]  emif_avmm_byteenable , 
-    output reg         emif_avmm_debugaccess , 
-    // AVMM interface
-    output reg         pr_region_avmm_waitrequest , 
-    output reg [31:0]  pr_region_avmm_readdata , 
-    output reg         pr_region_avmm_readdatavalid, 
-    input wire [0:0]   pr_region_avmm_burstcount , 
-    input wire [31:0]  pr_region_avmm_writedata , 
-    input wire [13:0]  pr_region_avmm_address , 
-    input wire         pr_region_avmm_write , 
-    input wire         pr_region_avmm_read , 
-    input wire [3:0]   pr_region_avmm_byteenable , 
-    input wire         pr_region_avmm_debugaccess    
-    );
+module basic_dsp_persona (
+   input  wire         pr_region_clk ,
+   input  wire         pr_logic_rst , 
+   input  wire         emif_usr_clk ,
+   input  wire         emif_usr_rst_n ,
+   // DDR4 interface
+   input  wire         emif_avmm_waitrequest , 
+   input  wire [511:0] emif_avmm_readdata , 
+   input  wire         emif_avmm_readdatavalid , 
+   output wire [6:0]   emif_avmm_burstcount , 
+   output wire [511:0] emif_avmm_writedata , 
+   output wire [24:0]  emif_avmm_address , 
+   output wire         emif_avmm_write , 
+   output wire         emif_avmm_read , 
+   output wire [63:0]  emif_avmm_byteenable , 
+   // AVMM interface
+   output wire         pr_region_avmm_waitrequest ,
+   output wire [31:0]  pr_region_avmm_readdata ,
+   output wire         pr_region_avmm_readdatavalid,
+   input  wire [0:0]   pr_region_avmm_burstcount ,
+   input  wire [31:0]  pr_region_avmm_writedata ,
+   input  wire [13:0]  pr_region_avmm_address ,
+   input  wire         pr_region_avmm_write ,
+   input  wire         pr_region_avmm_read ,
+   input  wire [3:0]   pr_region_avmm_byteenable
+);
 
    //Define Number of IO registers, base case is 8 input and 8 output
    //Additional regisetrs requires modification of the reg_file.qsys
@@ -63,9 +62,9 @@ module basic_dsp_persona
    wire [31:0]         persona_id;
    wire [31:0]         host_cntrl_register;
 
-   basic_dsp_top #( .REG_FILE_IO_SIZE(REG_FILE_IO_SIZE) ) 
-    u_pr_logic 
-   (
+   basic_dsp_top #(
+      .REG_FILE_IO_SIZE(REG_FILE_IO_SIZE)
+   ) u_pr_logic (
       //clock
       .clk                       ( pr_region_clk ),                      
       .pr_logic_rst              ( pr_logic_rst ),   
@@ -87,9 +86,9 @@ module basic_dsp_persona
       .emif_avmm_address         ( emif_avmm_address ),
       .emif_avmm_write           ( emif_avmm_write ),
       .emif_avmm_read            ( emif_avmm_read ),
-      .emif_avmm_byteenable      ( emif_avmm_byteenable ),
-      .emif_avmm_debugaccess     ( emif_avmm_debugaccess )                 
+      .emif_avmm_byteenable      ( emif_avmm_byteenable )
    );
+   
    //////Register Address Map//////////////////
    //    reg_file_persona_id         = 0x0000
    //    reg_file_control_register   = 0x0010
@@ -130,7 +129,7 @@ module basic_dsp_persona
          .reg_file_mm_bridge_s0_write              ( pr_region_avmm_write ),
          .reg_file_mm_bridge_s0_read               ( pr_region_avmm_read ),
          .reg_file_mm_bridge_s0_byteenable         ( pr_region_avmm_byteenable ),
-         .reg_file_mm_bridge_s0_debugaccess        ( pr_region_avmm_debugaccess ),
+         .reg_file_mm_bridge_s0_debugaccess        ( 1'b0 ),
          //Host -> PR System registers
          .reg_file_host_pr_0_export                ( host_pr[0] ),
          .reg_file_host_pr_1_export                ( host_pr[1] ),

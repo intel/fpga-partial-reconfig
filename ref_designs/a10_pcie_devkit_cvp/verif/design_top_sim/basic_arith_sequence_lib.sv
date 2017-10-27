@@ -26,9 +26,9 @@
 class basic_arith_persona_base_seq_c extends persona_base_seq_c;
    `uvm_object_utils(basic_arith_persona_base_seq_c)
 
-   localparam OPERAND_ADDRESS = PR_REGION_0_BASE_ADDRESS + 32'hA0;
-   localparam INCREMENT_ADDRESS = PR_REGION_0_BASE_ADDRESS + 32'hB0;
-   localparam RESULT_ADDRESS = PR_REGION_0_BASE_ADDRESS + 32'h20;
+   localparam OPERAND_ADDRESS = PR_REGION_0_HOST_TO_PR_0_ADDRESS;
+   localparam INCREMENT_ADDRESS = PR_REGION_0_HOST_TO_PR_1_ADDRESS;
+   localparam RESULT_ADDRESS = PR_REGION_0_PR_TO_HOST_0_ADDRESS;
 
    function new(string name = "[name]]");
       super.new(name);
@@ -153,9 +153,9 @@ class basic_arith_rand_avmm_single_seq_c extends basic_arith_persona_base_seq_c;
 
    constraint valid_address {
       (request == avalon_mm_pkg::REQ_IDLE) -> address == 0;
-    (request == avalon_mm_pkg::REQ_READ) -> address inside {PERSONA_ID_ADDRESS, RESULT_ADDRESS, OPERAND_ADDRESS, INCREMENT_ADDRESS};
+    (request == avalon_mm_pkg::REQ_READ) -> address inside {PR_REGION_0_PERSONA_ID_ADDRESS, RESULT_ADDRESS, OPERAND_ADDRESS, INCREMENT_ADDRESS};
 //      (request == avalon_mm_pkg::REQ_READ) -> address inside {[0:9'h11f]}; KALEN HACK: Scoreboard model does not completely model all registers
-    (request == avalon_mm_pkg::REQ_WRITE) -> address inside {PERSONA_ID_ADDRESS, RESULT_ADDRESS, OPERAND_ADDRESS, INCREMENT_ADDRESS};
+    (request == avalon_mm_pkg::REQ_WRITE) -> address inside {PR_REGION_0_PERSONA_ID_ADDRESS, RESULT_ADDRESS, OPERAND_ADDRESS, INCREMENT_ADDRESS};
 //      (request == avalon_mm_pkg::REQ_WRITE) -> address inside {[0:9'h11f]};
       address % 4 == 0;
    }

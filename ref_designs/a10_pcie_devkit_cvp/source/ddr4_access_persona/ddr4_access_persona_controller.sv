@@ -47,7 +47,6 @@ module ddr4_access_persona_controller #( parameter REG_FILE_IO_SIZE = 8 )
       input wire         busy_reg,
       output reg         start_operation,
       output reg         load_seed,
-      output reg [7:0]   limit,
       output reg [31:0]  mem_addr,
       output wire        post_wr_pulse,
       output reg [31:0]  seed,
@@ -58,6 +57,7 @@ module ddr4_access_persona_controller #( parameter REG_FILE_IO_SIZE = 8 )
    reg [31:0]          mem_address_q;
    reg                 clr_io_reg_d;
    reg                 start_d;
+   reg [31:0]          final_address_q;
    reg                 start_pulse;
    assign persona_id = 32'hef;
    assign pr_host[0] = performance_cntr;
@@ -69,7 +69,7 @@ module ddr4_access_persona_controller #( parameter REG_FILE_IO_SIZE = 8 )
    assign pr_host[6] = 32'h0;
    assign pr_host[7] = 32'h0;
    assign post_wr_pulse = ((mem_addr != mem_address_q) && ~pr_logic_rst);
-   always @(posedge clk )  begin
+   always @(posedge clk or posedge pr_logic_rst)  begin
 
       if (  pr_logic_rst == 1'b1 ) begin
          start_operation       <= 1'b0;
@@ -77,6 +77,10 @@ module ddr4_access_persona_controller #( parameter REG_FILE_IO_SIZE = 8 )
          start_pulse           <= 1'b0;
          start_d               <= 1'b0;
          mem_addr              <= 0;
+         final_address_q       <= 0;
+         final_address         <= 0;
+         seed                  <= 0;
+         load_seed             <= 1'b0;
       end
       else begin
          //Control registers
@@ -92,12 +96,13 @@ module ddr4_access_persona_controller #( parameter REG_FILE_IO_SIZE = 8 )
          start_pulse           <= ~start_d && host_cntrl_register[2];
          mem_addr              <= host_pr[0][31:0];
          seed                  <= host_pr[1][31:0];
-         final_address         <= mem_addr + host_pr[2][31:0];
+         final_address_q       <= host_pr[0][31:0] + host_pr[2][31:0];
+         final_address         <= final_address_q;
       end
 
    end 
    // Register clear control logic
-   always @(posedge clk )  begin
+   always @(posedge clk or posedge pr_logic_rst)  begin
       if (  pr_logic_rst == 1'b1 ) begin
          clr_io_reg_d <= 1'b0;
          clr_io_reg <= 1'b0;

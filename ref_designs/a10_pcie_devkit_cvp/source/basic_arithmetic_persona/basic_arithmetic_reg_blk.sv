@@ -51,7 +51,6 @@ module basic_arithmetic_reg_blk
    reg [31:0]          pr_region_avmm_readdata_reg;
    reg                 pr_region_avmm_readdatavalid_reg;
    reg                 clr_io_reg_q;
-   reg                 clr_io_reg;
    reg [31:0]          unsafe_counter;
    reg [31:0]          safe_counter;
 

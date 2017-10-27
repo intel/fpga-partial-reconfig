@@ -42,7 +42,7 @@ module gol_cell
    assign my_status_local = my_status_reg; 
    assign num_ones = neighbors[7] + neighbors[6] + neighbors[5] + neighbors[4] + neighbors[3] + neighbors[2] + neighbors[1] + neighbors[0];
 
-   always_ff @(posedge clk ) begin
+   always_ff @(posedge clk or posedge rst ) begin
       if(rst == 1'b1) begin
          my_status_reg <= 1'b0;
       end

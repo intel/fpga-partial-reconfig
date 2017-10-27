@@ -38,18 +38,17 @@ module ddr_wr_rd
       input wire         clr_io_reg,
       input wire         start_ddr_wr_rd,
 
-      input reg [24:0]   target_address,
-      input reg [511:0]  target_data,
+      input wire [24:0]   target_address,
+      input wire [511:0]  target_data,
       input wire         emif_avmm_waitrequest,
       input wire [511:0] emif_avmm_readdata,
       input wire         emif_avmm_readdatavalid,
-      output reg [4:0]   emif_avmm_burstcount,
+      output reg [6:0]   emif_avmm_burstcount,
       output reg [511:0] emif_avmm_writedata,
       output reg [24:0]  emif_avmm_address,
       output reg         emif_avmm_write,
       output reg         emif_avmm_read,
       output reg [63:0]  emif_avmm_byteenable,
-      output reg         emif_avmm_debugaccess,
       // Output Results
       output reg         pass,
       output reg         fail     
@@ -92,20 +91,22 @@ module ddr_wr_rd
    end
    assign emif_avmm_address      = reference_addr;   // Use the same address when we read and write
    assign emif_avmm_byteenable   = {64{1'b1}};       // set all bits to 1
-   assign emif_avmm_burstcount   = 5'b00001;
-   assign emif_avmm_debugaccess  = 1'b0;
+   assign emif_avmm_burstcount   = 7'b0000001;
 
 
-   always_ff @(posedge pr_region_clk ) begin
+   always_ff @(posedge pr_region_clk or posedge pr_logic_rst ) begin
 
-      if (  ( pr_logic_rst == 1'b1 ) || ( clr_io_reg == 1'b1 ) ) begin
+      if ( pr_logic_rst == 1'b1 ) begin
 
          curr_state <= IDLE;
       end
       else begin
-
-         curr_state <= next_state;
-
+         if(clr_io_reg == 1'b1) begin
+            curr_state <= IDLE;
+         end
+         else begin
+            curr_state <= next_state;
+         end
       end
    end
 
@@ -178,70 +179,74 @@ module ddr_wr_rd
    end
 
 
-   always_ff @(posedge pr_region_clk) begin
+   always_ff @(posedge pr_region_clk or posedge pr_logic_rst ) begin
 
-      if ( ( pr_logic_rst == 1'b1 ) || ( clr_io_reg == 1'b1 )) begin
-
+      if ( pr_logic_rst == 1'b1) begin
          emif_avmm_write <= 1'b0;
          emif_avmm_read <= 1'b0; 
          pass <= 1'b0;
          fail <= 1'b0;
-
       end
       else begin
-         // Default values
-         emif_avmm_write <= 1'b0;
-         emif_avmm_read <= 1'b0; 
-         pass <= 1'b0;
-         fail <= 1'b0;
-
-         unique case ( next_state )
-
-            IDLE: begin
-            end
-
-            WRITE: begin
-               emif_avmm_write  <= 1'b1;
-            end
-
-            WAIT_WRITE_DONE: begin                    
-               if ( emif_avmm_waitrequest == 1'b1 ) begin
-                  emif_avmm_write <= 1'b1;
+         if ( clr_io_reg == 1'b1 ) begin 
+            // Default values
+            emif_avmm_write <= 1'b0;
+            emif_avmm_read <= 1'b0; 
+            pass <= 1'b0;
+            fail <= 1'b0;
+         end 
+         else begin
+            emif_avmm_write <= 1'b0;
+            emif_avmm_read <= 1'b0; 
+            pass <= 1'b0;
+            fail <= 1'b0;
+            unique case ( next_state )
+               IDLE: begin
                end
-            end
 
-            READ: begin
-               emif_avmm_read   <= 1'b1;
-            end
-
-            WAIT_READ_ACCEPTED: begin
-               if ( emif_avmm_waitrequest == 1'b1 ) begin
-                  emif_avmm_read <= 1'b1;
+               WRITE: begin
+                  emif_avmm_write  <= 1'b1;
                end
-            end
 
-            WAIT_READ_DONE: begin
-            end
-            
-            DATA_VERIFICATION: begin
-               if ( emif_avmm_readdatavalid == 1'b1 ) begin
-                  if (emif_avmm_readdata == reference_data) begin
-                     pass <= 1'b1;
-                  end
-                  else begin
-                     fail <= 1'b1;
+               WAIT_WRITE_DONE: begin                    
+                  if ( emif_avmm_waitrequest == 1'b1 ) begin
+                     emif_avmm_write <= 1'b1;
                   end
                end
-            end
 
-            default: begin
-               emif_avmm_write <= 1'b0;
-               emif_avmm_read <= 1'b0; 
-               pass <= 1'b0;
-               fail <= 1'b0;
+               READ: begin
+                  emif_avmm_read   <= 1'b1;
+               end
 
-            end
-         endcase
-      end
+               WAIT_READ_ACCEPTED: begin
+                  if ( emif_avmm_waitrequest == 1'b1 ) begin
+                     emif_avmm_read <= 1'b1;
+                  end
+               end
+
+               WAIT_READ_DONE: begin
+               end
+
+               DATA_VERIFICATION: begin
+                  if ( emif_avmm_readdatavalid == 1'b1 ) begin
+                     if (emif_avmm_readdata == reference_data) begin
+                        pass <= 1'b1;
+                     end
+                     else begin
+                        fail <= 1'b1;
+                     end
+                  end
+               end
+
+               default: begin
+                  emif_avmm_write <= 1'b0;
+                  emif_avmm_read <= 1'b0; 
+                  pass <= 1'b0;
+                  fail <= 1'b0;
+
+               end
+            endcase
+         end
+      end 
    end
 endmodule

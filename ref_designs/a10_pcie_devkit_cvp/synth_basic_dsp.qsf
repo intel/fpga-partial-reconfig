@@ -50,4 +50,3 @@ set_global_assignment -name SIGNALTAP_FILE basic_dsp_persona.stp
 # PR setup
 #############################################################
 set_global_assignment -name REVISION_TYPE PR_SYN
-

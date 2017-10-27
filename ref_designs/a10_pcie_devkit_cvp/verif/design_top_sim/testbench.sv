@@ -100,7 +100,6 @@ wire [24:0] ddr4_address;
 wire ddr4_write;
 wire ddr4_read;
 wire [63:0] ddr4_byteenable;
-wire ddr4_debugaccess;
 
 // Clock and reset
 logic tb_clk;
@@ -230,8 +229,7 @@ ddr4_memory_simulation ddr4
  .avmm_address(ddr4_address),
  .avmm_write(ddr4_write),
  .avmm_read(ddr4_read),
- .avmm_byteenable(ddr4_byteenable),
- .avmm_debugaccess(ddr4_debugaccess)
+ .avmm_byteenable(ddr4_byteenable)
  );
 //==================================================================================================
 // DUT
@@ -279,7 +277,6 @@ design_top dut
  .emif_avmm_write(ddr4_write),
  .emif_avmm_read(ddr4_read),
  .emif_avmm_byteenable(ddr4_byteenable),
- .emif_avmm_debugaccess(ddr4_debugaccess),
 
  .emif_status_local_cal_fail(1'b0),
  .emif_status_local_cal_success(1'b1)
@@ -304,7 +301,9 @@ initial begin
    // Enable debugging
    $vcdplusdeltacycleon();
    $vcdpluson();
+`ifdef ENABLE_VCS_MEM_DEBUG
    $vcdplusmemon();
+`endif
 `endif
 
    // Register the interfaces to the BFMs

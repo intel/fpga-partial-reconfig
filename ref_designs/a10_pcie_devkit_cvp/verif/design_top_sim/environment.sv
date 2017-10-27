@@ -132,6 +132,7 @@ class environment extends uvm_env;
       region0_agnt.set_region_id(0);
       region0_agnt.drv.vif = region0_if;
       region0_agnt.mon.vif = region0_if;
+      region0_agnt.aport.connect(sb.pr_region_0_aport_mon);
 
       prblock_agent.mon.vif = prblock_if;
       prblock_agent.mon.aport.connect(region0_prblock_listener.analysis_export);

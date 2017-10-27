@@ -60,7 +60,6 @@ module traffic_generator
 
    wire [31:0]         rndm_data;
    reg                 start_traffic_generator_q;
-   reg [31:0]          initial_addr;
 
    typedef enum reg [2:0] 
    {
@@ -72,14 +71,19 @@ module traffic_generator
 
    states_definition_t curr_state, next_state;
 
-   always_ff @(posedge pr_region_clk ) 
+   always_ff @(posedge pr_region_clk or posedge pr_logic_rst ) 
    begin
-      if (  ( pr_logic_rst == 1'b1 ) || ( clr_io_reg == 1'b1 ) ) 
+      if ( pr_logic_rst == 1'b1  ) 
       begin
          curr_state <= IDLE;
       end
       else begin
-         curr_state <= next_state;
+         if ( clr_io_reg == 1'b1 ) begin
+            curr_state <= IDLE;
+         end
+         else begin
+            curr_state <= next_state;
+         end
       end
    end
 
@@ -112,80 +116,72 @@ module traffic_generator
       endcase
    end
 
-   // Capture the value of the starting address
-   always_ff @(posedge pr_region_clk ) begin
+   always_ff @(posedge pr_region_clk or posedge pr_logic_rst ) begin
 
-
-      if (  ( pr_logic_rst == 1'b1 ) || ( clr_io_reg == 1'b1 ) ) 
-      begin
-         initial_addr <= '0;
-      end
-
-      // Whenever the PR_MEM_ADDR gets updated, this gets updated and gets loaded for the logic in Idle state
-      else if ( post_wr_pulse == 1'b1 )  begin
-         initial_addr <= mem_addr;
-      end
-   end
-
-   always_ff @(posedge pr_region_clk ) begin
-
-      if (( pr_logic_rst == 1'b1 ) || ( clr_io_reg == 1'b1 )) 
-      begin
+      if ( pr_logic_rst == 1'b1 ) begin
          ddr_access_completed <= '0;
          start_ddr_wr_rd <= 0;
       end
-      else 
-      begin
-         // default values
-         ddr_access_completed <= '0;
-         start_ddr_wr_rd <= 0;
-         unique case ( next_state )
-            IDLE: begin
-               start_ddr_wr_rd <= 0;
-               if (( target_address == final_addr[24:0] ) && ( |target_address )) ddr_access_completed <= 1'b1;
-            end
-            ACTIVE: begin
-               start_ddr_wr_rd <= 1;
-            end
-            
-            WAIT: begin
-               start_ddr_wr_rd <= 1;
-            end
+      else begin
+         if ( clr_io_reg == 1'b1 ) begin
+            ddr_access_completed <= '0;
+            start_ddr_wr_rd <= 0;
+         end
+         else begin
+            // default values
+            ddr_access_completed <= '0;
+            start_ddr_wr_rd <= 0;
+            unique case ( next_state )
+               IDLE: begin
+                  start_ddr_wr_rd <= 0;
+                  if (( target_address == final_addr[24:0] ) && ( |target_address )) ddr_access_completed <= 1'b1;
+               end
+               ACTIVE: begin
+                  start_ddr_wr_rd <= 1;
+               end
+               
+               WAIT: begin
+                  start_ddr_wr_rd <= 1;
+               end
 
-            default : begin
-               ddr_access_completed <= '0;
-               start_ddr_wr_rd <= 0;
-            end
-         endcase
+               default : begin
+                  ddr_access_completed <= '0;
+                  start_ddr_wr_rd <= 0;
+               end
+            endcase
+         end
       end
    end
 
-   always_ff @(posedge pr_region_clk ) begin
+   always_ff @(posedge pr_region_clk  or posedge pr_logic_rst) begin
 
-      if (( pr_logic_rst == 1'b1 ) || ( clr_io_reg == 1'b1 ))
-      begin
+      if ( pr_logic_rst == 1'b1 ) begin
          start_traffic_generator_q <= 1'b0;
          target_address <= 'b0;
       end
-      else 
-      begin
-         // load the initial_addr during Idle state
-         if ( start_ddr_wr_rd == 0 ) begin
-            target_address <= initial_addr[24:0];
+      else begin
+         if ( clr_io_reg == 1'b1 ) begin
+            start_traffic_generator_q <= 1'b0;
+            target_address <= 'b0;
          end
-         else if ( ( pass == 1'b1 ) || ( fail == 1'b1 ) ) 
-         begin
-            // increment to the next address when ddr_wr_rd module
-            // opertion completed (i.e. either pass or fail got asserted)
-            target_address <= target_address + 1'b1;
+         else begin
+            // load the initial_addr during Idle state
+            if ( start_ddr_wr_rd == 0 ) begin
+               target_address <= mem_addr[24:0];
+            end
+            else if ( ( pass == 1'b1 ) || ( fail == 1'b1 ) ) 
+            begin
+               // increment to the next address when ddr_wr_rd module
+               // opertion completed (i.e. either pass or fail got asserted)
+               target_address <= target_address + 1'b1;
+            end
+            else  
+            begin
+               // hold the value of target_address if there is no "pass" generated
+               target_address <= target_address;
+            end
+            start_traffic_generator_q <= start_traffic_generator;
          end
-         else  
-         begin
-            // hold the value of target_address if there is no "pass" generated
-            target_address <= target_address;
-         end
-
-         start_traffic_generator_q <= start_traffic_generator;
       end
    end
    

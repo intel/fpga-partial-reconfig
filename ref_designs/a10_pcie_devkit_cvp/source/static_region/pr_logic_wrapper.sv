@@ -26,7 +26,8 @@ module pr_logic_wrapper
    (
       input wire         pr_region_clk , 
       input wire         pr_logic_rst , 
-
+      input wire         emif_usr_clk ,
+      input wire         emif_usr_rst_n ,
       // Signaltap Interface
       input wire           tck ,
       input wire           tms ,
@@ -38,13 +39,12 @@ module pr_logic_wrapper
       input wire           emif_avmm_waitrequest , 
       input wire [511:0]   emif_avmm_readdata , 
       input wire           emif_avmm_readdatavalid , 
-      output reg [4:0]     emif_avmm_burstcount , 
+      output reg [6:0]     emif_avmm_burstcount , 
       output reg [511:0]   emif_avmm_writedata , 
       output reg [24:0]    emif_avmm_address , 
       output reg           emif_avmm_write , 
       output reg           emif_avmm_read , 
       output reg [63:0]    emif_avmm_byteenable , 
-      output reg           emif_avmm_debugaccess ,
 
       input wire           pr_handshake_start_req ,
       output reg           pr_handshake_start_ack ,
@@ -61,8 +61,7 @@ module pr_logic_wrapper
       input wire [15:0]    pr_region_avmm_address , 
       input wire           pr_region_avmm_write , 
       input wire           pr_region_avmm_read , 
-      input wire [3:0]     pr_region_avmm_byteenable , 
-      input wire           pr_region_avmm_debugaccess    
+      input wire [3:0]     pr_region_avmm_byteenable   
    );
 
 
@@ -70,6 +69,8 @@ module pr_logic_wrapper
    (
       .pr_region_clk               ( pr_region_clk ),
       .pr_logic_rst                ( pr_logic_rst ),
+      .emif_usr_clk                ( emif_usr_clk ),
+      .emif_usr_rst_n              ( emif_usr_rst_n ),
       .tck                         ( tck ),
       .tms                         ( tms ),
       .tdi                         ( tdi ),
@@ -85,7 +86,6 @@ module pr_logic_wrapper
       .emif_avmm_write             ( emif_avmm_write ),
       .emif_avmm_read              ( emif_avmm_read ),
       .emif_avmm_byteenable        ( emif_avmm_byteenable ),
-      .emif_avmm_debugaccess       ( emif_avmm_debugaccess ),
       .pr_handshake_start_req      ( pr_handshake_start_req ),
       .pr_handshake_start_ack      ( pr_handshake_start_ack ),
       .pr_handshake_stop_req       ( pr_handshake_stop_req ),
@@ -99,7 +99,6 @@ module pr_logic_wrapper
       .pr_region_avmm_address      ( pr_region_avmm_address ),
       .pr_region_avmm_write        ( pr_region_avmm_write ),
       .pr_region_avmm_read         ( pr_region_avmm_read ),
-      .pr_region_avmm_byteenable   ( pr_region_avmm_byteenable ),
-      .pr_region_avmm_debugaccess  ( pr_region_avmm_debugaccess )
+      .pr_region_avmm_byteenable   ( pr_region_avmm_byteenable )
    );
 endmodule

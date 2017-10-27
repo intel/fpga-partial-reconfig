@@ -53,6 +53,7 @@ module moderator #( parameter REG_FILE_IO_SIZE = 8 )
    wire start_game;
 
    assign persona_id       = 32'h00676F6C;
+
    assign pr_host[0][31:0] = ({31'h0,count});
    assign pr_host[1][31:0] = board_final[0];
    assign pr_host[2][31:0] = board_final[1];
@@ -60,7 +61,7 @@ module moderator #( parameter REG_FILE_IO_SIZE = 8 )
    assign count            = (counter < counter_limit) && start_game;
    assign clr_io_reg       = local_clr_io_reg;
    
-   always_ff @(posedge clk) begin
+   always_ff @(posedge clk or posedge pr_logic_rst) begin
       if (  pr_logic_rst == 1'b1 ) begin
          local_clr_io_reg_q   <= 1'b0;
          local_clr_io_reg     <= 1'b0;
@@ -71,67 +72,72 @@ module moderator #( parameter REG_FILE_IO_SIZE = 8 )
       end
    end
    
-   always_ff @(posedge clk) begin
+   always_ff @(posedge clk or posedge pr_logic_rst) begin
       if (  pr_logic_rst == 1'b1 ) begin
          counter_limit  <= 0;
          board_start[0] <= 0;
          board_start[1] <= 0;
       end
-      else if(local_clr_io_reg == 1'b1) begin
-         counter_limit  <= 0;
-         board_start[0] <= 0;
-         board_start[1] <= 0;
-      end
       else begin
-         counter_limit  <= host_pr[0][31:0];
-         board_start[0] <= host_pr[1][31:0];
-         board_start[1] <= host_pr[2][31:0];
+         if(local_clr_io_reg == 1'b1) begin
+            counter_limit  <= 0;
+            board_start[0] <= 0;
+            board_start[1] <= 0;
+         end
+         else begin
+            counter_limit  <= host_pr[0][31:0];
+            board_start[0] <= host_pr[1][31:0];
+            board_start[1] <= host_pr[2][31:0];
+         end
       end
    end
 
 
-   always_ff @(posedge clk) begin
+   always_ff @(posedge clk or posedge pr_logic_rst) begin
       if (  pr_logic_rst == 1'b1 ) begin
          counter <= 32'b0;
       end
-      else if (  local_clr_io_reg == 1'b1 ) begin
-         counter <= 32'b0;
-      end
       else begin
-         if(start_pulse == 1'b1) begin
+         if (  local_clr_io_reg == 1'b1 ) begin
+            counter <= 32'b0;
+         end
+         else begin
+            if(start_pulse == 1'b1) begin
             counter <= 0;
-         end
-         if(count == 1'b1) begin
-            counter <= counter + 1;
+            end
+            if(count == 1'b1) begin
+               counter <= counter + 1;
+            end
          end
       end
    end
 
-   always_ff @(posedge clk) begin
+   always_ff @(posedge clk or posedge pr_logic_rst) begin
       if (  pr_logic_rst == 1'b1 ) begin
          start_pulse_d     <= 'b0;
          start_pulse       <= 'b0;
          start_game_delay  <= 'b0;
          game_done         <= 'b0;
       end
-      else if (  local_clr_io_reg == 1'b1 ) begin
-         start_pulse_d     <= 'b0;
-         start_pulse       <= 'b0;
-         start_game_delay  <= 'b0;
-         game_done         <= 'b0;
-      end
-      else begin
-         if(start_pulse == 1'b1) begin
+      else begin 
+         if (  local_clr_io_reg == 1'b1 ) begin
+            start_pulse_d     <= 'b0;
+            start_pulse       <= 'b0;
+            start_game_delay  <= 'b0;
+            game_done         <= 'b0;
+         end
+         else begin
+            if(start_pulse == 1'b1) begin
             start_game_delay  <= 1'b1;
             game_done         <= 1'b0;
-
+            end
+            if(count == 1'b0 && start_game == 1'b1) begin
+               start_game_delay  <= 1'b0;
+               game_done         <= 1'b1;
+            end
+            start_pulse_d  <= host_cntrl_register[1];
+            start_pulse    <= ~start_pulse_d && host_cntrl_register[1];
          end
-         if(count == 1'b0 && start_game == 1'b1) begin
-            start_game_delay  <= 1'b0;
-            game_done         <= 1'b1;
-         end
-         start_pulse_d  <= host_cntrl_register[1];
-         start_pulse    <= ~start_pulse_d && host_cntrl_register[1];
       end
    end
 

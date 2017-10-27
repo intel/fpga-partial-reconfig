@@ -604,7 +604,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_clock_bridge</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>Clock Bridge</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -687,39 +687,6 @@
     <boundary>
         <interfaces>
             <interface>
-                <name>clk</name>
-                <type>clock</type>
-                <isStart>false</isStart>
-                <ports>
-                    <port>
-                        <name>clk</name>
-                        <role>clk</role>
-                        <direction>Input</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                </ports>
-                <assignments>
-                    <assignmentValueMap/>
-                </assignments>
-                <parameters>
-                    <parameterValueMap>
-                        <entry>
-                            <key>clockRate</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>externallyDriven</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>ptfSchematicName</key>
-                        </entry>
-                    </parameterValueMap>
-                </parameters>
-            </interface>
-            <interface>
                 <name>in_reset</name>
                 <type>reset</type>
                 <isStart>false</isStart>
@@ -740,11 +707,10 @@
                     <parameterValueMap>
                         <entry>
                             <key>associatedClock</key>
-                            <value>clk</value>
                         </entry>
                         <entry>
                             <key>synchronousEdges</key>
-                            <value>DEASSERT</value>
+                            <value>NONE</value>
                         </entry>
                     </parameterValueMap>
                 </parameters>
@@ -770,7 +736,6 @@
                     <parameterValueMap>
                         <entry>
                             <key>associatedClock</key>
-                            <value>clk</value>
                         </entry>
                         <entry>
                             <key>associatedDirectReset</key>
@@ -782,7 +747,7 @@
                         </entry>
                         <entry>
                             <key>synchronousEdges</key>
-                            <value>DEASSERT</value>
+                            <value>NONE</value>
                         </entry>
                     </parameterValueMap>
                 </parameters>
@@ -791,7 +756,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_reset_bridge</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>Reset Bridge</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -806,21 +771,7 @@
         </descriptors>
     </systemInfoParameterDescriptors>
     <systemInfos>
-        <connPtSystemInfos>
-            <entry>
-                <key>clk</key>
-                <value>
-                    <connectionPointName>clk</connectionPointName>
-                    <suppliedSystemInfos/>
-                    <consumedSystemInfos>
-                        <entry>
-                            <key>CLOCK_RATE</key>
-                            <value>0</value>
-                        </entry>
-                    </consumedSystemInfos>
-                </value>
-            </entry>
-        </connPtSystemInfos>
+        <connPtSystemInfos/>
     </systemInfos>
 </componentDefinition>]]></parameter>
   <parameter name="generationInfoDefinition"><![CDATA[<generationInfoDefinition>
@@ -1320,7 +1271,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -1947,7 +1898,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -2574,7 +2525,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -3201,7 +3152,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -3828,7 +3779,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -4455,7 +4406,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -5082,7 +5033,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -5709,7 +5660,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -6336,7 +6287,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -7074,7 +7025,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_mm_bridge</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>Avalon-MM Pipeline Bridge</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -7597,7 +7548,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -8200,7 +8151,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -8803,7 +8754,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -9406,7 +9357,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -10009,7 +9960,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -10612,7 +10563,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -11215,7 +11166,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -11818,7 +11769,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -12421,7 +12372,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>PIO (Parallel I/O)</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -12589,39 +12540,6 @@
     <boundary>
         <interfaces>
             <interface>
-                <name>clk</name>
-                <type>clock</type>
-                <isStart>false</isStart>
-                <ports>
-                    <port>
-                        <name>clk</name>
-                        <role>clk</role>
-                        <direction>Input</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                </ports>
-                <assignments>
-                    <assignmentValueMap/>
-                </assignments>
-                <parameters>
-                    <parameterValueMap>
-                        <entry>
-                            <key>clockRate</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>externallyDriven</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>ptfSchematicName</key>
-                        </entry>
-                    </parameterValueMap>
-                </parameters>
-            </interface>
-            <interface>
                 <name>in_reset</name>
                 <type>reset</type>
                 <isStart>false</isStart>
@@ -12642,11 +12560,10 @@
                     <parameterValueMap>
                         <entry>
                             <key>associatedClock</key>
-                            <value>clk</value>
                         </entry>
                         <entry>
                             <key>synchronousEdges</key>
-                            <value>DEASSERT</value>
+                            <value>NONE</value>
                         </entry>
                     </parameterValueMap>
                 </parameters>
@@ -12672,7 +12589,6 @@
                     <parameterValueMap>
                         <entry>
                             <key>associatedClock</key>
-                            <value>clk</value>
                         </entry>
                         <entry>
                             <key>associatedDirectReset</key>
@@ -12684,7 +12600,7 @@
                         </entry>
                         <entry>
                             <key>synchronousEdges</key>
-                            <value>DEASSERT</value>
+                            <value>NONE</value>
                         </entry>
                     </parameterValueMap>
                 </parameters>
@@ -12693,7 +12609,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_reset_bridge</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>Reset Bridge</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -12708,21 +12624,7 @@
         </descriptors>
     </systemInfoParameterDescriptors>
     <systemInfos>
-        <connPtSystemInfos>
-            <entry>
-                <key>clk</key>
-                <value>
-                    <connectionPointName>clk</connectionPointName>
-                    <suppliedSystemInfos/>
-                    <consumedSystemInfos>
-                        <entry>
-                            <key>CLOCK_RATE</key>
-                            <value>0</value>
-                        </entry>
-                    </consumedSystemInfos>
-                </value>
-            </entry>
-        </connPtSystemInfos>
+        <connPtSystemInfos/>
     </systemInfos>
 </componentDefinition>]]></parameter>
   <parameter name="generationInfoDefinition"><![CDATA[<generationInfoDefinition>
@@ -12756,413 +12658,403 @@
  </module>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="reg_file_mm_bridge.m0"
    end="reg_file_persona_id_register.s1">
   <parameter name="baseAddress" value="0x0000" />
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="reg_file_mm_bridge.m0"
    end="reg_file_control_register.s1">
   <parameter name="baseAddress" value="0x0010" />
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="reg_file_mm_bridge.m0"
    end="reg_file_pr_host_0.s1">
   <parameter name="baseAddress" value="0x0020" />
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="reg_file_mm_bridge.m0"
    end="reg_file_pr_host_1.s1">
   <parameter name="baseAddress" value="0x0030" />
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="reg_file_mm_bridge.m0"
    end="reg_file_pr_host_2.s1">
   <parameter name="baseAddress" value="0x0040" />
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="reg_file_mm_bridge.m0"
    end="reg_file_pr_host_3.s1">
   <parameter name="baseAddress" value="0x0050" />
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="reg_file_mm_bridge.m0"
    end="reg_file_pr_host_4.s1">
   <parameter name="baseAddress" value="0x0060" />
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="reg_file_mm_bridge.m0"
    end="reg_file_pr_host_5.s1">
   <parameter name="baseAddress" value="0x0070" />
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="reg_file_mm_bridge.m0"
    end="reg_file_pr_host_6.s1">
   <parameter name="baseAddress" value="0x0080" />
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="reg_file_mm_bridge.m0"
    end="reg_file_pr_host_7.s1">
   <parameter name="baseAddress" value="0x0090" />
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="reg_file_mm_bridge.m0"
    end="reg_file_host_pr_0.s1">
   <parameter name="baseAddress" value="0x00a0" />
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="reg_file_mm_bridge.m0"
    end="reg_file_host_pr_7.s1">
   <parameter name="baseAddress" value="0x0110" />
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="reg_file_mm_bridge.m0"
    end="reg_file_host_pr_6.s1">
   <parameter name="baseAddress" value="0x0100" />
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="reg_file_mm_bridge.m0"
    end="reg_file_host_pr_5.s1">
   <parameter name="baseAddress" value="0x00f0" />
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="reg_file_mm_bridge.m0"
    end="reg_file_host_pr_4.s1">
   <parameter name="baseAddress" value="0x00e0" />
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="reg_file_mm_bridge.m0"
    end="reg_file_host_pr_3.s1">
   <parameter name="baseAddress" value="0x00d0" />
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="reg_file_mm_bridge.m0"
    end="reg_file_host_pr_2.s1">
   <parameter name="baseAddress" value="0x00c0" />
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="reg_file_mm_bridge.m0"
    end="reg_file_host_pr_1.s1">
   <parameter name="baseAddress" value="0x00b0" />
  </connection>
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clock_in.out_clk"
    end="reg_file_mm_bridge.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clock_in.out_clk"
    end="reg_file_persona_id_register.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clock_in.out_clk"
    end="reg_file_control_register.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clock_in.out_clk"
    end="reg_file_pr_host_0.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clock_in.out_clk"
    end="reg_file_pr_host_1.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clock_in.out_clk"
    end="reg_file_pr_host_2.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clock_in.out_clk"
    end="reg_file_pr_host_3.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clock_in.out_clk"
    end="reg_file_pr_host_4.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clock_in.out_clk"
    end="reg_file_pr_host_5.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clock_in.out_clk"
    end="reg_file_pr_host_6.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clock_in.out_clk"
    end="reg_file_pr_host_7.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clock_in.out_clk"
    end="reg_file_host_pr_0.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clock_in.out_clk"
    end="reg_file_host_pr_7.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clock_in.out_clk"
    end="reg_file_host_pr_5.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clock_in.out_clk"
    end="reg_file_host_pr_4.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clock_in.out_clk"
    end="reg_file_host_pr_3.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clock_in.out_clk"
    end="reg_file_host_pr_2.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clock_in.out_clk"
    end="reg_file_host_pr_1.clk" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clock_in.out_clk"
    end="reg_file_host_pr_6.clk" />
  <connection
-   kind="clock"
-   version="17.0"
-   start="clock_in.out_clk"
-   end="full_reset.clk" />
- <connection
-   kind="clock"
-   version="17.0"
-   start="clock_in.out_clk"
-   end="register_clear.clk" />
- <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="full_reset.out_reset"
    end="reg_file_persona_id_register.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="full_reset.out_reset"
    end="reg_file_control_register.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="full_reset.out_reset"
    end="reg_file_pr_host_0.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="full_reset.out_reset"
    end="reg_file_pr_host_4.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="full_reset.out_reset"
    end="reg_file_pr_host_5.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="full_reset.out_reset"
    end="reg_file_pr_host_6.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="full_reset.out_reset"
    end="reg_file_pr_host_3.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="full_reset.out_reset"
    end="reg_file_pr_host_2.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="full_reset.out_reset"
    end="reg_file_host_pr_0.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="full_reset.out_reset"
    end="reg_file_pr_host_1.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="full_reset.out_reset"
    end="reg_file_host_pr_7.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="full_reset.out_reset"
    end="reg_file_host_pr_6.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="full_reset.out_reset"
    end="reg_file_host_pr_5.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="full_reset.out_reset"
    end="reg_file_host_pr_4.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="full_reset.out_reset"
    end="reg_file_host_pr_3.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="full_reset.out_reset"
    end="reg_file_host_pr_2.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="full_reset.out_reset"
    end="reg_file_host_pr_1.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="full_reset.out_reset"
    end="reg_file_pr_host_7.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="register_clear.out_reset"
    end="reg_file_host_pr_6.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="register_clear.out_reset"
    end="reg_file_host_pr_7.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="register_clear.out_reset"
    end="reg_file_host_pr_5.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="register_clear.out_reset"
    end="reg_file_host_pr_4.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="register_clear.out_reset"
    end="reg_file_host_pr_3.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="register_clear.out_reset"
    end="reg_file_host_pr_2.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="register_clear.out_reset"
    end="reg_file_host_pr_1.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="register_clear.out_reset"
    end="reg_file_host_pr_0.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="register_clear.out_reset"
    end="reg_file_pr_host_7.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="register_clear.out_reset"
    end="reg_file_pr_host_6.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="register_clear.out_reset"
    end="reg_file_pr_host_5.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="register_clear.out_reset"
    end="reg_file_pr_host_4.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="register_clear.out_reset"
    end="reg_file_pr_host_3.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="register_clear.out_reset"
    end="reg_file_pr_host_2.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="register_clear.out_reset"
    end="reg_file_pr_host_1.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="register_clear.out_reset"
    end="reg_file_pr_host_0.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="register_clear.out_reset"
    end="reg_file_control_register.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="full_reset.out_reset"
    end="reg_file_mm_bridge.reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />

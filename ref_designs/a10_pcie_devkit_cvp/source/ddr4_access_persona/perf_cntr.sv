@@ -34,17 +34,20 @@ module perf_cntr
 );
 
 
-   always_ff @(posedge pr_region_clk) begin
+   always_ff @(posedge pr_region_clk or posedge pr_logic_rst) begin
 
-      if (( pr_logic_rst == 1'b1 ) || ( clr_io_reg == 1'b1 )) 
+      if ( pr_logic_rst == 1'b1  ) 
       begin
          performance_cntr <= 'b0;
       end
-      else 
-      begin
-         if ( pass == 1'b1 ) 
-         begin
-            performance_cntr <= performance_cntr + 1;
+      else begin
+         if ( clr_io_reg == 1'b1 ) begin
+            performance_cntr <= 'b0;
+         end
+         else begin
+            if ( pass == 1'b1 ) begin
+               performance_cntr <= performance_cntr + 1;
+            end
          end
       end
    end

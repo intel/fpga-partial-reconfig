@@ -453,16 +453,18 @@ static int do_ddr4_access_persona (struct  test_handle *th, uint32_t seed, uint3
 		calibration = 1;
 
 	VERBOSE_MESSAGE("\tDDR4 Calibration Check Successful\n");
-	VERBOSE_MESSAGE("\tStarting Test cases\n");
 
+	VERBOSE_MESSAGE("\tStarting Test cases\n");
 	for( i = 1; i <= number_of_runs; i++) {
 		reset_pr_logic(th, verbose);
 		printf("Beginning test %d of %d\n", i, number_of_runs);
 		uint32_t rand_ready = 0;
-		data = seed;
 		VERBOSE_MESSAGE("\tDDR4 lfsr Seed 0x%08X Loading\n", seed);
+		data = seed;
 		(*th->write_u32)(th->arg, DDR4_SEED_ADDRESS, data);
 		data = 0 | (1 << DDR4_LOAD_SEED_MASK);
+		(*th->write_u32)(th->arg, PR_CONTROL_REGISTER, data);
+		data = 0;
 		(*th->write_u32)(th->arg, PR_CONTROL_REGISTER, data);
 		data = 0;
 		(*th->read_u32)(th->arg, DDR4_SEED_ADDRESS, &data);

@@ -22,9 +22,6 @@
 `timescale 1 ps / 1 ps
 `default_nettype none
 
-//This is a example of using the provided template of a
-//Avalon MM interface controlled over PCIe register file
-//To inetrface with a design.
 module basic_dsp_top #(parameter REG_FILE_IO_SIZE = 8) 
    (
       //clock
@@ -48,13 +45,12 @@ module basic_dsp_top #(parameter REG_FILE_IO_SIZE = 8)
       input wire          emif_avmm_waitrequest , 
       input wire [511:0]  emif_avmm_readdata ,
       input wire          emif_avmm_readdatavalid , 
-      output reg [4:0]    emif_avmm_burstcount , 
+      output reg [6:0]    emif_avmm_burstcount , 
       output reg [511:0]  emif_avmm_writedata , 
       output reg [24:0]   emif_avmm_address , 
       output reg          emif_avmm_write , 
       output reg          emif_avmm_read , 
-      output reg [63:0]   emif_avmm_byteenable ,
-      output reg          emif_avmm_debugaccess         
+      output reg [63:0]   emif_avmm_byteenable        
    );
 
 
@@ -63,7 +59,7 @@ module basic_dsp_top #(parameter REG_FILE_IO_SIZE = 8)
 
    //Registers used as they are just buffers
    reg [26:0]           dsp_inputs[0:1];
-   wire [53:0]          dsp_output     ;
+   wire [53:0]          dsp_output;
 
    always_comb
    begin
@@ -73,15 +69,16 @@ module basic_dsp_top #(parameter REG_FILE_IO_SIZE = 8)
       emif_avmm_write       = 1'b0;
       emif_avmm_read        = 1'b0;
       emif_avmm_byteenable  = 64'b0;
-      emif_avmm_debugaccess = 1'b0;
    end
 
    // assign PR Id register to be the value we chose to uniquely identify our program when the host requests
    // Read-Only
    assign persona_id = 32'h0000_aeed;
+   
    //54 bit output, uses two output registers
    assign pr_host[0] = dsp_output[31:0];
    assign pr_host[1] = {10'b0, dsp_output[53:32]};
+   
    generate
       genvar i;
       //Tieing unusued ouput ports to zero.
@@ -90,7 +87,7 @@ module basic_dsp_top #(parameter REG_FILE_IO_SIZE = 8)
       end
    endgenerate
 
-   always_ff @( posedge clk  )  begin
+   always_ff @( posedge clk or posedge pr_logic_rst )  begin
       if( pr_logic_rst) begin
          clr_io_reg <= 1'b0;
          clr_io_reg_q <= 1'b0;
@@ -100,12 +97,13 @@ module basic_dsp_top #(parameter REG_FILE_IO_SIZE = 8)
          clr_io_reg <= (~clr_io_reg_q & host_cntrl_register[0]);//Generate a active high pulse for a local reset
       end
    end
+   
    //Register map
    //In order to reset these registers without through the host side program
    //setting host_cntrl_register[0] to 1 will cause all communication registers
    //(pr->host and host->pr) to reset. Note that host_cntrl_register[0] only resets
    //on the transition from 0->1, not just on the register value. 
-   always_ff @( posedge clk  )
+   always_ff @( posedge clk or posedge pr_logic_rst   )
    begin
       if ( pr_logic_rst ) begin
 
@@ -127,7 +125,7 @@ module basic_dsp_top #(parameter REG_FILE_IO_SIZE = 8)
        .aclr    ( {clr_io_reg, clr_io_reg} ),
        .ax      ( dsp_inputs[0][26:0] ),
        .ay      ( dsp_inputs[1][26:0] ),
-       .clk     ( clk ),
+       .clk     ( {1'b0, 1'b0, clk} ),
        .ena     ( 3'b111 ),
        .resulta ( dsp_output )
        );

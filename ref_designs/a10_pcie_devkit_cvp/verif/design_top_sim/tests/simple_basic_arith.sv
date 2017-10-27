@@ -30,6 +30,7 @@ class simple_basic_arith extends base_test;
    pr_region_pkg::pr_region_set_persona_seq_c set_persona_seq;
    bar4_avmm_pkg::bar4_idle_seq_c idle_seq;
    basic_arith_rand_seq_c basic_arith_seq;
+   read_persona_id_seq_c read_persona_id_seq;
 
 
    function new(string name, uvm_component parent);
@@ -42,6 +43,7 @@ class simple_basic_arith extends base_test;
       basic_arith_seq = basic_arith_rand_seq_c::type_id::create("basic_arith_seq", this);
       idle_seq = bar4_avmm_pkg::bar4_idle_seq_c::type_id::create("idle_seq", this);
       set_persona_seq = pr_region_pkg::pr_region_set_persona_seq_c::type_id::create("set_persona_seq", this);
+      read_persona_id_seq = read_persona_id_seq_c::type_id::create("read_persona_id_seq", this);
 
    endfunction
 
@@ -68,6 +70,9 @@ class simple_basic_arith extends base_test;
       // Send 20 idle sequence items
       idle_seq.num_idle_trans = 20;
       idle_seq.start(env.bar4_agnt.sqr);
+
+      // Read the persona ID
+      read_persona_id_seq.start(env.bar4_agnt.sqr);
 
       // Perform the basic check for the basic_arithmetic persona
       basic_arith_seq.operand = 5;

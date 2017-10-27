@@ -42,7 +42,7 @@ module gol_block_wrapper
       genvar i;
    
       for (i = 0; i < NUM_BOARDS ;i = i + 1) begin: BOARDS
-         always_ff @(posedge clk ) begin
+         always_ff @(posedge clk or posedge rst) begin
             if (  rst == 1'b1 ) begin
                board_final_reg[i] <= 0;
             end

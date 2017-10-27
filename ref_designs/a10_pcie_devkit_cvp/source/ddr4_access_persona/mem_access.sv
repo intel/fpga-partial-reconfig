@@ -53,14 +53,19 @@ module mem_access
    //
    ////////////////////////////////////////////////////////////////////////////
 
-   always_ff @(posedge pr_region_clk ) begin
+   always_ff @(posedge pr_region_clk or posedge pr_logic_rst ) begin
 
-      if (( pr_logic_rst == 1'b1 ) || ( clr_io_reg == 1'b1 )) 
+      if ( pr_logic_rst == 1'b1 ) 
       begin
          curr_state <= IDLE;
       end
       else begin
-         curr_state <= next_state;
+         if( clr_io_reg == 1'b1 ) begin
+            curr_state <= IDLE;
+         end
+         else begin
+            curr_state <= next_state;
+         end
       end
    end
 
@@ -108,46 +113,51 @@ module mem_access
    end
 
    // 
-   always_ff @(posedge pr_region_clk ) begin
-      if (( pr_logic_rst == 1'b1 ) || ( clr_io_reg == 1'b1 )) begin
-
+   always_ff @(posedge pr_region_clk or posedge pr_logic_rst) begin
+      if ( pr_logic_rst == 1'b1 ) begin
          clear_start_operation <= 1'b0; 
          start_traffic_generator <= 1'b0;
          busy_reg <= 1'b0;
       end
       else begin
+         if ( clr_io_reg == 1'b1 ) begin
+            clear_start_operation <= 1'b0; 
+            start_traffic_generator <= 1'b0;
+            busy_reg <= 1'b0;
+         end 
+         else begin
+            // default values
+            clear_start_operation <= 1'b0; 
+            start_traffic_generator <= 1'b0;
+            busy_reg <= 1'b0;
 
-         // default values
-         clear_start_operation <= 1'b0; 
-         start_traffic_generator <= 1'b0;
-         busy_reg <= 1'b0;
+            unique case ( next_state )
+               
+               IDLE: begin
 
-         unique case ( next_state )
-            
-            IDLE: begin
-
-                  clear_start_operation <= 1'b1; 
-                  busy_reg <= 1'b0;
-                  
-               end
-
-            
-            DDR_ACCESS: begin
-                  start_traffic_generator <= 1'b1;
-                  busy_reg <= 1'b1;
-                  if ( ( ddr_access_completed == 1'b1 ) ) begin
                      clear_start_operation <= 1'b1; 
-                     start_traffic_generator <= 1'b0;
+                     busy_reg <= 1'b0;
+                     
                   end
-               end
 
-            default: begin
+               
+               DDR_ACCESS: begin
+                     start_traffic_generator <= 1'b1;
+                     busy_reg <= 1'b1;
+                     if ( ( ddr_access_completed == 1'b1 ) ) begin
+                        clear_start_operation <= 1'b1; 
+                        start_traffic_generator <= 1'b0;
+                     end
+                  end
 
-                  clear_start_operation <= 1'b0; 
-                  start_traffic_generator <= 1'b0;
+               default: begin
 
-               end
-         endcase
+                     clear_start_operation <= 1'b0; 
+                     start_traffic_generator <= 1'b0;
+
+                  end
+            endcase
+         end
       end
    end
 

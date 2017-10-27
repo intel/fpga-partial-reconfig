@@ -27,30 +27,30 @@
 // B and C are host->pr registers 0 and 1
 module basic_arithmetic_persona 
    (
-      input wire         pr_region_clk ,
-      input wire         pr_logic_rst , 
+      input  wire         pr_region_clk ,
+      input  wire         pr_logic_rst , 
       // DDR4 interface
-      input wire         emif_avmm_waitrequest , 
-      input wire [511:0] emif_avmm_readdata , 
-      input wire         emif_avmm_readdatavalid , 
-      output reg [4:0]   emif_avmm_burstcount , 
-      output reg [511:0] emif_avmm_writedata , 
-      output reg [24:0]  emif_avmm_address , 
-      output reg         emif_avmm_write , 
-      output reg         emif_avmm_read , 
-      output reg [63:0]  emif_avmm_byteenable , 
-      output reg         emif_avmm_debugaccess , 
+      input  wire         emif_usr_clk ,
+      input  wire         emif_usr_rst_n ,
+      input  wire         emif_avmm_waitrequest , 
+      input  wire [511:0] emif_avmm_readdata , 
+      input  wire         emif_avmm_readdatavalid , 
+      output wire [6:0]   emif_avmm_burstcount , 
+      output wire [511:0] emif_avmm_writedata , 
+      output wire [24:0]  emif_avmm_address , 
+      output wire         emif_avmm_write , 
+      output wire         emif_avmm_read , 
+      output wire [63:0]  emif_avmm_byteenable , 
       // AVMM interface
-      output reg         pr_region_avmm_waitrequest , 
-      output reg [31:0]  pr_region_avmm_readdata , 
-      output reg         pr_region_avmm_readdatavalid, 
-      input wire [0:0]   pr_region_avmm_burstcount , 
-      input wire [31:0]  pr_region_avmm_writedata , 
-      input wire [13:0]  pr_region_avmm_address , 
-      input wire         pr_region_avmm_write , 
-      input wire         pr_region_avmm_read , 
-      input wire [3:0]   pr_region_avmm_byteenable , 
-      input wire         pr_region_avmm_debugaccess    
+      output wire         pr_region_avmm_waitrequest ,
+      output wire [31:0]  pr_region_avmm_readdata ,
+      output wire         pr_region_avmm_readdatavalid,
+      input  wire [0:0]   pr_region_avmm_burstcount ,
+      input  wire [31:0]  pr_region_avmm_writedata ,
+      input  wire [13:0]  pr_region_avmm_address ,
+      input  wire         pr_region_avmm_write ,
+      input  wire         pr_region_avmm_read ,
+      input  wire [3:0]   pr_region_avmm_byteenable 
    );
 
    //Define Number of IO registers, base case is 8 input and 8 output
@@ -89,11 +89,10 @@ module basic_arithmetic_persona
       .emif_avmm_readdatavalid   ( emif_avmm_readdatavalid ),
       .emif_avmm_burstcount      ( emif_avmm_burstcount ),
       .emif_avmm_writedata       ( emif_avmm_writedata ),
-      .emif_avmm_address         ( emif_avmm_address[8:0] ),
+      .emif_avmm_address         ( emif_avmm_address),
       .emif_avmm_write           ( emif_avmm_write ),
       .emif_avmm_read            ( emif_avmm_read ),
-      .emif_avmm_byteenable      ( emif_avmm_byteenable ),
-      .emif_avmm_debugaccess     ( emif_avmm_debugaccess )                 
+      .emif_avmm_byteenable      ( emif_avmm_byteenable )                
    );
    //////Register Address Map//////////////////
    //    reg_file_persona_id         = 0x0000
@@ -135,7 +134,7 @@ module basic_arithmetic_persona
          .reg_file_mm_bridge_s0_write              ( pr_region_avmm_write ),
          .reg_file_mm_bridge_s0_read               ( pr_region_avmm_read ),
          .reg_file_mm_bridge_s0_byteenable         ( pr_region_avmm_byteenable ),
-         .reg_file_mm_bridge_s0_debugaccess        ( pr_region_avmm_debugaccess ),
+         .reg_file_mm_bridge_s0_debugaccess        ( 1'b0 ),
          //Host -> PR System registers
          .reg_file_host_pr_0_export                ( host_pr[0] ),
          .reg_file_host_pr_1_export                ( host_pr[1] ),

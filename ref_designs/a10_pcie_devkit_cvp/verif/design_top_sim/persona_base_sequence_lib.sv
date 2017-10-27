@@ -34,11 +34,11 @@ class persona_base_seq_c extends bar4_avmm_pkg::bar4_avmm_base_seq_c;
    endfunction
 
    task read_persona_id_block_until_response(string description);
-      create_simple_read_transaction_block_until_response(description, PERSONA_ID_ADDRESS);
+      create_simple_read_transaction_block_until_response(description, PR_REGION_0_PERSONA_ID_ADDRESS);
    endtask
 
    task read_persona_id(string description);
-      create_simple_read_transaction(description, PERSONA_ID_ADDRESS);
+      create_simple_read_transaction(description, PR_REGION_0_PERSONA_ID_ADDRESS);
    endtask
 
 endclass

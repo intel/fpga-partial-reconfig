@@ -33,8 +33,7 @@ module ddr4_memory_simulation
  input  wire [24:0]  avmm_address,
  input  wire         avmm_write,
  input  wire         avmm_read,
- input  wire [63:0]  avmm_byteenable,
- input  wire         avmm_debugaccess
+ input  wire [63:0]  avmm_byteenable
  );
 
 typedef enum {
@@ -54,24 +53,22 @@ typedef enum logic [2:0] {
 
 states_definition curr_state,
    next_state;
-logic [511:0] memory [0:1023];
-assign avmm_waitrequest = 'b0;
+reg [511:0] memory ;
+assign avmm_waitrequest = 1'b0; 
 always_ff @(posedge clk or negedge rst_n) begin
    if (rst_n == 1'b0) begin
-      for (int i = 0; i < 1024; i++) begin
-         memory [i] <= 'b0;
-      end
+      avmm_readdata <= 512'b0;
       curr_state <= IDLE;
    end else begin
       curr_state <= next_state;
       avmm_readdatavalid <= 1'b0;
-
+      avmm_readdata <= avmm_readdata;
       if (curr_state == READ) begin
-         avmm_readdata <= memory [avmm_address [9:0] ];
+         avmm_readdata <= memory;
          avmm_readdatavalid <= 1'b1;
       end
       if (curr_state == WRITE) begin
-         memory [avmm_address [9:0] ] <= avmm_writedata;
+         memory<= avmm_writedata;
       end
    end
 end
@@ -93,18 +90,30 @@ always_comb begin
          end
 
       READ: begin
-            if (avmm_read == 1'b1) begin
+             if (avmm_read == 1'b1 && avmm_write == 1'b0) begin
                next_state = READ;
-            end else begin
+            end else if (avmm_read == 1'b0 && avmm_write == 1'b1) begin
+               next_state = WRITE;
+            end else if (avmm_read == 1'b1 && avmm_write == 1'b1) begin
+               next_state = UNDEF;
+            end else if (avmm_read == 1'b0 && avmm_write == 1'b0) begin
                next_state = IDLE;
+            end else begin
+               next_state = UNDEF;
             end
          end
 
       WRITE: begin
-            if (avmm_write == 1'b1) begin
+             if (avmm_read == 1'b1 && avmm_write == 1'b0) begin
+               next_state = READ;
+            end else if (avmm_read == 1'b0 && avmm_write == 1'b1) begin
                next_state = WRITE;
-            end else begin
+            end else if (avmm_read == 1'b1 && avmm_write == 1'b1) begin
+               next_state = UNDEF;
+            end else if (avmm_read == 1'b0 && avmm_write == 1'b0) begin
                next_state = IDLE;
+            end else begin
+               next_state = UNDEF;
             end
          end
       default: next_state = UNDEF;

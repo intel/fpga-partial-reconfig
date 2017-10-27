@@ -37,7 +37,46 @@ class bar4_avmm_base_seq_c extends avmm_pkg::avmm_base_seq_c #(bar4_avmm_pkg::ba
    localparam PR_REGION_0_REGION_CTRL_ILLEGAL_REQ = PR_REGION_0_REGION_CTRL_BASE_ADDRESS + (2<<2);
    localparam PR_REGION_0_REGION_CTRL_SWVERSION = PR_REGION_0_REGION_CTRL_BASE_ADDRESS + (3<<2);
 
-   localparam PERSONA_ID_ADDRESS = PR_REGION_0_REGFILE_BASE_ADDRESS + 0;
+   //////Register Address Map//////////////////
+   //    reg_file_persona_id         = 0x0000
+   //    reg_file_control_register   = 0x0010
+   //    reg_file_pr_host_0          = 0x0020
+   //    reg_file_pr_host_1          = 0x0030
+   //    reg_file_pr_host_2          = 0x0040
+   //    reg_file_pr_host_3          = 0x0050
+   //    reg_file_pr_host_4          = 0x0060
+   //    reg_file_pr_host_5          = 0x0070
+   //    reg_file_pr_host_6          = 0x0080
+   //    reg_file_pr_host_7          = 0x0090
+   //    reg_file_host_pr_0          = 0x00a0
+   //    reg_file_host_pr_1          = 0x00b0
+   //    reg_file_host_pr_2          = 0x00c0
+   //    reg_file_host_pr_3          = 0x00d0
+   //    reg_file_host_pr_4          = 0x00e0
+   //    reg_file_host_pr_5          = 0x00f0
+   //    reg_file_host_pr_6          = 0x0100
+   //    reg_file_host_pr_7          = 0x0110
+   ////////////////////////////////////////////   
+
+   localparam PR_REGION_0_PERSONA_ID_ADDRESS = PR_REGION_0_BASE_ADDRESS + (32'h_0000_0000);
+
+   localparam PR_REGION_0_HOST_TO_PR_0_ADDRESS = PR_REGION_0_BASE_ADDRESS + (32'h_0000_00A0);
+   localparam PR_REGION_0_HOST_TO_PR_1_ADDRESS = PR_REGION_0_BASE_ADDRESS + (32'h_0000_00B0);
+   localparam PR_REGION_0_HOST_TO_PR_2_ADDRESS = PR_REGION_0_BASE_ADDRESS + (32'h_0000_00C0);
+   localparam PR_REGION_0_HOST_TO_PR_3_ADDRESS = PR_REGION_0_BASE_ADDRESS + (32'h_0000_00D0);
+   localparam PR_REGION_0_HOST_TO_PR_4_ADDRESS = PR_REGION_0_BASE_ADDRESS + (32'h_0000_00E0);
+   localparam PR_REGION_0_HOST_TO_PR_5_ADDRESS = PR_REGION_0_BASE_ADDRESS + (32'h_0000_00F0);
+   localparam PR_REGION_0_HOST_TO_PR_6_ADDRESS = PR_REGION_0_BASE_ADDRESS + (32'h_0000_0100);
+   localparam PR_REGION_0_HOST_TO_PR_7_ADDRESS = PR_REGION_0_BASE_ADDRESS + (32'h_0000_0110);
+   
+   localparam PR_REGION_0_PR_TO_HOST_0_ADDRESS = PR_REGION_0_BASE_ADDRESS + (32'h_0000_0020);
+   localparam PR_REGION_0_PR_TO_HOST_1_ADDRESS = PR_REGION_0_BASE_ADDRESS + (32'h_0000_0030);
+   localparam PR_REGION_0_PR_TO_HOST_2_ADDRESS = PR_REGION_0_BASE_ADDRESS + (32'h_0000_0040);
+   localparam PR_REGION_0_PR_TO_HOST_3_ADDRESS = PR_REGION_0_BASE_ADDRESS + (32'h_0000_0050);
+   localparam PR_REGION_0_PR_TO_HOST_4_ADDRESS = PR_REGION_0_BASE_ADDRESS + (32'h_0000_0060);
+   localparam PR_REGION_0_PR_TO_HOST_5_ADDRESS = PR_REGION_0_BASE_ADDRESS + (32'h_0000_0070);
+   localparam PR_REGION_0_PR_TO_HOST_6_ADDRESS = PR_REGION_0_BASE_ADDRESS + (32'h_0000_0080);
+   localparam PR_REGION_0_PR_TO_HOST_7_ADDRESS = PR_REGION_0_BASE_ADDRESS + (32'h_0000_0090);
 
    localparam DDR4_CALIB_INTERFACE_BASE_ADDRESS = 32'h_0000_8100;
 

@@ -56,7 +56,7 @@ class simple_pr_error extends base_test;
       `uvm_info("TST", "Preparing to run simple basic arith test", UVM_LOW)
 
       // Set the active persona to be the basic arith
-      set_persona_seq.persona_select = 0;
+      set_persona_seq.persona_select = 1;
       set_persona_seq.start(env.region0_agnt.sqr);
 
       // Reset the system

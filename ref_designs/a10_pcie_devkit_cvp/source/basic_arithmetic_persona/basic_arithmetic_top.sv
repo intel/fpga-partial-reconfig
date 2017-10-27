@@ -46,13 +46,12 @@ module basic_arithmetic_top
       input wire         emif_avmm_waitrequest, 
       input wire [511:0] emif_avmm_readdata, 
       input wire         emif_avmm_readdatavalid, 
-      output reg [4:0]   emif_avmm_burstcount, 
+      output reg [6:0]   emif_avmm_burstcount, 
       output reg [511:0] emif_avmm_writedata, 
       output reg [24:0]  emif_avmm_address,
       output reg         emif_avmm_write,
       output reg         emif_avmm_read,
-      output reg [63:0]  emif_avmm_byteenable,
-      output reg         emif_avmm_debugaccess
+      output reg [63:0]  emif_avmm_byteenable
    );
 
     wire [31:0]         result;
@@ -63,13 +62,12 @@ module basic_arithmetic_top
 
    always_comb
    begin
-     emif_avmm_burstcount  = 5'b0;
+     emif_avmm_burstcount  = 7'b0;
      emif_avmm_writedata   = 512'b0;
-     emif_avmm_address     = 31'b0;
+     emif_avmm_address     = 0;
      emif_avmm_write       = 1'b0;
      emif_avmm_read        = 1'b0;
      emif_avmm_byteenable  = 64'b0;
-     emif_avmm_debugaccess = 1'b0;
    end
 
    basic_arithmetic_reg_blk  #( .REG_FILE_IO_SIZE(REG_FILE_IO_SIZE) ) 

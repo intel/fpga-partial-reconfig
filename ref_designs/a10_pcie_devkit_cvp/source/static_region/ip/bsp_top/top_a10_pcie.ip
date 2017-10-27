@@ -3,11 +3,11 @@
   <spirit:vendor>Intel Corporation</spirit:vendor>
   <spirit:library>top_a10_pcie</spirit:library>
   <spirit:name>a10_pcie</spirit:name>
-  <spirit:version>17.0</spirit:version>
+  <spirit:version>17.1</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>app_nreset_status</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.1"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -44,7 +44,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>coreclkout_hip</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -86,7 +86,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>dk_hip</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -126,7 +126,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>dma_rd_master</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -353,7 +353,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>dma_wr_master</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -580,7 +580,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>hip_ctrl</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -620,7 +620,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>hip_pipe</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -2332,7 +2332,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>hip_serial</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -2484,7 +2484,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>npor</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -2524,7 +2524,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>rd_dcm_master</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -2767,7 +2767,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>rd_dts_slave</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -3051,7 +3051,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>refclk</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -3083,7 +3083,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>rxm_bar2</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -3326,7 +3326,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>rxm_bar4</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -3569,7 +3569,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>txs</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -3877,7 +3877,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>wr_dcm_master</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -4120,7 +4120,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>wr_dts_slave</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -8602,7 +8602,7 @@
       <spirit:vendor>Intel Corporation</spirit:vendor>
       <spirit:library>top_a10_pcie</spirit:library>
       <spirit:name>altera_pcie_a10_hip</spirit:name>
-      <spirit:version>17.0</spirit:version>
+      <spirit:version>17.1</spirit:version>
     </altera:entity_info>
     <altera:altera_module_parameters>
       <spirit:parameters>
@@ -9222,6 +9222,11 @@
           <spirit:value spirit:format="long" spirit:id="pf0_subclass_code_hwtcl">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>pf0_pci_prog_intfc_byte_hwtcl</spirit:name>
+          <spirit:displayName>Programming IF code</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf0_pci_prog_intfc_byte_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>subsystem_vendor_id_hwtcl</spirit:name>
           <spirit:displayName>Subsystem Vendor ID</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="subsystem_vendor_id_hwtcl">4466</spirit:value>
@@ -9562,6 +9567,11 @@
           <spirit:value spirit:format="long" spirit:id="sr_iov_support_hwtcl">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>include_virtio_capabilities_hwtcl</spirit:name>
+          <spirit:displayName>Enable VIRTIO support</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="include_virtio_capabilities_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>ari_support_hwtcl</spirit:name>
           <spirit:displayName>Enable Alternative Routing-ID Interpretation (ARI) support</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="ari_support_hwtcl">0</spirit:value>
@@ -9575,6 +9585,346 @@
           <spirit:name>flr_capability_hwtcl</spirit:name>
           <spirit:displayName>flr_capability_hwtcl</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="flr_capability_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf0_virtio_capability_present_hwtcl</spirit:name>
+          <spirit:displayName>Enable VIRTIO Capabilities for PF0</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf0_virtio_capability_present_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf0_virtio_device_specific_cap_present_hwtcl</spirit:name>
+          <spirit:displayName>Enable Device Specific Capability for PF0</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf0_virtio_device_specific_cap_present_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf0_virtio_cmn_config_bar_indicator_hwtcl</spirit:name>
+          <spirit:displayName>BAR Indicator</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf0_virtio_cmn_config_bar_indicator_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf0_virtio_cmn_config_bar_offset_hwtcl</spirit:name>
+          <spirit:displayName>Offset within BAR</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf0_virtio_cmn_config_bar_offset_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf0_virtio_cmn_config_structure_length_hwtcl</spirit:name>
+          <spirit:displayName>Structure Length in Bytes</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf0_virtio_cmn_config_structure_length_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf0_virtio_notification_bar_indicator_hwtcl</spirit:name>
+          <spirit:displayName>BAR Indicator</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf0_virtio_notification_bar_indicator_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf0_virtio_notification_bar_offset_hwtcl</spirit:name>
+          <spirit:displayName>Offset within BAR</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf0_virtio_notification_bar_offset_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf0_virtio_notification_structure_length_hwtcl</spirit:name>
+          <spirit:displayName>Structure Length in Bytes</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf0_virtio_notification_structure_length_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf0_virtio_isrstatus_bar_indicator_hwtcl</spirit:name>
+          <spirit:displayName>BAR Indicator</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf0_virtio_isrstatus_bar_indicator_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf0_virtio_isrstatus_bar_offset_hwtcl</spirit:name>
+          <spirit:displayName>Offset within BAR</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf0_virtio_isrstatus_bar_offset_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf0_virtio_isrstatus_structure_length_hwtcl</spirit:name>
+          <spirit:displayName>Structure Length in Bytes</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf0_virtio_isrstatus_structure_length_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf0_virtio_devspecific_bar_indicator_hwtcl</spirit:name>
+          <spirit:displayName>BAR Indicator</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf0_virtio_devspecific_bar_indicator_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf0_virtio_devspecific_bar_offset_hwtcl</spirit:name>
+          <spirit:displayName>Offset within BAR</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf0_virtio_devspecific_bar_offset_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf0_virtio_devspecific_structure_length_hwtcl</spirit:name>
+          <spirit:displayName>Structure Length in Bytes</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf0_virtio_devspecific_structure_length_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf0_virtio_pciconfig_access_bar_indicator_hwtcl</spirit:name>
+          <spirit:displayName>BAR Indicator</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf0_virtio_pciconfig_access_bar_indicator_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf0_virtio_pciconfig_access_bar_offset_hwtcl</spirit:name>
+          <spirit:displayName>Offset within BAR</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf0_virtio_pciconfig_access_bar_offset_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf0_virtio_pciconfig_access_structure_length_hwtcl</spirit:name>
+          <spirit:displayName>Structure Length in Bytes</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf0_virtio_pciconfig_access_structure_length_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf1_virtio_capability_present_hwtcl</spirit:name>
+          <spirit:displayName>Enable VIRTIO Capabilities for PF1</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf1_virtio_capability_present_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf1_virtio_device_specific_cap_present_hwtcl</spirit:name>
+          <spirit:displayName>Enable Device Specific Capability for PF1</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf1_virtio_device_specific_cap_present_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf1_virtio_cmn_config_bar_indicator_hwtcl</spirit:name>
+          <spirit:displayName>BAR Indicator</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf1_virtio_cmn_config_bar_indicator_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf1_virtio_cmn_config_bar_offset_hwtcl</spirit:name>
+          <spirit:displayName>Offset within BAR</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf1_virtio_cmn_config_bar_offset_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf1_virtio_cmn_config_structure_length_hwtcl</spirit:name>
+          <spirit:displayName>Structure Length in Bytes</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf1_virtio_cmn_config_structure_length_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf1_virtio_notification_bar_indicator_hwtcl</spirit:name>
+          <spirit:displayName>BAR Indicator</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf1_virtio_notification_bar_indicator_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf1_virtio_notification_bar_offset_hwtcl</spirit:name>
+          <spirit:displayName>Offset within BAR</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf1_virtio_notification_bar_offset_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf1_virtio_notification_structure_length_hwtcl</spirit:name>
+          <spirit:displayName>Structure Length in Bytes</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf1_virtio_notification_structure_length_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf1_virtio_isrstatus_bar_indicator_hwtcl</spirit:name>
+          <spirit:displayName>BAR Indicator</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf1_virtio_isrstatus_bar_indicator_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf1_virtio_isrstatus_bar_offset_hwtcl</spirit:name>
+          <spirit:displayName>Offset within BAR</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf1_virtio_isrstatus_bar_offset_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf1_virtio_isrstatus_structure_length_hwtcl</spirit:name>
+          <spirit:displayName>Structure Length in Bytes</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf1_virtio_isrstatus_structure_length_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf1_virtio_devspecific_bar_indicator_hwtcl</spirit:name>
+          <spirit:displayName>BAR Indicator</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf1_virtio_devspecific_bar_indicator_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf1_virtio_devspecific_bar_offset_hwtcl</spirit:name>
+          <spirit:displayName>Offset within BAR</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf1_virtio_devspecific_bar_offset_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf1_virtio_devspecific_structure_length_hwtcl</spirit:name>
+          <spirit:displayName>Structure Length in Bytes</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf1_virtio_devspecific_structure_length_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf1_virtio_pciconfig_access_bar_indicator_hwtcl</spirit:name>
+          <spirit:displayName>BAR Indicator</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf1_virtio_pciconfig_access_bar_indicator_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf1_virtio_pciconfig_access_bar_offset_hwtcl</spirit:name>
+          <spirit:displayName>Offset within BAR</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf1_virtio_pciconfig_access_bar_offset_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf1_virtio_pciconfig_access_structure_length_hwtcl</spirit:name>
+          <spirit:displayName>Structure Length in Bytes</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf1_virtio_pciconfig_access_structure_length_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf2_virtio_capability_present_hwtcl</spirit:name>
+          <spirit:displayName>Enable VIRTIO Capabilities for PF2</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf2_virtio_capability_present_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf2_virtio_device_specific_cap_present_hwtcl</spirit:name>
+          <spirit:displayName>Enable Device Specific Capability for PF2</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf2_virtio_device_specific_cap_present_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf2_virtio_cmn_config_bar_indicator_hwtcl</spirit:name>
+          <spirit:displayName>BAR Indicator</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf2_virtio_cmn_config_bar_indicator_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf2_virtio_cmn_config_bar_offset_hwtcl</spirit:name>
+          <spirit:displayName>Offset within BAR</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf2_virtio_cmn_config_bar_offset_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf2_virtio_cmn_config_structure_length_hwtcl</spirit:name>
+          <spirit:displayName>Structure Length in Bytes</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf2_virtio_cmn_config_structure_length_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf2_virtio_notification_bar_indicator_hwtcl</spirit:name>
+          <spirit:displayName>BAR Indicator</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf2_virtio_notification_bar_indicator_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf2_virtio_notification_bar_offset_hwtcl</spirit:name>
+          <spirit:displayName>Offset within BAR</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf2_virtio_notification_bar_offset_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf2_virtio_notification_structure_length_hwtcl</spirit:name>
+          <spirit:displayName>Structure Length in Bytes</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf2_virtio_notification_structure_length_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf2_virtio_isrstatus_bar_indicator_hwtcl</spirit:name>
+          <spirit:displayName>BAR Indicator</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf2_virtio_isrstatus_bar_indicator_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf2_virtio_isrstatus_bar_offset_hwtcl</spirit:name>
+          <spirit:displayName>Offset within BAR</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf2_virtio_isrstatus_bar_offset_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf2_virtio_isrstatus_structure_length_hwtcl</spirit:name>
+          <spirit:displayName>Structure Length in Bytes</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf2_virtio_isrstatus_structure_length_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf2_virtio_devspecific_bar_indicator_hwtcl</spirit:name>
+          <spirit:displayName>BAR Indicator</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf2_virtio_devspecific_bar_indicator_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf2_virtio_devspecific_bar_offset_hwtcl</spirit:name>
+          <spirit:displayName>Offset within BAR</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf2_virtio_devspecific_bar_offset_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf2_virtio_devspecific_structure_length_hwtcl</spirit:name>
+          <spirit:displayName>Structure Length in Bytes</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf2_virtio_devspecific_structure_length_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf2_virtio_pciconfig_access_bar_indicator_hwtcl</spirit:name>
+          <spirit:displayName>BAR Indicator</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf2_virtio_pciconfig_access_bar_indicator_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf2_virtio_pciconfig_access_bar_offset_hwtcl</spirit:name>
+          <spirit:displayName>Offset within BAR</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf2_virtio_pciconfig_access_bar_offset_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf2_virtio_pciconfig_access_structure_length_hwtcl</spirit:name>
+          <spirit:displayName>Structure Length in Bytes</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf2_virtio_pciconfig_access_structure_length_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf3_virtio_capability_present_hwtcl</spirit:name>
+          <spirit:displayName>Enable VIRTIO Capabilities for PF3</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf3_virtio_capability_present_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf3_virtio_device_specific_cap_present_hwtcl</spirit:name>
+          <spirit:displayName>Enable Device Specific Capability for PF3</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf3_virtio_device_specific_cap_present_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf3_virtio_cmn_config_bar_indicator_hwtcl</spirit:name>
+          <spirit:displayName>BAR Indicator</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf3_virtio_cmn_config_bar_indicator_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf3_virtio_cmn_config_bar_offset_hwtcl</spirit:name>
+          <spirit:displayName>Offset within BAR</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf3_virtio_cmn_config_bar_offset_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf3_virtio_cmn_config_structure_length_hwtcl</spirit:name>
+          <spirit:displayName>Structure Length in Bytes</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf3_virtio_cmn_config_structure_length_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf3_virtio_notification_bar_indicator_hwtcl</spirit:name>
+          <spirit:displayName>BAR Indicator</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf3_virtio_notification_bar_indicator_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf3_virtio_notification_bar_offset_hwtcl</spirit:name>
+          <spirit:displayName>Offset within BAR</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf3_virtio_notification_bar_offset_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf3_virtio_notification_structure_length_hwtcl</spirit:name>
+          <spirit:displayName>Structure Length in Bytes</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf3_virtio_notification_structure_length_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf3_virtio_isrstatus_bar_indicator_hwtcl</spirit:name>
+          <spirit:displayName>BAR Indicator</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf3_virtio_isrstatus_bar_indicator_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf3_virtio_isrstatus_bar_offset_hwtcl</spirit:name>
+          <spirit:displayName>Offset within BAR</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf3_virtio_isrstatus_bar_offset_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf3_virtio_isrstatus_structure_length_hwtcl</spirit:name>
+          <spirit:displayName>Structure Length in Bytes</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf3_virtio_isrstatus_structure_length_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf3_virtio_devspecific_bar_indicator_hwtcl</spirit:name>
+          <spirit:displayName>BAR Indicator</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf3_virtio_devspecific_bar_indicator_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf3_virtio_devspecific_bar_offset_hwtcl</spirit:name>
+          <spirit:displayName>Offset within BAR</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf3_virtio_devspecific_bar_offset_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf3_virtio_devspecific_structure_length_hwtcl</spirit:name>
+          <spirit:displayName>Structure Length in Bytes</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf3_virtio_devspecific_structure_length_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf3_virtio_pciconfig_access_bar_indicator_hwtcl</spirit:name>
+          <spirit:displayName>BAR Indicator</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf3_virtio_pciconfig_access_bar_indicator_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf3_virtio_pciconfig_access_bar_offset_hwtcl</spirit:name>
+          <spirit:displayName>Offset within BAR</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf3_virtio_pciconfig_access_bar_offset_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf3_virtio_pciconfig_access_structure_length_hwtcl</spirit:name>
+          <spirit:displayName>Structure Length in Bytes</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf3_virtio_pciconfig_access_structure_length_hwtcl">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>pf_tph_support_hwtcl</spirit:name>
@@ -9807,6 +10157,11 @@
           <spirit:value spirit:format="long" spirit:id="pf0_bar5_present_hwtcl">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>pf0_exprom_bar_present_hwtcl</spirit:name>
+          <spirit:displayName>Present</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf0_exprom_bar_present_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>pf0_bar0_type_hwtcl</spirit:name>
           <spirit:displayName>Type</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="pf0_bar0_type_hwtcl">1</spirit:value>
@@ -9880,6 +10235,11 @@
           <spirit:name>pf0_bar5_size_hwtcl</spirit:name>
           <spirit:displayName>Size</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="pf0_bar5_size_hwtcl">12</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf0_exprom_bar_size_hwtcl</spirit:name>
+          <spirit:displayName>Size</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf0_exprom_bar_size_hwtcl">12</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>pf0_vf_bar0_present_hwtcl</spirit:name>
@@ -10017,6 +10377,11 @@
           <spirit:value spirit:format="long" spirit:id="pf1_bar5_present_hwtcl">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>pf1_exprom_bar_present_hwtcl</spirit:name>
+          <spirit:displayName>Present</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf1_exprom_bar_present_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>pf1_bar0_type_hwtcl</spirit:name>
           <spirit:displayName>Type</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="pf1_bar0_type_hwtcl">1</spirit:value>
@@ -10090,6 +10455,11 @@
           <spirit:name>pf1_bar5_size_hwtcl</spirit:name>
           <spirit:displayName>Size</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="pf1_bar5_size_hwtcl">12</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf1_exprom_bar_size_hwtcl</spirit:name>
+          <spirit:displayName>Size</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf1_exprom_bar_size_hwtcl">12</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>pf1_vf_bar0_present_hwtcl</spirit:name>
@@ -10227,6 +10597,11 @@
           <spirit:value spirit:format="long" spirit:id="pf2_bar5_present_hwtcl">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>pf2_exprom_bar_present_hwtcl</spirit:name>
+          <spirit:displayName>Present</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf2_exprom_bar_present_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>pf2_bar0_type_hwtcl</spirit:name>
           <spirit:displayName>Type</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="pf2_bar0_type_hwtcl">1</spirit:value>
@@ -10300,6 +10675,11 @@
           <spirit:name>pf2_bar5_size_hwtcl</spirit:name>
           <spirit:displayName>Size</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="pf2_bar5_size_hwtcl">12</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf2_exprom_bar_size_hwtcl</spirit:name>
+          <spirit:displayName>Size</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf2_exprom_bar_size_hwtcl">12</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>pf2_vf_bar0_present_hwtcl</spirit:name>
@@ -10437,6 +10817,11 @@
           <spirit:value spirit:format="long" spirit:id="pf3_bar5_present_hwtcl">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>pf3_exprom_bar_present_hwtcl</spirit:name>
+          <spirit:displayName>Present</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf3_exprom_bar_present_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>pf3_bar0_type_hwtcl</spirit:name>
           <spirit:displayName>Type</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="pf3_bar0_type_hwtcl">1</spirit:value>
@@ -10510,6 +10895,11 @@
           <spirit:name>pf3_bar5_size_hwtcl</spirit:name>
           <spirit:displayName>Size</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="pf3_bar5_size_hwtcl">12</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf3_exprom_bar_size_hwtcl</spirit:name>
+          <spirit:displayName>Size</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf3_exprom_bar_size_hwtcl">12</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>pf3_vf_bar0_present_hwtcl</spirit:name>
@@ -10647,6 +11037,11 @@
           <spirit:value spirit:format="long" spirit:id="pf1_subclass_code_hwtcl">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>pf1_pci_prog_intfc_byte_hwtcl</spirit:name>
+          <spirit:displayName>Programming IF code</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf1_pci_prog_intfc_byte_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>pf1_subsystem_vendor_id_hwtcl</spirit:name>
           <spirit:displayName>Subsystem Vendor ID</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="pf1_subsystem_vendor_id_hwtcl">0</spirit:value>
@@ -10687,6 +11082,11 @@
           <spirit:value spirit:format="long" spirit:id="pf2_subclass_code_hwtcl">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>pf2_pci_prog_intfc_byte_hwtcl</spirit:name>
+          <spirit:displayName>Programming IF code</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf2_pci_prog_intfc_byte_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>pf2_subsystem_vendor_id_hwtcl</spirit:name>
           <spirit:displayName>Subsystem Vendor ID</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="pf2_subsystem_vendor_id_hwtcl">0</spirit:value>
@@ -10725,6 +11125,11 @@
           <spirit:name>pf3_subclass_code_hwtcl</spirit:name>
           <spirit:displayName>Subclass code</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="pf3_subclass_code_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf3_pci_prog_intfc_byte_hwtcl</spirit:name>
+          <spirit:displayName>Programming IF code</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf3_pci_prog_intfc_byte_hwtcl">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>pf3_subsystem_vendor_id_hwtcl</spirit:name>
@@ -14160,7 +14565,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>testbench.partner.pcie_tb.version</spirit:name>
-          <spirit:value spirit:format="string" spirit:id="testbench.partner.pcie_tb.version">17.0</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="testbench.partner.pcie_tb.version">17.1</spirit:value>
         </spirit:parameter>
       </spirit:parameters>
     </altera:altera_assignments>
