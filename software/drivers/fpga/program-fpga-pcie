@@ -151,3 +151,4 @@ then
 fi
 
 $_this_dir/fpga_region_controller $PCIE_CARD disable $REGION
+echo 3 > $STATE 2> /dev/null
