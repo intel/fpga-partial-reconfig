@@ -3,11 +3,11 @@
   <spirit:vendor>Intel Corporation</spirit:vendor>
   <spirit:library>pcie_rst_n</spirit:library>
   <spirit:name>pcie_rst_n</spirit:name>
-  <spirit:version>17.0</spirit:version>
+  <spirit:version>17.1</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>in_reset</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -34,7 +34,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>out_reset</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.1"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -113,7 +113,7 @@
       <spirit:vendor>Intel Corporation</spirit:vendor>
       <spirit:library>pcie_rst_n</spirit:library>
       <spirit:name>altera_reset_bridge</spirit:name>
-      <spirit:version>17.0</spirit:version>
+      <spirit:version>17.1</spirit:version>
     </altera:entity_info>
     <altera:altera_module_parameters>
       <spirit:parameters>

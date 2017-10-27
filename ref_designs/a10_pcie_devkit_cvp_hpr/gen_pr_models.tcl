@@ -23,7 +23,8 @@ load_package flow
 
 set rev_names [list \
     synth_basic_arithmetic \
-    synth_basic_dsp \
+    synth_basic_dsp_0 \
+    synth_basic_dsp_1 \
     synth_ddr4_access \
     synth_gol
 ]
@@ -36,4 +37,10 @@ foreach rev $rev_names {
     project_close
 }
 
+# Generate the HPR parent sim model
+project_open a10_pcie_devkit_cvp -rev synth_parent_persona
+execute_module -tool ipg -args "--synthesis=verilog --simulation=verilog"
+execute_module -tool syn
+execute_module -tool eda -args "--pr --simulation --tool=vcsmx --format=verilog --partition=root_partition --snapshot=synthesized --exclude_sub_partitions --module_name=root_partition=parent_persona_top --module_name=pr_child_partition_0=child_pr_logic_wrapper_0 --module_name=pr_child_partition_1=child_pr_logic_wrapper_1"
+project_close
 

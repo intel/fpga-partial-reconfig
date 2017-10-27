@@ -26,30 +26,30 @@
 
 module ddr4_access_persona 
    (
-      input wire         pr_region_clk ,
-      input wire         pr_logic_rst , 
+      input  wire         pr_region_clk ,
+      input  wire         pr_logic_rst , 
       // DDR4 interface
-      input wire         emif_avmm_waitrequest , 
-      input wire [511:0] emif_avmm_readdata , 
-      input wire         emif_avmm_readdatavalid , 
-      output reg [4:0]   emif_avmm_burstcount , 
-      output reg [511:0] emif_avmm_writedata , 
-      output reg [24:0]  emif_avmm_address , 
-      output reg         emif_avmm_write , 
-      output reg         emif_avmm_read , 
-      output reg [63:0]  emif_avmm_byteenable , 
-      output reg         emif_avmm_debugaccess , 
+      input  wire         emif_usr_clk ,
+      input  wire         emif_usr_rst_n ,
+      input  wire         emif_avmm_waitrequest , 
+      input  wire [511:0] emif_avmm_readdata , 
+      input  wire         emif_avmm_readdatavalid , 
+      output wire [6:0]   emif_avmm_burstcount , 
+      output wire [511:0] emif_avmm_writedata , 
+      output wire [24:0]  emif_avmm_address , 
+      output wire         emif_avmm_write , 
+      output wire         emif_avmm_read , 
+      output wire [63:0]  emif_avmm_byteenable , 
       // AVMM interface
-      output reg         pr_region_avmm_waitrequest ,
-      output reg [31:0]  pr_region_avmm_readdata ,
-      output reg         pr_region_avmm_readdatavalid,
-      input wire [0:0]   pr_region_avmm_burstcount ,
-      input wire [31:0]  pr_region_avmm_writedata ,
-      input wire [13:0]  pr_region_avmm_address ,
-      input wire         pr_region_avmm_write ,
-      input wire         pr_region_avmm_read ,
-      input wire [3:0]   pr_region_avmm_byteenable ,
-      input wire         pr_region_avmm_debugaccess   
+      output wire         pr_region_avmm_waitrequest ,
+      output wire [31:0]  pr_region_avmm_readdata ,
+      output wire         pr_region_avmm_readdatavalid,
+      input  wire [0:0]   pr_region_avmm_burstcount ,
+      input  wire [31:0]  pr_region_avmm_writedata ,
+      input  wire [13:0]  pr_region_avmm_address ,
+      input  wire         pr_region_avmm_write ,
+      input  wire         pr_region_avmm_read ,
+      input  wire [3:0]   pr_region_avmm_byteenable
    );
 
    //Define Number of IO registers, base case is 8 input and 8 output
@@ -67,10 +67,21 @@ module ddr4_access_persona
 
    wire [31:0]         persona_id;
    wire [31:0]         host_cntrl_register;
+   //DDR4 Interface Wires
 
-   ddr4_access_top #( .REG_FILE_IO_SIZE(REG_FILE_IO_SIZE) ) 
-   u_pr_logic 
-   (
+   wire         emif_avmm_waitrequest_pr_region; 
+   wire [511:0] emif_avmm_readdata_pr_region; 
+   wire         emif_avmm_readdatavalid_pr_region; 
+   wire [6:0]   emif_avmm_burstcount_pr_region; 
+   wire [511:0] emif_avmm_writedata_pr_region; 
+   wire [24:0]  emif_avmm_address_pr_region; 
+   wire         emif_avmm_write_pr_region; 
+   wire         emif_avmm_read_pr_region; 
+   wire [63:0]  emif_avmm_byteenable_pr_region; 
+   
+   ddr4_access_top #(
+      .REG_FILE_IO_SIZE(REG_FILE_IO_SIZE)
+   ) u_pr_logic  (
       //clock
       .clk                       ( pr_region_clk ),                      
       .pr_logic_rst              ( pr_logic_rst ),   
@@ -83,17 +94,16 @@ module ddr4_access_persona
       .host_pr                   ( host_pr ),                      
       // 8 Registers for PR logic -> host communication
       .pr_host                   ( pr_host ),
-      //DDR4 Reset
-      .emif_avmm_waitrequest     ( emif_avmm_waitrequest ),
-      .emif_avmm_readdata        ( emif_avmm_readdata ),
-      .emif_avmm_readdatavalid   ( emif_avmm_readdatavalid ),
-      .emif_avmm_burstcount      ( emif_avmm_burstcount ),
-      .emif_avmm_writedata       ( emif_avmm_writedata ),
-      .emif_avmm_address         ( emif_avmm_address ),
-      .emif_avmm_write           ( emif_avmm_write ),
-      .emif_avmm_read            ( emif_avmm_read ),
-      .emif_avmm_byteenable      ( emif_avmm_byteenable ),
-      .emif_avmm_debugaccess     ( emif_avmm_debugaccess )                 
+
+      .emif_avmm_waitrequest     ( emif_avmm_waitrequest_pr_region ),
+      .emif_avmm_readdata        ( emif_avmm_readdata_pr_region ),
+      .emif_avmm_readdatavalid   ( emif_avmm_readdatavalid_pr_region ),
+      .emif_avmm_burstcount      ( emif_avmm_burstcount_pr_region ),
+      .emif_avmm_writedata       ( emif_avmm_writedata_pr_region ),
+      .emif_avmm_address         ( emif_avmm_address_pr_region ),
+      .emif_avmm_write           ( emif_avmm_write_pr_region ),
+      .emif_avmm_read            ( emif_avmm_read_pr_region ),
+      .emif_avmm_byteenable      ( emif_avmm_byteenable_pr_region )
    );
    //////Register Address Map//////////////////
    //    reg_file_persona_id         = 0x0000
@@ -135,7 +145,7 @@ module ddr4_access_persona
          .reg_file_mm_bridge_s0_write              ( pr_region_avmm_write ),
          .reg_file_mm_bridge_s0_read               ( pr_region_avmm_read ),
          .reg_file_mm_bridge_s0_byteenable         ( pr_region_avmm_byteenable ),
-         .reg_file_mm_bridge_s0_debugaccess        ( pr_region_avmm_debugaccess ),
+         .reg_file_mm_bridge_s0_debugaccess        ( 1'b0 ),
          //Host -> PR System registers
          .reg_file_host_pr_0_export                ( host_pr[0] ),
          .reg_file_host_pr_1_export                ( host_pr[1] ),
@@ -155,4 +165,35 @@ module ddr4_access_persona
          .reg_file_pr_host_6_export                ( pr_host[6] ),
          .reg_file_pr_host_7_export                ( pr_host[7] )
       );
+   // EMIF AVMM Interface logic
+   emif_avmm_interface u0 (
+      .emif_clk                         ( emif_usr_clk ),                         
+      .usr_reset_n                      ( emif_usr_rst_n ),                       
+      
+      .pr_region_clk                    ( pr_region_clk ),                    
+      .global_reset                     ( pr_logic_rst ),                     
+      
+      .pr_to_emif_avmm_m0_waitrequest   ( emif_avmm_waitrequest ),   
+      .pr_to_emif_avmm_m0_readdata      ( emif_avmm_readdata ),      
+      .pr_to_emif_avmm_m0_readdatavalid ( emif_avmm_readdatavalid ), 
+      .pr_to_emif_avmm_m0_burstcount    ( emif_avmm_burstcount ),    
+      .pr_to_emif_avmm_m0_writedata     ( emif_avmm_writedata ),     
+      .pr_to_emif_avmm_m0_address       ( emif_avmm_address ),       
+      .pr_to_emif_avmm_m0_write         ( emif_avmm_write ),         
+      .pr_to_emif_avmm_m0_read          ( emif_avmm_read ),          
+      .pr_to_emif_avmm_m0_byteenable    ( emif_avmm_byteenable ),    
+      .pr_to_emif_avmm_m0_debugaccess   ( ),
+      .pr_to_emif_avmm_s0_debugaccess   ( 1'b0 ),
+      .pr_to_emif_avmm_s0_waitrequest   ( emif_avmm_waitrequest_pr_region ),   
+      .pr_to_emif_avmm_s0_readdata      ( emif_avmm_readdata_pr_region ),      
+      .pr_to_emif_avmm_s0_readdatavalid ( emif_avmm_readdatavalid_pr_region ), 
+      .pr_to_emif_avmm_s0_burstcount    ( emif_avmm_burstcount_pr_region ),    
+      .pr_to_emif_avmm_s0_writedata     ( emif_avmm_writedata_pr_region ),     
+      .pr_to_emif_avmm_s0_address       ( emif_avmm_address_pr_region ),       
+      .pr_to_emif_avmm_s0_write         ( emif_avmm_write_pr_region ),         
+      .pr_to_emif_avmm_s0_read          ( emif_avmm_read_pr_region ),          
+      .pr_to_emif_avmm_s0_byteenable    ( emif_avmm_byteenable_pr_region )
+   );
+
+
 endmodule

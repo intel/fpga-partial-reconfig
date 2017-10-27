@@ -26,7 +26,8 @@ module parent_persona_top
 (
    input wire         pr_region_clk , 
    input wire         pr_logic_rst , 
-
+   input wire         emif_usr_clk ,
+   input wire         emif_usr_rst_n ,
    // Signaltap Interface
    input wire           tck ,
    input wire           tms ,
@@ -38,13 +39,12 @@ module parent_persona_top
    input wire           emif_avmm_waitrequest , 
    input wire [511:0]   emif_avmm_readdata , 
    input wire           emif_avmm_readdatavalid , 
-   output reg [4:0]     emif_avmm_burstcount , 
+   output reg [6:0]     emif_avmm_burstcount , 
    output reg [511:0]   emif_avmm_writedata , 
    output reg [24:0]    emif_avmm_address , 
    output reg           emif_avmm_write , 
    output reg           emif_avmm_read , 
    output reg [63:0]    emif_avmm_byteenable , 
-   output reg           emif_avmm_debugaccess ,
 
    input wire           pr_handshake_start_req ,
    output reg           pr_handshake_start_ack ,
@@ -61,8 +61,7 @@ module parent_persona_top
    input wire [15:0]    pr_region_avmm_address , 
    input wire           pr_region_avmm_write , 
    input wire           pr_region_avmm_read , 
-   input wire [3:0]     pr_region_avmm_byteenable , 
-   input wire           pr_region_avmm_debugaccess    
+   input wire [3:0]     pr_region_avmm_byteenable    
 );
 
    wire [31:0] persona_id;
@@ -87,6 +86,8 @@ module parent_persona_top
    (
         .clk_clk                                      (pr_region_clk),                                      //                            clk.clk
         .parent_pr_id_export                          (persona_id),
+        .emif_clk_clk                                 (emif_usr_clk),                                 //   input,    width = 1,                       emif_clk.clk
+        .emif_rst_n_reset_n                           (emif_usr_rst_n),                           //   input,    width = 1,                     emif_rst_n.reset_n
         .parent_pr_emif_avmm_pbridge_m0_waitrequest   (emif_avmm_waitrequest),   // parent_pr_emif_avmm_pbridge_m0.waitrequest
         .parent_pr_emif_avmm_pbridge_m0_readdata      (emif_avmm_readdata),      //                               .readdata
         .parent_pr_emif_avmm_pbridge_m0_readdatavalid (emif_avmm_readdatavalid), //                               .readdatavalid
@@ -96,7 +97,6 @@ module parent_persona_top
         .parent_pr_emif_avmm_pbridge_m0_write         (emif_avmm_write),         //                               .write
         .parent_pr_emif_avmm_pbridge_m0_read          (emif_avmm_read),          //                               .read
         .parent_pr_emif_avmm_pbridge_m0_byteenable    (emif_avmm_byteenable),    //                               .byteenable
-        .parent_pr_emif_avmm_pbridge_m0_debugaccess   (emif_avmm_debugaccess),   //                               .debugaccess
         
         .parent_pr_pcie_avmm_pbridge_s0_waitrequest   (pr_region_avmm_waitrequest),   // parent_pr_pcie_avmm_pbridge_s0.waitrequest
         .parent_pr_pcie_avmm_pbridge_s0_readdata      (pr_region_avmm_readdata),      //                               .readdata
@@ -107,12 +107,11 @@ module parent_persona_top
         .parent_pr_pcie_avmm_pbridge_s0_write         (pr_region_avmm_write),         //                               .write
         .parent_pr_pcie_avmm_pbridge_s0_read          (pr_region_avmm_read),          //                               .read
         .parent_pr_pcie_avmm_pbridge_s0_byteenable    (pr_region_avmm_byteenable),    //                               .byteenable
-        .parent_pr_pcie_avmm_pbridge_s0_debugaccess   (pr_region_avmm_debugaccess),   //                               .debugaccess
         
         .reset_reset                                  (pr_logic_rst)                                   //                          reset.reset
     );
 
-    sld_jtag_bridge_host u_sld_jtag_host 
+    sld_jtag_host u_sld_jtag_host 
     (
       .tck     ( tck ),
       .tms     ( tms ),

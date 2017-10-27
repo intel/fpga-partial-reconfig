@@ -1,0 +1,35 @@
+#############################################################
+# Device setup
+#############################################################
+set_global_assignment -name FAMILY "Arria 10"
+set_global_assignment -name DEVICE 10AX115S2F45I1SG
+
+#############################################################
+# Files and basic setup
+#############################################################
+set_global_assignment -name TOP_LEVEL_ENTITY pr_logic_template
+set_global_assignment -name SYSTEMVERILOG_FILE source/template/pr_logic_template.sv
+
+#############################################################
+# User Defined Macro for Implementing Own Source
+#############################################################
+# Usage: set_global_assignment -name VERILOG_MACRO "PR_CUSTOM_PERSONA=<module_name>"
+
+#############################################################
+# Example Specific Source
+#############################################################
+#Set global assignments for each source file used in persona
+
+#############################################################
+# QSYS and IP Files
+#############################################################
+set_global_assignment -name QSYS_FILE source/common/reg_file/reg_file.qsys
+set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_clock_bridge.ip
+set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_mm_bridge.ip
+set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_reset_bridge.ip
+set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_pio_out.ip
+set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_pio_in.ip
+
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+
+set_global_assignment -name REVISION_TYPE PR_SYN

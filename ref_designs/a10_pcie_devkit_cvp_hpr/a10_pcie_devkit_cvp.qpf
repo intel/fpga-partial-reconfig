@@ -24,37 +24,37 @@
 # associated documentation or information are expressly subject 
 # to the terms and conditions of the Intel Program License 
 # Subscription Agreement, the Intel Quartus Prime License Agreement,
-# the Intel MegaCore Function License Agreement, or other 
-# applicable license agreement, including, without limitation, 
-# that your use is for the sole purpose of programming logic 
-# devices manufactured by Intel and sold by Intel or its 
-# authorized distributors.  Please refer to the applicable 
-# agreement for further details.
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details.
 #
 # -------------------------------------------------------------------------- #
 #
 # Quartus Prime
-# Version 17.0.0 Build 288 04/12/2017 SJ Pro Edition
-# Date created = 16:26:55  April 25, 2017
+# Version 17.1.0 Internal Build 131 07/02/2017 TO Pro Edition
+# Date created = 17:16:07  July 05, 2017
 #
 # -------------------------------------------------------------------------- #
 
-QUARTUS_VERSION = "17.0"
-DATE = "16:26:55  April 25, 2017"
+QUARTUS_VERSION = "17.1"
+DATE = "17:16:07  July 05, 2017"
 
 # Revisions
 
+PROJECT_REVISION = "a10_pcie_devkit_cvp_ddr4_access"
 PROJECT_REVISION = "a10_pcie_devkit_cvp"
 PROJECT_REVISION = "synth_parent_persona"
-PROJECT_REVISION = "a10_pcie_devkit_cvp_basic_arithmetic"
-PROJECT_REVISION = "a10_pcie_devkit_cvp_normal_basic_dsp_stp"
-PROJECT_REVISION = "a10_pcie_devkit_cvp_basic_dsp"
-PROJECT_REVISION = "a10_pcie_devkit_cvp_normal_basic_arithmetic"
-PROJECT_REVISION = "a10_pcie_devkit_cvp_normal_ddr4_access"
-PROJECT_REVISION = "a10_pcie_devkit_cvp_ddr4_access"
-PROJECT_REVISION = "synth_basic_dsp"
 PROJECT_REVISION = "synth_ddr4_access"
-PROJECT_REVISION = "synth_basic_arithmetic"
-PROJECT_REVISION = "a10_pcie_devkit_cvp_gol"
+PROJECT_REVISION = "a10_pcie_devkit_cvp_basic_dsp"
+PROJECT_REVISION = "a10_pcie_devkit_cvp_normal_ddr4_access"
+PROJECT_REVISION = "a10_pcie_devkit_cvp_basic_arithmetic"
 PROJECT_REVISION = "a10_pcie_devkit_cvp_normal_gol"
+PROJECT_REVISION = "a10_pcie_devkit_cvp_gol"
+PROJECT_REVISION = "a10_pcie_devkit_cvp_normal_basic_dsp"
+PROJECT_REVISION = "a10_pcie_devkit_cvp_normal_basic_arithmetic"
 PROJECT_REVISION = "synth_gol"
+PROJECT_REVISION = "synth_basic_arithmetic"
+PROJECT_REVISION = "synth_basic_dsp_0"
+PROJECT_REVISION = "synth_basic_dsp_1"

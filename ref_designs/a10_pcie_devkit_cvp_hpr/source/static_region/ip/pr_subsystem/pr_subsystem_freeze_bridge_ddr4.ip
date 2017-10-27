@@ -3,11 +3,11 @@
   <spirit:vendor>Intel Corporation</spirit:vendor>
   <spirit:library>pr_subsystem_freeze_bridge_ddr4</spirit:library>
   <spirit:name>pr_subsystem_freeze_bridge_1</spirit:name>
-  <spirit:version>17.0</spirit:version>
+  <spirit:version>17.1</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>clock</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -15,7 +15,7 @@
             <spirit:name>clk</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
-            <spirit:name>clock_clk</spirit:name>
+            <spirit:name>clock</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
       </spirit:portMaps>
@@ -39,7 +39,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>freeze_conduit</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -79,7 +79,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>mst_bridge_to_pr</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -154,14 +154,6 @@
             <spirit:name>mst_bridge_to_pr_readdatavalid</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
-        <spirit:portMap>
-          <spirit:logicalPort>
-            <spirit:name>debugaccess</spirit:name>
-          </spirit:logicalPort>
-          <spirit:physicalPort>
-            <spirit:name>mst_bridge_to_pr_debugaccess</spirit:name>
-          </spirit:physicalPort>
-        </spirit:portMap>
       </spirit:portMaps>
       <spirit:parameters>
         <spirit:parameter>
@@ -217,7 +209,7 @@
         <spirit:parameter>
           <spirit:name>burstOnBurstBoundariesOnly</spirit:name>
           <spirit:displayName>Burst on burst boundaries only</spirit:displayName>
-          <spirit:value spirit:format="bool" spirit:id="burstOnBurstBoundariesOnly">true</spirit:value>
+          <spirit:value spirit:format="bool" spirit:id="burstOnBurstBoundariesOnly">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>burstcountUnits</spirit:name>
@@ -227,7 +219,7 @@
         <spirit:parameter>
           <spirit:name>constantBurstBehavior</spirit:name>
           <spirit:displayName>Constant burst behavior</spirit:displayName>
-          <spirit:value spirit:format="bool" spirit:id="constantBurstBehavior">true</spirit:value>
+          <spirit:value spirit:format="bool" spirit:id="constantBurstBehavior">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>explicitAddressSpan</spirit:name>
@@ -267,12 +259,12 @@
         <spirit:parameter>
           <spirit:name>linewrapBursts</spirit:name>
           <spirit:displayName>Linewrap bursts</spirit:displayName>
-          <spirit:value spirit:format="bool" spirit:id="linewrapBursts">true</spirit:value>
+          <spirit:value spirit:format="bool" spirit:id="linewrapBursts">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>maximumPendingReadTransactions</spirit:name>
           <spirit:displayName>Maximum pending read transactions</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="maximumPendingReadTransactions">4</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="maximumPendingReadTransactions">64</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>maximumPendingWriteTransactions</spirit:name>
@@ -395,7 +387,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>mst_bridge_to_sr</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -470,14 +462,6 @@
             <spirit:name>mst_bridge_to_sr_readdatavalid</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
-        <spirit:portMap>
-          <spirit:logicalPort>
-            <spirit:name>debugaccess</spirit:name>
-          </spirit:logicalPort>
-          <spirit:physicalPort>
-            <spirit:name>mst_bridge_to_sr_debugaccess</spirit:name>
-          </spirit:physicalPort>
-        </spirit:portMap>
       </spirit:portMaps>
       <spirit:parameters>
         <spirit:parameter>
@@ -518,7 +502,7 @@
         <spirit:parameter>
           <spirit:name>burstOnBurstBoundariesOnly</spirit:name>
           <spirit:displayName>Burst on burst boundaries only</spirit:displayName>
-          <spirit:value spirit:format="bool" spirit:id="burstOnBurstBoundariesOnly">true</spirit:value>
+          <spirit:value spirit:format="bool" spirit:id="burstOnBurstBoundariesOnly">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>burstcountUnits</spirit:name>
@@ -528,7 +512,7 @@
         <spirit:parameter>
           <spirit:name>constantBurstBehavior</spirit:name>
           <spirit:displayName>Constant burst behavior</spirit:displayName>
-          <spirit:value spirit:format="bool" spirit:id="constantBurstBehavior">true</spirit:value>
+          <spirit:value spirit:format="bool" spirit:id="constantBurstBehavior">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>dBSBigEndian</spirit:name>
@@ -578,7 +562,7 @@
         <spirit:parameter>
           <spirit:name>linewrapBursts</spirit:name>
           <spirit:displayName>Linewrap bursts</spirit:displayName>
-          <spirit:value spirit:format="bool" spirit:id="linewrapBursts">true</spirit:value>
+          <spirit:value spirit:format="bool" spirit:id="linewrapBursts">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>maxAddressWidth</spirit:name>
@@ -588,7 +572,7 @@
         <spirit:parameter>
           <spirit:name>maximumPendingReadTransactions</spirit:name>
           <spirit:displayName>Maximum pending read transactions</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="maximumPendingReadTransactions">4</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="maximumPendingReadTransactions">64</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>maximumPendingWriteTransactions</spirit:name>
@@ -676,7 +660,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>reset_n</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -684,7 +668,7 @@
             <spirit:name>reset_n</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
-            <spirit:name>reset_n_reset_n</spirit:name>
+            <spirit:name>reset_n</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
       </spirit:portMaps>
@@ -715,7 +699,7 @@
     </spirit:views>
     <spirit:ports>
       <spirit:port>
-        <spirit:name>clock_clk</spirit:name>
+        <spirit:name>clock</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
@@ -856,7 +840,7 @@
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
             <spirit:left>0</spirit:left>
-            <spirit:right>4</spirit:right>
+            <spirit:right>6</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
@@ -870,18 +854,6 @@
         <spirit:name>mst_bridge_to_pr_readdatavalid</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
-          <spirit:wireTypeDefs>
-            <spirit:wireTypeDef>
-              <spirit:typeName>STD_LOGIC</spirit:typeName>
-              <spirit:viewNameRef>QUARTUS_SYNTH</spirit:viewNameRef>
-            </spirit:wireTypeDef>
-          </spirit:wireTypeDefs>
-        </spirit:wire>
-      </spirit:port>
-      <spirit:port>
-        <spirit:name>mst_bridge_to_pr_debugaccess</spirit:name>
-        <spirit:wire>
-          <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>STD_LOGIC</spirit:typeName>
@@ -996,7 +968,7 @@
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
             <spirit:left>0</spirit:left>
-            <spirit:right>4</spirit:right>
+            <spirit:right>6</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
@@ -1019,19 +991,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>mst_bridge_to_sr_debugaccess</spirit:name>
-        <spirit:wire>
-          <spirit:direction>out</spirit:direction>
-          <spirit:wireTypeDefs>
-            <spirit:wireTypeDef>
-              <spirit:typeName>STD_LOGIC</spirit:typeName>
-              <spirit:viewNameRef>QUARTUS_SYNTH</spirit:viewNameRef>
-            </spirit:wireTypeDef>
-          </spirit:wireTypeDefs>
-        </spirit:wire>
-      </spirit:port>
-      <spirit:port>
-        <spirit:name>reset_n_reset_n</spirit:name>
+        <spirit:name>reset_n</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
@@ -1049,7 +1009,7 @@
       <spirit:vendor>Intel Corporation</spirit:vendor>
       <spirit:library>pr_subsystem_freeze_bridge_ddr4</spirit:library>
       <spirit:name>altera_avlmm_pr_freeze_bridge</spirit:name>
-      <spirit:version>17.0</spirit:version>
+      <spirit:version>17.1</spirit:version>
     </altera:entity_info>
     <altera:altera_module_parameters>
       <spirit:parameters>
@@ -1062,6 +1022,11 @@
           <spirit:name>ENABLE_FREEZE_FROM_PR_REGION</spirit:name>
           <spirit:displayName>Enable freeze port from PR region</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="ENABLE_FREEZE_FROM_PR_REGION">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>ENABLE_TRAFFIC_TRACKING</spirit:name>
+          <spirit:displayName>Enable the bridge to track unfinish transaction</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="ENABLE_TRAFFIC_TRACKING">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>slv_bridge_signal_name_DERIVED</spirit:name>
@@ -1146,7 +1111,7 @@
         <spirit:parameter>
           <spirit:name>mst_bridge_signal_Enable</spirit:name>
           <spirit:displayName>Enabled Avalon Interface signal</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="mst_bridge_signal_Enable">Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="mst_bridge_signal_Enable">Yes,No,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MST_BRIDGE_ADDR_WIDTH</spirit:name>
@@ -1166,27 +1131,27 @@
         <spirit:parameter>
           <spirit:name>MST_BRIDGE_BURSTCOUNT_WIDTH</spirit:name>
           <spirit:displayName>Burstcount width</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="MST_BRIDGE_BURSTCOUNT_WIDTH">5</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="MST_BRIDGE_BURSTCOUNT_WIDTH">7</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MST_BRIDGE_BURST_LINEWRAP</spirit:name>
           <spirit:displayName>Linewrap bursts</spirit:displayName>
-          <spirit:value spirit:format="bool" spirit:id="MST_BRIDGE_BURST_LINEWRAP">true</spirit:value>
+          <spirit:value spirit:format="bool" spirit:id="MST_BRIDGE_BURST_LINEWRAP">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MST_BRIDGE_BURST_BNDR_ONLY</spirit:name>
           <spirit:displayName>Burst on burst boundaries only</spirit:displayName>
-          <spirit:value spirit:format="bool" spirit:id="MST_BRIDGE_BURST_BNDR_ONLY">true</spirit:value>
+          <spirit:value spirit:format="bool" spirit:id="MST_BRIDGE_BURST_BNDR_ONLY">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MST_BRIDGE_CONSTANTBURSTBEHAVIOR</spirit:name>
           <spirit:displayName>Constant burst behavior</spirit:displayName>
-          <spirit:value spirit:format="bool" spirit:id="MST_BRIDGE_CONSTANTBURSTBEHAVIOR">true</spirit:value>
+          <spirit:value spirit:format="bool" spirit:id="MST_BRIDGE_CONSTANTBURSTBEHAVIOR">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MST_BRIDGE_MAX_PENDING_READS</spirit:name>
           <spirit:displayName>Maximum pending reads</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="MST_BRIDGE_MAX_PENDING_READS">4</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="MST_BRIDGE_MAX_PENDING_READS">64</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MST_BRIDGE_MAX_PENDING_WRITES</spirit:name>
@@ -1272,6 +1237,14 @@
           <spirit:displayName>bonusData</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="bonusData">bonusData 
 {
+   element pr_subsystem_freeze_bridge_1
+   {
+      datum _sortIndex
+      {
+         value = "0";
+         type = "int";
+      }
+   }
 }
 </spirit:value>
         </spirit:parameter>
@@ -1291,7 +1264,7 @@
             <isStart>false</isStart>
             <ports>
                 <port>
-                    <name>clock_clk</name>
+                    <name>clock</name>
                     <role>clk</role>
                     <direction>Input</direction>
                     <width>1</width>
@@ -1423,7 +1396,7 @@
                     <name>mst_bridge_to_pr_burstcount</name>
                     <role>burstcount</role>
                     <direction>Input</direction>
-                    <width>5</width>
+                    <width>7</width>
                     <lowerBound>0</lowerBound>
                     <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                 </port>
@@ -1431,14 +1404,6 @@
                     <name>mst_bridge_to_pr_readdatavalid</name>
                     <role>readdatavalid</role>
                     <direction>Output</direction>
-                    <width>1</width>
-                    <lowerBound>0</lowerBound>
-                    <vhdlType>STD_LOGIC</vhdlType>
-                </port>
-                <port>
-                    <name>mst_bridge_to_pr_debugaccess</name>
-                    <role>debugaccess</role>
-                    <direction>Input</direction>
                     <width>1</width>
                     <lowerBound>0</lowerBound>
                     <vhdlType>STD_LOGIC</vhdlType>
@@ -1508,7 +1473,7 @@
                     </entry>
                     <entry>
                         <key>burstOnBurstBoundariesOnly</key>
-                        <value>true</value>
+                        <value>false</value>
                     </entry>
                     <entry>
                         <key>burstcountUnits</key>
@@ -1516,7 +1481,7 @@
                     </entry>
                     <entry>
                         <key>constantBurstBehavior</key>
-                        <value>true</value>
+                        <value>false</value>
                     </entry>
                     <entry>
                         <key>explicitAddressSpan</key>
@@ -1548,11 +1513,11 @@
                     </entry>
                     <entry>
                         <key>linewrapBursts</key>
-                        <value>true</value>
+                        <value>false</value>
                     </entry>
                     <entry>
                         <key>maximumPendingReadTransactions</key>
-                        <value>4</value>
+                        <value>64</value>
                     </entry>
                     <entry>
                         <key>maximumPendingWriteTransactions</key>
@@ -1698,7 +1663,7 @@
                     <name>mst_bridge_to_sr_burstcount</name>
                     <role>burstcount</role>
                     <direction>Output</direction>
-                    <width>5</width>
+                    <width>7</width>
                     <lowerBound>0</lowerBound>
                     <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                 </port>
@@ -1706,14 +1671,6 @@
                     <name>mst_bridge_to_sr_readdatavalid</name>
                     <role>readdatavalid</role>
                     <direction>Input</direction>
-                    <width>1</width>
-                    <lowerBound>0</lowerBound>
-                    <vhdlType>STD_LOGIC</vhdlType>
-                </port>
-                <port>
-                    <name>mst_bridge_to_sr_debugaccess</name>
-                    <role>debugaccess</role>
-                    <direction>Output</direction>
                     <width>1</width>
                     <lowerBound>0</lowerBound>
                     <vhdlType>STD_LOGIC</vhdlType>
@@ -1770,7 +1727,7 @@
                     </entry>
                     <entry>
                         <key>burstOnBurstBoundariesOnly</key>
-                        <value>true</value>
+                        <value>false</value>
                     </entry>
                     <entry>
                         <key>burstcountUnits</key>
@@ -1778,7 +1735,7 @@
                     </entry>
                     <entry>
                         <key>constantBurstBehavior</key>
-                        <value>true</value>
+                        <value>false</value>
                     </entry>
                     <entry>
                         <key>dBSBigEndian</key>
@@ -1818,7 +1775,7 @@
                     </entry>
                     <entry>
                         <key>linewrapBursts</key>
-                        <value>true</value>
+                        <value>false</value>
                     </entry>
                     <entry>
                         <key>maxAddressWidth</key>
@@ -1826,7 +1783,7 @@
                     </entry>
                     <entry>
                         <key>maximumPendingReadTransactions</key>
-                        <value>4</value>
+                        <value>64</value>
                     </entry>
                     <entry>
                         <key>maximumPendingWriteTransactions</key>
@@ -1885,7 +1842,7 @@
             <isStart>false</isStart>
             <ports>
                 <port>
-                    <name>reset_n_reset_n</name>
+                    <name>reset_n</name>
                     <role>reset_n</role>
                     <direction>Input</direction>
                     <width>1</width>
@@ -1942,7 +1899,7 @@
     </altera:altera_system_parameters>
     <altera:altera_interface_boundary>
       <altera:interface_mapping altera:name="clock" altera:internal="pr_subsystem_freeze_bridge_1.clock" altera:type="clock" altera:dir="end">
-        <altera:port_mapping altera:name="clock_clk" altera:internal="clock_clk"></altera:port_mapping>
+        <altera:port_mapping altera:name="clock" altera:internal="clock"></altera:port_mapping>
       </altera:interface_mapping>
       <altera:interface_mapping altera:name="freeze_conduit" altera:internal="pr_subsystem_freeze_bridge_1.freeze_conduit" altera:type="conduit" altera:dir="end">
         <altera:port_mapping altera:name="freeze_conduit_freeze" altera:internal="freeze_conduit_freeze"></altera:port_mapping>
@@ -1952,7 +1909,6 @@
         <altera:port_mapping altera:name="mst_bridge_to_pr_address" altera:internal="mst_bridge_to_pr_address"></altera:port_mapping>
         <altera:port_mapping altera:name="mst_bridge_to_pr_burstcount" altera:internal="mst_bridge_to_pr_burstcount"></altera:port_mapping>
         <altera:port_mapping altera:name="mst_bridge_to_pr_byteenable" altera:internal="mst_bridge_to_pr_byteenable"></altera:port_mapping>
-        <altera:port_mapping altera:name="mst_bridge_to_pr_debugaccess" altera:internal="mst_bridge_to_pr_debugaccess"></altera:port_mapping>
         <altera:port_mapping altera:name="mst_bridge_to_pr_read" altera:internal="mst_bridge_to_pr_read"></altera:port_mapping>
         <altera:port_mapping altera:name="mst_bridge_to_pr_readdata" altera:internal="mst_bridge_to_pr_readdata"></altera:port_mapping>
         <altera:port_mapping altera:name="mst_bridge_to_pr_readdatavalid" altera:internal="mst_bridge_to_pr_readdatavalid"></altera:port_mapping>
@@ -1964,7 +1920,6 @@
         <altera:port_mapping altera:name="mst_bridge_to_sr_address" altera:internal="mst_bridge_to_sr_address"></altera:port_mapping>
         <altera:port_mapping altera:name="mst_bridge_to_sr_burstcount" altera:internal="mst_bridge_to_sr_burstcount"></altera:port_mapping>
         <altera:port_mapping altera:name="mst_bridge_to_sr_byteenable" altera:internal="mst_bridge_to_sr_byteenable"></altera:port_mapping>
-        <altera:port_mapping altera:name="mst_bridge_to_sr_debugaccess" altera:internal="mst_bridge_to_sr_debugaccess"></altera:port_mapping>
         <altera:port_mapping altera:name="mst_bridge_to_sr_read" altera:internal="mst_bridge_to_sr_read"></altera:port_mapping>
         <altera:port_mapping altera:name="mst_bridge_to_sr_readdata" altera:internal="mst_bridge_to_sr_readdata"></altera:port_mapping>
         <altera:port_mapping altera:name="mst_bridge_to_sr_readdatavalid" altera:internal="mst_bridge_to_sr_readdatavalid"></altera:port_mapping>
@@ -1972,8 +1927,9 @@
         <altera:port_mapping altera:name="mst_bridge_to_sr_write" altera:internal="mst_bridge_to_sr_write"></altera:port_mapping>
         <altera:port_mapping altera:name="mst_bridge_to_sr_writedata" altera:internal="mst_bridge_to_sr_writedata"></altera:port_mapping>
       </altera:interface_mapping>
+      <altera:interface_mapping altera:name="pr_freeze" altera:internal="pr_subsystem_freeze_bridge_1.pr_freeze"></altera:interface_mapping>
       <altera:interface_mapping altera:name="reset_n" altera:internal="pr_subsystem_freeze_bridge_1.reset_n" altera:type="reset" altera:dir="end">
-        <altera:port_mapping altera:name="reset_n_reset_n" altera:internal="reset_n_reset_n"></altera:port_mapping>
+        <altera:port_mapping altera:name="reset_n" altera:internal="reset_n"></altera:port_mapping>
       </altera:interface_mapping>
     </altera:altera_interface_boundary>
     <altera:altera_has_warnings>false</altera:altera_has_warnings>

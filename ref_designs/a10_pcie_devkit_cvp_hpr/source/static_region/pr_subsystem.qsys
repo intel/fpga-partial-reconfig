@@ -14,24 +14,11 @@
    {
       datum _sortIndex
       {
-         value = "0";
+         value = "1";
          type = "int";
       }
    }
    element emif_avmm_bridge
-   {
-      datum _sortIndex
-      {
-         value = "3";
-         type = "int";
-      }
-      datum sopceditor_expanded
-      {
-         value = "1";
-         type = "boolean";
-      }
-   }
-   element pr_persona_wrapper
    {
       datum _sortIndex
       {
@@ -44,11 +31,48 @@
          type = "boolean";
       }
    }
-   element pr_region_controller
+   element pr_persona_wrapper
    {
       datum _sortIndex
       {
          value = "5";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "1";
+         type = "boolean";
+      }
+   }
+   element pr_region_controller
+   {
+      datum _sortIndex
+      {
+         value = "6";
+         type = "int";
+      }
+   }
+   element pr_subsystem_clock_bridge_0
+   {
+      datum _sortIndex
+      {
+         value = "7";
+         type = "int";
+      }
+   }
+   element pr_subsystem_clock_bridge_1
+   {
+      datum _sortIndex
+      {
+         value = "9";
+         type = "int";
+      }
+   }
+   element pr_subsystem_emif_clock_bridge
+   {
+      datum _sortIndex
+      {
+         value = "0";
          type = "int";
       }
    }
@@ -56,7 +80,7 @@
    {
       datum _sortIndex
       {
-         value = "6";
+         value = "7";
          type = "int";
       }
    }
@@ -72,7 +96,7 @@
    {
       datum _sortIndex
       {
-         value = "2";
+         value = "3";
          type = "int";
       }
    }
@@ -80,7 +104,7 @@
    {
       datum _sortIndex
       {
-         value = "1";
+         value = "2";
          type = "int";
       }
    }
@@ -103,21 +127,21 @@
  <parameter name="systemInfos"><![CDATA[<systemInfosDefinition>
     <connPtSystemInfos>
         <entry>
-            <key>clk</key>
+            <key>emif_clk</key>
             <value>
-                <connectionPointName>clk</connectionPointName>
+                <connectionPointName>emif_clk</connectionPointName>
                 <suppliedSystemInfos>
                     <entry>
                         <key>CLOCK_DOMAIN</key>
-                        <value>13</value>
+                        <value>8</value>
                     </entry>
                     <entry>
                         <key>CLOCK_RATE</key>
-                        <value>250000000</value>
+                        <value>0</value>
                     </entry>
                     <entry>
                         <key>RESET_DOMAIN</key>
-                        <value>13</value>
+                        <value>8</value>
                     </entry>
                 </suppliedSystemInfos>
                 <consumedSystemInfos/>
@@ -127,6 +151,27 @@
             <key>region_avmm</key>
             <value>
                 <connectionPointName>region_avmm</connectionPointName>
+                <suppliedSystemInfos/>
+                <consumedSystemInfos>
+                    <entry>
+                        <key>ADDRESS_MAP</key>
+                        <value>&lt;address-map&gt;&lt;slave name='pr_persona_wrapper.pr_region_avmm' start='0x0' end='0x10000' datawidth='32' /&gt;&lt;/address-map&gt;</value>
+                    </entry>
+                    <entry>
+                        <key>ADDRESS_WIDTH</key>
+                        <value>16</value>
+                    </entry>
+                    <entry>
+                        <key>MAX_SLAVE_DATA_WIDTH</key>
+                        <value>32</value>
+                    </entry>
+                </consumedSystemInfos>
+            </value>
+        </entry>
+        <entry>
+            <key>region_ctlr_avmm</key>
+            <value>
+                <connectionPointName>region_ctlr_avmm</connectionPointName>
                 <suppliedSystemInfos/>
                 <consumedSystemInfos>
                     <entry>
@@ -178,6 +223,19 @@
    internal="emif_avmm_bridge.mst_bridge_to_sr"
    type="avalon"
    dir="start" />
+ <interface
+   name="emif_clk"
+   internal="pr_subsystem_emif_clock_bridge.in_clk"
+   type="clock"
+   dir="end" />
+ <interface
+   name="emif_global_reset"
+   internal="pr_persona_wrapper.emif_global_reset" />
+ <interface
+   name="emif_usr_reset"
+   internal="pr_persona_wrapper.emif_usr_reset"
+   type="reset"
+   dir="end" />
  <interface
    name="region_avmm"
    internal="region_avmm_bridge.slv_bridge_to_sr"
@@ -255,11 +313,11 @@
                         </entry>
                         <entry>
                             <key>clockRate</key>
-                            <value>250000000</value>
+                            <value>0</value>
                         </entry>
                         <entry>
                             <key>clockRateKnown</key>
-                            <value>true</value>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>externallyDriven</key>
@@ -275,7 +333,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_clock_bridge</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>Clock Bridge</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -299,7 +357,7 @@
                     <consumedSystemInfos>
                         <entry>
                             <key>CLOCK_RATE</key>
-                            <value>250000000</value>
+                            <value>0</value>
                         </entry>
                     </consumedSystemInfos>
                 </value>
@@ -311,7 +369,7 @@
                     <suppliedSystemInfos>
                         <entry>
                             <key>CLOCK_RATE</key>
-                            <value>250000000</value>
+                            <value>0</value>
                         </entry>
                     </suppliedSystemInfos>
                     <consumedSystemInfos/>
@@ -348,6 +406,7 @@
   <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
     <assignmentValueMap/>
 </assignmentDefinition>]]></parameter>
+  <parameter name="svInterfaceDefinition" value="" />
  </module>
  <module
    name="emif_avmm_bridge"
@@ -363,7 +422,7 @@
                 <isStart>false</isStart>
                 <ports>
                     <port>
-                        <name>clock_clk</name>
+                        <name>clock</name>
                         <role>clk</role>
                         <direction>Input</direction>
                         <width>1</width>
@@ -495,7 +554,7 @@
                         <name>mst_bridge_to_pr_burstcount</name>
                         <role>burstcount</role>
                         <direction>Input</direction>
-                        <width>5</width>
+                        <width>7</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     </port>
@@ -503,14 +562,6 @@
                         <name>mst_bridge_to_pr_readdatavalid</name>
                         <role>readdatavalid</role>
                         <direction>Output</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                    <port>
-                        <name>mst_bridge_to_pr_debugaccess</name>
-                        <role>debugaccess</role>
-                        <direction>Input</direction>
                         <width>1</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC</vhdlType>
@@ -580,7 +631,7 @@
                         </entry>
                         <entry>
                             <key>burstOnBurstBoundariesOnly</key>
-                            <value>true</value>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>burstcountUnits</key>
@@ -588,7 +639,7 @@
                         </entry>
                         <entry>
                             <key>constantBurstBehavior</key>
-                            <value>true</value>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>explicitAddressSpan</key>
@@ -620,11 +671,11 @@
                         </entry>
                         <entry>
                             <key>linewrapBursts</key>
-                            <value>true</value>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>maximumPendingReadTransactions</key>
-                            <value>4</value>
+                            <value>64</value>
                         </entry>
                         <entry>
                             <key>maximumPendingWriteTransactions</key>
@@ -770,7 +821,7 @@
                         <name>mst_bridge_to_sr_burstcount</name>
                         <role>burstcount</role>
                         <direction>Output</direction>
-                        <width>5</width>
+                        <width>7</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     </port>
@@ -778,14 +829,6 @@
                         <name>mst_bridge_to_sr_readdatavalid</name>
                         <role>readdatavalid</role>
                         <direction>Input</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                    <port>
-                        <name>mst_bridge_to_sr_debugaccess</name>
-                        <role>debugaccess</role>
-                        <direction>Output</direction>
                         <width>1</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC</vhdlType>
@@ -842,7 +885,7 @@
                         </entry>
                         <entry>
                             <key>burstOnBurstBoundariesOnly</key>
-                            <value>true</value>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>burstcountUnits</key>
@@ -850,7 +893,7 @@
                         </entry>
                         <entry>
                             <key>constantBurstBehavior</key>
-                            <value>true</value>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>dBSBigEndian</key>
@@ -890,7 +933,7 @@
                         </entry>
                         <entry>
                             <key>linewrapBursts</key>
-                            <value>true</value>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>maxAddressWidth</key>
@@ -898,7 +941,7 @@
                         </entry>
                         <entry>
                             <key>maximumPendingReadTransactions</key>
-                            <value>4</value>
+                            <value>64</value>
                         </entry>
                         <entry>
                             <key>maximumPendingWriteTransactions</key>
@@ -957,7 +1000,7 @@
                 <isStart>false</isStart>
                 <ports>
                     <port>
-                        <name>reset_n_reset_n</name>
+                        <name>reset_n</name>
                         <role>reset_n</role>
                         <direction>Input</direction>
                         <width>1</width>
@@ -985,7 +1028,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avlmm_pr_freeze_bridge</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>Avalon-MM Partial Reconfiguration Freeze Bridge</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -1078,6 +1121,7 @@
         </entry>
     </assignmentValueMap>
 </assignmentDefinition>]]></parameter>
+  <parameter name="svInterfaceDefinition" value="" />
  </module>
  <module
    name="pr_persona_wrapper"
@@ -1163,14 +1207,6 @@
                         <width>4</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>pr_region_avmm_debugaccess</name>
-                        <role>debugaccess</role>
-                        <direction>Input</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
                     </port>
                 </ports>
                 <assignments>
@@ -1450,36 +1486,6 @@
                 </parameters>
             </interface>
             <interface>
-                <name>pr_logic_reset</name>
-                <type>reset</type>
-                <isStart>false</isStart>
-                <ports>
-                    <port>
-                        <name>pr_logic_rst</name>
-                        <role>reset</role>
-                        <direction>Input</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                </ports>
-                <assignments>
-                    <assignmentValueMap/>
-                </assignments>
-                <parameters>
-                    <parameterValueMap>
-                        <entry>
-                            <key>associatedClock</key>
-                            <value>clock_sink</value>
-                        </entry>
-                        <entry>
-                            <key>synchronousEdges</key>
-                            <value>DEASSERT</value>
-                        </entry>
-                    </parameterValueMap>
-                </parameters>
-            </interface>
-            <interface>
                 <name>ddr4_master</name>
                 <type>avalon</type>
                 <isStart>true</isStart>
@@ -1512,7 +1518,7 @@
                         <name>emif_avmm_burstcount</name>
                         <role>burstcount</role>
                         <direction>Output</direction>
-                        <width>5</width>
+                        <width>7</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     </port>
@@ -1556,14 +1562,6 @@
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     </port>
-                    <port>
-                        <name>emif_avmm_debugaccess</name>
-                        <role>debugaccess</role>
-                        <direction>Output</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
                 </ports>
                 <assignments>
                     <assignmentValueMap/>
@@ -1587,7 +1585,7 @@
                         </entry>
                         <entry>
                             <key>associatedClock</key>
-                            <value>clock_sink</value>
+                            <value>emif_usr_clk</value>
                         </entry>
                         <entry>
                             <key>associatedReset</key>
@@ -1655,7 +1653,7 @@
                         </entry>
                         <entry>
                             <key>maximumPendingReadTransactions</key>
-                            <value>16</value>
+                            <value>64</value>
                         </entry>
                         <entry>
                             <key>maximumPendingWriteTransactions</key>
@@ -1679,7 +1677,7 @@
                         </entry>
                         <entry>
                             <key>readWaitTime</key>
-                            <value>0</value>
+                            <value>1</value>
                         </entry>
                         <entry>
                             <key>registerIncomingSignals</key>
@@ -1812,6 +1810,97 @@
                     </parameterValueMap>
                 </parameters>
             </interface>
+            <interface>
+                <name>emif_usr_clk</name>
+                <type>clock</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>emif_usr_clk</name>
+                        <role>clk</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>clockRate</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>externallyDriven</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>ptfSchematicName</key>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
+                <name>emif_usr_reset</name>
+                <type>reset</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>emif_usr_rst_n</name>
+                        <role>reset_n</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>associatedClock</key>
+                        </entry>
+                        <entry>
+                            <key>synchronousEdges</key>
+                            <value>NONE</value>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
+                <name>pr_logic_reset</name>
+                <type>reset</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>pr_logic_rst</name>
+                        <role>reset</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>associatedClock</key>
+                        </entry>
+                        <entry>
+                            <key>synchronousEdges</key>
+                            <value>NONE</value>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
         </interfaces>
     </boundary>
     <originalModuleInfo>
@@ -1897,6 +1986,7 @@
   <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
     <assignmentValueMap/>
 </assignmentDefinition>]]></parameter>
+  <parameter name="svInterfaceDefinition" value="" />
  </module>
  <module
    name="pr_region_controller"
@@ -2379,7 +2469,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_pr_region_controller</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>Partial Reconfiguration Region Controller</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -2475,6 +2565,168 @@
         </entry>
     </assignmentValueMap>
 </assignmentDefinition>]]></parameter>
+  <parameter name="svInterfaceDefinition" value="" />
+ </module>
+ <module
+   name="pr_subsystem_emif_clock_bridge"
+   kind="altera_generic_component"
+   version="1.0"
+   enabled="1">
+  <parameter name="componentDefinition"><![CDATA[<componentDefinition>
+    <boundary>
+        <interfaces>
+            <interface>
+                <name>in_clk</name>
+                <type>clock</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>in_clk</name>
+                        <role>clk</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>clockRate</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>externallyDriven</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>ptfSchematicName</key>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
+                <name>out_clk</name>
+                <type>clock</type>
+                <isStart>true</isStart>
+                <ports>
+                    <port>
+                        <name>out_clk</name>
+                        <role>clk</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>associatedDirectClock</key>
+                            <value>in_clk</value>
+                        </entry>
+                        <entry>
+                            <key>clockRate</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>clockRateKnown</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>externallyDriven</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>ptfSchematicName</key>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+        </interfaces>
+    </boundary>
+    <originalModuleInfo>
+        <className>altera_clock_bridge</className>
+        <version>17.1</version>
+        <displayName>Clock Bridge</displayName>
+    </originalModuleInfo>
+    <systemInfoParameterDescriptors>
+        <descriptors>
+            <descriptor>
+                <parameterDefaultValue>0</parameterDefaultValue>
+                <parameterName>DERIVED_CLOCK_RATE</parameterName>
+                <parameterType>java.lang.Long</parameterType>
+                <systemInfoArgs>in_clk</systemInfoArgs>
+                <systemInfotype>CLOCK_RATE</systemInfotype>
+            </descriptor>
+        </descriptors>
+    </systemInfoParameterDescriptors>
+    <systemInfos>
+        <connPtSystemInfos>
+            <entry>
+                <key>in_clk</key>
+                <value>
+                    <connectionPointName>in_clk</connectionPointName>
+                    <suppliedSystemInfos/>
+                    <consumedSystemInfos>
+                        <entry>
+                            <key>CLOCK_RATE</key>
+                            <value>0</value>
+                        </entry>
+                    </consumedSystemInfos>
+                </value>
+            </entry>
+            <entry>
+                <key>out_clk</key>
+                <value>
+                    <connectionPointName>out_clk</connectionPointName>
+                    <suppliedSystemInfos>
+                        <entry>
+                            <key>CLOCK_RATE</key>
+                            <value>0</value>
+                        </entry>
+                    </suppliedSystemInfos>
+                    <consumedSystemInfos/>
+                </value>
+            </entry>
+        </connPtSystemInfos>
+    </systemInfos>
+</componentDefinition>]]></parameter>
+  <parameter name="generationInfoDefinition"><![CDATA[<generationInfoDefinition>
+    <hdlLibraryName>pr_subsystem_emif_clock_bridge</hdlLibraryName>
+    <fileSets>
+        <fileSet>
+            <fileSetName>pr_subsystem_emif_clock_bridge</fileSetName>
+            <fileSetFixedName>pr_subsystem_emif_clock_bridge</fileSetFixedName>
+            <fileSetKind>QUARTUS_SYNTH</fileSetKind>
+            <fileSetFiles/>
+        </fileSet>
+        <fileSet>
+            <fileSetName>pr_subsystem_emif_clock_bridge</fileSetName>
+            <fileSetFixedName>pr_subsystem_emif_clock_bridge</fileSetFixedName>
+            <fileSetKind>SIM_VERILOG</fileSetKind>
+            <fileSetFiles/>
+        </fileSet>
+        <fileSet>
+            <fileSetName>pr_subsystem_emif_clock_bridge</fileSetName>
+            <fileSetFixedName>pr_subsystem_emif_clock_bridge</fileSetFixedName>
+            <fileSetKind>SIM_VHDL</fileSetKind>
+            <fileSetFiles/>
+        </fileSet>
+    </fileSets>
+</generationInfoDefinition>]]></parameter>
+  <parameter name="hlsFile" value="" />
+  <parameter name="logicalView">ip/pr_subsystem/pr_subsystem_emif_clock_bridge.ip</parameter>
+  <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
+    <assignmentValueMap/>
+</assignmentDefinition>]]></parameter>
+  <parameter name="svInterfaceDefinition" value="" />
  </module>
  <module
    name="pr_subsystem_sld_jtag_bridge_agent"
@@ -2560,7 +2812,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_sld_jtag_bridge_agent</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>SLD JTAG Bridge Agent</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -2598,6 +2850,7 @@
   <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
     <assignmentValueMap/>
 </assignmentDefinition>]]></parameter>
+  <parameter name="svInterfaceDefinition" value="" />
  </module>
  <module
    name="region_avmm_bridge"
@@ -2613,7 +2866,7 @@
                 <isStart>false</isStart>
                 <ports>
                     <port>
-                        <name>clock_clk</name>
+                        <name>clock</name>
                         <role>clk</role>
                         <direction>Input</direction>
                         <width>1</width>
@@ -2718,7 +2971,7 @@
                 <isStart>false</isStart>
                 <ports>
                     <port>
-                        <name>reset_n_reset_n</name>
+                        <name>reset_n</name>
                         <role>reset_n</role>
                         <direction>Input</direction>
                         <width>1</width>
@@ -2879,7 +3132,7 @@
                         </entry>
                         <entry>
                             <key>burstOnBurstBoundariesOnly</key>
-                            <value>true</value>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>burstcountUnits</key>
@@ -2887,7 +3140,7 @@
                         </entry>
                         <entry>
                             <key>constantBurstBehavior</key>
-                            <value>true</value>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>dBSBigEndian</key>
@@ -2927,7 +3180,7 @@
                         </entry>
                         <entry>
                             <key>linewrapBursts</key>
-                            <value>true</value>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>maxAddressWidth</key>
@@ -3138,7 +3391,7 @@
                         </entry>
                         <entry>
                             <key>burstOnBurstBoundariesOnly</key>
-                            <value>true</value>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>burstcountUnits</key>
@@ -3146,7 +3399,7 @@
                         </entry>
                         <entry>
                             <key>constantBurstBehavior</key>
-                            <value>true</value>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>explicitAddressSpan</key>
@@ -3178,7 +3431,7 @@
                         </entry>
                         <entry>
                             <key>linewrapBursts</key>
-                            <value>true</value>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>maximumPendingReadTransactions</key>
@@ -3267,7 +3520,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avlmm_pr_freeze_bridge</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>Avalon-MM Partial Reconfiguration Freeze Bridge</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -3360,6 +3613,7 @@
         </entry>
     </assignmentValueMap>
 </assignmentDefinition>]]></parameter>
+  <parameter name="svInterfaceDefinition" value="" />
  </module>
  <module
    name="reset_bridge"
@@ -3439,7 +3693,7 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_reset_bridge</className>
-        <version>17.0</version>
+        <version>17.1</version>
         <displayName>Reset Bridge</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -3485,84 +3739,90 @@
   <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
     <assignmentValueMap/>
 </assignmentDefinition>]]></parameter>
+  <parameter name="svInterfaceDefinition" value="" />
  </module>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="pr_persona_wrapper.ddr4_master"
    end="emif_avmm_bridge.mst_bridge_to_pr">
   <parameter name="baseAddress" value="0x0000" />
  </connection>
  <connection
    kind="avalon"
-   version="17.0"
+   version="17.1"
    start="region_avmm_bridge.slv_bridge_to_pr"
    end="pr_persona_wrapper.pr_region_avmm">
   <parameter name="baseAddress" value="0x0000" />
  </connection>
  <connection
    kind="clock"
-   version="17.0"
-   start="clock_bridge.out_clk"
-   end="emif_avmm_bridge.clock" />
- <connection
-   kind="clock"
-   version="17.0"
+   version="17.1"
    start="clock_bridge.out_clk"
    end="region_avmm_bridge.clock" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
    start="clock_bridge.out_clk"
    end="pr_region_controller.clock" />
  <connection
    kind="clock"
-   version="17.0"
+   version="17.1"
+   start="pr_subsystem_emif_clock_bridge.out_clk"
+   end="emif_avmm_bridge.clock" />
+ <connection
+   kind="clock"
+   version="17.1"
    start="clock_bridge.out_clk"
    end="pr_persona_wrapper.clock_sink" />
  <connection
+   kind="clock"
+   version="17.1"
+   start="pr_subsystem_emif_clock_bridge.out_clk"
+   end="pr_persona_wrapper.emif_usr_clk" />
+ <connection
    kind="conduit"
-   version="17.0"
+   version="17.1"
    start="pr_region_controller.bridge_freeze0"
    end="emif_avmm_bridge.freeze_conduit" />
  <connection
    kind="conduit"
-   version="17.0"
+   version="17.1"
    start="region_avmm_bridge.freeze_conduit"
    end="pr_region_controller.bridge_freeze1" />
  <connection
    kind="conduit"
-   version="17.0"
+   version="17.1"
    start="region_avmm_bridge.pr_freeze"
    end="pr_persona_wrapper.pr_freeze_region_avmm" />
  <connection
    kind="conduit"
-   version="17.0"
+   version="17.1"
    start="pr_region_controller.pr_handshake"
    end="pr_persona_wrapper.pr_handshake_interface" />
  <connection
    kind="conduit"
-   version="17.0"
+   version="17.1"
    start="pr_persona_wrapper.sld_agent"
    end="pr_subsystem_sld_jtag_bridge_agent.connect_to_bridge_host" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="reset_bridge.out_reset"
    end="pr_region_controller.reset" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="reset_bridge.out_reset"
    end="region_avmm_bridge.reset_n" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="reset_bridge.out_reset"
    end="emif_avmm_bridge.reset_n" />
  <connection
    kind="reset"
-   version="17.0"
+   version="17.1"
    start="pr_region_controller.reset_source"
    end="pr_persona_wrapper.pr_logic_reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />

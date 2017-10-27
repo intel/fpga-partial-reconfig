@@ -43,7 +43,7 @@ module lfsr
 
    // the inverter on the LSB causes 000... to be a 
    // sequence member rather than the frozen state
-   always_ff @(posedge clk) begin
+   always_ff @(posedge clk or posedge rst) begin
       if ( rst==1'b1 ) begin
          poly <= 32'h800007c3; 
          myreg <= 0;

@@ -3,11 +3,11 @@
   <spirit:vendor>Intel Corporation</spirit:vendor>
   <spirit:library>parent_pr_emif_avmm_pbridge</spirit:library>
   <spirit:name>parent_pr_emif_avmm_pbridge</spirit:name>
-  <spirit:version>17.0</spirit:version>
+  <spirit:version>17.1</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>clk</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -39,7 +39,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>m0</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -298,7 +298,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>reset</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -325,7 +325,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>s0</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -518,7 +518,7 @@
         <spirit:parameter>
           <spirit:name>maximumPendingReadTransactions</spirit:name>
           <spirit:displayName>Maximum pending read transactions</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="maximumPendingReadTransactions">4</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="maximumPendingReadTransactions">64</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>maximumPendingWriteTransactions</spirit:name>
@@ -722,7 +722,7 @@
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
             <spirit:left>0</spirit:left>
-            <spirit:right>4</spirit:right>
+            <spirit:right>6</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
@@ -862,7 +862,7 @@
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
             <spirit:left>0</spirit:left>
-            <spirit:right>4</spirit:right>
+            <spirit:right>6</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
@@ -963,7 +963,7 @@
       <spirit:vendor>Intel Corporation</spirit:vendor>
       <spirit:library>parent_pr_emif_avmm_pbridge</spirit:library>
       <spirit:name>altera_avalon_mm_bridge</spirit:name>
-      <spirit:version>17.0</spirit:version>
+      <spirit:version>17.1</spirit:version>
     </altera:entity_info>
     <altera:altera_module_parameters>
       <spirit:parameters>
@@ -985,7 +985,7 @@
         <spirit:parameter>
           <spirit:name>SYSINFO_ADDR_WIDTH</spirit:name>
           <spirit:displayName>SYSINFO_ADDR_WIDTH</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="SYSINFO_ADDR_WIDTH">10</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="SYSINFO_ADDR_WIDTH">31</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>USE_AUTO_ADDRESS_WIDTH</spirit:name>
@@ -995,7 +995,7 @@
         <spirit:parameter>
           <spirit:name>AUTO_ADDRESS_WIDTH</spirit:name>
           <spirit:displayName>Automatically-determined address width</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="AUTO_ADDRESS_WIDTH">4</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="AUTO_ADDRESS_WIDTH">25</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>HDL_ADDR_WIDTH</spirit:name>
@@ -1010,17 +1010,17 @@
         <spirit:parameter>
           <spirit:name>BURSTCOUNT_WIDTH</spirit:name>
           <spirit:displayName>Burstcount width</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="BURSTCOUNT_WIDTH">5</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="BURSTCOUNT_WIDTH">7</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MAX_BURST_SIZE</spirit:name>
           <spirit:displayName>Maximum burst size (words)</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="MAX_BURST_SIZE">16</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="MAX_BURST_SIZE">64</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MAX_PENDING_RESPONSES</spirit:name>
           <spirit:displayName>Maximum pending read transactions</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="MAX_PENDING_RESPONSES">4</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="MAX_PENDING_RESPONSES">64</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>LINEWRAPBURSTS</spirit:name>
@@ -1060,6 +1060,11 @@
           <spirit:name>deviceSpeedGrade</spirit:name>
           <spirit:displayName>Device Speed Grade</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="deviceSpeedGrade">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>generationId</spirit:name>
+          <spirit:displayName>Generation Id</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="generationId">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>bonusData</spirit:name>
@@ -1153,7 +1158,7 @@
                     <name>m0_burstcount</name>
                     <role>burstcount</role>
                     <direction>Output</direction>
-                    <width>5</width>
+                    <width>7</width>
                     <lowerBound>0</lowerBound>
                     <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                 </port>
@@ -1412,7 +1417,7 @@
                     <name>s0_burstcount</name>
                     <role>burstcount</role>
                     <direction>Input</direction>
-                    <width>5</width>
+                    <width>7</width>
                     <lowerBound>0</lowerBound>
                     <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                 </port>
@@ -1573,7 +1578,7 @@
                     </entry>
                     <entry>
                         <key>maximumPendingReadTransactions</key>
-                        <value>4</value>
+                        <value>64</value>
                     </entry>
                     <entry>
                         <key>maximumPendingWriteTransactions</key>
@@ -1669,7 +1674,7 @@
                 <suppliedSystemInfos>
                     <entry>
                         <key>ADDRESS_WIDTH</key>
-                        <value>10</value>
+                        <value>31</value>
                     </entry>
                 </suppliedSystemInfos>
                 <consumedSystemInfos/>

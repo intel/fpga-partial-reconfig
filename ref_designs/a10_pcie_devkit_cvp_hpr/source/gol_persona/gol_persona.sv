@@ -26,30 +26,30 @@
 
 module gol_persona 
 (
-   input wire         pr_region_clk ,
-   input wire         pr_logic_rst , 
-   // DDR4 interface
-   input wire         emif_avmm_waitrequest , 
-   input wire [511:0] emif_avmm_readdata , 
-   input wire         emif_avmm_readdatavalid , 
-   output reg [4:0]   emif_avmm_burstcount , 
-   output reg [511:0] emif_avmm_writedata , 
-   output reg [24:0]  emif_avmm_address , 
-   output reg         emif_avmm_write , 
-   output reg         emif_avmm_read , 
-   output reg [63:0]  emif_avmm_byteenable , 
-   output reg         emif_avmm_debugaccess , 
-   // AVMM interface
-   output reg         pr_region_avmm_waitrequest ,
-   output reg [31:0]  pr_region_avmm_readdata ,
-   output reg         pr_region_avmm_readdatavalid,
-   input wire [0:0]   pr_region_avmm_burstcount ,
-   input wire [31:0]  pr_region_avmm_writedata ,
-   input wire [13:0]  pr_region_avmm_address ,
-   input wire         pr_region_avmm_write ,
-   input wire         pr_region_avmm_read ,
-   input wire [3:0]   pr_region_avmm_byteenable ,
-   input wire         pr_region_avmm_debugaccess   
+      input  wire         pr_region_clk ,
+      input  wire         pr_logic_rst , 
+      // DDR4 interface
+      input  wire         emif_usr_clk ,
+      input  wire         emif_usr_rst_n ,
+      input  wire         emif_avmm_waitrequest , 
+      input  wire [511:0] emif_avmm_readdata , 
+      input  wire         emif_avmm_readdatavalid , 
+      output wire [6:0]   emif_avmm_burstcount , 
+      output wire [511:0] emif_avmm_writedata , 
+      output wire [24:0]  emif_avmm_address , 
+      output wire         emif_avmm_write , 
+      output wire         emif_avmm_read , 
+      output wire [63:0]  emif_avmm_byteenable ,
+      // AVMM interface
+      output wire         pr_region_avmm_waitrequest ,
+      output wire [31:0]  pr_region_avmm_readdata ,
+      output wire         pr_region_avmm_readdatavalid,
+      input  wire [0:0]   pr_region_avmm_burstcount ,
+      input  wire [31:0]  pr_region_avmm_writedata ,
+      input  wire [13:0]  pr_region_avmm_address ,
+      input  wire         pr_region_avmm_write ,
+      input  wire         pr_region_avmm_read ,
+      input  wire [3:0]   pr_region_avmm_byteenable
 );
 
    //Define Number of IO registers, base case is 8 input and 8 output
@@ -92,8 +92,7 @@ module gol_persona
       .emif_avmm_address         ( emif_avmm_address ),
       .emif_avmm_write           ( emif_avmm_write ),
       .emif_avmm_read            ( emif_avmm_read ),
-      .emif_avmm_byteenable      ( emif_avmm_byteenable ),
-      .emif_avmm_debugaccess     ( emif_avmm_debugaccess )                 
+      .emif_avmm_byteenable      ( emif_avmm_byteenable )              
    );
    //////Register Address Map//////////////////
    //    reg_file_persona_id         = 0x0000
@@ -117,42 +116,42 @@ module gol_persona
    ////////////////////////////////////////////   
 
    reg_file u_reg_file 
-   (
-      .reg_file_clock_clk_clk                   ( pr_region_clk ),
-      .reg_file_hw_rst_reset                    ( pr_logic_rst ),
-      .reg_file_io_clr_reset                    ( clr_io_reg ),
-      //PR Identification register
-      .reg_file_persona_id_export               ( persona_id ),
-      //Host Controlled Reset
-      .reg_file_control_register_export         ( host_cntrl_register ),
-      //Avalon MM Interface
-      .reg_file_mm_bridge_s0_waitrequest        ( pr_region_avmm_waitrequest ),
-      .reg_file_mm_bridge_s0_readdata           ( pr_region_avmm_readdata ),
-      .reg_file_mm_bridge_s0_readdatavalid      ( pr_region_avmm_readdatavalid ),
-      .reg_file_mm_bridge_s0_burstcount         ( pr_region_avmm_burstcount ),
-      .reg_file_mm_bridge_s0_writedata          ( pr_region_avmm_writedata ),
-      .reg_file_mm_bridge_s0_address            ( pr_region_avmm_address[8:0] ),
-      .reg_file_mm_bridge_s0_write              ( pr_region_avmm_write ),
-      .reg_file_mm_bridge_s0_read               ( pr_region_avmm_read ),
-      .reg_file_mm_bridge_s0_byteenable         ( pr_region_avmm_byteenable ),
-      .reg_file_mm_bridge_s0_debugaccess        ( pr_region_avmm_debugaccess ),
-      //Host -> PR System registers
-      .reg_file_host_pr_0_export                ( host_pr[0] ),
-      .reg_file_host_pr_1_export                ( host_pr[1] ),
-      .reg_file_host_pr_2_export                ( host_pr[2] ),
-      .reg_file_host_pr_3_export                ( host_pr[3] ),
-      .reg_file_host_pr_4_export                ( host_pr[4] ),
-      .reg_file_host_pr_5_export                ( host_pr[5] ),
-      .reg_file_host_pr_6_export                ( host_pr[6] ),
-      .reg_file_host_pr_7_export                ( host_pr[7] ),
-      // PR System -> Host registers
-      .reg_file_pr_host_0_export                ( pr_host[0] ),
-      .reg_file_pr_host_1_export                ( pr_host[1] ),
-      .reg_file_pr_host_2_export                ( pr_host[2] ),
-      .reg_file_pr_host_3_export                ( pr_host[3] ),
-      .reg_file_pr_host_4_export                ( pr_host[4] ),
-      .reg_file_pr_host_5_export                ( pr_host[5] ),
-      .reg_file_pr_host_6_export                ( pr_host[6] ),
-      .reg_file_pr_host_7_export                ( pr_host[7] )
-   );
+      (
+         .reg_file_clock_clk_clk                   ( pr_region_clk ),
+         .reg_file_hw_rst_reset                    ( pr_logic_rst ),
+         .reg_file_io_clr_reset                    ( clr_io_reg ),
+         //PR Identification register
+         .reg_file_persona_id_export               ( persona_id ),
+         //Host Controlled Reset
+         .reg_file_control_register_export         ( host_cntrl_register ),
+         //Avalon MM Interface
+         .reg_file_mm_bridge_s0_waitrequest        ( pr_region_avmm_waitrequest ),
+         .reg_file_mm_bridge_s0_readdata           ( pr_region_avmm_readdata ),
+         .reg_file_mm_bridge_s0_readdatavalid      ( pr_region_avmm_readdatavalid ),
+         .reg_file_mm_bridge_s0_burstcount         ( pr_region_avmm_burstcount ),
+         .reg_file_mm_bridge_s0_writedata          ( pr_region_avmm_writedata ),
+         .reg_file_mm_bridge_s0_address            ( pr_region_avmm_address[8:0] ),
+         .reg_file_mm_bridge_s0_write              ( pr_region_avmm_write ),
+         .reg_file_mm_bridge_s0_read               ( pr_region_avmm_read ),
+         .reg_file_mm_bridge_s0_byteenable         ( pr_region_avmm_byteenable ),
+         .reg_file_mm_bridge_s0_debugaccess        ( 1'b0 ),
+         //Host -> PR System registers
+         .reg_file_host_pr_0_export                ( host_pr[0] ),
+         .reg_file_host_pr_1_export                ( host_pr[1] ),
+         .reg_file_host_pr_2_export                ( host_pr[2] ),
+         .reg_file_host_pr_3_export                ( host_pr[3] ),
+         .reg_file_host_pr_4_export                ( host_pr[4] ),
+         .reg_file_host_pr_5_export                ( host_pr[5] ),
+         .reg_file_host_pr_6_export                ( host_pr[6] ),
+         .reg_file_host_pr_7_export                ( host_pr[7] ),
+         // PR System -> Host registers
+         .reg_file_pr_host_0_export                ( pr_host[0] ),
+         .reg_file_pr_host_1_export                ( pr_host[1] ),
+         .reg_file_pr_host_2_export                ( pr_host[2] ),
+         .reg_file_pr_host_3_export                ( pr_host[3] ),
+         .reg_file_pr_host_4_export                ( pr_host[4] ),
+         .reg_file_pr_host_5_export                ( pr_host[5] ),
+         .reg_file_pr_host_6_export                ( pr_host[6] ),
+         .reg_file_pr_host_7_export                ( pr_host[7] )
+      );
 endmodule

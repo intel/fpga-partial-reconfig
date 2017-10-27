@@ -38,7 +38,11 @@ set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem
 set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_emif_avmm_pbridge.ip
 set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_pcie_avmm_pbridge.ip
 set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_subsystem_id.ip
+set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_emif_avmm_pbridge_to_static.ip
+set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_child_avmm_pbridge.ip
 set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/pr_parent_subsystem_sld_jtag_bridge_agent.ip
+set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/emif_clk.ip
+set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/emif_rst_n.ip
 set_global_assignment -name QSYS_FILE source/parent_persona/parent_pr_subsystem.qsys
 
 set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/ddr4_access_persona_top.sv
@@ -51,6 +55,14 @@ set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/ddr4_a
 set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/lfsr.sv
 set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/traffic_generator.sv
 
+set_global_assignment -name QSYS_FILE source/common/emif_interface/emif_avmm_interface.qsys
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_global_reset.ip
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_mm_bridge_0.ip
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_mm_clock_crossing_bridge.ip
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/pr_region_clock.ip
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_clock_in.ip
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_reset_in.ip
+
 set_global_assignment -name QSYS_FILE source/common/reg_file/reg_file.qsys
 set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_clock_bridge.ip
 set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_mm_bridge.ip
@@ -58,20 +70,19 @@ set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_
 set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_pio_out.ip
 set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_pio_in.ip
 
-set_global_assignment -name IP_FILE source/common/sld_jtag_host/ip/sld_jtag_host.ip
+set_global_assignment -name IP_FILE source/common/sld_jtag_host/sld_jtag_host.ip
 
 #############################################################
 # Child PR partitions
 #############################################################
 
-set_instance_assignment -name PARTITION pr_child_partition_0 -to u0|child_0|u_child_pr_logic
-set_instance_assignment -name PARTIAL_RECONFIGURATION_PARTITION ON -to u0|child_0|u_child_pr_logic
+set_instance_assignment -name PARTITION pr_child_partition_0 -to u0|child_region_0|u_child_pr_logic
+set_instance_assignment -name PARTIAL_RECONFIGURATION_PARTITION ON -to u0|child_region_0|u_child_pr_logic
 
-set_instance_assignment -name PARTITION pr_child_partition_1 -to u0|child_1|u_child_pr_logic
-set_instance_assignment -name PARTIAL_RECONFIGURATION_PARTITION ON -to u0|child_1|u_child_pr_logic
+set_instance_assignment -name PARTITION pr_child_partition_1 -to u0|child_region_1|u_child_pr_logic
+set_instance_assignment -name PARTIAL_RECONFIGURATION_PARTITION ON -to u0|child_region_1|u_child_pr_logic
 
 #############################################################
 # PR setup
 #############################################################
 set_global_assignment -name REVISION_TYPE PR_SYN
-

@@ -14,6 +14,7 @@
 # agreement for further details.
 
 
+
 #############################################################
 # Device setup
 #############################################################
@@ -32,16 +33,19 @@ set_global_assignment -name SYSTEMVERILOG_FILE source/static_region/ddr4_status_
 set_global_assignment -name SYSTEMVERILOG_FILE source/static_region/synchronizer.sv
 set_global_assignment -name SYSTEMVERILOG_FILE source/static_region/tcd2um.sv
 set_global_assignment -name SYSTEMVERILOG_FILE source/static_region/global_rst_n_controller.sv
-
-set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/ddr4_access_persona.sv
 set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/ddr4_access_persona_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/ddr4_access_persona.sv
 set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/ddr4_access_top.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/ddr_wr_rd.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/mem_access.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/perf_cntr.sv
 set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/ddr4_access_persona_controller.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/lfsr.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/mem_access.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/ddr_wr_rd.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/perf_cntr.sv
 set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/traffic_generator.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/lfsr.sv
+
+set_global_assignment -name SYSTEMVERILOG_FILE source/parent_persona/parent_persona_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/parent_persona/child_pr_logic_wrapper_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/parent_persona/child_pr_logic_wrapper_0.sv
 
 #############################################################
 # SDC constraints - Note they are before the Qsys files
@@ -52,6 +56,7 @@ set_global_assignment -name SDC_FILE a10_pcie_devkit_cvp.sdc
 #############################################################
 # QSYS and IP Files
 #############################################################
+
 set_global_assignment -name QSYS_FILE source/static_region/bsp_top.qsys
 set_global_assignment -name IP_FILE source/static_region/ip/bsp_top/top_dk.ip
 set_global_assignment -name IP_FILE source/static_region/ip/bsp_top/top_a10_pcie.ip
@@ -82,6 +87,7 @@ set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/pr_subs
 set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/pr_subsystem_freeze_bridge_cra.ip
 set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/pr_subsystem_freeze_bridge_ddr4.ip
 set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/pr_subsystem_sld_jtag_bridge_agent.ip
+set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/pr_subsystem_emif_clock_bridge.ip
 
 set_global_assignment -name QSYS_FILE source/common/reg_file/reg_file.qsys
 set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_clock_bridge.ip
@@ -89,7 +95,32 @@ set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_
 set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_pio_in.ip
 set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_pio_out.ip
 set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_reset_bridge.ip
-set_global_assignment -name IP_FILE source/common/sld_jtag_host/ip/sld_jtag_host.ip
+
+set_global_assignment -name QSYS_FILE source/common/emif_interface/emif_avmm_interface.qsys
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_global_reset.ip
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_mm_bridge_0.ip
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_mm_clock_crossing_bridge.ip
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/pr_region_clock.ip
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_clock_in.ip
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_reset_in.ip
+
+set_global_assignment -name QSYS_FILE source/parent_persona/parent_pr_subsystem.qsys
+set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_subsystem_reset_in.ip
+set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_subsystem_pr_region_controller_0.ip
+set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_subsystem_freeze_bridge_ddr4.ip
+set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_subsystem_freeze_bridge_cra.ip
+set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_subsystem_clock_in.ip
+set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_emif_avmm_pbridge.ip
+set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_emif_avmm_pbridge_to_static.ip
+set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_pcie_avmm_pbridge.ip
+set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_child_avmm_pbridge.ip
+set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_subsystem_id.ip
+set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/pr_parent_subsystem_sld_jtag_bridge_agent.ip
+set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/emif_clk.ip
+set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/emif_rst_n.ip
+
+set_global_assignment -name IP_FILE source/common/sld_jtag_agent/sld_jtag_agent.ip
+set_global_assignment -name IP_FILE source/common/sld_jtag_host/sld_jtag_host.ip
 
 
 #############################################################
@@ -166,6 +197,7 @@ set_location_assignment PIN_R34 -to mem_cs_n[0]
 set_location_assignment PIN_T35 -to mem_reset_n[0]
 set_location_assignment PIN_N33 -to mem_odt[0]
 set_location_assignment PIN_P34 -to mem_act_n[0]
+
 
 set_location_assignment PIN_M32 -to mem_a[0]
 set_location_assignment PIN_L32 -to mem_a[1]
@@ -312,6 +344,7 @@ set_instance_assignment -name IO_STANDARD LVDS -to "ref_clk_clk(n)"
 set_instance_assignment -name IO_STANDARD LVDS -to ref_clk_clk
 set_instance_assignment -name INPUT_TERMINATION DIFFERENTIAL -to ref_clk_clk
 
+
 set_location_assignment PIN_AT40 -to xcvr_rx_in0
 set_location_assignment PIN_AT39 -to "xcvr_rx_in0(n)"
 set_instance_assignment -name IO_STANDARD CML -to xcvr_rx_in0
@@ -426,10 +459,11 @@ set_instance_assignment -name XCVR_VCCR_VCCT_VOLTAGE 1_0V -to xcvr_tx_out7
 
 set_global_assignment -name PRESERVE_UNUSED_XCVR_CHANNEL ON
 
+
+
 #############################################################
 # Synthesis and Fitter Fine-Tuning
 #############################################################
-set_global_assignment -name OPTIMIZATION_TECHNIQUE SPEED
 
 #############################################################
 # SignalTap
@@ -440,21 +474,14 @@ set_global_assignment -name OPTIMIZATION_TECHNIQUE SPEED
 #############################################################
 set_global_assignment -name REVISION_TYPE PR_BASE
 
-set_instance_assignment -name PARTITION pr_parent_partition -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_parent_pr_logic
-set_instance_assignment -name PARTIAL_RECONFIGURATION_PARTITION ON -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_parent_pr_logic
+set_instance_assignment -name PARTITION pr_partition -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
+set_instance_assignment -name PARTIAL_RECONFIGURATION_PARTITION ON -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
 
-set_instance_assignment -name PLACE_REGION "X32 Y0 X87 Y19;X0 Y0 X31 Y28;X88 Y1 X90 Y19;X91 Y1 X224 Y98;X32 Y20 X32 Y28;X33 Y20 X48 Y40;X49 Y20 X90 Y58;X0 Y29 X32 Y40;X81 Y59 X90 Y98;X49 Y59 X80 Y109;X81 Y99 X109 Y109;X110 Y99 X224 Y224;X50 Y110 X78 Y126;X49 Y110 X49 Y129;X79 Y110 X109 Y224;X32 Y117 X48 Y129;X0 Y117 X31 Y224;X36 Y130 X49 Y181;X32 Y130 X35 Y224;X50 Y172 X63 Y181;X36 Y182 X63 Y224;X64 Y215 X78 Y224" -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_parent_pr_logic
+set_instance_assignment -name PLACE_REGION "X122 Y0 X224 Y113;X29 Y7 X80 Y19;X81 Y7 X105 Y78;X106 Y7 X121 Y113;X29 Y20 X79 Y77;X80 Y20 X80 Y78;X57 Y78 X79 Y78;X29 Y78 X56 Y224;X57 Y79 X105 Y101;X80 Y102 X105 Y113;X75 Y102 X79 Y140;X60 Y102 X74 Y169;X57 Y102 X59 Y224;X80 Y114 X80 Y140;X81 Y114 X89 Y211;X1 Y114 X28 Y224;X90 Y114 X224 Y224;X77 Y141 X77 Y175;X75 Y141 X75 Y184;X76 Y141 X76 Y211;X78 Y141 X80 Y211;X62 Y170 X74 Y184;X60 Y170 X61 Y224;X77 Y177 X77 Y211;X62 Y185 X75 Y224;X76 Y212 X89 Y224" -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
 
-set_instance_assignment -name RESERVE_PLACE_REGION ON -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_parent_pr_logic
-set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_parent_pr_logic
+set_instance_assignment -name RESERVE_PLACE_REGION ON -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
 # Use a routing region of the whole chip
-set_instance_assignment -name ROUTE_REGION "X0 Y0 X224 Y224" -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_parent_pr_logic
-
-#############################################################
-# Additional Floorplanning
-#############################################################
-set_instance_assignment -name PLACE_REGION "X0 Y41 X48 Y116" -to a10_pcie
-set_instance_assignment -name RESERVE_PLACE_REGION OFF -to a10_pcie
-set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to a10_pcie
-set_instance_assignment -name REGION_MEMBER ON -from a10_pcie -to u_top|a10_pcie
+set_instance_assignment -name ROUTE_REGION "X0 Y0 X224 Y224" -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
+set_global_assignment -name LAST_QUARTUS_VERSION "17.1.0 Pro Edition"
 

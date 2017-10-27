@@ -3,11 +3,11 @@
   <spirit:vendor>Intel Corporation</spirit:vendor>
   <spirit:library>pr_subsystem_sld_jtag_bridge_agent</spirit:library>
   <spirit:name>pr_subsystem_sld_jtag_bridge_agent</spirit:name>
-  <spirit:version>17.0</spirit:version>
+  <spirit:version>17.1</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>connect_to_bridge_host</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -169,7 +169,7 @@
       <spirit:vendor>Intel Corporation</spirit:vendor>
       <spirit:library>pr_subsystem_sld_jtag_bridge_agent</spirit:library>
       <spirit:name>altera_sld_jtag_bridge_agent</spirit:name>
-      <spirit:version>17.0</spirit:version>
+      <spirit:version>17.1</spirit:version>
     </altera:entity_info>
     <altera:altera_module_parameters>
       <spirit:parameters>

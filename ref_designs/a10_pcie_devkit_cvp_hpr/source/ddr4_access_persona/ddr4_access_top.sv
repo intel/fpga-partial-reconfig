@@ -43,14 +43,14 @@ module ddr4_access_top #(parameter REG_FILE_IO_SIZE = 8)
       input wire          emif_avmm_waitrequest , 
       input wire [511:0]  emif_avmm_readdata , 
       input wire          emif_avmm_readdatavalid ,
-      output reg [4:0]    emif_avmm_burstcount , 
+      output reg [6:0]    emif_avmm_burstcount , 
       output reg [511:0]  emif_avmm_writedata , 
       output reg [24:0]   emif_avmm_address , 
       output reg          emif_avmm_write , 
       output reg          emif_avmm_read , 
-      output reg [63:0]   emif_avmm_byteenable , 
-      output reg          emif_avmm_debugaccess           
+      output reg [63:0]   emif_avmm_byteenable
    );
+
    wire                 start_operation;
    wire [31:0]          mem_addr;
    wire                 post_wr_pulse;
@@ -68,9 +68,10 @@ module ddr4_access_top #(parameter REG_FILE_IO_SIZE = 8)
    wire [31:0]          performance_cntr;
    reg [24:0]           target_address;
    reg [511:0]          target_data;
-   ddr4_access_persona_controller #( .REG_FILE_IO_SIZE(REG_FILE_IO_SIZE) ) 
-   u_ddr4_access_persona_controller 
-   (
+
+   ddr4_access_persona_controller #(
+      .REG_FILE_IO_SIZE(REG_FILE_IO_SIZE)
+   ) u_ddr4_access_persona_controller (
       .clk                                     ( clk ),
       .pr_logic_rst                            ( pr_logic_rst ),
       .clr_io_reg                              ( clr_io_reg ),
@@ -139,7 +140,6 @@ module ddr4_access_top #(parameter REG_FILE_IO_SIZE = 8)
       .emif_avmm_write                        ( emif_avmm_write ),
       .emif_avmm_read                         ( emif_avmm_read ),
       .emif_avmm_byteenable                   ( emif_avmm_byteenable ),
-      .emif_avmm_debugaccess                  ( emif_avmm_debugaccess ),
       .pass                                   ( pass ),
       .fail                                   ( fail ),
       .pr_logic_rst                           ( pr_logic_rst )

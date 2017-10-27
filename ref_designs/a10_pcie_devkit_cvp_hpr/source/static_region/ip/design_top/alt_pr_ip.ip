@@ -3,11 +3,11 @@
   <spirit:vendor>Intel Corporation</spirit:vendor>
   <spirit:library>alt_pr_ip</spirit:library>
   <spirit:name>alt_pr</spirit:name>
-  <spirit:version>17.0</spirit:version>
+  <spirit:version>17.1</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>avmm_slave</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -291,7 +291,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>clk</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -323,7 +323,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>nreset</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -476,7 +476,7 @@
       <spirit:vendor>Intel Corporation</spirit:vendor>
       <spirit:library>alt_pr_ip</spirit:library>
       <spirit:name>alt_pr</spirit:name>
-      <spirit:version>17.0</spirit:version>
+      <spirit:version>17.1</spirit:version>
     </altera:entity_info>
     <altera:altera_module_parameters>
       <spirit:parameters>

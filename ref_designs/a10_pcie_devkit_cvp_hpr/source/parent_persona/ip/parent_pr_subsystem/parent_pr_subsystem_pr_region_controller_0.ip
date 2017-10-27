@@ -3,11 +3,11 @@
   <spirit:vendor>Intel Corporation</spirit:vendor>
   <spirit:library>parent_pr_subsystem_pr_region_controller_0</spirit:library>
   <spirit:name>parent_pr_subsystem_pr_region_controller_0</spirit:name>
-  <spirit:version>17.0</spirit:version>
+  <spirit:version>17.1</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>avl_csr</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -283,7 +283,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>bridge_freeze0</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -323,7 +323,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>bridge_freeze1</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -363,7 +363,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>clock</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -395,7 +395,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>pr_handshake</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -451,7 +451,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>reset</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -478,7 +478,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>reset_source</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.1"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -737,7 +737,7 @@
       <spirit:vendor>Intel Corporation</spirit:vendor>
       <spirit:library>parent_pr_subsystem_pr_region_controller_0</spirit:library>
       <spirit:name>altera_pr_region_controller</spirit:name>
-      <spirit:version>17.0</spirit:version>
+      <spirit:version>17.1</spirit:version>
     </altera:entity_info>
     <altera:altera_module_parameters>
       <spirit:parameters>
@@ -819,6 +819,11 @@
           <spirit:name>deviceSpeedGrade</spirit:name>
           <spirit:displayName>Device Speed Grade</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="deviceSpeedGrade">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>generationId</spirit:name>
+          <spirit:displayName>Generation Id</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="generationId">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>bonusData</spirit:name>
@@ -1071,6 +1076,101 @@
                     </entry>
                 </parameterValueMap>
             </parameters>
+            <cmsisInfo>
+                <cmsisSrcFileContents>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;device schemaVersion="1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd"&gt;
+  &lt;peripherals&gt;
+    &lt;peripheral&gt;
+      &lt;baseAddress&gt;0x00000000&lt;/baseAddress&gt;
+      &lt;name&gt;altera_pr_region_controller&lt;/name&gt;
+      &lt;description&gt;altera_pr_region_controller&lt;/description&gt;
+      &lt;registers&gt;
+        &lt;register&gt;
+          &lt;access&gt;read-only&lt;/access&gt;
+          &lt;addressOffset&gt;0x0&lt;/addressOffset&gt;
+          &lt;description&gt;This is the status register of the freeze controller IP&lt;/description&gt;
+          &lt;displayName&gt;freeze_csr_status&lt;/displayName&gt;
+          &lt;name&gt;status&lt;/name&gt;
+          &lt;resetMask&gt;0xffffffff&lt;/resetMask&gt;
+          &lt;resetValue&gt;0x00000000&lt;/resetValue&gt;
+          &lt;size&gt;32&lt;/size&gt;
+          &lt;fields&gt;
+            &lt;field&gt;
+              &lt;access&gt;read-only&lt;/access&gt;
+              &lt;bitRange&gt;[0:0]&lt;/bitRange&gt;
+              &lt;description&gt;Hardware sets this bit to '1 after the PR region return stop_ack signal to indicate that the PR region is going into freezing state.&lt;/description&gt;
+              &lt;modifiedWriteValues&gt;modify&lt;/modifiedWriteValues&gt;
+              &lt;name&gt;freeze_status&lt;/name&gt;
+            &lt;/field&gt;
+            &lt;field&gt;
+              &lt;access&gt;read-only&lt;/access&gt;
+              &lt;bitRange&gt;[1:1]&lt;/bitRange&gt;
+              &lt;description&gt;Hardware sets this bit to '1 after the PR region return start_ack to indicate that it has successfully kicked off the persona.&lt;/description&gt;
+              &lt;modifiedWriteValues&gt;modify&lt;/modifiedWriteValues&gt;
+              &lt;name&gt;unfreeze_status&lt;/name&gt;
+            &lt;/field&gt;
+          &lt;/fields&gt;
+        &lt;/register&gt;
+        &lt;register&gt;
+          &lt;access&gt;read-write&lt;/access&gt;
+          &lt;addressOffset&gt;0x4&lt;/addressOffset&gt;
+          &lt;description&gt;This is the control register of the freeze controller IP&lt;/description&gt;
+          &lt;displayName&gt;freeze_csr_ctrl&lt;/displayName&gt;
+          &lt;name&gt;control&lt;/name&gt;
+          &lt;resetMask&gt;0xffffffff&lt;/resetMask&gt;
+          &lt;resetValue&gt;0x00000000&lt;/resetValue&gt;
+          &lt;size&gt;32&lt;/size&gt;
+          &lt;fields&gt;
+            &lt;field&gt;
+              &lt;access&gt;read-write&lt;/access&gt;
+              &lt;bitRange&gt;[0:0]&lt;/bitRange&gt;
+              &lt;description&gt;Write 1 to this bit to start freezing the PR region interfaces. &lt;/description&gt;
+              &lt;modifiedWriteValues&gt;modify&lt;/modifiedWriteValues&gt;
+              &lt;name&gt;freeze_req&lt;/name&gt;
+            &lt;/field&gt;
+            &lt;field&gt;
+              &lt;access&gt;read-write&lt;/access&gt;
+              &lt;bitRange&gt;[1:1]&lt;/bitRange&gt;
+              &lt;description&gt;Write 1 to start resetting the PR persona. &lt;/description&gt;
+              &lt;modifiedWriteValues&gt;modify&lt;/modifiedWriteValues&gt;
+              &lt;name&gt;reset_req&lt;/name&gt;
+            &lt;/field&gt;
+            &lt;field&gt;
+              &lt;access&gt;read-write&lt;/access&gt;
+              &lt;bitRange&gt;[2:2]&lt;/bitRange&gt;
+              &lt;description&gt;Write 1 to this bit to stop freezing the PR region interfaces.&lt;/description&gt;
+              &lt;modifiedWriteValues&gt;modify&lt;/modifiedWriteValues&gt;
+              &lt;name&gt;unfreeze_req&lt;/name&gt;
+            &lt;/field&gt;
+          &lt;/fields&gt;
+        &lt;/register&gt;
+        &lt;register&gt;
+          &lt;access&gt;read-writeOnce&lt;/access&gt;
+          &lt;addressOffset&gt;0x8&lt;/addressOffset&gt;
+          &lt;description&gt;This is to indicate that there is an error request happen in freeze bridge during freeze state.&lt;/description&gt;
+          &lt;displayName&gt;freeze_illegal_request&lt;/displayName&gt;
+          &lt;name&gt;illegal_request&lt;/name&gt;
+          &lt;resetMask&gt;0xffffffff&lt;/resetMask&gt;
+          &lt;resetValue&gt;0x00000000&lt;/resetValue&gt;
+          &lt;size&gt;32&lt;/size&gt;
+        &lt;/register&gt;
+        &lt;register&gt;
+          &lt;access&gt;read-only&lt;/access&gt;
+          &lt;addressOffset&gt;0xc&lt;/addressOffset&gt;
+          &lt;description&gt;This is for the software driver to identify the version number of the CSR register.&lt;/description&gt;
+          &lt;displayName&gt;freeze_reg_version&lt;/displayName&gt;
+          &lt;name&gt;reg_version&lt;/name&gt;
+          &lt;resetMask&gt;0xffffffff&lt;/resetMask&gt;
+          &lt;resetValue&gt;0x00000000&lt;/resetValue&gt;
+          &lt;size&gt;32&lt;/size&gt;
+        &lt;/register&gt;
+      &lt;/registers&gt;
+    &lt;/peripheral&gt;
+  &lt;/peripherals&gt;
+&lt;/device&gt;</cmsisSrcFileContents>
+                <addressGroup></addressGroup>
+                <cmsisVars/>
+            </cmsisInfo>
         </interface>
         <interface>
             <name>bridge_freeze0</name>

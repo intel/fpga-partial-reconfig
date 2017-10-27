@@ -3,11 +3,11 @@
   <spirit:vendor>Intel Corporation</spirit:vendor>
   <spirit:library>top_iopll</spirit:library>
   <spirit:name>top_iopll_0</spirit:name>
-  <spirit:version>17.0</spirit:version>
+  <spirit:version>17.1</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>locked</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -49,7 +49,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>outclk0</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -101,7 +101,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>outclk1</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -153,7 +153,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>refclk</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -195,7 +195,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>reset</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -310,7 +310,7 @@
       <spirit:vendor>Intel Corporation</spirit:vendor>
       <spirit:library>top_iopll</spirit:library>
       <spirit:name>altera_iopll</spirit:name>
-      <spirit:version>17.0</spirit:version>
+      <spirit:version>17.1</spirit:version>
     </altera:entity_info>
     <altera:altera_module_parameters>
       <spirit:parameters>
@@ -503,6 +503,11 @@
           <spirit:name>gui_fractional_cout</spirit:name>
           <spirit:displayName>Fractional carry out</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="gui_fractional_cout">32</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>gui_prot_mode</spirit:name>
+          <spirit:displayName>prot_mode</spirit:displayName>
+          <spirit:value spirit:format="string" spirit:id="gui_prot_mode">UNUSED</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>gui_dsm_out_sel</spirit:name>
@@ -2188,6 +2193,11 @@
           <spirit:name>pll_m_cnt</spirit:name>
           <spirit:displayName>pll_m_cnt</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="pll_m_cnt">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>prot_mode</spirit:name>
+          <spirit:displayName>prot_mode</spirit:displayName>
+          <spirit:value spirit:format="string" spirit:id="prot_mode">BASIC</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>m_cnt_hi_div</spirit:name>

@@ -3,11 +3,11 @@
   <spirit:vendor>Altera Corporation</spirit:vendor>
   <spirit:library>ddr4_emif</spirit:library>
   <spirit:name>ddr4_ctlr_emif_0</spirit:name>
-  <spirit:version>17.0</spirit:version>
+  <spirit:version>17.1</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>ctrl_amm_0</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -315,7 +315,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>emif_usr_clk</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -357,7 +357,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>emif_usr_reset_n</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.1"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -394,7 +394,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>global_reset_n</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -421,7 +421,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>mem</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -573,7 +573,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>oct</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -605,7 +605,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>pll_ref_clk</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -637,7 +637,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>status</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.0"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.1"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -1123,7 +1123,7 @@
       <spirit:vendor>Altera Corporation</spirit:vendor>
       <spirit:library>ddr4_emif</spirit:library>
       <spirit:name>altera_emif</spirit:name>
-      <spirit:version>17.0</spirit:version>
+      <spirit:version>17.1</spirit:version>
     </altera:entity_info>
     <altera:altera_module_parameters>
       <spirit:parameters>
@@ -4888,14 +4888,14 @@
           <spirit:value spirit:format="float" spirit:id="MEM_DDR4_TDSS_CYC">0.18</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
-          <spirit:name>MEM_DDR4_TWLS_PS</spirit:name>
+          <spirit:name>MEM_DDR4_TWLS_CYC</spirit:name>
           <spirit:displayName>tWLS</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="MEM_DDR4_TWLS_PS">108.0</spirit:value>
+          <spirit:value spirit:format="float" spirit:id="MEM_DDR4_TWLS_CYC">0.13</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
-          <spirit:name>MEM_DDR4_TWLH_PS</spirit:name>
+          <spirit:name>MEM_DDR4_TWLH_CYC</spirit:name>
           <spirit:displayName>tWLH</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="MEM_DDR4_TWLH_PS">108.0</spirit:value>
+          <spirit:value spirit:format="float" spirit:id="MEM_DDR4_TWLH_CYC">0.13</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MEM_DDR4_TINIT_US</spirit:name>
@@ -5093,6 +5093,16 @@
           <spirit:value spirit:format="string" spirit:id="MEM_DDR4_LRDIMM_VREFDQ_VALUE"></spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>MEM_DDR4_TWLS_PS</spirit:name>
+          <spirit:displayName>PARAM_MEM_DDR4_TWLS_PS_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="MEM_DDR4_TWLS_PS">0.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>MEM_DDR4_TWLH_PS</spirit:name>
+          <spirit:displayName>PARAM_MEM_DDR4_TWLH_PS_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="MEM_DDR4_TWLH_PS">0.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>MEM_QDR2_WIDTH_EXPANDED</spirit:name>
           <spirit:displayName>Enable width expansion</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="MEM_QDR2_WIDTH_EXPANDED">false</spirit:value>
@@ -5253,6 +5263,11 @@
           <spirit:value spirit:format="string" spirit:id="MEM_QDR4_PD_OUTPUT_DRIVE_MODE_ENUM">QDR4_OUTPUT_DRIVE_25_PCT</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>MEM_QDR4_MEM_TYPE_ENUM</spirit:name>
+          <spirit:displayName>Memory Type  </spirit:displayName>
+          <spirit:value spirit:format="string" spirit:id="MEM_QDR4_MEM_TYPE_ENUM">MEM_XP</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>MEM_QDR4_DATA_INV_ENA</spirit:name>
           <spirit:displayName>Data bus inversion</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="MEM_QDR4_DATA_INV_ENA">true</spirit:value>
@@ -5339,13 +5354,18 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MEM_QDR4_TRL_CYC</spirit:name>
-          <spirit:displayName>PARAM_MEM_QDR4_TRL_CYC_NAME</spirit:displayName>
+          <spirit:displayName>Memory Read latency </spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="MEM_QDR4_TRL_CYC">8</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MEM_QDR4_TWL_CYC</spirit:name>
-          <spirit:displayName>PARAM_MEM_QDR4_TWL_CYC_NAME</spirit:displayName>
+          <spirit:displayName>Memory Write latency </spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="MEM_QDR4_TWL_CYC">5</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>MEM_QDR4_AVL_CHNLS</spirit:name>
+          <spirit:displayName>PARAM_MEM_QDR4_AVL_CHNLS_NAME</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="MEM_QDR4_AVL_CHNLS">8</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MEM_QDR4_CR0</spirit:name>

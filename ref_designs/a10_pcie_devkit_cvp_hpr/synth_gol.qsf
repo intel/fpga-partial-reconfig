@@ -49,4 +49,3 @@ set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_
 # PR setup
 #############################################################
 set_global_assignment -name REVISION_TYPE PR_SYN
-

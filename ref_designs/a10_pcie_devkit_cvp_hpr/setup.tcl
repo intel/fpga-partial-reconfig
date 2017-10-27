@@ -28,7 +28,7 @@ define_base_revision a10_pcie_devkit_cvp
 
 # Define each of the partial reconfiguration implementation revisions
 define_pr_impl_partition -impl_rev_name a10_pcie_devkit_cvp_ddr4_access \
-	-partition_name pr_parent_partition \
+	-partition_name pr_partition \
 	-source_rev_name synth_parent_persona \
 	-source_partition root_partition \
 	-source_snapshot synthesized
@@ -46,15 +46,15 @@ define_pr_impl_partition -impl_rev_name a10_pcie_devkit_cvp_ddr4_access \
 	-source_snapshot synthesized
 
 define_pr_impl_partition -impl_rev_name a10_pcie_devkit_cvp_normal_ddr4_access \
-	-partition_name pr_parent_partition \
+	-partition_name pr_partition \
 	-source_rev_name  synth_ddr4_access \
 	-source_partition root_partition \
 	-source_snapshot synthesized
 
 define_pr_impl_partition -impl_rev_name a10_pcie_devkit_cvp_basic_arithmetic \
-	-partition_name pr_parent_partition \
+	-partition_name pr_partition \
 	-source_rev_name a10_pcie_devkit_cvp_ddr4_access \
-	-source_partition pr_parent_partition \
+	-source_partition pr_partition \
 	-source_snapshot final
 
 define_pr_impl_partition -impl_rev_name a10_pcie_devkit_cvp_basic_arithmetic \
@@ -70,39 +70,39 @@ define_pr_impl_partition -impl_rev_name a10_pcie_devkit_cvp_basic_arithmetic \
 	-source_snapshot synthesized
 
 define_pr_impl_partition -impl_rev_name a10_pcie_devkit_cvp_normal_basic_arithmetic \
-	-partition_name pr_parent_partition \
+	-partition_name pr_partition \
 	-source_rev_name synth_basic_arithmetic \
 	-source_partition root_partition \
 	-source_snapshot synthesized
 
 define_pr_impl_partition -impl_rev_name a10_pcie_devkit_cvp_basic_dsp \
-	-partition_name pr_parent_partition \
+	-partition_name pr_partition \
 	-source_rev_name a10_pcie_devkit_cvp_ddr4_access \
-	-source_partition pr_parent_partition \
+	-source_partition pr_partition \
 	-source_snapshot final
 
 define_pr_impl_partition -impl_rev_name a10_pcie_devkit_cvp_basic_dsp \
     -partition_name pr_child_partition_0 \
-    -source_rev_name  synth_basic_dsp \
+    -source_rev_name  synth_basic_dsp_0 \
 	-source_partition root_partition \
 	-source_snapshot synthesized
 
 define_pr_impl_partition -impl_rev_name a10_pcie_devkit_cvp_basic_dsp \
 	-partition_name pr_child_partition_1 \
-	-source_rev_name synth_basic_dsp \
+	-source_rev_name synth_basic_dsp_1 \
 	-source_partition root_partition \
 	-source_snapshot synthesized
 
-define_pr_impl_partition -impl_rev_name a10_pcie_devkit_cvp_normal_basic_dsp_stp \
-	-partition_name pr_parent_partition \
-	-source_rev_name synth_basic_dsp_stp \
+define_pr_impl_partition -impl_rev_name a10_pcie_devkit_cvp_normal_basic_dsp \
+	-partition_name pr_partition \
+	-source_rev_name synth_basic_dsp_0 \
 	-source_partition root_partition \
 	-source_snapshot synthesized
 
 define_pr_impl_partition -impl_rev_name a10_pcie_devkit_cvp_gol \
-	-partition_name pr_parent_partition \
+	-partition_name pr_partition \
 	-source_rev_name a10_pcie_devkit_cvp_ddr4_access \
-	-source_partition pr_parent_partition \
+	-source_partition pr_partition \
 	-source_snapshot final
 
 define_pr_impl_partition -impl_rev_name a10_pcie_devkit_cvp_gol \
@@ -118,7 +118,7 @@ define_pr_impl_partition -impl_rev_name a10_pcie_devkit_cvp_gol \
 	-source_snapshot synthesized
 
 define_pr_impl_partition -impl_rev_name a10_pcie_devkit_cvp_normal_gol \
-	-partition_name pr_parent_partition \
+	-partition_name pr_partition \
 	-source_rev_name synth_gol \
 	-source_partition root_partition \
 	-source_snapshot synthesized

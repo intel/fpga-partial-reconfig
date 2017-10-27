@@ -1,19 +1,3 @@
-# Copyright (C) 2001-2017 Intel Corporation. All rights reserved.
-# Your use of Intel Corporation's design tools, logic functions
-# and other software and tools, and its AMPP partner logic
-# functions, and any output files from any of the foregoing
-# (including device programming or simulation files), and any
-# associated documentation or information are expressly subject
-# to the terms and conditions of the Intel Program License
-# Subscription Agreement, the Intel Quartus Prime License Agreement,
-# the Intel MegaCore Function License Agreement, or other
-# applicable license agreement, including, without limitation,
-# that your use is for the sole purpose of programming logic
-# devices manufactured by Intel and sold by Intel or its
-# authorized distributors.  Please refer to the applicable
-# agreement for further details.
-
-
 #############################################################
 # Device setup
 #############################################################
@@ -35,7 +19,6 @@ set_global_assignment -name SDC_FILE a10_pcie_devkit_cvp.sdc
 #############################################################
 # QSYS and IP Files
 #############################################################
-
 set_global_assignment -name QSYS_FILE source/static_region/bsp_top.qsys
 set_global_assignment -name IP_FILE source/static_region/ip/bsp_top/top_dk.ip
 set_global_assignment -name IP_FILE source/static_region/ip/bsp_top/top_a10_pcie.ip
@@ -59,8 +42,6 @@ set_global_assignment -name IP_FILE source/static_region/ip/design_top/emif_avmm
 set_global_assignment -name IP_FILE source/static_region/ip/design_top/bar2_avmm_pipeline_bridge.ip
 set_global_assignment -name IP_FILE source/static_region/ip/design_top/pcie_bar_2_mm_clock_crossing_bridge.ip
 
-set_global_assignment -name HEX_FILE source/static_region/ip/design_top/avalon_config.hex
-
 set_global_assignment -name QSYS_FILE source/static_region/pr_subsystem.qsys
 set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/pr_subsystem_clock_bridge_0.ip
 set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/pr_subsystem_reset_bridge_0.ip
@@ -75,8 +56,20 @@ set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_
 set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_pio_out.ip
 set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_reset_bridge.ip
 
+set_global_assignment -name QSYS_FILE source/common/emif_interface/emif_avmm_interface.qsys
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_global_reset.ip
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_mm_bridge_0.ip
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_mm_clock_crossing_bridge.ip
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/pr_region_clock.ip
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_clock_in.ip
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_reset_in.ip
+
+set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/pr_subsystem_emif_clock_bridge.ip
+
+
 set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/pr_subsystem_sld_jtag_bridge_agent.ip
-set_global_assignment -name IP_FILE source/common/sld_jtag_host/ip/sld_jtag_host.ip
+set_global_assignment -name IP_FILE source/common/sld_jtag_host/sld_jtag_host.ip
+
 
 #############################################################
 # SDC constraints - Note they are after the Qsys files
@@ -423,22 +416,18 @@ set_global_assignment -name PRESERVE_UNUSED_XCVR_CHANNEL ON
 #############################################################
 # SignalTap
 #############################################################
-# Note that enabling SignalTap may require changing the floorplan
-set_global_assignment -name ENABLE_SIGNALTAP ON
-set_global_assignment -name USE_SIGNALTAP_FILE basic_dsp_persona.stp
-set_global_assignment -name SIGNALTAP_FILE basic_dsp_persona.stp
 
 #############################################################
 # PR setup
 #############################################################
 set_global_assignment -name REVISION_TYPE PR_IMPL
 
-set_instance_assignment -name PARTITION pr_parent_partition -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_parent_pr_logic
-set_instance_assignment -name PARTIAL_RECONFIGURATION_PARTITION ON -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_parent_pr_logic
+set_instance_assignment -name PARTITION pr_partition -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
+set_instance_assignment -name PARTIAL_RECONFIGURATION_PARTITION ON -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
 
-set_instance_assignment -name PLACE_REGION "X32 Y0 X87 Y19;X0 Y0 X31 Y28;X88 Y1 X90 Y19;X91 Y1 X224 Y98;X32 Y20 X32 Y28;X33 Y20 X48 Y40;X49 Y20 X90 Y58;X0 Y29 X32 Y40;X81 Y59 X90 Y98;X49 Y59 X80 Y109;X81 Y99 X109 Y109;X110 Y99 X224 Y224;X50 Y110 X78 Y126;X49 Y110 X49 Y129;X79 Y110 X109 Y224;X32 Y117 X48 Y129;X0 Y117 X31 Y224;X36 Y130 X49 Y181;X32 Y130 X35 Y224;X50 Y172 X63 Y181;X36 Y182 X63 Y224;X64 Y215 X78 Y224" -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_parent_pr_logic
+set_instance_assignment -name PLACE_REGION "X122 Y0 X224 Y113;X29 Y7 X80 Y19;X81 Y7 X105 Y78;X106 Y7 X121 Y113;X29 Y20 X79 Y77;X80 Y20 X80 Y78;X57 Y78 X79 Y78;X29 Y78 X56 Y224;X57 Y79 X105 Y101;X80 Y102 X105 Y113;X75 Y102 X79 Y140;X60 Y102 X74 Y169;X57 Y102 X59 Y224;X80 Y114 X80 Y140;X81 Y114 X89 Y211;X1 Y114 X28 Y224;X90 Y114 X224 Y224;X77 Y141 X77 Y175;X75 Y141 X75 Y184;X76 Y141 X76 Y211;X78 Y141 X80 Y211;X62 Y170 X74 Y184;X60 Y170 X61 Y224;X77 Y177 X77 Y211;X62 Y185 X75 Y224;X76 Y212 X89 Y224" -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
 
-set_instance_assignment -name RESERVE_PLACE_REGION ON -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_parent_pr_logic
-set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_parent_pr_logic
+set_instance_assignment -name RESERVE_PLACE_REGION ON -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
 # Use a routing region of the whole chip
-set_instance_assignment -name ROUTE_REGION "X0 Y0 X224 Y224" -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_parent_pr_logic
+set_instance_assignment -name ROUTE_REGION "X0 Y0 X224 Y224" -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
