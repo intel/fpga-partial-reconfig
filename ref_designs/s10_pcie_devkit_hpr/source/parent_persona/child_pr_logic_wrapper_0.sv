@@ -1,0 +1,82 @@
+// Copyright (c) 2001-2018 Intel Corporation
+//  
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//  
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//  
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+// IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+// CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+// TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+// SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+`timescale 1 ps / 1 ps
+`default_nettype none
+
+module child_pr_logic_wrapper_0 
+(
+   input wire         pr_region_clk , 
+   input wire         pr_logic_rst , 
+
+   // Signaltap Interface
+   input wire           tck ,
+   input wire           tms ,
+   input wire           tdi ,
+   input wire           vir_tdi ,
+   input wire           ena ,
+   output wire          tdo ,
+
+   input wire           pr_handshake_start_req ,
+   output reg           pr_handshake_start_ack ,
+   input wire           pr_handshake_stop_req ,
+   output reg           pr_handshake_stop_ack ,
+   output wire          freeze_pr_region_avmm ,
+
+   // AVMM interface
+   output reg           pr_region_avmm_waitrequest , 
+   output reg [31:0]    pr_region_avmm_readdata , 
+   output reg           pr_region_avmm_readdatavalid, 
+   input wire [0:0]     pr_region_avmm_burstcount , 
+   input wire [31:0]    pr_region_avmm_writedata , 
+   input wire [13:0]    pr_region_avmm_address , 
+   input wire           pr_region_avmm_write , 
+   input wire           pr_region_avmm_read , 
+   input wire [3:0]     pr_region_avmm_byteenable 
+);
+
+   gol_persona_top u_child_pr_logic
+   (
+      .pr_region_clk               ( pr_region_clk ),
+      .pr_logic_rst                ( pr_logic_rst ),
+      .tck                         ( tck ),
+      .tms                         ( tms ),
+      .tdi                         ( tdi ),
+      .vir_tdi                     ( vir_tdi ),
+      .ena                         ( ena ),
+      .tdo                         ( tdo ),
+      .pr_handshake_start_req      ( pr_handshake_start_req ),
+      .pr_handshake_start_ack      ( pr_handshake_start_ack ),
+      .pr_handshake_stop_req       ( pr_handshake_stop_req ),
+      .pr_handshake_stop_ack       ( pr_handshake_stop_ack ),
+      .freeze_pr_region_avmm       ( freeze_pr_region_avmm ),
+      .pr_region_avmm_waitrequest  ( pr_region_avmm_waitrequest ),
+      .pr_region_avmm_readdata     ( pr_region_avmm_readdata ),
+      .pr_region_avmm_readdatavalid( pr_region_avmm_readdatavalid ),
+      .pr_region_avmm_burstcount   ( pr_region_avmm_burstcount ),
+      .pr_region_avmm_writedata    ( pr_region_avmm_writedata ),
+      .pr_region_avmm_address      ( pr_region_avmm_address ),
+      .pr_region_avmm_write        ( pr_region_avmm_write ),
+      .pr_region_avmm_read         ( pr_region_avmm_read ),
+      .pr_region_avmm_byteenable   ( pr_region_avmm_byteenable )
+   );
+
+endmodule
