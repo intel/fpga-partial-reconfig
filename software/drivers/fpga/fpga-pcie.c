@@ -151,7 +151,7 @@ static void set_aer_uerr_mask_reg(struct pci_dev *dev, u32 val)
 	}
 
 
-	pci_write_config_dword(dev, pos+PCI_EXP_DEVCAP, PCI_ERR_UNC_SURPDN);
+	pci_write_config_dword(dev, pos+PCI_EXP_DEVCAP, PCI_ERR_UNC_SURPDN | PCI_ERR_UNC_COMP_TIME | PCI_ERR_UNC_UNSUP);
 
 	pci_write_config_dword(dev, pos+PCI_EXP_DEVCTL, val);
 }
@@ -172,7 +172,7 @@ static u32 disable_upstream_aer(struct pci_dev *dev,
 
 	reg = get_aer_uerr_mask_reg(upstream_dev);
 
-	set_aer_uerr_mask_reg(upstream_dev, reg | PCI_ERR_UNC_SURPDN);
+	set_aer_uerr_mask_reg(upstream_dev, reg | PCI_ERR_UNC_SURPDN | PCI_ERR_UNC_COMP_TIME | PCI_ERR_UNC_UNSUP);
 
 	return reg;
 }

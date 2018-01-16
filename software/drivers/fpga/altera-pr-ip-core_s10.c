@@ -262,7 +262,7 @@ static int alt_pr_fpga_write(struct fpga_manager *mgr, const char *buf,
 	size_t i = 0;
 	u32 j = 0;
 	u32 chunk_num = 0;
-	u32 time_to_wait = 1; //consider making this a compile param
+	u32 time_to_wait = WAIT_TIME; //compile parameter
 	struct timeval start_time;
 	struct timeval end_time;
 
@@ -287,12 +287,14 @@ static int alt_pr_fpga_write(struct fpga_manager *mgr, const char *buf,
 		{
 			chunk_num++;
 			j = 0;
+#ifdef VERBOSE_TRUE
 			dev_info(&mgr->dev, "4K RBF chunk # %d written. Checking state and pausing for %d ms\n", chunk_num, time_to_wait);
 			if (alt_pr_fpga_state(mgr) != FPGA_MGR_STATE_WRITE)
 			{
 				dev_err(&mgr->dev, "PR IP Error while writing RBF\n");
 				return -EIO;
 			}
+#endif
 			msleep(time_to_wait);
 		}
 	}
