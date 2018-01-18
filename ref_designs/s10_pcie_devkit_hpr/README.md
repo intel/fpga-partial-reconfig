@@ -32,6 +32,8 @@ This readme file contains the following information:
      * The example host also performs the same calculations and compares the time of both results
 
 ## Technical Documentation
+*  AN-820.pdf Application Note provides information about the reference design, and walks you through using the design.
+   *  This document is available on the GitHub: [here](AN-820.pdf)
 
 ## System Requirements
 
