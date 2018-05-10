@@ -41,14 +41,14 @@ module pr_logic_wrapper
    input wire           emif_usr_clk ,
    input wire           emif_usr_rst_n ,
    input wire           emif_avmm_waitrequest , 
-   input wire [63:0]   emif_avmm_readdata , 
+   input wire [127:0]   emif_avmm_readdata , 
    input wire           emif_avmm_readdatavalid , 
    output reg [6:0]     emif_avmm_burstcount , 
-   output reg [63:0]   emif_avmm_writedata , 
+   output reg [127:0]   emif_avmm_writedata , 
    output reg [24:0]    emif_avmm_address , 
    output reg           emif_avmm_write , 
    output reg           emif_avmm_read , 
-   output reg [7:0]    emif_avmm_byteenable , 
+   output reg [15:0]    emif_avmm_byteenable , 
 
    input wire           pr_handshake_start_req ,
    output reg           pr_handshake_start_ack ,
@@ -68,19 +68,8 @@ module pr_logic_wrapper
    input wire [3:0]     pr_region_avmm_byteenable
 );
 
-
-   always_comb
-   begin
-     emif_avmm_burstcount  = 7'b0;
-     emif_avmm_writedata   = 64'b0;
-     emif_avmm_address     = 0;
-     emif_avmm_write       = 1'b0;
-     emif_avmm_read        = 1'b0;
-     emif_avmm_byteenable  = 8'b0;
-   end
-
 localparam ENABLE_PERSONA_0 = 1;
-localparam ENABLE_PERSONA_1 = 0;
+localparam ENABLE_PERSONA_1 = 1;
 localparam ENABLE_PERSONA_2 = 1;
 localparam ENABLE_PERSONA_3 = 1;
 localparam NUM_PERSONA = 4;
@@ -98,6 +87,15 @@ initial begin
 end
 
 
+wire                 emif_avmm_waitrequest_mux [NUM_PERSONA-1:0];
+wire [127:0]         emif_avmm_readdata_mux [NUM_PERSONA-1:0];
+wire                 emif_avmm_readdatavalid_mux [NUM_PERSONA-1:0];
+wire [6:0]           emif_avmm_burstcount_mux [NUM_PERSONA-1:0];
+wire [127:0]         emif_avmm_writedata_mux [NUM_PERSONA-1:0];
+wire [24:0]          emif_avmm_address_mux [NUM_PERSONA-1:0];
+wire                 emif_avmm_write_mux [NUM_PERSONA-1:0];
+wire                 emif_avmm_read_mux [NUM_PERSONA-1:0];
+wire [15:0]          emif_avmm_byteenable_mux [NUM_PERSONA-1:0];
 
 wire                 pr_region_avmm_waitrequest_mux [NUM_PERSONA-1:0];
 wire [31:0]          pr_region_avmm_readdata_mux [NUM_PERSONA-1:0];
@@ -143,6 +141,19 @@ generate if (ENABLE_PERSONA_0) begin
       .ena(ena),
       .tdo(tdo),
 
+      // DDR4 interface
+      .emif_usr_clk(emif_usr_clk),
+      .emif_usr_rst_n(emif_usr_rst_n),
+      .emif_avmm_waitrequest(emif_avmm_waitrequest_mux [persona_id]),
+      .emif_avmm_readdata(emif_avmm_readdata_mux [persona_id]),
+      .emif_avmm_readdatavalid(emif_avmm_readdatavalid_mux [persona_id]),
+      .emif_avmm_burstcount(emif_avmm_burstcount_mux [persona_id]),
+      .emif_avmm_writedata(emif_avmm_writedata_mux [persona_id]),
+      .emif_avmm_address(emif_avmm_address_mux [persona_id]),
+      .emif_avmm_write(emif_avmm_write_mux [persona_id]),
+      .emif_avmm_read(emif_avmm_read_mux [persona_id]),
+      .emif_avmm_byteenable(emif_avmm_byteenable_mux [persona_id]),
+
 
       // AVMM interface
       .pr_region_avmm_waitrequest(pr_region_avmm_waitrequest_mux [persona_id]),
@@ -180,6 +191,18 @@ generate if (ENABLE_PERSONA_1) begin
       .vir_tdi(vir_tdi),
       .ena(ena),
       .tdo(tdo),
+      // DDR4 interface
+      .emif_usr_clk(emif_usr_clk),
+      .emif_usr_rst_n(emif_usr_rst_n),
+      .emif_avmm_waitrequest(emif_avmm_waitrequest_mux [persona_id]),
+      .emif_avmm_readdata(emif_avmm_readdata_mux [persona_id]),
+      .emif_avmm_readdatavalid(emif_avmm_readdatavalid_mux [persona_id]),
+      .emif_avmm_burstcount(emif_avmm_burstcount_mux [persona_id]),
+      .emif_avmm_writedata(emif_avmm_writedata_mux [persona_id]),
+      .emif_avmm_address(emif_avmm_address_mux [persona_id]),
+      .emif_avmm_write(emif_avmm_write_mux [persona_id]),
+      .emif_avmm_read(emif_avmm_read_mux [persona_id]),
+      .emif_avmm_byteenable(emif_avmm_byteenable_mux [persona_id]),
       // AVMM interface
       .pr_region_avmm_waitrequest(pr_region_avmm_waitrequest_mux [persona_id]),
       .pr_region_avmm_readdata(pr_region_avmm_readdata_mux [persona_id]),
@@ -216,6 +239,18 @@ generate if (ENABLE_PERSONA_2) begin
       .vir_tdi(vir_tdi),
       .ena(ena),
       .tdo(tdo),
+      // DDR4 interface
+      .emif_usr_clk(emif_usr_clk),
+      .emif_usr_rst_n(emif_usr_rst_n),
+      .emif_avmm_waitrequest(emif_avmm_waitrequest_mux [persona_id]),
+      .emif_avmm_readdata(emif_avmm_readdata_mux [persona_id]),
+      .emif_avmm_readdatavalid(emif_avmm_readdatavalid_mux [persona_id]),
+      .emif_avmm_burstcount(emif_avmm_burstcount_mux [persona_id]),
+      .emif_avmm_writedata(emif_avmm_writedata_mux [persona_id]),
+      .emif_avmm_address(emif_avmm_address_mux [persona_id]),
+      .emif_avmm_write(emif_avmm_write_mux [persona_id]),
+      .emif_avmm_read(emif_avmm_read_mux [persona_id]),
+      .emif_avmm_byteenable(emif_avmm_byteenable_mux [persona_id]),
       // AVMM interface
       .pr_region_avmm_waitrequest(pr_region_avmm_waitrequest_mux [persona_id]),
       .pr_region_avmm_readdata(pr_region_avmm_readdata_mux [persona_id]),
@@ -252,6 +287,18 @@ generate if (ENABLE_PERSONA_3) begin
       .vir_tdi(vir_tdi),
       .ena(ena),
       .tdo(tdo),
+      // DDR4 interface
+      .emif_usr_clk(emif_usr_clk),
+      .emif_usr_rst_n(emif_usr_rst_n),
+      .emif_avmm_waitrequest(emif_avmm_waitrequest_mux [persona_id]),
+      .emif_avmm_readdata(emif_avmm_readdata_mux [persona_id]),
+      .emif_avmm_readdatavalid(emif_avmm_readdatavalid_mux [persona_id]),
+      .emif_avmm_burstcount(emif_avmm_burstcount_mux [persona_id]),
+      .emif_avmm_writedata(emif_avmm_writedata_mux [persona_id]),
+      .emif_avmm_address(emif_avmm_address_mux [persona_id]),
+      .emif_avmm_write(emif_avmm_write_mux [persona_id]),
+      .emif_avmm_read(emif_avmm_read_mux [persona_id]),
+      .emif_avmm_byteenable(emif_avmm_byteenable_mux [persona_id]),
       // AVMM interface
       .pr_region_avmm_waitrequest(pr_region_avmm_waitrequest_mux [persona_id]),
       .pr_region_avmm_readdata(pr_region_avmm_readdata_mux [persona_id]),
@@ -271,6 +318,16 @@ altera_pr_wrapper_mux_out #( .NUM_PERSONA(NUM_PERSONA), .WIDTH(1) ) u_pr_handsha
 altera_pr_wrapper_mux_in #( .NUM_PERSONA(NUM_PERSONA), .WIDTH(1) ) u_pr_handshake_stop_req_mux ( .sel(persona_select), .mux_in(pr_handshake_stop_req), .mux_out(pr_handshake_stop_req_mux) );
 altera_pr_wrapper_mux_out #( .NUM_PERSONA(NUM_PERSONA), .WIDTH(1) ) u_pr_handshake_stop_ack_mux ( .sel(persona_select), .mux_in(pr_handshake_stop_ack_mux), .mux_out(pr_handshake_stop_ack), .pr_activate(pr_activate) );
 altera_pr_wrapper_mux_out #( .NUM_PERSONA(NUM_PERSONA), .WIDTH(1) ) u_freeze_pr_region_avmm_mux ( .sel(persona_select), .mux_in(freeze_pr_region_avmm_mux), .mux_out(freeze_pr_region_avmm), .pr_activate(pr_activate) );
+
+altera_pr_wrapper_mux_in #( .NUM_PERSONA(NUM_PERSONA), .WIDTH(1) ) u_emif_avmm_waitrequest_mux ( .sel(persona_select), .mux_in(emif_avmm_waitrequest), .mux_out(emif_avmm_waitrequest_mux) );
+altera_pr_wrapper_mux_in #( .NUM_PERSONA(NUM_PERSONA), .WIDTH(512) ) u_emif_avmm_readdata_mux ( .sel(persona_select), .mux_in(emif_avmm_readdata), .mux_out(emif_avmm_readdata_mux) );
+altera_pr_wrapper_mux_in #( .NUM_PERSONA(NUM_PERSONA), .WIDTH(1) ) u_emif_avmm_readdatavalid_mux ( .sel(persona_select), .mux_in(emif_avmm_readdatavalid), .mux_out(emif_avmm_readdatavalid_mux) );
+altera_pr_wrapper_mux_out #( .NUM_PERSONA(NUM_PERSONA), .WIDTH(7) ) u_emif_avmm_burstcount_mux ( .sel(persona_select), .mux_in(emif_avmm_burstcount_mux), .mux_out(emif_avmm_burstcount), .pr_activate(pr_activate) );
+altera_pr_wrapper_mux_out #( .NUM_PERSONA(NUM_PERSONA), .WIDTH(512) ) u_emif_avmm_writedata_mux ( .sel(persona_select), .mux_in(emif_avmm_writedata_mux), .mux_out(emif_avmm_writedata), .pr_activate(pr_activate) );
+altera_pr_wrapper_mux_out #( .NUM_PERSONA(NUM_PERSONA), .WIDTH(25) ) u_emif_avmm_address_mux ( .sel(persona_select), .mux_in(emif_avmm_address_mux), .mux_out(emif_avmm_address), .pr_activate(pr_activate) );
+altera_pr_wrapper_mux_out #( .NUM_PERSONA(NUM_PERSONA), .WIDTH(1) ) u_emif_avmm_write_mux ( .sel(persona_select), .mux_in(emif_avmm_write_mux), .mux_out(emif_avmm_write), .pr_activate(pr_activate) );
+altera_pr_wrapper_mux_out #( .NUM_PERSONA(NUM_PERSONA), .WIDTH(1) ) u_emif_avmm_read_mux ( .sel(persona_select), .mux_in(emif_avmm_read_mux), .mux_out(emif_avmm_read), .pr_activate(pr_activate) );
+altera_pr_wrapper_mux_out #( .NUM_PERSONA(NUM_PERSONA), .WIDTH(64) ) u_emif_avmm_byteenable_mux ( .sel(persona_select), .mux_in(emif_avmm_byteenable_mux), .mux_out(emif_avmm_byteenable), .pr_activate(pr_activate) );
 
 altera_pr_wrapper_mux_out #( .NUM_PERSONA(NUM_PERSONA), .WIDTH(1) ) u_pr_region_avmm_waitrequest_mux ( .sel(persona_select), .mux_in(pr_region_avmm_waitrequest_mux), .mux_out(pr_region_avmm_waitrequest), .pr_activate(pr_activate) );
 altera_pr_wrapper_mux_out #( .NUM_PERSONA(NUM_PERSONA), .WIDTH(32) ) u_pr_region_avmm_readdata_mux ( .sel(persona_select), .mux_in(pr_region_avmm_readdata_mux), .mux_out(pr_region_avmm_readdata), .pr_activate(pr_activate) );

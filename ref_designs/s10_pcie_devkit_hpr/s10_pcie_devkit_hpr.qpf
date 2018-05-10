@@ -16,7 +16,7 @@
 
 # -------------------------------------------------------------------------- #
 #
-# Copyright (C) 2017  Intel Corporation. All rights reserved.
+# Copyright (C) 2018  Intel Corporation. All rights reserved.
 # Your use of Intel Corporation's design tools, logic functions 
 # and other software and tools, and its AMPP partner logic 
 # functions, and any output files from any of the foregoing 
@@ -33,25 +33,28 @@
 # -------------------------------------------------------------------------- #
 #
 # Quartus Prime
-# Version 17.1.0 Build 240 10/25/2017 SJ Pro Edition
-# Date created = 14:31:32  January 10, 2018
+# Version 18.0.0 Internal Build 133 01/02/2018 TO Pro Edition
+# Date created = 11:05:29  January 12, 2018
 #
 # -------------------------------------------------------------------------- #
 
-QUARTUS_VERSION = "17.1"
-DATE = "14:31:32  January 10, 2018"
+QUARTUS_VERSION = "18.0"
+DATE = "11:05:29  January 12, 2018"
 
 # Revisions
 
-PROJECT_REVISION = "s10_pcie_devkit_hpr_normal_basic_arithmetic"
 PROJECT_REVISION = "s10_pcie_devkit_hpr"
+PROJECT_REVISION = "s10_pcie_devkit_hpr_normal_gol"
 PROJECT_REVISION = "s10_pcie_devkit_hpr_gol"
+PROJECT_REVISION = "s10_pcie_devkit_hpr_normal_basic_dsp"
+PROJECT_REVISION = "s10_pcie_devkit_hpr_basic_dsp"
+PROJECT_REVISION = "s10_pcie_devkit_hpr_normal_basic_arithmetic"
+PROJECT_REVISION = "s10_pcie_devkit_hpr_basic_arithmetic"
+PROJECT_REVISION = "s10_pcie_devkit_hpr_normal_ddr4_access"
+PROJECT_REVISION = "s10_pcie_devkit_hpr_ddr4_access"
 PROJECT_REVISION = "synth_gol"
 PROJECT_REVISION = "synth_parent_persona"
 PROJECT_REVISION = "synth_basic_dsp_1"
+PROJECT_REVISION = "synth_ddr4_access"
 PROJECT_REVISION = "synth_basic_arithmetic"
 PROJECT_REVISION = "synth_basic_dsp_0"
-PROJECT_REVISION = "s10_pcie_devkit_hpr_normal_basic_dsp"
-PROJECT_REVISION = "s10_pcie_devkit_hpr_basic_dsp"
-PROJECT_REVISION = "s10_pcie_devkit_hpr_basic_arithmetic"
-PROJECT_REVISION = "s10_pcie_devkit_hpr_normal_gol"

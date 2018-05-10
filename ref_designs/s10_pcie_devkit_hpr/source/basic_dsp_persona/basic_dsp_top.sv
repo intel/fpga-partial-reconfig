@@ -39,8 +39,18 @@ module basic_dsp_top #(parameter REG_FILE_IO_SIZE = 8)
       input wire [31:0]   host_pr [0:REG_FILE_IO_SIZE-1] ,
 
       // 8 Registers for PR logic -> host communication
-      output wire [31:0]  pr_host [0:REG_FILE_IO_SIZE-1]
+      output wire [31:0]  pr_host [0:REG_FILE_IO_SIZE-1] ,
 
+      // DDR4 interface
+      input wire          emif_avmm_waitrequest , 
+      input wire [63:0]  emif_avmm_readdata ,
+      input wire          emif_avmm_readdatavalid , 
+      output reg [6:0]    emif_avmm_burstcount , 
+      output reg [63:0]  emif_avmm_writedata , 
+      output reg [24:0]   emif_avmm_address , 
+      output reg          emif_avmm_write , 
+      output reg          emif_avmm_read , 
+      output reg [7:0]   emif_avmm_byteenable        
    );
 
 
@@ -52,6 +62,15 @@ module basic_dsp_top #(parameter REG_FILE_IO_SIZE = 8)
    (* multstyle = "dsp" *)  wire [53:0]           dsp_output;
    // wire [53:0] result /* synthesis multstyle = "dsp" */;
    assign dsp_output[53:0] =  host_pr[0][26:0]*host_pr[1][26:0]; //Multiplication must be directly assigned to result
+   always_comb
+   begin
+      emif_avmm_burstcount  = 5'b0;
+      emif_avmm_writedata   = 64'b0;
+      emif_avmm_address     = 31'b0;
+      emif_avmm_write       = 1'b0;
+      emif_avmm_read        = 1'b0;
+      emif_avmm_byteenable  = 8'b0;
+   end
 
    // assign PR Id register to be the value we chose to uniquely identify our program when the host requests
    // Read-Only

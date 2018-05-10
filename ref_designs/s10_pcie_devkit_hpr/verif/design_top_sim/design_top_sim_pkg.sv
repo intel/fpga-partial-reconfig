@@ -28,6 +28,7 @@ package design_top_sim_pkg;
    import uvm_pkg::*;
 
    `include "sim_reporting.sv"
+   `include "reset_watchdog.sv"
    `include "sb_predictor_base.sv"
    `include "sb_predictor_base.sv"
    `include "sb_predict.sv"

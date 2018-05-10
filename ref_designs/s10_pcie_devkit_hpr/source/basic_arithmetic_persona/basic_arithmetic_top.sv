@@ -41,14 +41,34 @@ module basic_arithmetic_top
       // 8 registers for host -> PR logic communication
       input wire [31:0]  host_pr [0:REG_FILE_IO_SIZE-1],
       // 8 Registers for PR logic -> host communication
-      output wire [31:0] pr_host [0:REG_FILE_IO_SIZE-1]
+      output wire [31:0] pr_host [0:REG_FILE_IO_SIZE-1],
+      // DDR4 interface
+      input wire         emif_avmm_waitrequest, 
+      input wire [63:0] emif_avmm_readdata, 
+      input wire         emif_avmm_readdatavalid, 
+      output reg [6:0]   emif_avmm_burstcount, 
+      output reg [63:0] emif_avmm_writedata, 
+      output reg [24:0]  emif_avmm_address,
+      output reg         emif_avmm_write,
+      output reg         emif_avmm_read,
+      output reg [7:0]  emif_avmm_byteenable
    );
 
     wire [31:0]         result;
     wire [31:0]         pr_operand;
     wire [31:0]         increment;
 
+    // This is BasicAristhmetic persona.  Tie off all EMIF interface
 
+   always_comb
+   begin
+     emif_avmm_burstcount  = 7'b0;
+     emif_avmm_writedata   = 64'b0;
+     emif_avmm_address     = 0;
+     emif_avmm_write       = 1'b0;
+     emif_avmm_read        = 1'b0;
+     emif_avmm_byteenable  = 8'b0;
+   end
 
    basic_arithmetic_reg_blk  #( .REG_FILE_IO_SIZE(REG_FILE_IO_SIZE) ) 
    u_basic_arithmetic_reg_blk

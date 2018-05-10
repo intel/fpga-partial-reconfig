@@ -64,7 +64,7 @@ class simple_pr_success extends base_test;
 
       // KALEN HACK: Make this a driver
       // Wait for reset to complete
-      @(posedge $root.sim_top.tb.dut.global_rst_n_controller.global_rst_n);
+      env.reset_watchdog.run();
 
       // Send 20 idle sequence items
       idle_seq.num_idle_trans = 20;

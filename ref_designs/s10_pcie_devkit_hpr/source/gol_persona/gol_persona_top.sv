@@ -37,6 +37,18 @@ module gol_persona_top
    input wire           vir_tdi ,
    input wire           ena ,
    output wire          tdo ,
+   // DDR4 interface
+   input wire           emif_usr_clk ,
+   input wire           emif_usr_rst_n ,
+   input wire           emif_avmm_waitrequest , 
+   input wire [63:0]   emif_avmm_readdata , 
+   input wire           emif_avmm_readdatavalid , 
+   output reg [6:0]     emif_avmm_burstcount , 
+   output reg [63:0]   emif_avmm_writedata , 
+   output reg [24:0]    emif_avmm_address , 
+   output reg           emif_avmm_write , 
+   output reg           emif_avmm_read , 
+   output reg [7:0]    emif_avmm_byteenable , 
 
    input wire           pr_handshake_start_req ,
    output reg           pr_handshake_start_ack ,
@@ -76,6 +88,18 @@ module gol_persona_top
    (
       .pr_region_clk                    ( pr_region_clk ),
       .pr_logic_rst                     ( pr_logic_rst ),
+      // DDR4 interface
+      .emif_usr_clk                     ( emif_usr_clk ) ,
+      .emif_usr_rst_n                   ( emif_usr_rst_n ) ,  
+      .emif_avmm_waitrequest            ( emif_avmm_waitrequest ),
+      .emif_avmm_readdata               ( emif_avmm_readdata ),
+      .emif_avmm_readdatavalid          ( emif_avmm_readdatavalid ),
+      .emif_avmm_burstcount             ( emif_avmm_burstcount ),
+      .emif_avmm_writedata              ( emif_avmm_writedata ),
+      .emif_avmm_address                ( emif_avmm_address ),
+      .emif_avmm_write                  ( emif_avmm_write ),
+      .emif_avmm_read                   ( emif_avmm_read ),
+      .emif_avmm_byteenable             ( emif_avmm_byteenable ),
       // AVMM interface
       .pr_region_avmm_waitrequest       ( pr_region_avmm_waitrequest ),
       .pr_region_avmm_readdata          ( pr_region_avmm_readdata ),

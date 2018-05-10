@@ -66,27 +66,28 @@ module pr_logic_wrapper
       input wire           pr_region_avmm_debugaccess    
    );
 
-   always_comb
-   begin
-     emif_avmm_burstcount  = 7'b0;
-     emif_avmm_writedata   = 64'b0;
-     emif_avmm_address     = 0;
-     emif_avmm_write       = 1'b0;
-     emif_avmm_read        = 1'b0;
-     emif_avmm_byteenable  = 8'b0;
-   end
 
-
-   gol_persona_top u_pr_logic
+   ddr4_access_persona_top u_pr_logic
    (
       .pr_region_clk               ( pr_region_clk ),
       .pr_logic_rst                ( pr_logic_rst ),
+      .emif_usr_clk                ( emif_usr_clk ),
+      .emif_usr_rst_n              ( emif_usr_rst_n ),
       .tck                         ( tck ),
       .tms                         ( tms ),
       .tdi                         ( tdi ),
       .vir_tdi                     ( vir_tdi ),
       .ena                         ( ena ),
       .tdo                         ( tdo ),
+      .emif_avmm_waitrequest       ( emif_avmm_waitrequest ),
+      .emif_avmm_readdata          ( emif_avmm_readdata ),
+      .emif_avmm_readdatavalid     ( emif_avmm_readdatavalid ),
+      .emif_avmm_burstcount        ( emif_avmm_burstcount ),
+      .emif_avmm_writedata         ( emif_avmm_writedata ),
+      .emif_avmm_address           ( emif_avmm_address ),
+      .emif_avmm_write             ( emif_avmm_write ),
+      .emif_avmm_read              ( emif_avmm_read ),
+      .emif_avmm_byteenable        ( emif_avmm_byteenable ),
       .pr_handshake_start_req      ( pr_handshake_start_req ),
       .pr_handshake_start_ack      ( pr_handshake_start_ack ),
       .pr_handshake_stop_req       ( pr_handshake_stop_req ),

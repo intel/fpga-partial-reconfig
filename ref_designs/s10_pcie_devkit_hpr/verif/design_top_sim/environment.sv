@@ -35,8 +35,10 @@ class environment extends uvm_env;
    virtual bar2_avalon_mm_monitor_bfm bar2_mm_monitor_bfm;
 
    virtual altera_pr_persona_if region0_if;
+   virtual reset_watchdog_if dut_reset_watchdog_if;
 
    scoreboard_c sb;
+   reset_watchdog_c reset_watchdog;
 
    bar4_avmm_pkg::bar4_avmm_agent_c bar4_agnt;
    bar2_avmm_pkg::bar2_avmm_agent_c bar2_agnt;
@@ -79,6 +81,7 @@ class environment extends uvm_env;
       region0_agnt = pr_region_pkg::pr_region_agent_c::type_id::create("region0_agnt", this);
 
       reset_agnt = reset_pkg::reset_agent_c::type_id::create("reset_agnt", this);
+      reset_watchdog = reset_watchdog_c::type_id::create("reset_watchdog");
 
    endfunction
 
@@ -99,6 +102,8 @@ class environment extends uvm_env;
 
       `altr_get_if(virtual altera_pr_persona_if, "testbench", "pr_region0", region0_if)
 
+      `altr_get_if(virtual reset_watchdog_if, "testbench", "dut_reset_watchdog_if", dut_reset_watchdog_if)
+
       reset_agnt.drv.vif = reset_bfm;
       reset_agnt.mon.vif = reset_bfm;
 
@@ -116,6 +121,7 @@ class environment extends uvm_env;
       region0_agnt.drv.vif = region0_if;
       region0_agnt.mon.vif = region0_if;
       region0_agnt.aport.connect(sb.pr_region_0_aport_mon);
+      reset_watchdog.vif = dut_reset_watchdog_if;
 
    endfunction
 

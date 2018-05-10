@@ -18,7 +18,7 @@
 # Device setup
 #############################################################
 set_global_assignment -name FAMILY "Stratix 10"
-set_global_assignment -name DEVICE 1SG280LU3F50E3VGS2
+set_global_assignment -name DEVICE 1SG280LU3F50E3VG
 
 #############################################################
 # Files and basic setup
@@ -35,76 +35,19 @@ set_global_assignment -name SDC_FILE s10_pcie_devkit_hpr.sdc
 #############################################################
 # QSYS and IP Files
 #############################################################
-set_global_assignment -name QSYS_FILE source/static_region/bsp_top.qsys
-set_global_assignment -name QSYS_FILE source/static_region/design_top.qsys
-set_global_assignment -name QSYS_FILE source/static_region/pr_subsystem.qsys
-set_global_assignment -name IP_FILE source/static_region/ip/bsp_top/bsp_top_emif_s10_0.ip
-set_global_assignment -name IP_FILE source/static_region/ip/bsp_top/s10_pcie.ip
-set_global_assignment -name IP_FILE source/static_region/ip/design_top/avalon_mm_clk.ip
-set_global_assignment -name IP_FILE source/static_region/ip/design_top/avalon_system_config.ip
-set_global_assignment -name IP_FILE source/static_region/ip/design_top/ddr4_calibration_pio.ip
-set_global_assignment -name IP_FILE source/static_region/ip/design_top/ddr4_ctlr_mm_clock_bridge.ip
-set_global_assignment -name IP_FILE source/static_region/ip/design_top/emif_clock.ip
-set_global_assignment -name IP_FILE source/static_region/ip/design_top/emif_reset_n.ip
-set_global_assignment -name IP_FILE source/static_region/ip/design_top/global_rst_n.ip
-set_global_assignment -name IP_FILE source/static_region/ip/design_top/pcie_mm_clock_crossing_bridge.ip
-set_global_assignment -name IP_FILE source/static_region/ip/design_top/pcie_rst_n.ip
-set_global_assignment -name IP_FILE source/static_region/ip/design_top/pr_subsystem_pll_ref_clk.ip
-set_global_assignment -name IP_FILE source/static_region/ip/design_top/pcie_avmm_pbridge.ip
-set_global_assignment -name IP_FILE source/static_region/ip/design_top/emif_avmm_pbridge.ip
-set_global_assignment -name IP_FILE source/static_region/ip/design_top/design_top_iopll.ip
-set_global_assignment -name IP_FILE source/static_region/ip/design_top/s10_pr.ip
-set_global_assignment -name IP_FILE source/static_region/ip/design_top/emif_avmm_bridge.ip
-set_global_assignment -name IP_FILE source/static_region/ip/design_top/ddr4_reset_request.ip
-set_global_assignment -name IP_FILE source/static_region/ip/design_top/bar4_avmm_pipeline_bridge_0.ip
-set_global_assignment -name IP_FILE source/static_region/ip/design_top/bar4_avmm_cc_bridge.ip
-set_global_assignment -name IP_FILE source/static_region/ip/design_top/ddr4_reset_status.ip
-set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/pr_subsystem_clock_bridge_0.ip
-set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/pr_subsystem_reset_bridge_0.ip
-set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/pr_subsystem_pr_region_controller_0.ip
-set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/pr_subsystem_freeze_bridge_cra.ip
-set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/pr_subsystem_freeze_bridge_ddr4.ip
-set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/pr_subsystem_emif_clock_bridge.ip
-set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/pr_subsystem_sld_jtag_bridge_agent.ip
-
+set_global_assignment -name SYSTEMVERILOG_FILE source/basic_dsp_persona/basic_dsp_persona_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/basic_dsp_persona/basic_dsp_persona.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/basic_dsp_persona/basic_dsp_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/basic_dsp_persona/logic_example_dsp_unsigned_27x27_atom.sv
 set_global_assignment -name QSYS_FILE source/common/reg_file/reg_file.qsys
-set_global_assignment -name QSYS_FILE source/common/emif_interface/emif_avmm_interface.qsys
 set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_clock_bridge.ip
 set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_mm_bridge.ip
-set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_pio_in.ip
-set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_pio_out.ip
 set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_reset_bridge.ip
-set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_global_reset.ip
-set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_mm_bridge_0.ip
-set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_mm_clock_crossing_bridge.ip
-set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/pr_region_clock.ip
-set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_clock_in.ip
-set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_reset_in.ip
-set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/emif_pipeline_bridge.ip
-set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/emif_bridge.ip
-
-set_global_assignment -name IP_FILE source/common/sld_jtag_agent/sld_jtag_agent.ip
+set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_pio_out.ip
+set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_pio_in.ip
 set_global_assignment -name IP_FILE source/common/sld_jtag_host/ip/sld_jtag_host.ip
 
-set_global_assignment -name QSYS_FILE source/parent_persona/parent_pr_subsystem.qsys
-set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_subsystem_reset_in.ip
-set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_subsystem_pr_region_controller_0.ip
-set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_subsystem_freeze_bridge_ddr4.ip
-set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_subsystem_freeze_bridge_cra.ip
-set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_subsystem_clock_in.ip
-set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_emif_avmm_pbridge.ip
-set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_pcie_avmm_pbridge.ip
-set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_subsystem_id.ip
-set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/pr_parent_subsystem_sld_jtag_bridge_agent.ip
-set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/emif_clk.ip
-set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/emif_rst_n.ip
-
 set_global_assignment -name PRESERVE_UNUSED_XCVR_CHANNEL ON
-
-#############################################################
-# SDC constraints - Note they are after the Qsys files
-#############################################################
-set_global_assignment -name SDC_FILE auxiliary.sdc
 
 #############################################################
 # Synthesis and Fitter Fine-Tuning
@@ -136,6 +79,17 @@ set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to u_top|design_core|pr
 set_instance_assignment -name ROUTE_REGION "X3 Y339 X28 Y360" -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|child_region_0|u_child_pr_logic
 set_instance_assignment -name PARTIAL_RECONFIGURATION_PARTITION ON -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|child_region_0|u_child_pr_logic -entity s10_pcie_ref_design
 
+set_instance_assignment -name QDB_FILE_PARTITION s10_pcie_devkit_hpr_static.qdb -to |
+set_instance_assignment -name QDB_FILE_PARTITION s10_pcie_devkit_hpr_ddr4_access_pr_partition_final.qdb -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
+set_instance_assignment -name ENTITY_REBINDING basic_dsp_persona_top -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|child_region_0|u_child_pr_logic
+set_instance_assignment -name ENTITY_REBINDING basic_dsp_persona_top -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|child_region_1|u_child_pr_logic
+
+#############################################################
+# SDC constraints - Note they are after the Qsys files
+#############################################################
+set_global_assignment -name SDC_FILE auxiliary.sdc
+
+
 #############################################################
 # ASM Config Settings
 #############################################################
@@ -151,7 +105,7 @@ set_global_assignment -name OPTIMIZATION_MODE "AGGRESSIVE PERFORMANCE"
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
 
-set_global_assignment -name LAST_QUARTUS_VERSION "17.1.0 Pro Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "18.0.0 Pro Edition"
 
 set_instance_assignment -name PLACE_REGION "X31 Y323 X50 Y342" -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|parent_pr_emif_avmm_pbridge
 set_instance_assignment -name RESERVE_PLACE_REGION OFF -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|parent_pr_emif_avmm_pbridge
@@ -179,3 +133,12 @@ set_global_assignment -name PWRMGT_VOLTAGE_OUTPUT_FORMAT "AUTO DISCOVERY"
 set_global_assignment -name PWRMGT_TRANSLATED_VOLTAGE_VALUE_UNIT VOLTS
 
 set_global_assignment -name DEVICE_INITIALIZATION_CLOCK OSC_CLK_1_125MHZ
+
+#############################################################
+# SignalTap
+#############################################################
+# Note that enabling SignalTap may require changing the floorplan
+set_global_assignment -name ENABLE_SIGNALTAP ON
+set_global_assignment -name USE_SIGNALTAP_FILE basic_dsp_persona.stp
+set_global_assignment -name SIGNALTAP_FILE basic_dsp_persona.stp
+

@@ -366,15 +366,15 @@
                 <suppliedSystemInfos>
                     <entry>
                         <key>CLOCK_DOMAIN</key>
-                        <value>2</value>
+                        <value>-1</value>
                     </entry>
                     <entry>
                         <key>CLOCK_RATE</key>
-                        <value>0</value>
+                        <value>-1</value>
                     </entry>
                     <entry>
                         <key>RESET_DOMAIN</key>
-                        <value>2</value>
+                        <value>-1</value>
                     </entry>
                 </suppliedSystemInfos>
                 <consumedSystemInfos/>
@@ -1079,8 +1079,8 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_mm_clock_crossing_bridge</className>
-        <version>17.1</version>
-        <displayName>Avalon-MM Clock Crossing Bridge</displayName>
+        <version>18.0</version>
+        <displayName>Avalon-MM Clock Crossing Bridge Intel FPGA IP</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
         <descriptors>
@@ -1738,8 +1738,8 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_mm_bridge</className>
-        <version>17.1</version>
-        <displayName>Avalon-MM Pipeline Bridge</displayName>
+        <version>18.0</version>
+        <displayName>Avalon-MM Pipeline Bridge Intel FPGA IP</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
         <descriptors>
@@ -2460,8 +2460,8 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_mm_clock_crossing_bridge</className>
-        <version>17.1</version>
-        <displayName>Avalon-MM Clock Crossing Bridge</displayName>
+        <version>18.0</version>
+        <displayName>Avalon-MM Clock Crossing Bridge Intel FPGA IP</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
         <descriptors>
@@ -3119,8 +3119,8 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_mm_bridge</className>
-        <version>17.1</version>
-        <displayName>Avalon-MM Pipeline Bridge</displayName>
+        <version>18.0</version>
+        <displayName>Avalon-MM Pipeline Bridge Intel FPGA IP</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
         <descriptors>
@@ -3265,11 +3265,11 @@
                         </entry>
                         <entry>
                             <key>clockRate</key>
-                            <value>0</value>
+                            <value>125000000</value>
                         </entry>
                         <entry>
                             <key>clockRateKnown</key>
-                            <value>false</value>
+                            <value>true</value>
                         </entry>
                         <entry>
                             <key>externallyDriven</key>
@@ -3285,8 +3285,8 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_clock_bridge</className>
-        <version>17.1</version>
-        <displayName>Clock Bridge</displayName>
+        <version>18.0</version>
+        <displayName>Clock Bridge Intel FPGA IP</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
         <descriptors>
@@ -3309,7 +3309,7 @@
                     <consumedSystemInfos>
                         <entry>
                             <key>CLOCK_RATE</key>
-                            <value>0</value>
+                            <value>125000000</value>
                         </entry>
                     </consumedSystemInfos>
                 </value>
@@ -3321,7 +3321,7 @@
                     <suppliedSystemInfos>
                         <entry>
                             <key>CLOCK_RATE</key>
-                            <value>0</value>
+                            <value>125000000</value>
                         </entry>
                     </suppliedSystemInfos>
                     <consumedSystemInfos/>
@@ -3438,8 +3438,8 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_reset_bridge</className>
-        <version>17.1</version>
-        <displayName>Reset Bridge</displayName>
+        <version>18.0</version>
+        <displayName>Reset Bridge Intel FPGA IP</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
         <descriptors>
@@ -3930,8 +3930,8 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_pio</className>
-        <version>17.1</version>
-        <displayName>PIO (Parallel I/O)</displayName>
+        <version>18.0</version>
+        <displayName>PIO (Parallel I/O) Intel FPGA IP</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
         <descriptors>
@@ -4436,7 +4436,7 @@
                         </entry>
                         <entry>
                             <key>clockRate</key>
-                            <value>50000000</value>
+                            <value>200000000</value>
                         </entry>
                         <entry>
                             <key>clockRateKnown</key>
@@ -4573,8 +4573,8 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_iopll</className>
-        <version>17.1</version>
-        <displayName>Intel FPGA IOPLL</displayName>
+        <version>18.0</version>
+        <displayName>IOPLL Intel FPGA IP</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
         <descriptors>
@@ -4614,7 +4614,7 @@
                     <suppliedSystemInfos>
                         <entry>
                             <key>CLOCK_RATE</key>
-                            <value>50000000</value>
+                            <value>200000000</value>
                         </entry>
                     </suppliedSystemInfos>
                     <consumedSystemInfos/>
@@ -5258,8 +5258,8 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_mm_bridge</className>
-        <version>17.1</version>
-        <displayName>Avalon-MM Pipeline Bridge</displayName>
+        <version>18.0</version>
+        <displayName>Avalon-MM Pipeline Bridge Intel FPGA IP</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
         <descriptors>
@@ -5416,8 +5416,8 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_reset_bridge</className>
-        <version>17.1</version>
-        <displayName>Reset Bridge</displayName>
+        <version>18.0</version>
+        <displayName>Reset Bridge Intel FPGA IP</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
         <descriptors>
@@ -5530,11 +5530,11 @@
                         </entry>
                         <entry>
                             <key>clockRate</key>
-                            <value>0</value>
+                            <value>233250000</value>
                         </entry>
                         <entry>
                             <key>clockRateKnown</key>
-                            <value>false</value>
+                            <value>true</value>
                         </entry>
                         <entry>
                             <key>externallyDriven</key>
@@ -5550,8 +5550,8 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_clock_bridge</className>
-        <version>17.1</version>
-        <displayName>Clock Bridge</displayName>
+        <version>18.0</version>
+        <displayName>Clock Bridge Intel FPGA IP</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
         <descriptors>
@@ -5574,7 +5574,7 @@
                     <consumedSystemInfos>
                         <entry>
                             <key>CLOCK_RATE</key>
-                            <value>0</value>
+                            <value>233250000</value>
                         </entry>
                     </consumedSystemInfos>
                 </value>
@@ -5586,7 +5586,7 @@
                     <suppliedSystemInfos>
                         <entry>
                             <key>CLOCK_RATE</key>
-                            <value>0</value>
+                            <value>233250000</value>
                         </entry>
                     </suppliedSystemInfos>
                     <consumedSystemInfos/>
@@ -5703,8 +5703,8 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_reset_bridge</className>
-        <version>17.1</version>
-        <displayName>Reset Bridge</displayName>
+        <version>18.0</version>
+        <displayName>Reset Bridge Intel FPGA IP</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
         <descriptors>
@@ -6266,8 +6266,8 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_avalon_onchip_memory2</className>
-        <version>17.1</version>
-        <displayName>On-Chip Memory (RAM or ROM)</displayName>
+        <version>18.0</version>
+        <displayName>On-Chip Memory (RAM or ROM) Intel FPGA IP</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
         <descriptors>
@@ -6530,8 +6530,8 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_clock_bridge</className>
-        <version>17.1</version>
-        <displayName>Clock Bridge</displayName>
+        <version>18.0</version>
+        <displayName>Clock Bridge Intel FPGA IP</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
         <descriptors>
@@ -7452,7 +7452,7 @@
         &lt;/register&gt;
         &lt;register&gt;
           &lt;access&gt;read-write&lt;/access&gt;
-          &lt;addressOffset&gt;0x4&lt;/addressOffset&gt;
+          &lt;addressOffset&gt;0x1&lt;/addressOffset&gt;
           &lt;description&gt;This is the control register of the freeze controller IP&lt;/description&gt;
           &lt;displayName&gt;freeze_csr_ctrl&lt;/displayName&gt;
           &lt;name&gt;control&lt;/name&gt;
@@ -7485,7 +7485,7 @@
         &lt;/register&gt;
         &lt;register&gt;
           &lt;access&gt;read-writeOnce&lt;/access&gt;
-          &lt;addressOffset&gt;0x8&lt;/addressOffset&gt;
+          &lt;addressOffset&gt;0x2&lt;/addressOffset&gt;
           &lt;description&gt;This is to indicate that there is an error request happen in freeze bridge during freeze state.&lt;/description&gt;
           &lt;displayName&gt;freeze_illegal_request&lt;/displayName&gt;
           &lt;name&gt;illegal_request&lt;/name&gt;
@@ -7495,7 +7495,7 @@
         &lt;/register&gt;
         &lt;register&gt;
           &lt;access&gt;read-only&lt;/access&gt;
-          &lt;addressOffset&gt;0xc&lt;/addressOffset&gt;
+          &lt;addressOffset&gt;0x3&lt;/addressOffset&gt;
           &lt;description&gt;This is for the software driver to identify the version number of the CSR register.&lt;/description&gt;
           &lt;displayName&gt;freeze_reg_version&lt;/displayName&gt;
           &lt;name&gt;reg_version&lt;/name&gt;
@@ -7644,7 +7644,7 @@
                     <consumedSystemInfos>
                         <entry>
                             <key>CLOCK_DOMAIN</key>
-                            <value>8</value>
+                            <value>9</value>
                         </entry>
                         <entry>
                             <key>CLOCK_RATE</key>
@@ -7652,7 +7652,7 @@
                         </entry>
                         <entry>
                             <key>RESET_DOMAIN</key>
-                            <value>8</value>
+                            <value>9</value>
                         </entry>
                     </consumedSystemInfos>
                 </value>
@@ -7682,15 +7682,15 @@
                     <consumedSystemInfos>
                         <entry>
                             <key>CLOCK_DOMAIN</key>
-                            <value>4</value>
+                            <value>10</value>
                         </entry>
                         <entry>
                             <key>CLOCK_RATE</key>
-                            <value>0</value>
+                            <value>233250000</value>
                         </entry>
                         <entry>
                             <key>RESET_DOMAIN</key>
-                            <value>4</value>
+                            <value>10</value>
                         </entry>
                     </consumedSystemInfos>
                 </value>
@@ -8081,8 +8081,8 @@
     </boundary>
     <originalModuleInfo>
         <className>altera_s10_pr</className>
-        <version>17.1</version>
-        <displayName>Stratix 10 Partial Reconfiguration Controller</displayName>
+        <version>18.0</version>
+        <displayName>Partial Reconfiguration Controller Stratix 10 Intel FPGA IP</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
         <descriptors>
@@ -8310,233 +8310,233 @@
  </module>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.0"
    start="pr_region_wrapper.emif_avmm_m0"
    end="emif_avmm_bridge.s0">
   <parameter name="baseAddress" value="0x0000" />
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.0"
    start="bar2_avmm_cc_bridge.m0"
    end="s10_pr.avmm_slave">
   <parameter name="baseAddress" value="0x1000" />
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.0"
    start="bar4_avmm_cc_bridge.m0"
    end="pr_region_wrapper.region_ctlr_avmm">
   <parameter name="baseAddress" value="0x0000" />
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.0"
    start="bar4_avmm_cc_bridge.m0"
    end="pr_region_wrapper.region_ctrl_avmm">
   <parameter name="baseAddress" value="0x00010000" />
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.0"
    start="bar2_avmm_pipeline_bridge.m0"
    end="bar2_avmm_cc_bridge.s0">
   <parameter name="baseAddress" value="0x0000" />
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.0"
    start="bar4_avmm_pipeline_bridge.m0"
    end="bar4_avmm_cc_bridge.s0">
   <parameter name="baseAddress" value="0x0000" />
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.0"
    start="bar2_avmm_cc_bridge.m0"
    end="pcie_subsystem_config_rom.s1">
   <parameter name="baseAddress" value="0x0000" />
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.0"
    start="bar4_avmm_cc_bridge.m0"
    end="ddr4_calibration_interface.s1">
   <parameter name="baseAddress" value="0x00010010" />
  </connection>
  <connection
    kind="clock"
-   version="17.1"
+   version="18.0"
    start="bar_avmm_clk_bridge.out_clk"
    end="bar2_avmm_pipeline_bridge.clk" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.0"
    start="bar_avmm_clk_bridge.out_clk"
    end="bar4_avmm_pipeline_bridge.clk" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.0"
    start="emif_usr_clk_bridge.out_clk"
    end="emif_avmm_bridge.clk" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.0"
    start="emif_usr_clk_bridge.out_clk"
    end="ddr4_status_bus.ddr4_clock" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.0"
    start="emif_usr_clk_bridge.out_clk"
    end="pr_region_wrapper.emif_clk" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.0"
    start="pll_ref_clock_bridge.out_clk"
    end="global_rst_n_controller.pll_reference_clk" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.0"
    start="pll_ref_clock_bridge.out_clk"
    end="tcd2um_reset_generator.ref_clk" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.0"
    start="pll_ref_clock_bridge.out_clk"
    end="design_top_iopll.refclk" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.0"
    start="bar_avmm_clk_bridge.out_clk"
    end="bar2_avmm_cc_bridge.s0_clk" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.0"
    start="bar_avmm_clk_bridge.out_clk"
    end="bar4_avmm_cc_bridge.s0_clk" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.0"
    start="design_top_iopll.outclk0"
    end="s10_pr.clk" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.0"
    start="design_top_iopll.outclk1"
    end="ddr4_calibration_interface.clk" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.0"
    start="design_top_iopll.outclk1"
    end="pr_region_wrapper.clk" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.0"
    start="design_top_iopll.outclk1"
    end="pcie_subsystem_config_rom.clk1" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.0"
    start="design_top_iopll.outclk1"
    end="bar2_avmm_cc_bridge.m0_clk" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.0"
    start="design_top_iopll.outclk1"
    end="bar4_avmm_cc_bridge.m0_clk" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.0"
    start="design_top_iopll.outclk1"
    end="ddr4_status_bus.pcie_clock" />
  <connection
    kind="conduit"
-   version="17.1"
+   version="18.0"
    start="ddr4_calibration_interface.external_connection"
    end="ddr4_status_bus.ddr4_calibration_outterface_external_connection" />
  <connection
    kind="conduit"
-   version="17.1"
+   version="18.0"
    start="design_top_iopll.locked"
    end="global_rst_n_controller.io_pll_locked" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.0"
    start="global_rst_n_controller.global_rst_n"
    end="emif_global_rst.in_reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.0"
    start="global_rst_n_controller.global_rst_n"
    end="bar2_avmm_cc_bridge.m0_reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.0"
    start="global_rst_n_controller.global_rst_n"
    end="bar4_avmm_cc_bridge.m0_reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.0"
    start="global_rst_n_controller.global_rst_n"
    end="ddr4_status_bus.pcie_rst_n" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.0"
    start="global_rst_n_controller.global_rst_n"
    end="pr_region_wrapper.reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.0"
    start="global_rst_n_controller.global_rst_n"
    end="s10_pr.reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.0"
    start="global_rst_n_controller.global_rst_n"
    end="ddr4_calibration_interface.reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.0"
    start="global_rst_n_controller.global_rst_n"
    end="pcie_subsystem_config_rom.reset1" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.0"
    start="emif_usr_reset_bridge.out_reset"
    end="ddr4_status_bus.ddr4_rst_n" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.0"
    start="bar_avmm_reset_bridge.out_reset"
    end="global_rst_n_controller.pcie_global_rst_n" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.0"
    start="bar_avmm_reset_bridge.out_reset"
    end="bar2_avmm_pipeline_bridge.reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.0"
    start="bar_avmm_reset_bridge.out_reset"
    end="bar4_avmm_pipeline_bridge.reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.0"
    start="emif_usr_reset_bridge.out_reset"
    end="emif_avmm_bridge.reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.0"
    start="bar_avmm_reset_bridge.out_reset"
    end="bar2_avmm_cc_bridge.s0_reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.0"
    start="bar_avmm_reset_bridge.out_reset"
    end="bar4_avmm_cc_bridge.s0_reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.0"
    start="tcd2um_reset_generator.pll_reset"
    end="design_top_iopll.reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />

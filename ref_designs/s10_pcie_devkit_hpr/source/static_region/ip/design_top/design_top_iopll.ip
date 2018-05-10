@@ -3,11 +3,11 @@
   <spirit:vendor>Intel Corporation</spirit:vendor>
   <spirit:library>design_top_iopll</spirit:library>
   <spirit:name>design_top_iopll</spirit:name>
-  <spirit:version>17.1</spirit:version>
+  <spirit:version>18.0</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>locked</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="18.0"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -49,7 +49,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>outclk0</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="18.0"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -70,7 +70,7 @@
         <spirit:parameter>
           <spirit:name>clockRate</spirit:name>
           <spirit:displayName>Clock rate</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="clockRate">50000000</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="clockRate">200000000</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>clockRateKnown</spirit:name>
@@ -101,7 +101,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>outclk1</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="18.0"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -153,7 +153,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>refclk</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="18.0"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -195,7 +195,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>reset</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="18.0"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -310,7 +310,7 @@
       <spirit:vendor>Intel Corporation</spirit:vendor>
       <spirit:library>design_top_iopll</spirit:library>
       <spirit:name>altera_iopll</spirit:name>
-      <spirit:version>17.1</spirit:version>
+      <spirit:version>18.0</spirit:version>
     </altera:entity_info>
     <altera:altera_module_parameters>
       <spirit:parameters>
@@ -495,9 +495,19 @@
           <spirit:value spirit:format="string" spirit:id="gui_pll_mode">Integer-N PLL</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>gui_use_logical</spirit:name>
+          <spirit:displayName>Use logical PLL</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="gui_use_logical">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>gui_reference_clock_frequency</spirit:name>
           <spirit:displayName>Reference Clock Frequency</spirit:displayName>
           <spirit:value spirit:format="float" spirit:id="gui_reference_clock_frequency">100.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>gui_use_coreclk</spirit:name>
+          <spirit:displayName>Refclk source is global clock</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="gui_use_coreclk">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>gui_refclk_might_change</spirit:name>
@@ -686,8 +696,13 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>gui_enable_cascade_in</spirit:name>
-          <spirit:displayName>Create an 'adjpllin' (cascade in) signal to connect to an upstream PLL</spirit:displayName>
+          <spirit:displayName>Create an 'adjpllin' (cascade in) signal to connect to an upstream PLL through IO Column Cascading</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="gui_enable_cascade_in">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>gui_enable_permit_cal</spirit:name>
+          <spirit:displayName>Connect to an upstream PLL through Core Clock Network Cascading (create a permit_cal input signal)</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="gui_enable_permit_cal">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>gui_pll_cascading_mode</spirit:name>
@@ -732,12 +747,12 @@
         <spirit:parameter>
           <spirit:name>gui_clock_name_string0</spirit:name>
           <spirit:displayName>Clock Name</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="gui_clock_name_string0">clock_50MHz</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="gui_clock_name_string0">clock_200MHz</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>gui_clock_name_string1</spirit:name>
           <spirit:displayName>Clock Name</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="gui_clock_name_string1">clock_250MHz</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="gui_clock_name_string1">clock_125MHz</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>gui_clock_name_string2</spirit:name>
@@ -1002,7 +1017,7 @@
         <spirit:parameter>
           <spirit:name>gui_output_clock_frequency0</spirit:name>
           <spirit:displayName>Desired Frequency</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="gui_output_clock_frequency0">50.0</spirit:value>
+          <spirit:value spirit:format="float" spirit:id="gui_output_clock_frequency0">200.0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>gui_output_clock_frequency1</spirit:name>
@@ -1092,7 +1107,7 @@
         <spirit:parameter>
           <spirit:name>gui_actual_output_clock_frequency0</spirit:name>
           <spirit:displayName>Actual Frequency</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="gui_actual_output_clock_frequency0">50.0</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="gui_actual_output_clock_frequency0">200.0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>gui_actual_output_clock_frequency1</spirit:name>
@@ -1182,12 +1197,12 @@
         <spirit:parameter>
           <spirit:name>gui_actual_output_clock_frequency_range0</spirit:name>
           <spirit:displayName>Legal Frequencies</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="gui_actual_output_clock_frequency_range0">49.73545,49.758454,49.777778,50.0,50.241546,50.26455</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="gui_actual_output_clock_frequency_range0">198.0,198.148148,198.333333,200.0,201.666667,201.851852</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>gui_actual_output_clock_frequency_range1</spirit:name>
           <spirit:displayName>Legal Frequencies</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="gui_actual_output_clock_frequency_range1">120.0,121.428571,122.222222,125.0,127.777778,128.571429</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="gui_actual_output_clock_frequency_range1">111.111111,114.285714,120.0,125.0,133.333333,142.857143</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>gui_actual_output_clock_frequency_range2</spirit:name>
@@ -1632,12 +1647,12 @@
         <spirit:parameter>
           <spirit:name>gui_actual_phase_shift_range0</spirit:name>
           <spirit:displayName>Legal Phase Shifts</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="gui_actual_phase_shift_range0">0.0,100.0,125.0,166.7,200.0,250.0</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="gui_actual_phase_shift_range0">0.0,125.0,250.0,375.0,500.0,625.0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>gui_actual_phase_shift_range1</spirit:name>
           <spirit:displayName>Legal Phase Shifts</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="gui_actual_phase_shift_range1">0.0,100.0,125.0,166.7,200.0,250.0</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="gui_actual_phase_shift_range1">0.0,125.0,250.0,375.0,500.0,625.0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>gui_actual_phase_shift_range2</spirit:name>
@@ -1812,12 +1827,12 @@
         <spirit:parameter>
           <spirit:name>gui_actual_phase_shift_deg_range0</spirit:name>
           <spirit:displayName>Legal Phase Shifts</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="gui_actual_phase_shift_deg_range0">0.0,1.8,2.2,3.0,3.6,4.5</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="gui_actual_phase_shift_deg_range0">0.0,9.0,18.0,27.0,36.0,45.0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>gui_actual_phase_shift_deg_range1</spirit:name>
           <spirit:displayName>Legal Phase Shifts</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="gui_actual_phase_shift_deg_range1">0.0,4.5,5.6,7.5,9.0,11.2</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="gui_actual_phase_shift_deg_range1">0.0,5.6,11.2,16.9,22.5,28.1</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>gui_actual_phase_shift_deg_range2</spirit:name>
@@ -2082,12 +2097,12 @@
         <spirit:parameter>
           <spirit:name>gui_actual_duty_cycle_range0</spirit:name>
           <spirit:displayName>Legal Duty Cycles</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="gui_actual_duty_cycle_range0">46.67,47.5,48.0,50.0,52.0,52.5</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="gui_actual_duty_cycle_range0">20.0,30.0,40.0,50.0,60.0,70.0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>gui_actual_duty_cycle_range1</spirit:name>
           <spirit:displayName>Legal Duty Cycles</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="gui_actual_duty_cycle_range1">41.67,43.75,45.0,50.0,55.0,56.25</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="gui_actual_duty_cycle_range1">31.25,37.5,43.75,50.0,56.25,62.5</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>gui_actual_duty_cycle_range2</spirit:name>
@@ -2177,7 +2192,7 @@
         <spirit:parameter>
           <spirit:name>parameterTable_values</spirit:name>
           <spirit:displayName>Parameter Values</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="parameterTable_values">25,2,1250.0 MHz,25,10,1,1,1,1,1,1,1,false,13,12,true,false,1,1,false,false,13,5,256,256,256,256,256,256,256,12,5,256,256,256,256,256,256,256,true,false,false,false,false,false,false,false,false,false,false,true,true,true,true,true,true,true,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,pll_cp_setting4,pll_bw_res_setting4</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="parameterTable_values">10,1,1000.0 MHz,5,8,1,1,1,1,1,1,1,false,5,5,false,false,256,256,false,true,3,4,256,256,256,256,256,256,256,2,4,256,256,256,256,256,256,256,true,false,false,false,false,false,false,false,false,false,false,true,true,true,true,true,true,true,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,pll_cp_setting4,pll_bw_res_setting3</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>mifTable_names</spirit:name>
@@ -2207,7 +2222,7 @@
         <spirit:parameter>
           <spirit:name>m_cnt_hi_div</spirit:name>
           <spirit:displayName>m_cnt_hi_div</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="m_cnt_hi_div">13</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="m_cnt_hi_div">5</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>eff_m_cnt</spirit:name>
@@ -2215,19 +2230,29 @@
           <spirit:value spirit:format="long" spirit:id="eff_m_cnt">1</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>multiply_factor</spirit:name>
+          <spirit:displayName>multiply_factor</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="multiply_factor">10</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>use_core_refclk</spirit:name>
+          <spirit:displayName>use_core_refclk</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="use_core_refclk">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>m_cnt_lo_div</spirit:name>
           <spirit:displayName>m_cnt_lo_div</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="m_cnt_lo_div">12</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="m_cnt_lo_div">5</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>n_cnt_hi_div</spirit:name>
           <spirit:displayName>n_cnt_hi_div</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="n_cnt_hi_div">1</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="n_cnt_hi_div">256</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>n_cnt_lo_div</spirit:name>
           <spirit:displayName>n_cnt_lo_div</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="n_cnt_lo_div">1</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="n_cnt_lo_div">256</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>m_cnt_bypass_en</spirit:name>
@@ -2237,12 +2262,12 @@
         <spirit:parameter>
           <spirit:name>n_cnt_bypass_en</spirit:name>
           <spirit:displayName>n_cnt_bypass_en</spirit:displayName>
-          <spirit:value spirit:format="bool" spirit:id="n_cnt_bypass_en">false</spirit:value>
+          <spirit:value spirit:format="bool" spirit:id="n_cnt_bypass_en">true</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>m_cnt_odd_div_duty_en</spirit:name>
           <spirit:displayName>m_cnt_odd_div_duty_en</spirit:displayName>
-          <spirit:value spirit:format="bool" spirit:id="m_cnt_odd_div_duty_en">true</spirit:value>
+          <spirit:value spirit:format="bool" spirit:id="m_cnt_odd_div_duty_en">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>n_cnt_odd_div_duty_en</spirit:name>
@@ -2262,7 +2287,12 @@
         <spirit:parameter>
           <spirit:name>pll_bwctrl</spirit:name>
           <spirit:displayName>pll_bwctrl</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="pll_bwctrl">pll_bw_res_setting4</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="pll_bwctrl">pll_bw_res_setting3</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pll_ripplecap_ctrl</spirit:name>
+          <spirit:displayName>pll_ripplecap_ctrl</spirit:displayName>
+          <spirit:value spirit:format="string" spirit:id="pll_ripplecap_ctrl">pll_ripplecap_setting0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>pll_fractional_division</spirit:name>
@@ -2300,6 +2330,11 @@
           <spirit:value spirit:format="long" spirit:id="number_of_clocks">2</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>number_of_outclks</spirit:name>
+          <spirit:displayName>number_of_outclks</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="number_of_outclks">2</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>pll_vcoph_div</spirit:name>
           <spirit:displayName>pll_vcoph_div</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="pll_vcoph_div">1</spirit:value>
@@ -2317,7 +2352,7 @@
         <spirit:parameter>
           <spirit:name>pll_output_clk_frequency</spirit:name>
           <spirit:displayName>pll_output_clk_frequency</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="pll_output_clk_frequency">1250.0 MHz</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="pll_output_clk_frequency">1000.0 MHz</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>mimic_fbclk_type</spirit:name>
@@ -2420,14 +2455,29 @@
           <spirit:value spirit:format="bool" spirit:id="clock_name_global">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>pll_freqcal_en</spirit:name>
+          <spirit:displayName>pll_freqcal_en</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="pll_freqcal_en">true</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pll_defer_cal_user_mode</spirit:name>
+          <spirit:displayName>pll_defer_cal_user_mode</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="pll_defer_cal_user_mode">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>dprio_interface_sel</spirit:name>
+          <spirit:displayName>dprio_interface_sel</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="dprio_interface_sel">3</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>c_cnt_hi_div0</spirit:name>
           <spirit:displayName>c_cnt_hi_div0</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="c_cnt_hi_div0">13</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="c_cnt_hi_div0">3</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>c_cnt_hi_div1</spirit:name>
           <spirit:displayName>c_cnt_hi_div1</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="c_cnt_hi_div1">5</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="c_cnt_hi_div1">4</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>c_cnt_hi_div2</spirit:name>
@@ -2512,12 +2562,12 @@
         <spirit:parameter>
           <spirit:name>c_cnt_lo_div0</spirit:name>
           <spirit:displayName>c_cnt_lo_div0</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="c_cnt_lo_div0">12</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="c_cnt_lo_div0">2</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>c_cnt_lo_div1</spirit:name>
           <spirit:displayName>c_cnt_lo_div1</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="c_cnt_lo_div1">5</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="c_cnt_lo_div1">4</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>c_cnt_lo_div2</spirit:name>
@@ -3052,7 +3102,7 @@
         <spirit:parameter>
           <spirit:name>output_clock_frequency0</spirit:name>
           <spirit:displayName>output_clock_frequency0</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="output_clock_frequency0">50.000000 MHz</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="output_clock_frequency0">200.000000 MHz</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>output_clock_frequency1</spirit:name>
@@ -3322,12 +3372,12 @@
         <spirit:parameter>
           <spirit:name>clock_name_0</spirit:name>
           <spirit:displayName>clock_name_0</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="clock_name_0">clock_50MHz</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="clock_name_0">clock_200MHz</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>clock_name_1</spirit:name>
           <spirit:displayName>clock_name_1</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="clock_name_1">clock_250MHz</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="clock_name_1">clock_125MHz</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>clock_name_2</spirit:name>
@@ -3410,6 +3460,51 @@
           <spirit:value spirit:format="bool" spirit:id="clock_name_global_8">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>divide_factor0</spirit:name>
+          <spirit:displayName>divide_factor0</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="divide_factor0">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>divide_factor1</spirit:name>
+          <spirit:displayName>divide_factor1</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="divide_factor1">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>divide_factor2</spirit:name>
+          <spirit:displayName>divide_factor2</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="divide_factor2">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>divide_factor3</spirit:name>
+          <spirit:displayName>divide_factor3</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="divide_factor3">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>divide_factor4</spirit:name>
+          <spirit:displayName>divide_factor4</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="divide_factor4">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>divide_factor5</spirit:name>
+          <spirit:displayName>divide_factor5</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="divide_factor5">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>divide_factor6</spirit:name>
+          <spirit:displayName>divide_factor6</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="divide_factor6">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>divide_factor7</spirit:name>
+          <spirit:displayName>divide_factor7</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="divide_factor7">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>divide_factor8</spirit:name>
+          <spirit:displayName>divide_factor8</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="divide_factor8">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>pll_tclk_mux_en</spirit:name>
           <spirit:displayName>pll_tclk_mux_en</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="pll_tclk_mux_en">false</spirit:value>
@@ -3428,11 +3523,6 @@
           <spirit:name>pll_vco_freq_band_1</spirit:name>
           <spirit:displayName>pll_vco_freq_band_1</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="pll_vco_freq_band_1">pll_freq_clk1_disabled</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>pll_freqcal_en</spirit:name>
-          <spirit:displayName>pll_freqcal_en</spirit:displayName>
-          <spirit:value spirit:format="bool" spirit:id="pll_freqcal_en">true</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>pll_freqcal_req_flag</spirit:name>
@@ -3492,7 +3582,7 @@
         <spirit:parameter>
           <spirit:name>hp_parameter_update_message</spirit:name>
           <spirit:displayName>hp_parameter_update_message</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="hp_parameter_update_message">{altera_iopll::util::pll_send_message DEBUG {-- in update gui_device_family }} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_device_component }} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_device_speed_grade }} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_dps_cntr}} {altera_iopll::util::pll_send_message DEBUG { -- in update_gui_extclkout_source}} {altera_iopll::util::pll_send_message DEBUG { -- in update_gui_cascade_outclk_index}} {altera_iopll::util::pll_send_message DEBUG { -- in update gui_clock_to_compensate}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_vco_frequency}} {altera_iopll::util::pll_send_message DEBUG { -- Updating all outclk values in order, starting with freq 0}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_output_clock_frequency0}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_output_clock_frequency1}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_phase_shift0}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_phase_shift1}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_duty_cycle0}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_duty_cycle1}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_output_clock_frequency2}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_phase_shift2}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_duty_cycle2}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_output_clock_frequency3}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_phase_shift3}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_duty_cycle3}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_output_clock_frequency4}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_phase_shift4}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_duty_cycle4}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_output_clock_frequency5}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_phase_shift5}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_duty_cycle5}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_output_clock_frequency6}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_phase_shift6}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_duty_cycle6}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_output_clock_frequency7}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_phase_shift7}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_duty_cycle7}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_output_clock_frequency8}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_phase_shift8}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_duty_cycle8}}</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="hp_parameter_update_message">{altera_iopll::util::pll_send_message DEBUG {-- in update gui_device_family }} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_device_component }} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_device_speed_grade }} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_dps_cntr}} {altera_iopll::util::pll_send_message DEBUG { -- in update_gui_extclkout_source}} {altera_iopll::util::pll_send_message DEBUG { -- in update_gui_cascade_outclk_index}} {altera_iopll::util::pll_send_message DEBUG { -- in update gui_clock_to_compensate}} {altera_iopll::util::pll_send_message DEBUG { -- in update_gui_pll_bandwidth_preset}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_vco_frequency}} {altera_iopll::util::pll_send_message DEBUG { -- Updating all outclk values in order, starting with freq 0}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_output_clock_frequency0}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_output_clock_frequency1}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_phase_shift0}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_phase_shift1}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_duty_cycle0}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_duty_cycle1}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_output_clock_frequency2}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_phase_shift2}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_duty_cycle2}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_output_clock_frequency3}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_phase_shift3}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_duty_cycle3}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_output_clock_frequency4}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_phase_shift4}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_duty_cycle4}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_output_clock_frequency5}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_phase_shift5}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_duty_cycle5}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_output_clock_frequency6}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_phase_shift6}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_duty_cycle6}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_output_clock_frequency7}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_phase_shift7}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_duty_cycle7}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_output_clock_frequency8}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_phase_shift8}} {altera_iopll::util::pll_send_message DEBUG {-- in update gui_actual_duty_cycle8}}</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>hp_qsys_scripting_mode</spirit:name>
@@ -3502,7 +3592,7 @@
         <spirit:parameter>
           <spirit:name>hp_actual_output_clock_frequency_fp0</spirit:name>
           <spirit:displayName>hp_actual_output_clock_frequency_fp0</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="hp_actual_output_clock_frequency_fp0">50.0</spirit:value>
+          <spirit:value spirit:format="float" spirit:id="hp_actual_output_clock_frequency_fp0">200.0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>hp_actual_output_clock_frequency_fp1</spirit:name>
@@ -3893,7 +3983,7 @@
                     </entry>
                     <entry>
                         <key>clockRate</key>
-                        <value>50000000</value>
+                        <value>200000000</value>
                     </entry>
                     <entry>
                         <key>clockRateKnown</key>
@@ -4042,7 +4132,7 @@
                 <consumedSystemInfos>
                     <entry>
                         <key>CLOCK_RATE</key>
-                        <value>50000000</value>
+                        <value>200000000</value>
                     </entry>
                 </consumedSystemInfos>
             </value>

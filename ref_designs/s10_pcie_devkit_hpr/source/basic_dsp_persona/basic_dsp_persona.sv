@@ -29,6 +29,16 @@ module basic_dsp_persona (
    input  wire         pr_logic_rst , 
    input  wire         emif_usr_clk ,
    input  wire         emif_usr_rst_n ,
+   // DDR4 interface
+   input  wire         emif_avmm_waitrequest , 
+   input  wire [63:0] emif_avmm_readdata , 
+   input  wire         emif_avmm_readdatavalid , 
+   output wire [6:0]   emif_avmm_burstcount , 
+   output wire [63:0] emif_avmm_writedata , 
+   output wire [24:0]  emif_avmm_address , 
+   output wire         emif_avmm_write , 
+   output wire         emif_avmm_read , 
+   output wire [7:0]  emif_avmm_byteenable , 
    // AVMM interface
    output wire         pr_region_avmm_waitrequest ,
    output wire [31:0]  pr_region_avmm_readdata ,
@@ -66,7 +76,17 @@ module basic_dsp_persona (
       // 8 registers for host -> PR logic communication
       .host_pr                   ( host_pr ),                      
       // 8 Registers for PR logic -> host communication
-      .pr_host                   ( pr_host )
+      .pr_host                   ( pr_host ),
+      //DDR4 Reset
+      .emif_avmm_waitrequest     ( emif_avmm_waitrequest ),
+      .emif_avmm_readdata        ( emif_avmm_readdata ),
+      .emif_avmm_readdatavalid   ( emif_avmm_readdatavalid ),
+      .emif_avmm_burstcount      ( emif_avmm_burstcount ),
+      .emif_avmm_writedata       ( emif_avmm_writedata ),
+      .emif_avmm_address         ( emif_avmm_address ),
+      .emif_avmm_write           ( emif_avmm_write ),
+      .emif_avmm_read            ( emif_avmm_read ),
+      .emif_avmm_byteenable      ( emif_avmm_byteenable )
    );
    
    //////Register Address Map//////////////////

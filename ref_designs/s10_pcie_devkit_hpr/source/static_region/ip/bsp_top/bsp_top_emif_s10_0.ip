@@ -3,11 +3,11 @@
   <spirit:vendor>Intel Corporation</spirit:vendor>
   <spirit:library>bsp_top_emif_s10_0</spirit:library>
   <spirit:name>bsp_top_emif_s10_0</spirit:name>
-  <spirit:version>17.1</spirit:version>
+  <spirit:version>18.0</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>ctrl_amm_0</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="18.0"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -315,7 +315,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>emif_usr_clk</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="18.0"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -357,7 +357,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>emif_usr_reset_n</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="18.0"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -394,7 +394,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>local_reset_req</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="18.0"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -426,7 +426,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>local_reset_status</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="18.0"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -458,7 +458,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>mem</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="18.0"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -610,7 +610,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>oct</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="18.0"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -642,7 +642,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>pll_ref_clk</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="18.0"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -674,7 +674,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>status</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="18.0"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -1160,7 +1160,7 @@
       <spirit:vendor>Intel Corporation</spirit:vendor>
       <spirit:library>bsp_top_emif_s10_0</spirit:library>
       <spirit:name>altera_emif_s10</spirit:name>
-      <spirit:version>17.1</spirit:version>
+      <spirit:version>18.0</spirit:version>
     </altera:entity_info>
     <altera:altera_module_parameters>
       <spirit:parameters>
@@ -1288,6 +1288,11 @@
           <spirit:name>PHY_CORE_CLKS_SHARING_ENUM</spirit:name>
           <spirit:displayName>Core clocks sharing</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="PHY_CORE_CLKS_SHARING_ENUM">CORE_CLKS_SHARING_DISABLED</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PHY_CORE_CLKS_SHARING_EXPOSE_SLAVE_OUT</spirit:name>
+          <spirit:displayName>Export clks_sharing_slave_out to facilitate multi-slave connectivity</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="PHY_CORE_CLKS_SHARING_EXPOSE_SLAVE_OUT">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>PHY_CALIBRATED_OCT</spirit:name>
@@ -1880,6 +1885,11 @@
           <spirit:value spirit:format="string" spirit:id="PHY_DDR3_CORE_CLKS_SHARING_ENUM">CORE_CLKS_SHARING_DISABLED</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>PHY_DDR3_CORE_CLKS_SHARING_EXPOSE_SLAVE_OUT</spirit:name>
+          <spirit:displayName>Export clks_sharing_slave_out to facilitate multi-slave connectivity</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="PHY_DDR3_CORE_CLKS_SHARING_EXPOSE_SLAVE_OUT">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>PHY_DDR3_IO_VOLTAGE</spirit:name>
           <spirit:displayName>Voltage</spirit:displayName>
           <spirit:value spirit:format="float" spirit:id="PHY_DDR3_IO_VOLTAGE">1.5</spirit:value>
@@ -2095,6 +2105,11 @@
           <spirit:value spirit:format="string" spirit:id="PHY_DDR4_CORE_CLKS_SHARING_ENUM">CORE_CLKS_SHARING_DISABLED</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>PHY_DDR4_CORE_CLKS_SHARING_EXPOSE_SLAVE_OUT</spirit:name>
+          <spirit:displayName>Export clks_sharing_slave_out to facilitate multi-slave connectivity</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="PHY_DDR4_CORE_CLKS_SHARING_EXPOSE_SLAVE_OUT">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>PHY_DDR4_IO_VOLTAGE</spirit:name>
           <spirit:displayName>Voltage</spirit:displayName>
           <spirit:value spirit:format="float" spirit:id="PHY_DDR4_IO_VOLTAGE">1.2</spirit:value>
@@ -2293,6 +2308,11 @@
           <spirit:name>PHY_QDR2_CORE_CLKS_SHARING_ENUM</spirit:name>
           <spirit:displayName>Core clocks sharing</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="PHY_QDR2_CORE_CLKS_SHARING_ENUM">CORE_CLKS_SHARING_DISABLED</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PHY_QDR2_CORE_CLKS_SHARING_EXPOSE_SLAVE_OUT</spirit:name>
+          <spirit:displayName>Export clks_sharing_slave_out to facilitate multi-slave connectivity</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="PHY_QDR2_CORE_CLKS_SHARING_EXPOSE_SLAVE_OUT">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>PHY_QDR2_IO_VOLTAGE</spirit:name>
@@ -2495,6 +2515,11 @@
           <spirit:value spirit:format="string" spirit:id="PHY_QDR4_CORE_CLKS_SHARING_ENUM">CORE_CLKS_SHARING_DISABLED</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>PHY_QDR4_CORE_CLKS_SHARING_EXPOSE_SLAVE_OUT</spirit:name>
+          <spirit:displayName>Export clks_sharing_slave_out to facilitate multi-slave connectivity</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="PHY_QDR4_CORE_CLKS_SHARING_EXPOSE_SLAVE_OUT">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>PHY_QDR4_IO_VOLTAGE</spirit:name>
           <spirit:displayName>Voltage</spirit:displayName>
           <spirit:value spirit:format="float" spirit:id="PHY_QDR4_IO_VOLTAGE">1.2</spirit:value>
@@ -2693,6 +2718,11 @@
           <spirit:name>PHY_RLD2_CORE_CLKS_SHARING_ENUM</spirit:name>
           <spirit:displayName>Core clocks sharing</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="PHY_RLD2_CORE_CLKS_SHARING_ENUM">CORE_CLKS_SHARING_DISABLED</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PHY_RLD2_CORE_CLKS_SHARING_EXPOSE_SLAVE_OUT</spirit:name>
+          <spirit:displayName>Export clks_sharing_slave_out to facilitate multi-slave connectivity</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="PHY_RLD2_CORE_CLKS_SHARING_EXPOSE_SLAVE_OUT">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>PHY_RLD2_IO_VOLTAGE</spirit:name>
@@ -2895,6 +2925,11 @@
           <spirit:value spirit:format="string" spirit:id="PHY_RLD3_CORE_CLKS_SHARING_ENUM">CORE_CLKS_SHARING_DISABLED</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>PHY_RLD3_CORE_CLKS_SHARING_EXPOSE_SLAVE_OUT</spirit:name>
+          <spirit:displayName>Export clks_sharing_slave_out to facilitate multi-slave connectivity</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="PHY_RLD3_CORE_CLKS_SHARING_EXPOSE_SLAVE_OUT">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>PHY_RLD3_IO_VOLTAGE</spirit:name>
           <spirit:displayName>Voltage</spirit:displayName>
           <spirit:value spirit:format="float" spirit:id="PHY_RLD3_IO_VOLTAGE">1.2</spirit:value>
@@ -3093,6 +3128,11 @@
           <spirit:name>PHY_LPDDR3_CORE_CLKS_SHARING_ENUM</spirit:name>
           <spirit:displayName>Core clocks sharing</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="PHY_LPDDR3_CORE_CLKS_SHARING_ENUM">CORE_CLKS_SHARING_DISABLED</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PHY_LPDDR3_CORE_CLKS_SHARING_EXPOSE_SLAVE_OUT</spirit:name>
+          <spirit:displayName>Export clks_sharing_slave_out to facilitate multi-slave connectivity</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="PHY_LPDDR3_CORE_CLKS_SHARING_EXPOSE_SLAVE_OUT">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>PHY_LPDDR3_IO_VOLTAGE</spirit:name>
@@ -4500,19 +4540,29 @@
           <spirit:value spirit:format="long" spirit:id="MEM_DDR4_NUM_OF_LOGICAL_RANKS">1</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>MEM_DDR4_IDEAL_VREF_IN_PCT</spirit:name>
+          <spirit:displayName>PARAM_MEM_DDR4_IDEAL_VREF_IN_PCT_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="MEM_DDR4_IDEAL_VREF_IN_PCT">61.0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>MEM_DDR4_IDEAL_VREF_OUT_PCT</spirit:name>
+          <spirit:displayName>PARAM_MEM_DDR4_IDEAL_VREF_OUT_PCT_NAME</spirit:displayName>
+          <spirit:value spirit:format="float" spirit:id="MEM_DDR4_IDEAL_VREF_OUT_PCT">72.2</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>MEM_DDR4_VREFDQ_TRAINING_VALUE</spirit:name>
           <spirit:displayName>VrefDQ training value</spirit:displayName>
-          <spirit:value spirit:format="float" spirit:id="MEM_DDR4_VREFDQ_TRAINING_VALUE">68.0</spirit:value>
+          <spirit:value spirit:format="float" spirit:id="MEM_DDR4_VREFDQ_TRAINING_VALUE">72.2</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MEM_DDR4_VREFDQ_TRAINING_RANGE</spirit:name>
           <spirit:displayName>VrefDQ training range</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="MEM_DDR4_VREFDQ_TRAINING_RANGE">DDR4_VREFDQ_TRAINING_RANGE_1</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="MEM_DDR4_VREFDQ_TRAINING_RANGE">DDR4_VREFDQ_TRAINING_RANGE_0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MEM_DDR4_VREFDQ_TRAINING_RANGE_DISP</spirit:name>
           <spirit:displayName>VrefDQ training range</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="MEM_DDR4_VREFDQ_TRAINING_RANGE_DISP">Range 2 - 45% to 77.5%</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="MEM_DDR4_VREFDQ_TRAINING_RANGE_DISP">Range 1 - 60% to 92.5%</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MEM_DDR4_TTL_DQS_WIDTH</spirit:name>
@@ -4617,7 +4667,7 @@
         <spirit:parameter>
           <spirit:name>MEM_DDR4_MR6</spirit:name>
           <spirit:displayName>PARAM_MEM_DDR4_MR6_NAME</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="MEM_DDR4_MR6">395363</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="MEM_DDR4_MR6">395282</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MEM_DDR4_RDIMM_CONFIG</spirit:name>
@@ -5283,6 +5333,11 @@
           <spirit:name>MEM_QDR4_ADDR_WIDTH</spirit:name>
           <spirit:displayName>Address width</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="MEM_QDR4_ADDR_WIDTH">21</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>MEM_QDR4_SKIP_ODT_SWEEPING</spirit:name>
+          <spirit:displayName>Skip automatic optimization of Clock and Address/Command ODT setting during calibration</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="MEM_QDR4_SKIP_ODT_SWEEPING">true</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MEM_QDR4_CK_ODT_MODE_ENUM</spirit:name>
@@ -7630,6 +7685,11 @@
           <spirit:value spirit:format="bool" spirit:id="CTRL_USER_PRIORITY_EN">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>CTRL_REORDER_EN</spirit:name>
+          <spirit:displayName>PARAM_CTRL_REORDER_EN_NAME</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="CTRL_REORDER_EN">true</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>CTRL_DDR3_AVL_PROTOCOL_ENUM</spirit:name>
           <spirit:displayName>Avalon Interface</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="CTRL_DDR3_AVL_PROTOCOL_ENUM">CTRL_AVL_PROTOCOL_MM</spirit:value>
@@ -8111,7 +8171,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_EXPORT_PLL_LOCKED</spirit:name>
-          <spirit:displayName>PARAM_DIAG_EXPORT_PLL_LOCKED_NAME</spirit:displayName>
+          <spirit:displayName>Export PLL lock signal</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="DIAG_EXPORT_PLL_LOCKED">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
@@ -8145,6 +8205,11 @@
           <spirit:value spirit:format="bool" spirit:id="DIAG_EXPORT_SEQ_AVALON_MASTER">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>DIAG_EXPORT_SEQ_AVALON_HEAD_OF_CHAIN</spirit:name>
+          <spirit:displayName>First EMIF Instance in the Avalon Chain</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_EXPORT_SEQ_AVALON_HEAD_OF_CHAIN">true</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>DIAG_EX_DESIGN_NUM_OF_SLAVES</spirit:name>
           <spirit:displayName>Number of core clocks sharing slaves to instantiate in the example design</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="DIAG_EX_DESIGN_NUM_OF_SLAVES">1</spirit:value>
@@ -8163,6 +8228,11 @@
           <spirit:name>DIAG_EFFICIENCY_MONITOR</spirit:name>
           <spirit:displayName>Enable Efficiency Monitor</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="DIAG_EFFICIENCY_MONITOR">EFFMON_MODE_DISABLED</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>DIAG_SIM_VERBOSE</spirit:name>
+          <spirit:displayName>Show verbose simulation debug messages</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="DIAG_SIM_VERBOSE">2</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_FAST_SIM</spirit:name>
@@ -8245,6 +8315,11 @@
           <spirit:value spirit:format="bool" spirit:id="DIAG_DDR3_EXPORT_SEQ_AVALON_MASTER">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>DIAG_DDR3_EXPORT_SEQ_AVALON_HEAD_OF_CHAIN</spirit:name>
+          <spirit:displayName>First EMIF Instance in the Avalon Chain</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_DDR3_EXPORT_SEQ_AVALON_HEAD_OF_CHAIN">true</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>DIAG_DDR3_EX_DESIGN_NUM_OF_SLAVES</spirit:name>
           <spirit:displayName>Number of core clocks sharing slaves to instantiate in the example design</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="DIAG_DDR3_EX_DESIGN_NUM_OF_SLAVES">1</spirit:value>
@@ -8263,6 +8338,11 @@
           <spirit:name>DIAG_DDR3_EFFICIENCY_MONITOR</spirit:name>
           <spirit:displayName>Enable Efficiency Monitor</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="DIAG_DDR3_EFFICIENCY_MONITOR">EFFMON_MODE_DISABLED</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>DIAG_DDR3_SIM_VERBOSE</spirit:name>
+          <spirit:displayName>Show verbose simulation debug messages</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="DIAG_DDR3_SIM_VERBOSE">2</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_DDR3_USE_TG_AVL_2</spirit:name>
@@ -8321,8 +8401,13 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_DDR3_CA_LEVEL_EN</spirit:name>
-          <spirit:displayName>Enable address/command leveling calibration (experimental)</spirit:displayName>
+          <spirit:displayName>Enable address/command leveling calibration</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="DIAG_DDR3_CA_LEVEL_EN">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>DIAG_DDR3_CA_DESKEW_EN</spirit:name>
+          <spirit:displayName>Enable address/command deskew calibration</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_DDR3_CA_DESKEW_EN">true</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_DDR3_CAL_ADDR0</spirit:name>
@@ -8365,6 +8450,11 @@
           <spirit:value spirit:format="bool" spirit:id="DIAG_DDR4_EXPORT_SEQ_AVALON_MASTER">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>DIAG_DDR4_EXPORT_SEQ_AVALON_HEAD_OF_CHAIN</spirit:name>
+          <spirit:displayName>First EMIF Instance in the Avalon Chain</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_DDR4_EXPORT_SEQ_AVALON_HEAD_OF_CHAIN">true</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>DIAG_DDR4_EX_DESIGN_NUM_OF_SLAVES</spirit:name>
           <spirit:displayName>Number of core clocks sharing slaves to instantiate in the example design</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="DIAG_DDR4_EX_DESIGN_NUM_OF_SLAVES">1</spirit:value>
@@ -8383,6 +8473,11 @@
           <spirit:name>DIAG_DDR4_EFFICIENCY_MONITOR</spirit:name>
           <spirit:displayName>Enable Efficiency Monitor</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="DIAG_DDR4_EFFICIENCY_MONITOR">EFFMON_MODE_DISABLED</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>DIAG_DDR4_SIM_VERBOSE</spirit:name>
+          <spirit:displayName>Show verbose simulation debug messages</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="DIAG_DDR4_SIM_VERBOSE">2</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_DDR4_USE_TG_AVL_2</spirit:name>
@@ -8490,6 +8585,11 @@
           <spirit:value spirit:format="bool" spirit:id="DIAG_QDR2_EXPORT_SEQ_AVALON_MASTER">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>DIAG_QDR2_EXPORT_SEQ_AVALON_HEAD_OF_CHAIN</spirit:name>
+          <spirit:displayName>First EMIF Instance in the Avalon Chain</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_QDR2_EXPORT_SEQ_AVALON_HEAD_OF_CHAIN">true</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>DIAG_QDR2_EX_DESIGN_NUM_OF_SLAVES</spirit:name>
           <spirit:displayName>Number of core clocks sharing slaves to instantiate in the example design</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="DIAG_QDR2_EX_DESIGN_NUM_OF_SLAVES">1</spirit:value>
@@ -8508,6 +8608,11 @@
           <spirit:name>DIAG_QDR2_EFFICIENCY_MONITOR</spirit:name>
           <spirit:displayName>Enable Efficiency Monitor</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="DIAG_QDR2_EFFICIENCY_MONITOR">EFFMON_MODE_DISABLED</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>DIAG_QDR2_SIM_VERBOSE</spirit:name>
+          <spirit:displayName>Show verbose simulation debug messages</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="DIAG_QDR2_SIM_VERBOSE">2</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_QDR2_USE_TG_AVL_2</spirit:name>
@@ -8580,6 +8685,11 @@
           <spirit:value spirit:format="bool" spirit:id="DIAG_QDR4_EXPORT_SEQ_AVALON_MASTER">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>DIAG_QDR4_EXPORT_SEQ_AVALON_HEAD_OF_CHAIN</spirit:name>
+          <spirit:displayName>First EMIF Instance in the Avalon Chain</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_QDR4_EXPORT_SEQ_AVALON_HEAD_OF_CHAIN">true</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>DIAG_QDR4_EX_DESIGN_NUM_OF_SLAVES</spirit:name>
           <spirit:displayName>Number of core clocks sharing slaves to instantiate in the example design</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="DIAG_QDR4_EX_DESIGN_NUM_OF_SLAVES">1</spirit:value>
@@ -8598,6 +8708,11 @@
           <spirit:name>DIAG_QDR4_EFFICIENCY_MONITOR</spirit:name>
           <spirit:displayName>Enable Efficiency Monitor</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="DIAG_QDR4_EFFICIENCY_MONITOR">EFFMON_MODE_DISABLED</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>DIAG_QDR4_SIM_VERBOSE</spirit:name>
+          <spirit:displayName>Show verbose simulation debug messages</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="DIAG_QDR4_SIM_VERBOSE">2</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_QDR4_USE_TG_AVL_2</spirit:name>
@@ -8675,6 +8790,11 @@
           <spirit:value spirit:format="bool" spirit:id="DIAG_RLD2_EXPORT_SEQ_AVALON_MASTER">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>DIAG_RLD2_EXPORT_SEQ_AVALON_HEAD_OF_CHAIN</spirit:name>
+          <spirit:displayName>First EMIF Instance in the Avalon Chain</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_RLD2_EXPORT_SEQ_AVALON_HEAD_OF_CHAIN">true</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>DIAG_RLD2_EX_DESIGN_NUM_OF_SLAVES</spirit:name>
           <spirit:displayName>Number of core clocks sharing slaves to instantiate in the example design</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="DIAG_RLD2_EX_DESIGN_NUM_OF_SLAVES">1</spirit:value>
@@ -8693,6 +8813,11 @@
           <spirit:name>DIAG_RLD2_EFFICIENCY_MONITOR</spirit:name>
           <spirit:displayName>Enable Efficiency Monitor</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="DIAG_RLD2_EFFICIENCY_MONITOR">EFFMON_MODE_DISABLED</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>DIAG_RLD2_SIM_VERBOSE</spirit:name>
+          <spirit:displayName>Show verbose simulation debug messages</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="DIAG_RLD2_SIM_VERBOSE">2</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_RLD2_USE_TG_AVL_2</spirit:name>
@@ -8765,6 +8890,11 @@
           <spirit:value spirit:format="bool" spirit:id="DIAG_RLD3_EXPORT_SEQ_AVALON_MASTER">false</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>DIAG_RLD3_EXPORT_SEQ_AVALON_HEAD_OF_CHAIN</spirit:name>
+          <spirit:displayName>First EMIF Instance in the Avalon Chain</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_RLD3_EXPORT_SEQ_AVALON_HEAD_OF_CHAIN">true</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>DIAG_RLD3_EX_DESIGN_NUM_OF_SLAVES</spirit:name>
           <spirit:displayName>Number of core clocks sharing slaves to instantiate in the example design</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="DIAG_RLD3_EX_DESIGN_NUM_OF_SLAVES">1</spirit:value>
@@ -8783,6 +8913,11 @@
           <spirit:name>DIAG_RLD3_EFFICIENCY_MONITOR</spirit:name>
           <spirit:displayName>Enable Efficiency Monitor</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="DIAG_RLD3_EFFICIENCY_MONITOR">EFFMON_MODE_DISABLED</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>DIAG_RLD3_SIM_VERBOSE</spirit:name>
+          <spirit:displayName>Show verbose simulation debug messages</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="DIAG_RLD3_SIM_VERBOSE">2</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_RLD3_USE_TG_AVL_2</spirit:name>
@@ -8840,6 +8975,16 @@
           <spirit:value spirit:format="bool" spirit:id="DIAG_RLD3_EX_DESIGN_SEPARATE_RZQS">true</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>DIAG_RLD3_CA_LEVEL_EN</spirit:name>
+          <spirit:displayName>Enable address/command leveling calibration</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_RLD3_CA_LEVEL_EN">true</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>DIAG_RLD3_CA_DESKEW_EN</spirit:name>
+          <spirit:displayName>Enable address/command deskew calibration</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_RLD3_CA_DESKEW_EN">true</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>DIAG_LPDDR3_SIM_CAL_MODE_ENUM</spirit:name>
           <spirit:displayName>Calibration mode</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="DIAG_LPDDR3_SIM_CAL_MODE_ENUM">SIM_CAL_MODE_SKIP</spirit:value>
@@ -8853,6 +8998,11 @@
           <spirit:name>DIAG_LPDDR3_EXPORT_SEQ_AVALON_MASTER</spirit:name>
           <spirit:displayName>Enable Daisy-Chaining for Quartus Prime EMIF Debug Toolkit/On-Chip Debug Port</spirit:displayName>
           <spirit:value spirit:format="bool" spirit:id="DIAG_LPDDR3_EXPORT_SEQ_AVALON_MASTER">false</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>DIAG_LPDDR3_EXPORT_SEQ_AVALON_HEAD_OF_CHAIN</spirit:name>
+          <spirit:displayName>First EMIF Instance in the Avalon Chain</spirit:displayName>
+          <spirit:value spirit:format="bool" spirit:id="DIAG_LPDDR3_EXPORT_SEQ_AVALON_HEAD_OF_CHAIN">true</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_LPDDR3_EX_DESIGN_NUM_OF_SLAVES</spirit:name>
@@ -8873,6 +9023,11 @@
           <spirit:name>DIAG_LPDDR3_EFFICIENCY_MONITOR</spirit:name>
           <spirit:displayName>Enable Efficiency Monitor</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="DIAG_LPDDR3_EFFICIENCY_MONITOR">EFFMON_MODE_DISABLED</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>DIAG_LPDDR3_SIM_VERBOSE</spirit:name>
+          <spirit:displayName>Show verbose simulation debug messages</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="DIAG_LPDDR3_SIM_VERBOSE">2</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DIAG_LPDDR3_USE_TG_AVL_2</spirit:name>
@@ -9982,7 +10137,7 @@
         <altera:port_mapping altera:name="local_cal_success" altera:internal="local_cal_success"></altera:port_mapping>
       </altera:interface_mapping>
     </altera:altera_interface_boundary>
-    <altera:altera_has_warnings>false</altera:altera_has_warnings>
+    <altera:altera_has_warnings>true</altera:altera_has_warnings>
     <altera:altera_has_errors>false</altera:altera_has_errors>
   </spirit:vendorExtensions>
 </spirit:component>

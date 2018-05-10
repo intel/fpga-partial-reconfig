@@ -18,7 +18,7 @@
 # Device setup
 #############################################################
 set_global_assignment -name FAMILY "Stratix 10"
-set_global_assignment -name DEVICE 1SG280LU3F50E3VGS2 
+set_global_assignment -name DEVICE 1SG280LU3F50E3VG
 
 #############################################################
 # Files and basic setup
@@ -34,14 +34,25 @@ set_global_assignment -name SYSTEMVERILOG_FILE source/static_region/tcd2um.sv
 set_global_assignment -name SYSTEMVERILOG_FILE source/static_region/global_rst_n_controller.sv
 set_global_assignment -name SYSTEMVERILOG_FILE source/static_region/ddr4_reset_conduit.sv
 
-set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/block.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/gol_block_wrapper.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/gol_cell.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/gol_persona.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/gol_persona_top.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/gol_top.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/moderator.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/basic_arithmetic_persona/basic_arithmetic.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/basic_arithmetic_persona/basic_arithmetic_persona.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/basic_arithmetic_persona/basic_arithmetic_persona_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/basic_arithmetic_persona/basic_arithmetic_reg_blk.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/basic_arithmetic_persona/basic_arithmetic_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/ddr4_access_persona_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/ddr4_access_persona.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/ddr4_access_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/ddr_wr_rd.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/mem_access.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/perf_cntr.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/ddr4_access_persona_controller.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/synchronizer.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/lfsr.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/traffic_generator.sv
 
+set_global_assignment -name SYSTEMVERILOG_FILE source/parent_persona/parent_persona_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/parent_persona/child_pr_logic_wrapper_0.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/parent_persona/child_pr_logic_wrapper_1.sv
 
 #############################################################
 # SDC constraints - Note they are before the Qsys files
@@ -247,7 +258,6 @@ set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to u_top|design_core|pr
 set_instance_assignment -name PLACE_REGION "X190 Y0 X247 Y0;X248 Y0 X276 Y1;X52 Y0 X87 Y14;X88 Y0 X99 Y28;X151 Y0 X189 Y53;X247 Y1 X247 Y1;X190 Y1 X191 Y53;X192 Y1 X193 Y91;X194 Y1 X246 Y117;X247 Y2 X276 Y432;X64 Y15 X87 Y53;X52 Y15 X63 Y69;X88 Y29 X150 Y53;X64 Y54 X191 Y91;X63 Y70 X63 Y91;X58 Y70 X62 Y234;X29 Y70 X57 Y323;X2 Y70 X28 Y432;X143 Y92 X193 Y117;X63 Y92 X99 Y234;X100 Y92 X142 Y311;X143 Y118 X148 Y311;X149 Y118 X246 Y431;X58 Y235 X99 Y289;X70 Y290 X99 Y311;X58 Y290 X64 Y323;X65 Y290 X69 Y431;X70 Y312 X148 Y431;X53 Y324 X56 Y324;X30 Y324 X50 Y342;X57 Y324 X64 Y431;X29 Y324 X29 Y432" -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
 set_instance_assignment -name ROUTE_REGION "X0 Y0 X276 Y432" -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
 
-
 set_instance_assignment -name REGION_NAME u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
 set_instance_assignment -name PLACE_REGION "X30 Y294 X50 Y342" -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u_pr_core|u0
 set_instance_assignment -name RESERVE_PLACE_REGION OFF -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u_pr_core|u0
@@ -270,14 +280,14 @@ set_instance_assignment -name RESERVE_PLACE_REGION OFF -to u_top|design_core|pr_
 set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u_pr_core|u_reg_file|reg_file_mm_bridge
 set_instance_assignment -name REGION_NAME reg_file_mm_bridge -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u_pr_core|u_reg_file|reg_file_mm_bridge
 
+set_location_assignment -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|emif_avmm_burstcount[*]~OPORT LAB_X44_Y322_N0
+
 set_instance_assignment -name PARTITION_COLOUR 4291035035 -to s10_pcie_ref_design -entity s10_pcie_ref_design
 set_instance_assignment -name PARTITION_COLOUR 4285267851 -to auto_fab_0 -entity s10_pcie_ref_design
 set_instance_assignment -name PARTITION_COLOUR 4294947670 -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic -entity s10_pcie_ref_design
 
 #Contrain SLD boundary port for timing closure
 set_location_assignment -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|tdo~OPORT LABCELL_X70_Y55_N0
-
-set_location_assignment -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|emif_avmm_burstcount[*]~OPORT LAB_X44_Y322_N0
 
 #############################################################
 # VID
@@ -300,7 +310,4 @@ set_global_assignment -name PWRMGT_TRANSLATED_VOLTAGE_VALUE_UNIT VOLTS
 
 set_global_assignment -name DEVICE_INITIALIZATION_CLOCK OSC_CLK_1_125MHZ
 
-set_global_assignment -name LAST_QUARTUS_VERSION "17.1.0 Pro Edition"
-
-
-
+set_global_assignment -name LAST_QUARTUS_VERSION "18.0.0 Pro Edition"

@@ -286,6 +286,10 @@ design_top dut
 reset_if reset_bfm (tb_clk);
 assign nreset = ~reset_bfm.reset;
 
+reset_watchdog_if dut_reset_watchdog_if(tb_clk);
+assign dut_reset_watchdog_if.reset = ~dut.global_rst_n_controller.global_rst_n;
+
+
 //==================================================================================================
 // clk and reset
 //==================================================================================================
@@ -309,6 +313,7 @@ initial begin
 
    // Register the interfaces to the BFMs
    `altr_set_if(virtual reset_if, "testbench", "reset_bfm", reset_bfm)
+   `altr_set_if(virtual reset_watchdog_if, "testbench", "dut_reset_watchdog_if", dut_reset_watchdog_if)
    `altr_set_if(virtual bar4_avalon_mm_master_bfm, "testbench", "bar4_avmm_bfm", bar4_avmm_bfm)
    `altr_set_if(virtual bar4_avalon_mm_monitor_bfm, "testbench", "bar4_avmm_monitor", bar4_avmm_monitor)
    `altr_set_if(virtual bar2_avalon_mm_master_bfm, "testbench", "bar2_avmm_bfm", bar2_avmm_bfm)
