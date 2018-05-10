@@ -19,28 +19,42 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-`ifndef INC_DESIGN_TOP_SIM_PKG_SV
-`define INC_DESIGN_TOP_SIM_PKG_SV
+`ifndef INC_RESET_WATCHDOG_SV
+`define INC_RESET_WATCHDOG_SV
 
-`include "uvm_macros.svh"
+class reset_watchdog_c extends uvm_object;
 
-package design_top_sim_pkg;
-   import uvm_pkg::*;
+   `uvm_object_utils(reset_watchdog_c)
 
-   `include "sim_reporting.sv"
-   `include "sb_predictor_base.sv"
-   `include "sb_predictor_base.sv"
-   `include "sb_predict.sv"
-   `include "scoreboard.sv"
-   `include "reset_watchdog.sv"
-   `include "environment.sv"
-   //`include "base_test.sv"
+   virtual reset_watchdog_if vif;
 
-   //`include "persona_base_sequence_lib.sv"
-   //`include "basic_arith_sequence_lib.sv"
-   //`include "region0_pr_sequence_lib.sv"
+   function new(string name = "reset_watchdog");
+      super.new(name);
+   endfunction
+
+   task run();
+
+      // Wait for reset complete
+      `uvm_info("TST", "Waiting for reset complete", UVM_LOW)
+      fork : wait_reset_complete
+         begin
+            while (vif.reset != 1'b0) begin
+               @vif.cb1;
+            end
+         end
+         begin
+            #100000 `uvm_fatal("TST", "Reset 1 not complete")
+            $finish;
+         end
+      join_any
+      disable wait_reset_complete;
+      `uvm_info("TST", "Reset 1 complete", UVM_LOW)
    
-endpackage
+      // Post reset cycles
+      repeat(10) @vif.cb1;
+   
+   endtask: run
 
+endclass
 
-`endif //INC_DESIGN_TOP_SIM_PKG_SV
+`endif

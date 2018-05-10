@@ -19,28 +19,37 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-`ifndef INC_DESIGN_TOP_SIM_PKG_SV
-`define INC_DESIGN_TOP_SIM_PKG_SV
+`timescale 1 ps / 1 ps
+`default_nettype none
 
-`include "uvm_macros.svh"
+// This module is used to count number of PASS asserted by ddr_wr_rd module
 
-package design_top_sim_pkg;
-   import uvm_pkg::*;
-
-   `include "sim_reporting.sv"
-   `include "sb_predictor_base.sv"
-   `include "sb_predictor_base.sv"
-   `include "sb_predict.sv"
-   `include "scoreboard.sv"
-   `include "reset_watchdog.sv"
-   `include "environment.sv"
-   //`include "base_test.sv"
-
-   //`include "persona_base_sequence_lib.sv"
-   //`include "basic_arith_sequence_lib.sv"
-   //`include "region0_pr_sequence_lib.sv"
-   
-endpackage
+module perf_cntr 
+(
+   input wire        pr_region_clk, 
+   input wire        clr_io_reg,
+   input wire        pass,
+   output reg [31:0] performance_cntr,
+   input wire        pr_logic_rst            
+);
 
 
-`endif //INC_DESIGN_TOP_SIM_PKG_SV
+   always_ff @(posedge pr_region_clk or posedge pr_logic_rst) begin
+
+      if ( pr_logic_rst == 1'b1  ) 
+      begin
+         performance_cntr <= 'b0;
+      end
+      else begin
+         if ( clr_io_reg == 1'b1 ) begin
+            performance_cntr <= 'b0;
+         end
+         else begin
+            if ( pass == 1'b1 ) begin
+               performance_cntr <= performance_cntr + 1;
+            end
+         end
+      end
+   end
+
+endmodule

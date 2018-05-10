@@ -35,6 +35,7 @@ set_global_assignment -name SDC_FILE s10_pcie_devkit_pr.sdc
 #############################################################
 # QSYS and IP Files
 #############################################################
+
 set_global_assignment -name QSYS_FILE source/common/reg_file/reg_file.qsys
 set_global_assignment -name QSYS_FILE source/common/emif_interface/emif_avmm_interface.qsys
 set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_clock_bridge.ip
@@ -51,9 +52,16 @@ set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_in
 set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/emif_pipeline_bridge.ip
 set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/emif_bridge.ip
 
-set_global_assignment -name SYSTEMVERILOG_FILE source/basic_dsp_persona/basic_dsp_persona_top.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/basic_dsp_persona/basic_dsp_persona.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/basic_dsp_persona/basic_dsp_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE  source/ddr4_access_persona/ddr4_access_persona_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE  source/ddr4_access_persona/ddr4_access_persona.sv
+set_global_assignment -name SYSTEMVERILOG_FILE  source/ddr4_access_persona/ddr4_access_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE  source/ddr4_access_persona/ddr_wr_rd.sv
+set_global_assignment -name SYSTEMVERILOG_FILE  source/ddr4_access_persona/mem_access.sv
+set_global_assignment -name SYSTEMVERILOG_FILE  source/ddr4_access_persona/perf_cntr.sv
+set_global_assignment -name SYSTEMVERILOG_FILE  source/ddr4_access_persona/ddr4_access_persona_controller.sv
+set_global_assignment -name SYSTEMVERILOG_FILE  source/ddr4_access_persona/synchronizer.sv
+set_global_assignment -name SYSTEMVERILOG_FILE  source/ddr4_access_persona/lfsr.sv
+set_global_assignment -name SYSTEMVERILOG_FILE  source/ddr4_access_persona/traffic_generator.sv
 
 
 #############################################################
@@ -87,11 +95,6 @@ set_global_assignment -name DEVICE_INITIALIZATION_CLOCK OSC_CLK_1_125MHZ
 #############################################################
 # SignalTap
 #############################################################
-set_global_assignment -name IP_FILE source/common/sld_jtag_host/ip/sld_jtag_host.ip
-set_global_assignment -name ENABLE_SIGNALTAP ON
-set_global_assignment -name USE_SIGNALTAP_FILE basic_dsp_persona.stp
-set_global_assignment -name SIGNALTAP_FILE basic_dsp_persona.stp
-
 
 #############################################################
 # PR setup
@@ -99,7 +102,7 @@ set_global_assignment -name SIGNALTAP_FILE basic_dsp_persona.stp
 set_global_assignment -name REVISION_TYPE PR_IMPL
 
 set_instance_assignment -name QDB_FILE_PARTITION s10_pcie_devkit_pr_static.qdb -to |
-set_instance_assignment -name ENTITY_REBINDING basic_dsp_persona_top -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
+set_instance_assignment -name ENTITY_REBINDING ddr4_access_persona_top -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
 
 set_global_assignment -name PRESERVE_UNUSED_XCVR_CHANNEL ON
 set_global_assignment -name LAST_QUARTUS_VERSION "18.0.0 Pro Edition"

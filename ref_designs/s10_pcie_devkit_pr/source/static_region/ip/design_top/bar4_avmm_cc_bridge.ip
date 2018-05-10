@@ -3,11 +3,11 @@
   <spirit:vendor>Intel Corporation</spirit:vendor>
   <spirit:library>bar4_avmm_cc_bridge</spirit:library>
   <spirit:name>bar4_avmm_cc_bridge</spirit:name>
-  <spirit:version>17.1</spirit:version>
+  <spirit:version>18.0</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>m0</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="18.0"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -266,7 +266,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>m0_clk</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="18.0"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -298,7 +298,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>m0_reset</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="18.0"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -325,7 +325,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>s0</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="18.0"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -641,7 +641,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>s0_clk</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="18.0"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -673,7 +673,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>s0_reset</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="18.0"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -1038,7 +1038,7 @@
       <spirit:vendor>Intel Corporation</spirit:vendor>
       <spirit:library>bar4_avmm_cc_bridge</spirit:library>
       <spirit:name>altera_avalon_mm_clock_crossing_bridge</spirit:name>
-      <spirit:version>17.1</spirit:version>
+      <spirit:version>18.0</spirit:version>
     </altera:entity_info>
     <altera:altera_module_parameters>
       <spirit:parameters>
@@ -1111,6 +1111,11 @@
           <spirit:name>SLAVE_SYNC_DEPTH</spirit:name>
           <spirit:displayName>Slave clock domain synchronizer depth</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="SLAVE_SYNC_DEPTH">2</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>SYNC_RESET</spirit:name>
+          <spirit:displayName>Use synchronous resets</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="SYNC_RESET">0</spirit:value>
         </spirit:parameter>
       </spirit:parameters>
     </altera:altera_module_parameters>

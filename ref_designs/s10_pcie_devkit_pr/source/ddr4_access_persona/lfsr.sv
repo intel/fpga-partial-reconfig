@@ -19,28 +19,44 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-`ifndef INC_DESIGN_TOP_SIM_PKG_SV
-`define INC_DESIGN_TOP_SIM_PKG_SV
+`timescale 1 ps / 1 ps
+`default_nettype none
 
-`include "uvm_macros.svh"
+// This is a Linear Feedback Shift Register that generates 32-bit pseudo-random data
 
-package design_top_sim_pkg;
-   import uvm_pkg::*;
+module lfsr 
+   (
+      input wire         clk,
+      input wire         rst,
+      input wire         load_seed,
+      input wire  [31:0] seed,
+      output wire [31:0] out
+   );
 
-   `include "sim_reporting.sv"
-   `include "sb_predictor_base.sv"
-   `include "sb_predictor_base.sv"
-   `include "sb_predict.sv"
-   `include "scoreboard.sv"
-   `include "reset_watchdog.sv"
-   `include "environment.sv"
-   //`include "base_test.sv"
+   reg [31:0] myreg;
 
-   //`include "persona_base_sequence_lib.sv"
-   //`include "basic_arith_sequence_lib.sv"
-   //`include "region0_pr_sequence_lib.sv"
-   
-endpackage
+   // nice looking max period polys selected from
+   // the internet
+   reg [31:0] poly;
+   wire [31:0] feedback;
+   assign feedback = {32{myreg[31]}} & poly;
 
+   // the inverter on the LSB causes 000... to be a 
+   // sequence member rather than the frozen state
+   always_ff @(posedge clk or posedge rst) begin
+      if ( rst==1'b1 ) begin
+         poly <= 32'h800007c3; 
+         myreg <= 0;
+      end
+      else begin
+         if(load_seed == 1'b1) begin
+            poly <= seed;
+         end
+         myreg <= ((myreg ^ feedback) << 1) | !myreg[31];
+      end
+   end
 
-`endif //INC_DESIGN_TOP_SIM_PKG_SV
+   assign out = myreg;
+
+endmodule
+

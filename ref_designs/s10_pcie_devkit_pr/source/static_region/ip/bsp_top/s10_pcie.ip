@@ -3,11 +3,11 @@
   <spirit:vendor>Intel Corporation</spirit:vendor>
   <spirit:library>s10_pcie</spirit:library>
   <spirit:name>s10_pcie</spirit:name>
-  <spirit:version>17.1</spirit:version>
+  <spirit:version>18.0</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>app_nreset_status</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="reset" spirit:version="18.0"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -44,7 +44,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>coreclkout_hip</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="18.0"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -86,7 +86,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>dma_rd_master</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="18.0"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -313,7 +313,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>dma_wr_master</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="18.0"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -548,7 +548,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>hip_ctrl</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="18.0"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -588,7 +588,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>hip_pipe</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="18.0"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -2500,7 +2500,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>hip_serial</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="18.0"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -2652,7 +2652,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>npor</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="conduit" spirit:version="18.0"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -2692,7 +2692,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>rd_dcm_master</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="18.0"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -2935,7 +2935,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>rd_dts_slave</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="18.0"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -3219,7 +3219,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>refclk</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="18.0"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -3251,7 +3251,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>rxm_bar2</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="18.0"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -3494,7 +3494,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>rxm_bar4</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="18.0"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -3737,7 +3737,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>txs</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="18.0"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -3922,7 +3922,7 @@
         <spirit:parameter>
           <spirit:name>maximumPendingReadTransactions</spirit:name>
           <spirit:displayName>Maximum pending read transactions</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="maximumPendingReadTransactions">8</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="maximumPendingReadTransactions">1</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>maximumPendingWriteTransactions</spirit:name>
@@ -4045,7 +4045,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>wr_dcm_master</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="18.0"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -4288,7 +4288,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>wr_dts_slave</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="avalon" spirit:version="18.0"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -5057,7 +5057,7 @@
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
             <spirit:left>0</spirit:left>
-            <spirit:right>5</spirit:right>
+            <spirit:right>4</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
@@ -9054,7 +9054,7 @@
       <spirit:vendor>Intel Corporation</spirit:vendor>
       <spirit:library>s10_pcie</spirit:library>
       <spirit:name>altera_pcie_s10_hip_avmm_bridge</spirit:name>
-      <spirit:version>17.1</spirit:version>
+      <spirit:version>18.0</spirit:version>
     </altera:entity_info>
     <altera:altera_module_parameters>
       <spirit:parameters>
@@ -9077,6 +9077,11 @@
           <spirit:name>app_interface_width_hwtcl</spirit:name>
           <spirit:displayName>Application interface width</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="app_interface_width_hwtcl">256-bit</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>app_interface_freq_hwtcl</spirit:name>
+          <spirit:displayName>Application interface frequency</spirit:displayName>
+          <spirit:value spirit:format="string" spirit:id="app_interface_freq_hwtcl">125 MHz</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>wrala_hwtcl</spirit:name>
@@ -9304,9 +9309,19 @@
           <spirit:value spirit:format="string" spirit:id="pf0_auto_lane_flip_ctrl_en_hwtcl">enable</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>pf0_loopback_enable_hwtcl</spirit:name>
+          <spirit:displayName>Enable Loopback Master</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf0_loopback_enable_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>avmm_addr_width_hwtcl</spirit:name>
           <spirit:displayName>Avalon-MM address width</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="avmm_addr_width_hwtcl">64</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>avmm_number_of_tags_hwtcl</spirit:name>
+          <spirit:displayName>Avalon-MM number of tags</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="avmm_number_of_tags_hwtcl">16</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>dma_enabled_hwtcl</spirit:name>
@@ -9325,27 +9340,27 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>enable_advanced_interrupt_hwtcl</spirit:name>
-          <spirit:displayName>Export interrupt conduit interfaces</spirit:displayName>
+          <spirit:displayName>Export MSI/MSI-X conduit interfaces</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="enable_advanced_interrupt_hwtcl">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>enable_hip_status_for_avmm_hwtcl</spirit:name>
-          <spirit:displayName>Enable hard IP status bus when using the Avalon-MM interface</spirit:displayName>
+          <spirit:displayName>Enable Hard IP Status Bus when using the Avalon-MM interface</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="enable_hip_status_for_avmm_hwtcl">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>txs_enabled_hwtcl</spirit:name>
-          <spirit:displayName>Enable non-bursting Avalon-MM slave interface with individual byte access (TXS)</spirit:displayName>
+          <spirit:displayName>Enable Avalon-MM Slave interface with individual byte access. (TXS).</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="txs_enabled_hwtcl">1</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>user_txs_address_width_hwtcl</spirit:name>
-          <spirit:displayName>Address width of accessible PCIe memory space (TXS)</spirit:displayName>
+          <spirit:displayName>Address width of accessible PCIe memory space(TXS)</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="user_txs_address_width_hwtcl">32</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>hptxs_enabled_hwtcl</spirit:name>
-          <spirit:displayName>Enable high performance bursting Avalon-MM slave interface (HPTXS)</spirit:displayName>
+          <spirit:displayName>Enable High Performance bursting Avalon-MM Slave interface (HPTXS).</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="hptxs_enabled_hwtcl">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
@@ -9374,9 +9389,54 @@
           <spirit:value spirit:format="long" spirit:id="txs_address_width_hwtcl">32</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>txs_data_width_hwtcl</spirit:name>
+          <spirit:displayName>txs_data_width_hwtcl</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="txs_data_width_hwtcl">32</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>hptxs_address_width_hwtcl</spirit:name>
           <spirit:displayName>hptxs_address_width_hwtcl</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="hptxs_address_width_hwtcl">25</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>enable_64adapter_hwtcl</spirit:name>
+          <spirit:displayName>enable_64adapter_hwtcl</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="enable_64adapter_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>enable_plladapter_hwtcl</spirit:name>
+          <spirit:displayName>enable_plladapter_hwtcl</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="enable_plladapter_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>cg_impl_cra_av_slave_port_hwtcl</spirit:name>
+          <spirit:displayName>Enable control register access (CRA) Avalon-MM slave port</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="cg_impl_cra_av_slave_port_hwtcl">1</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>cg_enable_advanced_interrupt_hwtcl</spirit:name>
+          <spirit:displayName>Export MSI/MSI-X conduit interfaces</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="cg_enable_advanced_interrupt_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>cg_enable_a2p_interrupt_hwtcl</spirit:name>
+          <spirit:displayName>Enable PCIe interrupt at power-on</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="cg_enable_a2p_interrupt_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>user_txs_addr_width_hwtcl</spirit:name>
+          <spirit:displayName>Address width of accessible PCIe memory space</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="user_txs_addr_width_hwtcl">22</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>cg_a2p_addr_map_num_entries_hwtcl</spirit:name>
+          <spirit:displayName>Number of address pages</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="cg_a2p_addr_map_num_entries_hwtcl">2</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>cg_a2p_addr_map_pass_thru_bits_hwtcl</spirit:name>
+          <spirit:displayName>Size of address pages</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="cg_a2p_addr_map_pass_thru_bits_hwtcl">12</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>dma_instantiate_controller_hwtcl</spirit:name>
@@ -9394,6 +9454,11 @@
           <spirit:value spirit:format="long" spirit:id="data_byte_width_integer_rxm0_hwtcl">4</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>data_burstcount_integer_rxm0_hwtcl</spirit:name>
+          <spirit:displayName>data_burstcount_integer_rxm0_hwtcl</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="data_burstcount_integer_rxm0_hwtcl">5</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>data_width_integer_rxm1_hwtcl</spirit:name>
           <spirit:displayName>data_width_integer_rxm1_hwtcl</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="data_width_integer_rxm1_hwtcl">32</spirit:value>
@@ -9402,6 +9467,11 @@
           <spirit:name>data_byte_width_integer_rxm1_hwtcl</spirit:name>
           <spirit:displayName>data_byte_width_integer_rxm1_hwtcl</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="data_byte_width_integer_rxm1_hwtcl">4</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>data_burstcount_integer_rxm1_hwtcl</spirit:name>
+          <spirit:displayName>data_burstcount_integer_rxm1_hwtcl</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="data_burstcount_integer_rxm1_hwtcl">5</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>data_width_integer_rxm2_hwtcl</spirit:name>
@@ -9414,6 +9484,11 @@
           <spirit:value spirit:format="long" spirit:id="data_byte_width_integer_rxm2_hwtcl">4</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>data_burstcount_integer_rxm2_hwtcl</spirit:name>
+          <spirit:displayName>data_burstcount_integer_rxm2_hwtcl</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="data_burstcount_integer_rxm2_hwtcl">5</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>data_width_integer_rxm3_hwtcl</spirit:name>
           <spirit:displayName>data_width_integer_rxm3_hwtcl</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="data_width_integer_rxm3_hwtcl">32</spirit:value>
@@ -9422,6 +9497,11 @@
           <spirit:name>data_byte_width_integer_rxm3_hwtcl</spirit:name>
           <spirit:displayName>data_byte_width_integer_rxm3_hwtcl</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="data_byte_width_integer_rxm3_hwtcl">4</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>data_burstcount_integer_rxm3_hwtcl</spirit:name>
+          <spirit:displayName>data_burstcount_integer_rxm3_hwtcl</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="data_burstcount_integer_rxm3_hwtcl">5</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>data_width_integer_rxm4_hwtcl</spirit:name>
@@ -9434,6 +9514,11 @@
           <spirit:value spirit:format="long" spirit:id="data_byte_width_integer_rxm4_hwtcl">4</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>data_burstcount_integer_rxm4_hwtcl</spirit:name>
+          <spirit:displayName>data_burstcount_integer_rxm4_hwtcl</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="data_burstcount_integer_rxm4_hwtcl">5</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>data_width_integer_rxm5_hwtcl</spirit:name>
           <spirit:displayName>data_width_integer_rxm5_hwtcl</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="data_width_integer_rxm5_hwtcl">32</spirit:value>
@@ -9442,6 +9527,11 @@
           <spirit:name>data_byte_width_integer_rxm5_hwtcl</spirit:name>
           <spirit:displayName>data_byte_width_integer_rxm5_hwtcl</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="data_byte_width_integer_rxm5_hwtcl">4</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>data_burstcount_integer_rxm5_hwtcl</spirit:name>
+          <spirit:displayName>data_burstcount_integer_rxm5_hwtcl</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="data_burstcount_integer_rxm5_hwtcl">5</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>virtual_maxpayload_size_hwtcl</spirit:name>
@@ -9477,6 +9567,11 @@
           <spirit:name>pf0_pci_msi_multiple_msg_cap_hwtcl</spirit:name>
           <spirit:displayName>Number of MSI messages requested</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="pf0_pci_msi_multiple_msg_cap_hwtcl">4</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf0_pci_msi_64_bit_addr_cap_hwtcl</spirit:name>
+          <spirit:displayName>MSI 64-bit address capable</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf0_pci_msi_64_bit_addr_cap_hwtcl">1</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>virtual_pf0_msix_enable_hwtcl</spirit:name>
@@ -9555,7 +9650,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>xcvr_adme_hwtcl</spirit:name>
-          <spirit:displayName>Enable Native PHY, LCPLL and fPLL ADME for Toolkit</spirit:displayName>
+          <spirit:displayName>Enable Native PHY, ATXPLL and fPLL ADME for Transceiver Toolkit</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="xcvr_adme_hwtcl">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
@@ -9704,6 +9799,11 @@
           <spirit:value spirit:format="long" spirit:id="enable_avst_deskew_hwtcl">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>eios_workaround_enable_hwtcl</spirit:name>
+          <spirit:displayName>eios_workaround_enable_hwtcl</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="eios_workaround_enable_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>slave_address_map_0_hwtcl</spirit:name>
           <spirit:displayName>slave_address_map_0_hwtcl</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="slave_address_map_0_hwtcl">7</spirit:value>
@@ -9711,7 +9811,7 @@
         <spirit:parameter>
           <spirit:name>slave_address_map_1_hwtcl</spirit:name>
           <spirit:displayName>slave_address_map_1_hwtcl</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="slave_address_map_1_hwtcl">0</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="slave_address_map_1_hwtcl">7</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>slave_address_map_2_hwtcl</spirit:name>
@@ -9721,7 +9821,7 @@
         <spirit:parameter>
           <spirit:name>slave_address_map_3_hwtcl</spirit:name>
           <spirit:displayName>slave_address_map_3_hwtcl</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="slave_address_map_3_hwtcl">0</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="slave_address_map_3_hwtcl">7</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>slave_address_map_4_hwtcl</spirit:name>
@@ -9731,7 +9831,7 @@
         <spirit:parameter>
           <spirit:name>slave_address_map_5_hwtcl</spirit:name>
           <spirit:displayName>slave_address_map_5_hwtcl</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="slave_address_map_5_hwtcl">0</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="slave_address_map_5_hwtcl">7</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>device_family</spirit:name>
@@ -9764,6 +9864,11 @@
           <spirit:value spirit:format="long" spirit:id="enable_example_design_qii_hwtcl">1</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>enable_example_design_sim_rp_hwtcl</spirit:name>
+          <spirit:displayName>Simulation</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="enable_example_design_sim_rp_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>enable_example_design_sim_hwtcl</spirit:name>
           <spirit:displayName>Simulation</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="enable_example_design_sim_hwtcl">0</spirit:value>
@@ -9777,6 +9882,11 @@
           <spirit:name>enable_example_design_synth_hwtcl</spirit:name>
           <spirit:displayName>Synthesis</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="enable_example_design_synth_hwtcl">0</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>enable_example_design_synth_rp_hwtcl</spirit:name>
+          <spirit:displayName>Synthesis</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="enable_example_design_synth_rp_hwtcl">0</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>enable_example_design_tb_hwtcl</spirit:name>
@@ -9795,8 +9905,13 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>chosen_devkit_hwtcl</spirit:name>
-          <spirit:displayName>Select board</spirit:displayName>
+          <spirit:displayName>Current development kit:</spirit:displayName>
           <spirit:value spirit:format="string" spirit:id="chosen_devkit_hwtcl">NONE</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>chosen_devkit_opn_hwtcl</spirit:name>
+          <spirit:displayName>chosen_devkit_opn_hwtcl</spirit:displayName>
+          <spirit:value spirit:format="string" spirit:id="chosen_devkit_opn_hwtcl">1SG280LU3F50E3VGS2</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>adp_bypass</spirit:name>
@@ -11621,7 +11736,7 @@
         <spirit:parameter>
           <spirit:name>pf0_pci_msi_64_bit_addr_cap</spirit:name>
           <spirit:displayName>pf0_pci_msi_64_bit_addr_cap</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="pf0_pci_msi_64_bit_addr_cap">false</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="pf0_pci_msi_64_bit_addr_cap">true</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>pf0_pci_msi_cap_next_offset</spirit:name>
@@ -17419,6 +17534,16 @@
           <spirit:value spirit:format="string" spirit:id="hrc_tx_seq_en">true</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>pf0_pcie_cap_device_capabilities_reg_addr_byte3</spirit:name>
+          <spirit:displayName>pf0_pcie_cap_device_capabilities_reg_addr_byte3</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf0_pcie_cap_device_capabilities_reg_addr_byte3">119</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>pf1_pcie_cap_device_capabilities_reg_addr_byte3</spirit:name>
+          <spirit:displayName>pf1_pcie_cap_device_capabilities_reg_addr_byte3</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf1_pcie_cap_device_capabilities_reg_addr_byte3">4215</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>pf2_aer_cap_aer_ext_cap_hdr_off_addr_byte2</spirit:name>
           <spirit:displayName>pf2_aer_cap_aer_ext_cap_hdr_off_addr_byte2</spirit:displayName>
           <spirit:value spirit:format="long" spirit:id="pf2_aer_cap_aer_ext_cap_hdr_off_addr_byte2">8450</spirit:value>
@@ -18154,9 +18279,9 @@
           <spirit:value spirit:format="long" spirit:id="pf2_pcie_cap_device_capabilities_reg_addr_byte1">8309</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
-          <spirit:name>pf2_pcie_cap_device_capabilities_reg_addr_byte2</spirit:name>
-          <spirit:displayName>pf2_pcie_cap_device_capabilities_reg_addr_byte2</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="pf2_pcie_cap_device_capabilities_reg_addr_byte2">8310</spirit:value>
+          <spirit:name>pf2_pcie_cap_device_capabilities_reg_addr_byte3</spirit:name>
+          <spirit:displayName>pf2_pcie_cap_device_capabilities_reg_addr_byte3</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf2_pcie_cap_device_capabilities_reg_addr_byte3">8311</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>pf2_pcie_cap_device_control_device_status_addr_byte1</spirit:name>
@@ -20419,9 +20544,9 @@
           <spirit:value spirit:format="long" spirit:id="pf3_pcie_cap_device_capabilities_reg_addr_byte1">12405</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
-          <spirit:name>pf3_pcie_cap_device_capabilities_reg_addr_byte2</spirit:name>
-          <spirit:displayName>pf3_pcie_cap_device_capabilities_reg_addr_byte2</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="pf3_pcie_cap_device_capabilities_reg_addr_byte2">12406</spirit:value>
+          <spirit:name>pf3_pcie_cap_device_capabilities_reg_addr_byte3</spirit:name>
+          <spirit:displayName>pf3_pcie_cap_device_capabilities_reg_addr_byte3</spirit:displayName>
+          <spirit:value spirit:format="long" spirit:id="pf3_pcie_cap_device_capabilities_reg_addr_byte3">12407</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>pf3_pcie_cap_device_control_device_status_addr_byte1</spirit:name>
@@ -22219,7 +22344,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>testbench.partner.pcie_tb.parameter.port_type_hwtcl</spirit:name>
-          <spirit:value spirit:format="string" spirit:id="testbench.partner.pcie_tb.parameter.port_type_hwtcl">Native Endpoint</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="testbench.partner.pcie_tb.parameter.port_type_hwtcl">Root Port</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>testbench.partner.pcie_tb.parameter.select_example_design_sim_BFM_hwtcl</spirit:name>
@@ -22231,7 +22356,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>testbench.partner.pcie_tb.version</spirit:name>
-          <spirit:value spirit:format="string" spirit:id="testbench.partner.pcie_tb.version">17.1</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="testbench.partner.pcie_tb.version">18.0</spirit:value>
         </spirit:parameter>
       </spirit:parameters>
     </altera:altera_assignments>
@@ -26005,7 +26130,7 @@
                     </entry>
                     <entry>
                         <key>maximumPendingReadTransactions</key>
-                        <value>8</value>
+                        <value>1</value>
                     </entry>
                     <entry>
                         <key>maximumPendingWriteTransactions</key>
@@ -26324,7 +26449,7 @@
                     <name>wr_dts_burst_count_i</name>
                     <role>burstcount</role>
                     <direction>Input</direction>
-                    <width>6</width>
+                    <width>5</width>
                     <lowerBound>0</lowerBound>
                     <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                 </port>

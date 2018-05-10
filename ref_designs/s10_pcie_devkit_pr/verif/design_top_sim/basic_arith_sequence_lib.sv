@@ -19,7 +19,6 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-
 `ifndef INC_BASIC_ARITH_SEQUENCE_LIB_SV
 `define INC_BASIC_ARITH_SEQUENCE_LIB_SV
 
@@ -48,16 +47,16 @@ endclass
    rand int post_result_idle_cycles;
 
    constraint reasonable_cycle_limits {
-      pre_operand_idle_cycles >= 0;
+      pre_operand_idle_cycles >= 4;
       pre_operand_idle_cycles < 10;
 
-      pre_increment_idle_cycles >= 0;
+      pre_increment_idle_cycles >= 4;
       pre_increment_idle_cycles < 10;
 
-      pre_result_idle_cycles >= 1;
+      pre_result_idle_cycles >= 4;
       pre_result_idle_cycles < 10;
 
-      post_result_idle_cycles >= 0;
+      post_result_idle_cycles >= 4;
       post_result_idle_cycles < 10;
    }
 
@@ -67,10 +66,10 @@ endclass
       operand = 0;
       increment = 0;
 
-      pre_operand_idle_cycles = 0;
-      pre_increment_idle_cycles = 0;
-      pre_result_idle_cycles = 1;
-      post_result_idle_cycles = 0;
+      pre_operand_idle_cycles = 5;
+      pre_increment_idle_cycles = 5;
+      pre_result_idle_cycles = 5;
+      post_result_idle_cycles = 5;
 
    endfunction
 
@@ -96,10 +95,10 @@ class basic_arith_single_seq_c extends basic_arith_rand_seq_c;
       operand == 5;
       increment == 1;
 
-      pre_operand_idle_cycles == 1;
-      pre_increment_idle_cycles == 1;
-      pre_result_idle_cycles == 1;
-      post_result_idle_cycles == 0;
+      pre_operand_idle_cycles == 5;
+      pre_increment_idle_cycles == 5;
+      pre_result_idle_cycles == 5;
+      post_result_idle_cycles == 5;
    }
 
    function new(string name = "[name]]");
@@ -133,7 +132,7 @@ class basic_arith_simple_seq_c extends basic_arith_persona_base_seq_c;
       read_persona_id_block_until_response($sformatf("%s - Read persona ID", description));
 
       for(int i = 0; i < num_rand_seq; i = i+1) begin
-         `altr_assert(rand_seq.randomize() with {pre_operand_idle_cycles == 0; pre_increment_idle_cycles == 0; pre_result_idle_cycles == 1; post_result_idle_cycles == 0;});
+         `altr_assert(rand_seq.randomize() with {pre_operand_idle_cycles == 5; pre_increment_idle_cycles == 5; pre_result_idle_cycles == 5; post_result_idle_cycles == 5;});
          rand_seq.description = $sformatf("%s rand iter %0d", description, i);
          rand_seq.start(m_sequencer);
       end
@@ -165,7 +164,7 @@ class basic_arith_rand_avmm_single_seq_c extends basic_arith_persona_base_seq_c;
    }
 
    constraint valid_idle_delay {
-      num_idle >= 0;
+      num_idle >= 4;
       num_idle < 10;
    }
 

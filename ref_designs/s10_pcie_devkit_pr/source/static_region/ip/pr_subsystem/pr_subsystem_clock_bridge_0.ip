@@ -3,11 +3,11 @@
   <spirit:vendor>Intel Corporation</spirit:vendor>
   <spirit:library>pr_subsystem_clock_bridge_0</spirit:library>
   <spirit:name>pr_subsystem_clock_bridge_0</spirit:name>
-  <spirit:version>17.1</spirit:version>
+  <spirit:version>18.0</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>in_clk</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="18.0"></spirit:busType>
       <spirit:slave></spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -39,7 +39,7 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>out_clk</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="17.1"></spirit:busType>
+      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="18.0"></spirit:busType>
       <spirit:master></spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -60,12 +60,12 @@
         <spirit:parameter>
           <spirit:name>clockRate</spirit:name>
           <spirit:displayName>Clock rate</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="clockRate">0</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="clockRate">125000000</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>clockRateKnown</spirit:name>
           <spirit:displayName>Clock rate known</spirit:displayName>
-          <spirit:value spirit:format="bool" spirit:id="clockRateKnown">false</spirit:value>
+          <spirit:value spirit:format="bool" spirit:id="clockRateKnown">true</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>externallyDriven</spirit:name>
@@ -123,14 +123,14 @@
       <spirit:vendor>Intel Corporation</spirit:vendor>
       <spirit:library>pr_subsystem_clock_bridge_0</spirit:library>
       <spirit:name>altera_clock_bridge</spirit:name>
-      <spirit:version>17.1</spirit:version>
+      <spirit:version>18.0</spirit:version>
     </altera:entity_info>
     <altera:altera_module_parameters>
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>DERIVED_CLOCK_RATE</spirit:name>
           <spirit:displayName>Derived clock rate</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="DERIVED_CLOCK_RATE">0</spirit:value>
+          <spirit:value spirit:format="string" spirit:id="DERIVED_CLOCK_RATE">125000000</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>EXPLICIT_CLOCK_RATE</spirit:name>
@@ -242,11 +242,11 @@
                     </entry>
                     <entry>
                         <key>clockRate</key>
-                        <value>0</value>
+                        <value>125000000</value>
                     </entry>
                     <entry>
                         <key>clockRateKnown</key>
-                        <value>false</value>
+                        <value>true</value>
                     </entry>
                     <entry>
                         <key>externallyDriven</key>
@@ -273,7 +273,7 @@
                 <suppliedSystemInfos>
                     <entry>
                         <key>CLOCK_RATE</key>
-                        <value>0</value>
+                        <value>125000000</value>
                     </entry>
                 </suppliedSystemInfos>
                 <consumedSystemInfos/>
@@ -287,7 +287,7 @@
                 <consumedSystemInfos>
                     <entry>
                         <key>CLOCK_RATE</key>
-                        <value>0</value>
+                        <value>125000000</value>
                     </entry>
                 </consumedSystemInfos>
             </value>

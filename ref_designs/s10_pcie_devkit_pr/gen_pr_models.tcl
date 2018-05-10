@@ -21,18 +21,30 @@
 
 load_package flow
 
-set rev_names [list \
-    synth_basic_arithmetic \
-    synth_basic_dsp \
-    synth_gol
+set module_names [list \
+    basic_arithmetic_persona_top \
+    basic_dsp_persona_top \
+    ddr4_access_persona_top \
+    gol_persona_top
+
 ]
 
-foreach rev $rev_names {
+set rev_names [list \
+    s10_pcie_devkit_pr_basic_arithmetic \
+    s10_pcie_devkit_pr_basic_dsp \
+    s10_pcie_devkit_pr_ddr4_access \
+    s10_pcie_devkit_pr_gol
+
+]
+project_open s10_pcie_devkit_pr -rev s10_pcie_devkit_pr
+execute_module -tool syn
+execute_module -tool cdb -args "--export_pr_static_block root_partition --snapshot synthesized --file s10_pcie_devkit_pr_static.qdb"
+project_close
+foreach rev $rev_names module $module_names {
     project_open s10_pcie_devkit_pr -rev $rev
     execute_module -tool ipg -args "--synthesis=verilog --simulation=verilog"
     execute_module -tool syn
-    execute_module -tool eda -args "--pr --simulation --tool=vcsmx --format=verilog"
+    execute_module -tool eda -args "--pr --simulation --tool=vcsmx --format=verilog --partition=pr_partition --module=pr_partition=$module"
     project_close
 }
-
 

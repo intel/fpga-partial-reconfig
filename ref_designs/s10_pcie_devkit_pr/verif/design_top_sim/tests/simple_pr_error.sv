@@ -62,9 +62,8 @@ class simple_pr_error extends base_test;
       // Reset the system
       reset_seq.start(env.reset_agnt.sqr);
 
-      // KALEN HACK: Make this a driver
       // Wait for reset to complete
-      @(posedge $root.sim_top.tb.dut.global_rst_n_controller.global_rst_n);
+      env.reset_watchdog.run();
 
       // Send 20 idle sequence items
       idle_seq.num_idle_trans = 20;

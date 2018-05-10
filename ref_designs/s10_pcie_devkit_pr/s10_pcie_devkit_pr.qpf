@@ -45,9 +45,11 @@ DATE = "10:42:16  February 14, 2017"
 # Revisions
 
 PROJECT_REVISION = "s10_pcie_devkit_pr"
+PROJECT_REVISION = "s10_pcie_devkit_pr_ddr4_access"
 PROJECT_REVISION = "s10_pcie_devkit_pr_basic_dsp"
 PROJECT_REVISION = "s10_pcie_devkit_pr_gol"
 PROJECT_REVISION = "s10_pcie_devkit_pr_basic_arithmetic"
+PROJECT_REVISION = "synth_ddr4_access"
 PROJECT_REVISION = "synth_basic_dsp"
 PROJECT_REVISION = "synth_basic_arithmetic"
 PROJECT_REVISION = "synth_gol"

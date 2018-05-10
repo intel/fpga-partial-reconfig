@@ -18,7 +18,7 @@
 # Device setup
 #############################################################
 set_global_assignment -name FAMILY "Stratix 10"
-set_global_assignment -name DEVICE 1SG280LU3F50E3VGS2 
+set_global_assignment -name DEVICE 1SG280LU3F50E3VG
 
 
 #############################################################
@@ -34,13 +34,17 @@ set_global_assignment -name SYSTEMVERILOG_FILE source/static_region/synchronizer
 set_global_assignment -name SYSTEMVERILOG_FILE source/static_region/tcd2um.sv
 set_global_assignment -name SYSTEMVERILOG_FILE source/static_region/global_rst_n_controller.sv
 set_global_assignment -name SYSTEMVERILOG_FILE source/static_region/ddr4_reset_conduit.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/block.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/gol_block_wrapper.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/gol_cell.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/gol_persona.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/gol_persona_top.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/gol_top.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/moderator.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/ddr4_access_persona_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/ddr4_access_persona.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/ddr4_access_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/ddr_wr_rd.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/mem_access.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/perf_cntr.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/ddr4_access_persona_controller.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/synchronizer.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/lfsr.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/ddr4_access_persona/traffic_generator.sv
+
 
 #############################################################
 # SDC constraints - Note they are before the Qsys files
@@ -292,4 +296,4 @@ set_global_assignment -name PWRMGT_TRANSLATED_VOLTAGE_VALUE_UNIT VOLTS
 
 set_global_assignment -name DEVICE_INITIALIZATION_CLOCK OSC_CLK_1_125MHZ
 
-set_global_assignment -name LAST_QUARTUS_VERSION "17.1.1 Pro Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "18.0.0 Pro Edition"

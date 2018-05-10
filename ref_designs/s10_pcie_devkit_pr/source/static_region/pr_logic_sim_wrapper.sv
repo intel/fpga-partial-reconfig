@@ -69,7 +69,7 @@ module pr_logic_wrapper
 );
 
 localparam ENABLE_PERSONA_0 = 1;
-localparam ENABLE_PERSONA_1 = 0;
+localparam ENABLE_PERSONA_1 = 1;
 localparam ENABLE_PERSONA_2 = 1;
 localparam ENABLE_PERSONA_3 = 1;
 localparam NUM_PERSONA = 4;

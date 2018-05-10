@@ -25,6 +25,6 @@ set_false_path -from {u_top|design_core|ddr4_status_bus|u_synch_success|d[0]} -t
 #set_false_path -from {u_top|design_core|global_rst_n_controller|global_rst_n_d} -to {u_top|design_core|ddr4_status_bus|u_synch_success|c[*]}
 #set_false_path -from {u_top|design_core|global_rst_n_controller|global_rst_n_d} -to {u_top|design_core|ddr4_status_bus|u_synch_fail|c[*]}
 #set_false_path -from {u_top|s10_pcie|s10_pcie|rst_sync|sync_rst_n_rr[*]} -to {u_top|design_core|global_rst_n_controller|global_rst_n_d}
-set_clock_groups -asynchronous -group [get_clocks {u_top|bsp_top_emif_s10_0|bsp_top_emif_s10_0_core_usr_clk}] -group [get_clocks {u_top|design_core|design_top_iopll|design_top_iopll_clock_250MHz}]
+set_clock_groups -asynchronous -group [get_clocks {u_top|bsp_top_emif_s10_0|bsp_top_emif_s10_0_core_usr_clk}] -group [get_clocks {u_top|design_core|design_top_iopll|design_top_iopll_clock_125MHz}]
 set_clock_groups -asynchronous -group [get_clocks {u_top|s10_pcie|s10_pcie|hip|altera_pcie_s10_hip_ast_pipen1b_inst|altera_pcie_s10_hip_ast_pllnphy_inst|g_phy_g2x8.phy_g2x8|phy_g2x8|xcvr_hip_native|ch0}] -group [get_clocks {u_top|design_core|design_top_iopll|design_top_iopll_refclk}]
 set_false_path -from {auto_fab_0|alt_sld_fab_0|alt_sld_fab_0|mboxfabric|stream_active_0_clock_crosser_0|d[0]} -to {auto_fab_0|alt_sld_fab_0|alt_sld_fab_0|mboxfabric|stream_active_0_clock_crosser_0|c[0]}

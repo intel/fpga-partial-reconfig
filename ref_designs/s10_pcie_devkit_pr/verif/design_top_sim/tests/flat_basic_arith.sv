@@ -63,20 +63,19 @@ class flat_basic_arith extends base_test;
       // Reset the system
       reset_seq.start(env.reset_agnt.sqr);
       
-      // KALEN HACK: Make this a driver
       // Wait for reset to complete
-      @(posedge $root.sim_top.tb.dut.global_rst_n_controller.global_rst_n);
+      env.reset_watchdog.run();
 
       // Send 20 idle sequence items
       idle_seq.num_idle_trans = 20;
       idle_seq.start(env.bar4_agnt.sqr);
 
       // Perform the basic check for the basic_arithmetic persona
-      basic_arith_basic_seq.num_rand_seq = 1000;
+      basic_arith_basic_seq.num_rand_seq = 50;
       basic_arith_basic_seq.start(env.bar4_agnt.sqr);
 
       // Perform random but valid avalon transactions
-      rand_avmm_seq.num_rand_seq = 1000;
+      rand_avmm_seq.num_rand_seq = 50;
       rand_avmm_seq.start(env.bar4_agnt.sqr);
 
       // Send 100 idle sequence items

@@ -19,28 +19,9 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-`ifndef INC_DESIGN_TOP_SIM_PKG_SV
-`define INC_DESIGN_TOP_SIM_PKG_SV
-
-`include "uvm_macros.svh"
-
-package design_top_sim_pkg;
-   import uvm_pkg::*;
-
-   `include "sim_reporting.sv"
-   `include "sb_predictor_base.sv"
-   `include "sb_predictor_base.sv"
-   `include "sb_predict.sv"
-   `include "scoreboard.sv"
-   `include "reset_watchdog.sv"
-   `include "environment.sv"
-   //`include "base_test.sv"
-
-   //`include "persona_base_sequence_lib.sv"
-   //`include "basic_arith_sequence_lib.sv"
-   //`include "region0_pr_sequence_lib.sv"
+interface reset_watchdog_if (input wire clk);
+   logic reset;
+   clocking cb1 @(posedge clk);
+   endclocking
    
-endpackage
-
-
-`endif //INC_DESIGN_TOP_SIM_PKG_SV
+endinterface

@@ -67,7 +67,7 @@ module pr_logic_wrapper
    );
 
 
-   gol_persona_top u_pr_logic
+   ddr4_access_persona_top u_pr_logic
    (
       .pr_region_clk               ( pr_region_clk ),
       .pr_logic_rst                ( pr_logic_rst ),
