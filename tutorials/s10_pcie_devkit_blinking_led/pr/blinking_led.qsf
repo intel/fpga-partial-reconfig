@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2017 Intel Corporation. All rights reserved.
+# Copyright (C) 2001-2018 Intel Corporation. All rights reserved.
 # Your use of Intel Corporation's design tools, logic functions
 # and other software and tools, and its AMPP partner logic
 # functions, and any output files from any of the foregoing
@@ -15,7 +15,7 @@
 
 
 set_global_assignment -name FAMILY "Stratix 10"
-set_global_assignment -name DEVICE 1SG280LU3F50E3VGS1
+set_global_assignment -name DEVICE 1SG280LU3F50E3VGS2
 set_global_assignment -name TOP_LEVEL_ENTITY top
 set_global_assignment -name SYSTEMVERILOG_FILE top.sv
 set_global_assignment -name SYSTEMVERILOG_FILE blinking_led.sv
@@ -63,3 +63,4 @@ set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
 set_global_assignment -name ENABLE_ED_CRC_CHECK ON
 set_global_assignment -name MINIMUM_SEU_INTERVAL 0
 set_global_assignment -name ACTIVE_SERIAL_CLOCK AS_FREQ_100MHZ 
+

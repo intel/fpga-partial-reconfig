@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2017 Intel Corporation. All rights reserved.
+# Copyright (C) 2001-2018 Intel Corporation. All rights reserved.
 # Your use of Intel Corporation's design tools, logic functions
 # and other software and tools, and its AMPP partner logic
 # functions, and any output files from any of the foregoing
@@ -33,20 +33,17 @@
 # -------------------------------------------------------------------------- #
 #
 # Quartus Prime
-# Version 17.1.0 Internal Build 112 06/05/2017 TO Pro Edition
-# Date created = 12:02:19  June 13, 2017
+# Version 18.0.0 Internal Build 27 09/18/2017 TO Pro Edition
+# Date created = 13:06:38  September 22, 2017
 #
 # -------------------------------------------------------------------------- #
 
-QUARTUS_VERSION = "17.1"
-DATE = "12:02:19  June 13, 2017"
+QUARTUS_VERSION = "18.0"
+DATE = "13:06:38  September 22, 2017"
 
 # Revisions
 
 PROJECT_REVISION = "blinking_led"
-PROJECT_REVISION = "blinking_led_pr_bravo"
-PROJECT_REVISION = "blinking_led_pr_charlie"
-PROJECT_REVISION = "blinking_led_pr_alpha"
 PROJECT_REVISION = "blinking_led_default"
 PROJECT_REVISION = "blinking_led_slow"
 PROJECT_REVISION = "blinking_led_empty"
