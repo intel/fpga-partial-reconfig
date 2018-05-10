@@ -1,0 +1,91 @@
+# Copyright (C) 2001-2018 Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions
+# and other software and tools, and its AMPP partner logic
+# functions, and any output files from any of the foregoing
+# (including device programming or simulation files), and any
+# associated documentation or information are expressly subject
+# to the terms and conditions of the Intel Program License
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel MegaCore Function License Agreement, or other
+# applicable license agreement, including, without limitation,
+# that your use is for the sole purpose of programming logic
+# devices manufactured by Intel and sold by Intel or its
+# authorized distributors.  Please refer to the applicable
+# agreement for further details.
+
+
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.0.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "15:38:55  JANUARY 30, 2018"
+# Copyright (C) 2001-2018 Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions
+# and other software and tools, and its AMPP partner logic
+# functions, and any output files from any of the foregoing
+# (including device programming or simulation files), and any
+# associated documentation or information are expressly subject
+# to the terms and conditions of the Intel Program License
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel MegaCore Function License Agreement, or other
+# applicable license agreement, including, without limitation,
+# that your use is for the sole purpose of programming logic
+# devices manufactured by Intel and sold by Intel or its
+# authorized distributors.  Please refer to the applicable
+# agreement for further details.
+
+
+set_global_assignment -name FAMILY "Arria 10"
+set_global_assignment -name DEVICE 10AX115S2F45I1SG
+set_global_assignment -name TOP_LEVEL_ENTITY top
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+# -------------------------------------------------------------------------- #
+# exclusive region for PR:
+set_global_assignment -name REVISION_TYPE PR_IMPL
+
+# define route region slightly larger than place region
+# -------------------------------------------------------------------------- #
+set_location_assignment PIN_AU33 -to clock
+set_location_assignment PIN_L28 -to led_zero_on
+set_location_assignment PIN_K26 -to led_one_on
+set_location_assignment PIN_K25 -to led_two_on
+set_location_assignment PIN_L25 -to led_three_on
+set_instance_assignment -name IO_STANDARD "1.8 V" -to led_zero_on -entity top
+set_instance_assignment -name IO_STANDARD "1.8 V" -to led_one_on -entity top
+set_instance_assignment -name IO_STANDARD "1.8 V" -to led_two_on -entity top
+set_instance_assignment -name IO_STANDARD "1.8 V" -to led_three_on -entity top
+set_instance_assignment -name SLEW_RATE 1 -to led_zero_on -entity top
+set_instance_assignment -name SLEW_RATE 1 -to led_one_on -entity top
+set_instance_assignment -name SLEW_RATE 1 -to led_two_on -entity top
+set_instance_assignment -name SLEW_RATE 1 -to led_three_on -entity top
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to clock -entity top
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_zero_on -entity top
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_one_on -entity top
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_two_on -entity top
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_three_on -entity top
+set_global_assignment -name LAST_QUARTUS_VERSION "18.0.0 Pro Edition"
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
+set_global_assignment -name POWER_AUTO_COMPUTE_TJ ON
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_instance_assignment -name PARTITION pr_partition -to u_blinking_led -entity top
+set_instance_assignment -name PARTITION_COLOUR 4288517375 -to u_blinking_led -entity top
+set_instance_assignment -name PARTIAL_RECONFIGURATION_PARTITION ON -to u_blinking_led -entity top
+set_instance_assignment -name PLACE_REGION "X69 Y10 X88 Y29" -to u_blinking_led
+set_instance_assignment -name RESERVE_PLACE_REGION ON -to u_blinking_led
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to u_blinking_led
+set_instance_assignment -name REGION_NAME u_blinking_led -to u_blinking_led
+set_instance_assignment -name ROUTE_REGION "X68 Y9 X89 Y30" -to u_blinking_led
+set_instance_assignment -name QDB_FILE_PARTITION blinking_led_static.qdb -to | -entity top
+set_instance_assignment -name ENTITY_REBINDING blinking_led_empty -to u_blinking_led -entity top
+set_global_assignment -name IP_FILE sld_agent.ip
+set_global_assignment -name IP_FILE sld_host.ip
+set_global_assignment -name SYSTEMVERILOG_FILE blinking_led_empty.sv
+set_global_assignment -name SYSTEMVERILOG_FILE top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE top_counter.sv
+set_global_assignment -name SDC_FILE jtag.sdc
+set_global_assignment -name SDC_FILE blinking_led.sdc
+set_global_assignment -name IP_FILE pr_ip.ip
+set_global_assignment -name ENABLE_SIGNALTAP ON
+set_global_assignment -name USE_SIGNALTAP_FILE stp_empty.stp
+set_global_assignment -name SIGNALTAP_FILE stp_empty.stp
+set_global_assignment -name GENERATE_PR_RBF_FILE ON
+set_global_assignment -name ON_CHIP_BITSTREAM_DECOMPRESSION OFF
