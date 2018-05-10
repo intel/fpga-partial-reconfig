@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2017 Intel Corporation. All rights reserved.
+# Copyright (C) 2001-2018 Intel Corporation. All rights reserved.
 # Your use of Intel Corporation's design tools, logic functions
 # and other software and tools, and its AMPP partner logic
 # functions, and any output files from any of the foregoing
@@ -54,3 +54,5 @@ set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_zero_on
 set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_one_on
 set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_two_on
 set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_three_on
+set_global_assignment -name GENERATE_PR_RBF_FILE ON
+set_global_assignment -name ON_CHIP_BITSTREAM_DECOMPRESSION OFF
