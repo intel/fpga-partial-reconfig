@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2017 Intel Corporation. All rights reserved.
+# Copyright (C) 2001-2018 Intel Corporation. All rights reserved.
 # Your use of Intel Corporation's design tools, logic functions
 # and other software and tools, and its AMPP partner logic
 # functions, and any output files from any of the foregoing
@@ -16,7 +16,7 @@
 
 # -------------------------------------------------------------------------- #
 #
-# Copyright (C) 2017  Intel Corporation. All rights reserved.
+# Copyright (C) 2018  Intel Corporation. All rights reserved.
 # Your use of Intel Corporation's design tools, logic functions 
 # and other software and tools, and its AMPP partner logic 
 # functions, and any output files from any of the foregoing 
@@ -33,24 +33,20 @@
 # -------------------------------------------------------------------------- #
 #
 # Quartus Prime
-# Version 17.1.0 Internal Build 109 05/31/2017 TO Pro Edition
-# Date created = 14:26:14  June 06, 2017
+# Version 18.0.0 Internal Build 152 01/29/2018 SJ Pro Edition
+# Date created = 18:08:50  February 05, 2018
 #
 # -------------------------------------------------------------------------- #
 
-QUARTUS_VERSION = "17.1"
-DATE = "14:26:14  June 06, 2017"
+QUARTUS_VERSION = "18.0"
+DATE = "18:08:50  February 05, 2018"
 
 # Revisions
 
+PROJECT_REVISION = "hpr_parent_slow_child_slow"
+PROJECT_REVISION = "hpr_child_slow"
+PROJECT_REVISION = "hpr_child_empty"
+PROJECT_REVISION = "hpr_child_default"
+PROJECT_REVISION = "hpr_parent_slow_child_default"
 PROJECT_REVISION = "blinking_led"
-PROJECT_REVISION = "blinking_led_pr_delta"
-PROJECT_REVISION = "blinking_led_pr_alpha"
-PROJECT_REVISION = "blinking_led_pr_emma"
-PROJECT_REVISION = "blinking_led_pr_charlie"
-PROJECT_REVISION = "blinking_led_pr_bravo"
-PROJECT_REVISION = "blinking_led_parent"
-PROJECT_REVISION = "blinking_led_child_empty"
-PROJECT_REVISION = "blinking_led_parent_slow"
-PROJECT_REVISION = "blinking_led_default"
-PROJECT_REVISION = "blinking_led_child_slow"
+PROJECT_REVISION = "hpr_default"
