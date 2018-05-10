@@ -1,0 +1,91 @@
+# Copyright (C) 2001-2018 Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions
+# and other software and tools, and its AMPP partner logic
+# functions, and any output files from any of the foregoing
+# (including device programming or simulation files), and any
+# associated documentation or information are expressly subject
+# to the terms and conditions of the Intel Program License
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel MegaCore Function License Agreement, or other
+# applicable license agreement, including, without limitation,
+# that your use is for the sole purpose of programming logic
+# devices manufactured by Intel and sold by Intel or its
+# authorized distributors.  Please refer to the applicable
+# agreement for further details.
+
+
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.0.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "12:53:39  FEBRUARY 07, 2018"
+# Copyright (C) 2001-2018 Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions
+# and other software and tools, and its AMPP partner logic
+# functions, and any output files from any of the foregoing
+# (including device programming or simulation files), and any
+# associated documentation or information are expressly subject
+# to the terms and conditions of the Intel Program License
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel MegaCore Function License Agreement, or other
+# applicable license agreement, including, without limitation,
+# that your use is for the sole purpose of programming logic
+# devices manufactured by Intel and sold by Intel or its
+# authorized distributors.  Please refer to the applicable
+# agreement for further details.
+
+
+set_global_assignment -name FAMILY "Stratix 10"
+set_global_assignment -name DEVICE 1SG280LU3F50E3VGS2
+set_global_assignment -name TOP_LEVEL_ENTITY top
+set_global_assignment -name SYSTEMVERILOG_FILE top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE blinking_led.sv
+set_global_assignment -name SYSTEMVERILOG_FILE top_counter.sv
+set_global_assignment -name SDC_FILE blinking_led.sdc
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+# -------------------------------------------------------------------------- #
+# exclusive region for PR:
+set_instance_assignment -name PARTITION pr_partition -to u_blinking_led -entity top
+set_instance_assignment -name PARTIAL_RECONFIGURATION_PARTITION ON -to u_blinking_led -entity top
+
+set_instance_assignment -name PLACE_REGION "X169 Y410 X188 Y429" -to u_blinking_led
+set_instance_assignment -name ROUTE_REGION "X168 Y409 X189 Y430" -to u_blinking_led
+set_instance_assignment -name RESERVE_PLACE_REGION ON -to u_blinking_led
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to u_blinking_led
+# -------------------------------------------------------------------------- #
+
+set_location_assignment PIN_J20 -to clock
+set_instance_assignment -name IO_STANDARD LVDS -to clock -entity top
+
+set_location_assignment PIN_B19 -to led_zero_on
+set_location_assignment PIN_E17 -to led_one_on
+set_location_assignment PIN_D18 -to led_two_on
+set_location_assignment PIN_D19 -to led_three_on
+set_instance_assignment -name IO_STANDARD "1.8 V" -to led_zero_on -entity top
+set_instance_assignment -name IO_STANDARD "1.8 V" -to led_one_on -entity top
+set_instance_assignment -name IO_STANDARD "1.8 V" -to led_two_on -entity top
+set_instance_assignment -name IO_STANDARD "1.8 V" -to led_three_on -entity top
+set_instance_assignment -name SLEW_RATE 1 -to led_zero_on -entity top
+set_instance_assignment -name SLEW_RATE 1 -to led_one_on -entity top
+set_instance_assignment -name SLEW_RATE 1 -to led_two_on -entity top
+set_instance_assignment -name SLEW_RATE 1 -to led_three_on -entity top
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to clock -entity top
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_zero_on -entity top
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_one_on -entity top
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_two_on -entity top
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_three_on -entity top
+
+set_instance_assignment -name CLOCK_REGION GLOBAL -to auto_fab_0|alt_sld_fab_0|alt_sld_fab_0|jtagpins|atom_inst|atom
+set_global_assignment -name REVISION_TYPE PR_IMPL
+
+set_global_assignment -name STRATIXV_CONFIGURATION_SCHEME "AVST X16"
+set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
+set_global_assignment -name ENABLE_ED_CRC_CHECK ON
+set_global_assignment -name MINIMUM_SEU_INTERVAL 0
+set_global_assignment -name ACTIVE_SERIAL_CLOCK AS_FREQ_100MHZ
+
+set_global_assignment -name LAST_QUARTUS_VERSION "18.0.0 Pro Edition"
+set_global_assignment -name IP_FILE sld_agent.ip
+set_global_assignment -name IP_FILE sld_host.ip
+set_instance_assignment -name QDB_FILE_PARTITION blinking_led_static.qdb -to | -entity top
+set_instance_assignment -name ENTITY_REBINDING blinking_led -to u_blinking_led -entity top
+set_global_assignment -name ENABLE_SIGNALTAP ON
+set_global_assignment -name USE_SIGNALTAP_FILE stp_default.stp
+set_global_assignment -name SIGNALTAP_FILE stp_default.stp
