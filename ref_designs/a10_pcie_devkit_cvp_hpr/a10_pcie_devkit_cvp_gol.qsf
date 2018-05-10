@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2017 Intel Corporation. All rights reserved.
+# Copyright (C) 2001-2018 Intel Corporation. All rights reserved.
 # Your use of Intel Corporation's design tools, logic functions
 # and other software and tools, and its AMPP partner logic
 # functions, and any output files from any of the foregoing
@@ -12,6 +12,7 @@
 # devices manufactured by Intel and sold by Intel or its
 # authorized distributors.  Please refer to the applicable
 # agreement for further details.
+
 
 
 #############################################################
@@ -36,6 +37,14 @@ set_global_assignment -name SDC_FILE a10_pcie_devkit_cvp.sdc
 #############################################################
 # QSYS and IP Files
 #############################################################
+
+set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/block.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/gol_block_wrapper.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/gol_cell.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/gol_persona.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/gol_persona_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/gol_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/moderator.sv
 
 set_global_assignment -name QSYS_FILE source/static_region/bsp_top.qsys
 set_global_assignment -name IP_FILE source/static_region/ip/bsp_top/top_dk.ip
@@ -91,9 +100,7 @@ set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem
 set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_subsystem_freeze_bridge_cra.ip
 set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_subsystem_clock_in.ip
 set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_emif_avmm_pbridge.ip
-set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_emif_avmm_pbridge_to_static.ip
 set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_pcie_avmm_pbridge.ip
-set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_child_avmm_pbridge.ip
 set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_subsystem_id.ip
 set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/pr_parent_subsystem_sld_jtag_bridge_agent.ip
 set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/emif_clk.ip
@@ -101,6 +108,20 @@ set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem
 
 set_global_assignment -name IP_FILE source/common/sld_jtag_agent/sld_jtag_agent.ip
 set_global_assignment -name IP_FILE source/common/sld_jtag_host/sld_jtag_host.ip
+
+
+
+#############################################################
+# QDB file partition assignment
+#############################################################
+set_instance_assignment -name QDB_FILE_PARTITION a10_pcie_devkit_cvp_static.qdb -to |
+set_instance_assignment -name QDB_FILE_PARTITION a10_pcie_devkit_cvp_ddr4_access_pr_partition_final.qdb -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
+
+#############################################################
+# Entity rebinding assignment
+#############################################################
+set_instance_assignment -name ENTITY_REBINDING gol_persona_top -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|child_region_0|u_child_pr_logic
+set_instance_assignment -name ENTITY_REBINDING gol_persona_top -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|child_region_1|u_child_pr_logic
 
 #############################################################
 # SDC constraints - Note they are after the Qsys files
@@ -135,6 +156,9 @@ set_instance_assignment -name PLACE_REGION "X143 Y89 X221 Y138" -to u_top|design
 set_instance_assignment -name RESERVE_PLACE_REGION ON -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|child_region_1|u_child_pr_logic
 set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|child_region_1|u_child_pr_logic
 set_instance_assignment -name ROUTE_REGION "X141 Y87 X223 Y140" -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|child_region_1|u_child_pr_logic
+
+set_global_assignment -name GENERATE_PR_RBF_FILE ON
+set_global_assignment -name ON_CHIP_BITSTREAM_DECOMPRESSION OFF
 
 #############################################################
 # Timing Closure

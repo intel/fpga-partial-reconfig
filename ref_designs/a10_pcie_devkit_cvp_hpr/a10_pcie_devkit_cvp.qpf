@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2017 Intel Corporation. All rights reserved.
+# Copyright (C) 2001-2018 Intel Corporation. All rights reserved.
 # Your use of Intel Corporation's design tools, logic functions
 # and other software and tools, and its AMPP partner logic
 # functions, and any output files from any of the foregoing
@@ -45,8 +45,6 @@ DATE = "17:16:07  July 05, 2017"
 
 PROJECT_REVISION = "a10_pcie_devkit_cvp_ddr4_access"
 PROJECT_REVISION = "a10_pcie_devkit_cvp"
-PROJECT_REVISION = "synth_parent_persona"
-PROJECT_REVISION = "synth_ddr4_access"
 PROJECT_REVISION = "a10_pcie_devkit_cvp_basic_dsp"
 PROJECT_REVISION = "a10_pcie_devkit_cvp_normal_ddr4_access"
 PROJECT_REVISION = "a10_pcie_devkit_cvp_basic_arithmetic"
@@ -54,7 +52,3 @@ PROJECT_REVISION = "a10_pcie_devkit_cvp_normal_gol"
 PROJECT_REVISION = "a10_pcie_devkit_cvp_gol"
 PROJECT_REVISION = "a10_pcie_devkit_cvp_normal_basic_dsp"
 PROJECT_REVISION = "a10_pcie_devkit_cvp_normal_basic_arithmetic"
-PROJECT_REVISION = "synth_gol"
-PROJECT_REVISION = "synth_basic_arithmetic"
-PROJECT_REVISION = "synth_basic_dsp_0"
-PROJECT_REVISION = "synth_basic_dsp_1"

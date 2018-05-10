@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2017 Intel Corporation. All rights reserved.
+# Copyright (C) 2001-2018 Intel Corporation. All rights reserved.
 # Your use of Intel Corporation's design tools, logic functions
 # and other software and tools, and its AMPP partner logic
 # functions, and any output files from any of the foregoing
@@ -12,6 +12,7 @@
 # devices manufactured by Intel and sold by Intel or its
 # authorized distributors.  Please refer to the applicable
 # agreement for further details.
+
 
 
 #############################################################
@@ -36,6 +37,16 @@ set_global_assignment -name SDC_FILE a10_pcie_devkit_cvp.sdc
 #############################################################
 # QSYS and IP Files
 #############################################################
+set_global_assignment -name SYSTEMVERILOG_FILE  source/ddr4_access_persona/ddr4_access_persona_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE  source/ddr4_access_persona/ddr4_access_persona.sv
+set_global_assignment -name SYSTEMVERILOG_FILE  source/ddr4_access_persona/ddr4_access_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE  source/ddr4_access_persona/ddr_wr_rd.sv
+set_global_assignment -name SYSTEMVERILOG_FILE  source/ddr4_access_persona/mem_access.sv
+set_global_assignment -name SYSTEMVERILOG_FILE  source/ddr4_access_persona/perf_cntr.sv
+set_global_assignment -name SYSTEMVERILOG_FILE  source/ddr4_access_persona/ddr4_access_persona_controller.sv
+set_global_assignment -name SYSTEMVERILOG_FILE  source/ddr4_access_persona/lfsr.sv
+set_global_assignment -name SYSTEMVERILOG_FILE  source/ddr4_access_persona/traffic_generator.sv
+
 set_global_assignment -name QSYS_FILE source/static_region/bsp_top.qsys
 set_global_assignment -name IP_FILE source/static_region/ip/bsp_top/top_dk.ip
 set_global_assignment -name IP_FILE source/static_region/ip/bsp_top/top_a10_pcie.ip
@@ -101,6 +112,16 @@ set_global_assignment -name IP_FILE source/common/sld_jtag_host/sld_jtag_host.ip
 
 
 #############################################################
+# QDB file partition assignments
+#############################################################
+set_instance_assignment -name QDB_FILE_PARTITION a10_pcie_devkit_cvp_static.qdb -to |
+
+#############################################################
+# Entity rebinding assignments
+#############################################################
+set_instance_assignment -name ENTITY_REBINDING ddr4_access_persona_top -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
+
+#############################################################
 # SDC constraints - Note they are after the Qsys files
 #############################################################
 set_global_assignment -name SDC_FILE auxiliary.sdc
@@ -119,3 +140,6 @@ set_instance_assignment -name RESERVE_PLACE_REGION ON -to u_top|design_core|pr_r
 set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
 # Use a routing region of the whole chip
 set_instance_assignment -name ROUTE_REGION "X0 Y0 X224 Y224" -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
+
+set_global_assignment -name GENERATE_PR_RBF_FILE ON
+set_global_assignment -name ON_CHIP_BITSTREAM_DECOMPRESSION OFF
