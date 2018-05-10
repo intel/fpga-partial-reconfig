@@ -1,4 +1,4 @@
-// Copyright (c) 2001-2017 Intel Corporation
+// Copyright (c) 2001-2018 Intel Corporation
 //  
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
@@ -187,8 +187,6 @@ class scoreboard_c extends uvm_scoreboard;
 
    uvm_analysis_export #(pr_region_pkg::pr_region_seq_item_c) pr_region_0_aport_mon;
 
-   uvm_analysis_export #(twentynm_prblock_pkg::twentynm_prblock_seq_item_c) prblock_aport_mon_prblock;
-
    sb_predictor_base_c prd;
    sb_comparator_c #(bar2_avmm_pkg::bar2_avmm_response_seq_item_c) cmp_bar2;
    sb_comparator_c #(bar4_avmm_pkg::bar4_avmm_response_seq_item_c) cmp_bar4;
@@ -219,10 +217,6 @@ class scoreboard_c extends uvm_scoreboard;
 
    endfunction
 
-   function void set_prblock_vif(virtual twentynm_prblock_if vif);
-      prd.set_prblock_vif(vif);
-   endfunction
-
 
    function void build_phase(uvm_phase phase);
       super.build_phase(phase);
@@ -233,7 +227,6 @@ class scoreboard_c extends uvm_scoreboard;
       bar2_command_aport_mon = new("bar2_command_aport_mon", this);
       bar2_response_aport_mon = new("bar2_response_aport_mon", this);
 
-      prblock_aport_mon_prblock = new("prblock_aport_mon_prblock", this);
 
       pr_region_0_aport_mon = new("pr_region_0_aport_mon", this);
 
@@ -262,7 +255,6 @@ class scoreboard_c extends uvm_scoreboard;
 
       pr_region_0_aport_mon.connect(prd.pr_region_aport_mon_pr_region0);
 
-      prblock_aport_mon_prblock.connect(prd.prblock_aport_mon_prblock);
 
    endfunction
 

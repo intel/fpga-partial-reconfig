@@ -1,4 +1,4 @@
-// Copyright (c) 2001-2017 Intel Corporation
+// Copyright (c) 2001-2018 Intel Corporation
 //  
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
@@ -28,7 +28,6 @@ class sb_pr_ip_model;
    bit [2:0] pr_status;
    int pr_data_count;
 
-   virtual twentynm_prblock_if prblock_if;
 
    function new();
       pr_start = 0;
@@ -36,9 +35,6 @@ class sb_pr_ip_model;
       pr_data_count = 0;
    endfunction
 
-   function void set_vif( virtual twentynm_prblock_if vif);
-      prblock_if = vif;
-   endfunction
 
    // 000 : power-up
    // 001 : PR error
@@ -68,7 +64,6 @@ class sb_pr_ip_model;
          fork
             begin
                // Wait 5 clock cycles after the last data
-               repeat (5) @(posedge prblock_if.clk); 
                pr_status = 3'b101;
             end
          join_none
@@ -108,9 +103,6 @@ class sb_predictor_c extends design_top_sim_pkg::sb_predictor_base_c;
       region0_unfreeze_status = 0;
    endfunction
 
-   virtual function void set_prblock_vif(virtual twentynm_prblock_if vif);
-      pr_ip_model.set_vif(vif);
-   endfunction
 
    function int decode_persona_id(int persona_sel);
      
@@ -125,14 +117,6 @@ class sb_predictor_c extends design_top_sim_pkg::sb_predictor_base_c;
 
    function void build_phase(uvm_phase phase);
       super.build_phase(phase);
-   endfunction
-
-   virtual function void write_prblock(twentynm_prblock_pkg::twentynm_prblock_seq_item_c tr);
-      if (tr.event_type == twentynm_prblock_test_pkg::PR_COMPLETE_SUCCESS) begin
-         pr_ip_model.set_pr_complete();
-      end else if (tr.event_type == twentynm_prblock_test_pkg::PR_COMPLETE_ERROR) begin
-         pr_ip_model.set_pr_error();
-      end
    endfunction
 
    virtual function void write_pr_region0(pr_region_pkg::pr_region_seq_item_c tr);

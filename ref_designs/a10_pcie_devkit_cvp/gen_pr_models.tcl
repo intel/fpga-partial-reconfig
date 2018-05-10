@@ -1,4 +1,4 @@
-# Copyright (c) 2001-2017 Intel Corporation
+# Copyright (c) 2001-2018 Intel Corporation
 #  
 # Permission is hereby granted, free of charge, to any person obtaining a
 # copy of this software and associated documentation files (the
@@ -22,17 +22,30 @@
 load_package flow
 
 set rev_names [list \
-    synth_basic_arithmetic \
-    synth_basic_dsp \
-    synth_ddr4_access \
-    synth_gol
+    a10_pcie_devkit_cvp_basic_arithmetic \
+    a10_pcie_devkit_cvp_basic_dsp \
+    a10_pcie_devkit_cvp_ddr4_access \
+    a10_pcie_devkit_cvp_gol
 ]
 
-foreach rev $rev_names {
+set module_names [list \
+    basic_arithmetic_persona_top \
+    basic_dsp_persona_top \
+    ddr4_access_persona_top \
+    gol_persona_top
+]
+
+project_open a10_pcie_devkit_cvp -rev a10_pcie_devkit_cvp
+execute_module -tool ipg -args "--synthesis=verilog --simulation=verilog"
+execute_module -tool syn
+execute_module -tool cdb -args "--export_pr_static_block root_partition --snapshot synthesized --file a10_pcie_devkit_cvp_static.qdb"
+project_close
+
+foreach rev $rev_names module $module_names {
     project_open a10_pcie_devkit_cvp -rev $rev
     execute_module -tool ipg -args "--synthesis=verilog --simulation=verilog"
     execute_module -tool syn
-    execute_module -tool eda -args "--pr --simulation --tool=vcsmx --format=verilog"
+    execute_module -tool eda -args "--pr --simulation --tool=vcsmx --format=verilog --partition=pr_partition --module=pr_partition=$module"
     project_close
 }
 

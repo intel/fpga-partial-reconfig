@@ -1,4 +1,4 @@
-// Copyright (c) 2001-2017 Intel Corporation
+// Copyright (c) 2001-2018 Intel Corporation
 //  
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
@@ -36,7 +36,6 @@ class sb_predictor_base_c extends uvm_component;
    uvm_analysis_imp_bar4 #(bar4_avmm_pkg::bar4_avmm_command_seq_item_c, sb_predictor_base_c) command_aport_mon_bar4;
    uvm_analysis_port #(bar4_avmm_pkg::bar4_avmm_response_seq_item_c) response_predict_aport_bar4;
    
-   uvm_analysis_imp_prblock #(twentynm_prblock_pkg::twentynm_prblock_seq_item_c, sb_predictor_base_c) prblock_aport_mon_prblock;
 
    uvm_analysis_imp_pr_region0 #(pr_region_pkg::pr_region_seq_item_c, sb_predictor_base_c) pr_region_aport_mon_pr_region0;
 
@@ -45,8 +44,6 @@ class sb_predictor_base_c extends uvm_component;
 
    endfunction
 
-   virtual function void set_prblock_vif(virtual twentynm_prblock_if vif);
-   endfunction
 
    virtual function set_pred_param(string name, string val);
    endfunction
@@ -63,7 +60,6 @@ class sb_predictor_base_c extends uvm_component;
       
       pr_region_aport_mon_pr_region0 = new("pr_region_aport_mon_pr_region0", this);
 
-      prblock_aport_mon_prblock = new("prblock_aport_mon_prblock", this);
 
       endfunction
 
@@ -99,8 +95,6 @@ class sb_predictor_base_c extends uvm_component;
 
    endfunction
 
-   virtual function void write_prblock(twentynm_prblock_pkg::twentynm_prblock_seq_item_c tr);
-   endfunction
 
    virtual function void write_pr_region0(pr_region_pkg::pr_region_seq_item_c tr);
    endfunction

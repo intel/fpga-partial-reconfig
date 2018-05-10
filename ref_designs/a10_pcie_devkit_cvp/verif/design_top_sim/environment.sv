@@ -1,4 +1,4 @@
-// Copyright (c) 2001-2017 Intel Corporation
+// Copyright (c) 2001-2018 Intel Corporation
 //  
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
@@ -36,15 +36,11 @@ class environment extends uvm_env;
 
    virtual altera_pr_persona_if region0_if;
 
-   virtual twentynm_prblock_if prblock_if;
-
    scoreboard_c sb;
 
    bar4_avmm_pkg::bar4_avmm_agent_c bar4_agnt;
    bar2_avmm_pkg::bar2_avmm_agent_c bar2_agnt;
    pr_region_pkg::pr_region_agent_c region0_agnt;
-   twentynm_prblock_pkg::twentynm_prblock_agent_c prblock_agent;
-   region0_prblock_listener_c region0_prblock_listener;
 
    reset_pkg::reset_agent_c reset_agnt;
 
@@ -82,16 +78,13 @@ class environment extends uvm_env;
 
       region0_agnt = pr_region_pkg::pr_region_agent_c::type_id::create("region0_agnt", this);
 
-      prblock_agent = twentynm_prblock_pkg::twentynm_prblock_agent_c::type_id::create("prblock_agent", this);
 
-      region0_prblock_listener = region0_prblock_listener_c::type_id::create("region0_prblock_listener", this);
 
       reset_agnt = reset_pkg::reset_agent_c::type_id::create("reset_agnt", this);
 
    endfunction
 
    virtual function void connect_phase(uvm_phase phase);
-      alt_pr_test_pkg::twentynm_prblock_if_mgr cb_mgr;
 
       super.connect_phase(phase);
 
@@ -109,12 +102,7 @@ class environment extends uvm_env;
 
       `altr_get_if(virtual altera_pr_persona_if, "testbench", "pr_region0", region0_if)
 
-      // Get the PR control block from the prblock manager
-      cb_mgr = alt_pr_test_pkg::twentynm_prblock_if_mgr::get();
-      prblock_if = cb_mgr.if_ref;
-
       // Set interface references and connect
-      sb.set_prblock_vif(prblock_if);
 
       reset_agnt.drv.vif = reset_bfm;
       reset_agnt.mon.vif = reset_bfm;
@@ -134,11 +122,7 @@ class environment extends uvm_env;
       region0_agnt.mon.vif = region0_if;
       region0_agnt.aport.connect(sb.pr_region_0_aport_mon);
 
-      prblock_agent.mon.vif = prblock_if;
-      prblock_agent.mon.aport.connect(region0_prblock_listener.analysis_export);
-      prblock_agent.mon.aport.connect(sb.prblock_aport_mon_prblock);
 
-      region0_prblock_listener.region_seq = region0_agnt.sqr;
 
    endfunction
 

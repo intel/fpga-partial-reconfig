@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2017 Intel Corporation. All rights reserved.
+# Copyright (C) 2001-2018 Intel Corporation. All rights reserved.
 # Your use of Intel Corporation's design tools, logic functions
 # and other software and tools, and its AMPP partner logic
 # functions, and any output files from any of the foregoing
@@ -68,22 +68,34 @@ set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/pr_subs
 set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/pr_subsystem_emif_clock_bridge.ip
 set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/pr_subsystem_sld_jtag_bridge_agent.ip
 
+set_global_assignment -name IP_FILE source/common/sld_jtag_host/ip/sld_jtag_host.ip
+
+set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/block.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/gol_block_wrapper.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/gol_cell.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/gol_persona.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/gol_persona_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/gol_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/gol_persona/moderator.sv
+
 set_global_assignment -name QSYS_FILE source/common/reg_file/reg_file.qsys
 set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_clock_bridge.ip
 set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_mm_bridge.ip
-set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_pio_in.ip
-set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_pio_out.ip
 set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_reset_bridge.ip
+set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_pio_out.ip
+set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_pio_in.ip
 
-set_global_assignment -name QSYS_FILE source/common/emif_interface/emif_avmm_interface.qsys
-set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_global_reset.ip
-set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_mm_bridge_0.ip
-set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_mm_clock_crossing_bridge.ip
-set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/pr_region_clock.ip
-set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_clock_in.ip
-set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_reset_in.ip
+set_global_assignment -name PRESERVE_UNUSED_XCVR_CHANNEL ON
 
-set_global_assignment -name IP_FILE source/common/sld_jtag_host/ip/sld_jtag_host.ip
+#############################################################
+# QDB file partition assignment
+#############################################################
+set_instance_assignment -name QDB_FILE_PARTITION a10_pcie_devkit_cvp_static.qdb -to |
+
+#############################################################
+# Entity rebinding assignment
+#############################################################
+set_instance_assignment -name ENTITY_REBINDING gol_persona_top -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
 
 #############################################################
 # SDC constraints - Note they are after the Qsys files
@@ -94,3 +106,5 @@ set_global_assignment -name SDC_FILE auxiliary.sdc
 # PR setup
 #############################################################
 set_global_assignment -name REVISION_TYPE PR_IMPL
+set_global_assignment -name GENERATE_PR_RBF_FILE ON
+set_global_assignment -name ON_CHIP_BITSTREAM_DECOMPRESSION OFF

@@ -1,4 +1,4 @@
-// Copyright (c) 2001-2017 Intel Corporation
+// Copyright (c) 2001-2018 Intel Corporation
 //  
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
@@ -26,8 +26,6 @@
 
 package design_top_sim_pkg;
    import uvm_pkg::*;
-
-   `include "region0_prblock_listener.sv"
 
    `include "sim_reporting.sv"
    `include "sb_predictor_base.sv"
