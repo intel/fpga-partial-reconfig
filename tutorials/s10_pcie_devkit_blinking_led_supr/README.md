@@ -1,6 +1,6 @@
 # Stratix 10 Blinking LED Static Update Partial Reconfiguration Tutorial for the Stratix 10 GX FPGA Development Kit
 
-This readme file accompanies the Stratix 10 Blinking LED Statix Update Partial Reconfiguration (PR) Tutorial for the Stratix 10 GX FPGA Development Kit. This directory contains the design files for the Static Update PR (SUPR) tutorial. This version of the design has been verified using Quartus Prime Pro v17.1.
+This readme file accompanies the Stratix 10 Blinking LED Statix Update Partial Reconfiguration (PR) Tutorial for the Stratix 10 GX FPGA Development Kit. This directory contains the design files for the Static Update PR (SUPR) tutorial. This version of the design has been verified using Quartus Prime Pro v18.0.
 
 This readme file contains the following information:
 
@@ -21,6 +21,6 @@ This readme file contains the following information:
 
 ## System Requirements
 
-*  Quartus Prime Pro Edition software version 17.1
+*  Quartus Prime Pro Edition software version 18.0
 *  [Stratix 10 GX FPGA Development Kit](https://www.altera.com/products/boards_and_kits/dev-kits/altera/kit-s10-fpga.html)
 

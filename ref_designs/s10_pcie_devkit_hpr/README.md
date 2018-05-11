@@ -1,6 +1,6 @@
 # Stratix 10 Hierarchical Partial Reconfiguration over PCIe Reference Design
 
-This readme file accompanies the Stratix 10 PR over PCIe reference design using hierarchical partial reconfiguration (HPR) for the Stratix 10 GX FPGA Development Kit. This version of the design has been verified using Quartus Prime Pro v17.1.1.
+This readme file accompanies the Stratix 10 PR over PCIe reference design using hierarchical partial reconfiguration (HPR) for the Stratix 10 GX FPGA Development Kit. This version of the design has been verified using Quartus Prime Pro v18.0.0.
 
 This readme file contains the following information:
 
@@ -37,5 +37,5 @@ This readme file contains the following information:
 
 ## System Requirements
 
-*  Quartus Prime Pro Edition software version 17.1.1
+*  Quartus Prime Pro Edition software version 18.0.0
 *  [Stratix 10 GX FPGA Development Kit](https://www.altera.com/products/boards_and_kits/dev-kits/altera/kit-s10-fpga.html)
