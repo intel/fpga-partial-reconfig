@@ -19,22 +19,10 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-`ifndef INC_RESET_PKG_SV
-`define INC_RESET_PKG_SV
-
-`include "uvm_macros.svh"
-
-package reset_pkg;
-   import uvm_pkg::*;
-
-   `include "reset_seq_item.sv"
-   `include "reset_driver.sv"
-   `include "reset_sequencer.sv"
-   `include "reset_monitor.sv"
-   `include "reset_agent.sv"
-   `include "reset_sequence_lib.sv"
-   `include "signal_watchdog.sv"
-
-endpackage
-
-`endif //INC_RESET_PKG_SV
+interface signal_watchdog_if (input wire clk);
+   logic watched;
+   
+   clocking cb1 @(posedge clk);
+   endclocking
+   
+endinterface

@@ -19,22 +19,21 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-`ifndef INC_RESET_PKG_SV
-`define INC_RESET_PKG_SV
+`ifndef INC_CONFIG_STREAM_ENDPOINT_PR_PKG_SV
+`define INC_CONFIG_STREAM_ENDPOINT_PR_PKG_SV
+
 
 `include "uvm_macros.svh"
 
-package reset_pkg;
+package config_stream_endpoint_pr_pkg;
    import uvm_pkg::*;
 
-   `include "reset_seq_item.sv"
-   `include "reset_driver.sv"
-   `include "reset_sequencer.sv"
-   `include "reset_monitor.sv"
-   `include "reset_agent.sv"
-   `include "reset_sequence_lib.sv"
-   `include "signal_watchdog.sv"
+   `include "config_stream_endpoint_pr_seq_item.sv"
+   `include "config_stream_endpoint_pr_monitor.sv"
+   `include "config_stream_endpoint_pr_agent.sv"
+   `include "config_stream_endpoint_pr_to_pr_region_translator.sv"
 
 endpackage
 
-`endif //INC_RESET_PKG_SV
+
+`endif //INC_CONFIG_STREAM_ENDPOINT_PR_PKG_SV

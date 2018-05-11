@@ -1,4 +1,4 @@
-// Copyright (c) 2001-2017 Intel Corporation
+// Copyright (c) 2001-2018 Intel Corporation
 //  
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
@@ -35,7 +35,9 @@ class avmm_command_seq_item_c
   int AV_READRESPONSE_W = -1,
   int AV_WRITERESPONSE_W = -1,
   int USE_WRITE_RESPONSE = -1,
-  int USE_READ_RESPONSE = -1
+  int USE_READ_RESPONSE = -1,
+  int USE_ARBITERLOCK = -1,
+  int USE_LOCK = -1
 
   ////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////
@@ -85,7 +87,7 @@ class avmm_command_seq_item_c
    // Event pool:
    uvm_event_pool events;
 
-   `uvm_object_param_utils_begin(avmm_command_seq_item_c #(AV_ADDRESS_W, AV_BURSTCOUNT_W, USE_BURSTCOUNT, AV_DATA_W, AV_NUMSYMBOLS, AV_READRESPONSE_W, AV_WRITERESPONSE_W, USE_WRITE_RESPONSE, USE_READ_RESPONSE))
+   `uvm_object_param_utils_begin(avmm_command_seq_item_c #(AV_ADDRESS_W, AV_BURSTCOUNT_W, USE_BURSTCOUNT, AV_DATA_W, AV_NUMSYMBOLS, AV_READRESPONSE_W, AV_WRITERESPONSE_W, USE_WRITE_RESPONSE, USE_READ_RESPONSE, USE_ARBITERLOCK, USE_LOCK))
    `uvm_field_enum(avalon_mm_pkg::Request_t, request, UVM_DEFAULT)
    `uvm_field_string(description, UVM_DEFAULT | UVM_NOCOMPARE | UVM_NOCOPY)
    `uvm_field_int(address, UVM_DEFAULT)
@@ -95,8 +97,8 @@ class avmm_command_seq_item_c
    `uvm_field_sarray_int(idle, UVM_DEFAULT | UVM_DEC)
    `uvm_field_int(init_latency, UVM_DEFAULT | UVM_DEC)
    `uvm_field_int(burst_size, UVM_DEFAULT | UVM_DEC | UVM_NOCOMPARE)
-   `alt_cond_uvm_field(`uvm_field_int(arbiterlock, UVM_DEFAULT), USE_BURSTCOUNT == 0)
-   `alt_cond_uvm_field(`uvm_field_int(lock, UVM_DEFAULT), USE_BURSTCOUNT == 0)
+   `alt_cond_uvm_field(`uvm_field_int(arbiterlock, UVM_DEFAULT), USE_ARBITERLOCK == 1)
+   `alt_cond_uvm_field(`uvm_field_int(lock, UVM_DEFAULT), USE_LOCK == 1)
    //`uvm_field_int(debugaccess, UVM_DEFAULT) // KALEN HACK. This should be from USE_DEBUGACCESS
    //`uvm_field_int(transaction_id, UVM_DEFAULT) //KALEN HACK. This should be from USE_TRANSACTIONID
    `uvm_field_int(begin_time, UVM_DEFAULT | UVM_TIME | UVM_NOCOMPARE)
@@ -142,7 +144,9 @@ class avmm_command_seq_item_c
                               AV_READRESPONSE_W,
                               AV_WRITERESPONSE_W,
                               USE_READ_RESPONSE,
-                              USE_WRITE_RESPONSE) rhs_;
+                              USE_WRITE_RESPONSE,
+                              USE_ARBITERLOCK,
+                              USE_LOCK) rhs_;
 
       super.do_copy(rhs);
 
@@ -160,7 +164,9 @@ class avmm_command_seq_item_c
                               AV_READRESPONSE_W,
                               AV_WRITERESPONSE_W,
                               USE_READ_RESPONSE,
-                              USE_WRITE_RESPONSE) tr;
+                              USE_WRITE_RESPONSE,
+                              USE_ARBITERLOCK,
+                              USE_LOCK) tr;
       bit eq;
 
       eq = super.do_compare(rhs, comparer);

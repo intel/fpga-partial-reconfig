@@ -1,4 +1,4 @@
-// Copyright (c) 2001-2017 Intel Corporation
+// Copyright (c) 2001-2018 Intel Corporation
 //  
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
@@ -24,6 +24,7 @@
 `define INC_ALTR_CMN_MACROS_SV
 
 `include "uvm_macros.svh"
+import uvm_pkg::*;
 
 //==================================================================================================
 // Conditionally enable a UVM field if a condition is met
@@ -71,5 +72,29 @@
        if (!uvm_pkg::uvm_resource_db#(TYPE)::read_by_name(SCOPE, NAME, VAR)) \
            uvm_report_fatal("ASSERT", $sformatf("Could not find interface name %s::%s in resource DB", SCOPE, NAME), UVM_NONE, `__FILE__, `__LINE__, "", 1); \
    end
+
+//==================================================================================================
+// Color setting macros
+//==================================================================================================
+// TYPE specifiers
+// 1 set bold 
+// 2 set half-bright
+// 4 set underscore
+// 5 set blink 
+// 7 set reverse video 
+
+// COLOR specifiers
+// 30 black
+// 31 red
+// 32 green
+// 33 brown
+// 34 blue
+// 35 magenta
+// 36 cyan
+// 37 white
+`define altr_color_default $write("%c[0m",27); // Normal
+`define altr_color_red $write("%c[1;31m",27); // Red Bold
+`define altr_color_green $write("%c[1;32m",27); // Green Bold
+
 
 `endif //INC_ALTR_CMN_MACROS_SV

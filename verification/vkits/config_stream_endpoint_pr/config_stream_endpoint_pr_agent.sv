@@ -19,22 +19,33 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-`ifndef INC_RESET_PKG_SV
-`define INC_RESET_PKG_SV
+`ifndef INC_CONFIG_STREAM_ENDPOINT_PR_AGENT_SV
+`define INC_CONFIG_STREAM_ENDPOINT_PR_AGENT_SV
 
-`include "uvm_macros.svh"
+class config_stream_endpoint_pr_agent_c extends uvm_agent;
+   `uvm_component_utils(config_stream_endpoint_pr_agent_c)
 
-package reset_pkg;
-   import uvm_pkg::*;
+   uvm_analysis_port #(config_stream_endpoint_pr_seq_item_c) aport;
 
-   `include "reset_seq_item.sv"
-   `include "reset_driver.sv"
-   `include "reset_sequencer.sv"
-   `include "reset_monitor.sv"
-   `include "reset_agent.sv"
-   `include "reset_sequence_lib.sv"
-   `include "signal_watchdog.sv"
+   config_stream_endpoint_pr_monitor_c mon;
 
-endpackage
+   function new(string name = "config_stream_endpoint_pr_agent", uvm_component parent);
+      super.new(name, parent);
+   endfunction
 
-`endif //INC_RESET_PKG_SV
+   virtual function void build_phase(uvm_phase phase);
+      super.build_phase(phase);
+
+      mon = config_stream_endpoint_pr_monitor_c::type_id::create("mon", this);
+      aport = new("aport", this);
+   endfunction
+
+   virtual function void connect_phase(uvm_phase phase);
+      super.connect_phase(phase);
+
+      mon.aport.connect(aport);
+   endfunction
+
+endclass
+
+`endif //INC_CONFIG_STREAM_ENDPOINT_PR_AGENT_SV

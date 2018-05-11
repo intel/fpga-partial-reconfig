@@ -1,4 +1,4 @@
-// Copyright (c) 2001-2017 Intel Corporation
+// Copyright (c) 2001-2018 Intel Corporation
 //  
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
@@ -90,6 +90,7 @@ class avmm_base_seq_c #(parameter type T = avmm_command_seq_item_c) extends uvm_
       tr.request = avalon_mm_pkg::REQ_WRITE;
       tr.address = address;
       tr.data[0] = data;
+      tr.byte_enable[0] = '1;
       tr.burst_count = 1;
       tr.burst_size = 1;
       finish_item(tr);
