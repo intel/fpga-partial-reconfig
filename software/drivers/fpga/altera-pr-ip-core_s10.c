@@ -334,7 +334,7 @@ static int alt_pr_fpga_write_complete(struct fpga_manager *mgr,
 	u32 i;
 
 	for (i = 0; i < info->config_complete_timeout_us; i++) {
-		msleep(20); /*20ms*/ 
+		msleep(200); /*200ms*/ 
 		switch (alt_pr_fpga_state(mgr)) {
 		case FPGA_MGR_STATE_WRITE_ERR:
 			return -EIO;
