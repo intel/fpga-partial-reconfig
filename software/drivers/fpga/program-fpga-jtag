@@ -35,7 +35,7 @@ SCRIPT_NAME="$(basename ${_this_script})"
 SOF=''
 CABLE=0
 PCIE_CARD=''
-DEVICE_INDEX=1
+DEVICE_INDEX=''
 
 function usage()
 {
