@@ -10,7 +10,7 @@ This readme file contains the following information:
 
 ## Signal Tap Tutorial for Intel Arria 10 Partial Reconfiguration Design Contents
 
-*  **flat/** - This directory contains the *flat* version of the design. The following are the design files available in this folder:
+*  **start/** - This directory contains the *flat* version of the design. The following are the design files available in this folder:
 	* top.sv--top-level file containing the flat implementation of the design.
 	* blinking_led.sdc--defines the timing constraints for the project.
 	* top_counter.sv--System Verilog file that causes the LEDs to blink using a 32-bit counter.
@@ -19,7 +19,7 @@ This readme file contains the following information:
 	* blinking_led.qsf--Quartus Prime settings file containing the assignments and settings for the project.
 	* jtag.sdc--Timing constraints for JTAG
 
-*  **stp/** - This directory contains the traditional PR + Signal Tap version of the design. The following are the complete set of files you will be creating with this tutorial:
+*  **finish/** - This directory contains the traditional PR + Signal Tap version of the design. The following are the complete set of files you will be creating with this tutorial:
 	* blinking_led.sv--System Verilog file that causes the LEDs to blink using a 32-bit counter.
 	* top_counter.sv--System Verilog file that causes the LEDs to blink using a 32-bit counter.
 	* blinking_led.qpf--Quartus Prime project file containing the synthesis revision information for the personas.
