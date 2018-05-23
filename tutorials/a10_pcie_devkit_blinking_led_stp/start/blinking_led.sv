@@ -32,7 +32,16 @@ module blinking_led (
    input wire clock,
    input wire [31:0] counter,
 
-
+	//===================
+	// Uncomment this block to enable Signal Tap
+	// input wire tck,
+	// input wire tms,
+	// input wire tdi,
+	// input wire vir_tdi,
+	// input wire ena,
+	// output wire tdo,
+	//===================
+	
    // Control signals for the LEDs
    output wire led_two_on,
    output wire led_three_on
@@ -41,7 +50,18 @@ module blinking_led (
    localparam COUNTER_TAP = 23;
    reg led_two_on_r;
    reg led_three_on_r;
-
+	
+	//==================
+	//Uncomment this block to enable Signal Tap
+ //    sld_host u_sld_hostled_two_on (
+	// 	.tck	(tck),	//   input,  width = 1, connect_to_bridge_host.tck
+	// 	.tms	(tms),	//   input,  width = 1,                       .tms
+	// 	.tdi	(tdi),	//   input,  width = 1,                       .tdi
+	// 	.vir_tdi(vir_tdi),//   input,  width = 1,                    .vir_tdi
+	// 	.ena	(ena),	//   input,  width = 1,                       .ena
+	// 	.tdo	(tdo)	//  output,  width = 1,                       .tdo
+	// );
+	//==================
 
    assign led_two_on   = led_two_on_r;
    assign led_three_on = led_three_on_r;

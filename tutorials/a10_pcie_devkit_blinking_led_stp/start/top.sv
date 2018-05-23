@@ -94,7 +94,25 @@ module top (
 
    assign led_two_on_w    = freeze ? 1'b1 : pr_led_two_on;
    assign led_three_on_w  = freeze ? 1'b1 : pr_led_three_on;
-
+	
+	//==============
+	//Uncomment this block to enable Signal Tap
+	// wire tck;
+	// wire tms;
+	// wire tdi;
+	// wire vir_tdi;
+	// wire ena;
+	// wire tdo;
+		
+	// sld_agent u_sld_agent (
+	// 	.tck	(tck),	//  output,  width = 1, connect_to_bridge_host.tck
+	// 	.tms	(tms),	//  output,  width = 1,                       .tms
+	// 	.tdi	(tdi),	//  output,  width = 1,                       .tdi
+	// 	.vir_tdi(vir_tdi),	//output,  width = 1,                 .vir_tdi
+	// 	.ena	(ena),	//  output,  width = 1,                       .ena
+	// 	.tdo	(tdo)	//   input,  width = 1,                       .tdo
+	// );
+	//==============
 
    ////////////////////////////////////////////////////////////////////////
    // instance of the default counter
@@ -113,9 +131,19 @@ module top (
    (
       .clock         (clock),
       .counter       (count_d),
+		
+		//===================
+		//Uncomment this block to enable Signal Tap
+		// .tck	(tck),	//   input,  width = 1, connect_to_bridge_host.tck
+		// .tms	(tms),	//   input,  width = 1,                       .tms
+		// .tdi	(tdi),	//   input,  width = 1,                       .tdi
+		// .vir_tdi(vir_tdi), //   input,  width = 1,                   .vir_tdi
+		// .ena	(ena),	//   input,  width = 1,                       .ena
+		// .tdo	(tdo),	//  output,  width = 1,                       .tdo
+		//====================
+		
       .led_two_on    (pr_led_two_on),
       .led_three_on  (pr_led_three_on)
-
    );
 
    ////////////////////////////////////////////////////////////////////////
@@ -125,16 +153,16 @@ module top (
    // 
    // This tutorial implements PR over JTAG
    ////////////////////////////////////////////////////////////////////////
-   //pr_ip u_pr_ip
-   //(
-   //    .clk           (clock),
-   //    .nreset        (1'b1),
-   //    .freeze        (freeze),
-   //    .pr_start      (1'b0),            // ignored for JTAG
-   //    .status        (pr_ip_status),
-   //    .data          (16'b0),
-   //    .data_valid    (1'b0),
-   //    .data_ready    ()
-   //);
+   pr_ip u_pr_ip
+   (
+      .clk           (clock),
+      .nreset        (1'b1),
+      .freeze        (freeze),
+      .pr_start      (1'b0),            // ignored for JTAG
+      .status        (pr_ip_status),
+      .data          (16'b0),
+      .data_valid    (1'b0),
+      .data_ready    ()
+   );
 
 endmodule

@@ -43,7 +43,7 @@ DATE = "14:57:12  February 22, 2018"
 
 # Revisions
 
+PROJECT_REVISION = "blinking_led"
 PROJECT_REVISION = "blinking_led_slow"
 PROJECT_REVISION = "blinking_led_empty"
 PROJECT_REVISION = "blinking_led_default"
-PROJECT_REVISION = "blinking_led"

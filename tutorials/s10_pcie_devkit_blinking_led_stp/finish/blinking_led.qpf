@@ -42,8 +42,7 @@ QUARTUS_VERSION = "18.0"
 DATE = "17:51:16  February 21, 2018"
 
 # Revisions
-
+PROJECT_REVISION = "blinking_led"
 PROJECT_REVISION = "blinking_led_empty"
 PROJECT_REVISION = "blinking_led_default"
 PROJECT_REVISION = "blinking_led_slow"
-PROJECT_REVISION = "blinking_led"
