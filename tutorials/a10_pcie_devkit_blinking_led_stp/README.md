@@ -17,7 +17,11 @@ This readme file contains the following information:
 	* blinking_led.sv--System Verilog file that causes the LEDs to blink using a 32-bit counter.
 	* blinking_led.qpf--Quartus Prime project file containing the base revision information.
 	* blinking_led.qsf--Quartus Prime settings file containing the assignments and settings for the project.
-	* jtag.sdc--Timing constraints for JTAG
+	* blinking_led_default.qsf--Quartus Prime settings file containing the assignments and settings for the blinking_led_default persona.
+	* blinking_led_empty.qsf--Quartus Prime project file containing the assignments and settings for blinking_led_empty persona.
+	* blinking_led_empty.sv--System Verilog file that causes the LEDs to stay ON.	
+	* blinking_led_slow.qsf--Quartus Prime project file containing the assignments and settings for blinking_led_slow persona.
+	* blinking_led_slow.sv--System Verilog file that causes the LEDs to blink slower.
 
 *  **finish/** - This directory contains the traditional PR + Signal Tap version of the design. The following are the complete set of files you will be creating with this tutorial:
 	* blinking_led.sv--System Verilog file that causes the LEDs to blink using a 32-bit counter.
