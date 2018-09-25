@@ -15,12 +15,8 @@
 
 
 set_global_assignment -name FAMILY "Stratix 10"
-set_global_assignment -name DEVICE 1SG280LU3F50E3VGS2
+set_global_assignment -name DEVICE 1SG280HU2F50E2VGS1
 set_global_assignment -name TOP_LEVEL_ENTITY top
-set_global_assignment -name SYSTEMVERILOG_FILE top.sv
-set_global_assignment -name SYSTEMVERILOG_FILE blinking_led.sv
-set_global_assignment -name SYSTEMVERILOG_FILE top_counter.sv
-set_global_assignment -name SDC_FILE blinking_led.sdc
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 # -------------------------------------------------------------------------- #
 # exclusive region for PR:
@@ -64,3 +60,14 @@ set_global_assignment -name ENABLE_ED_CRC_CHECK ON
 set_global_assignment -name MINIMUM_SEU_INTERVAL 0
 set_global_assignment -name ACTIVE_SERIAL_CLOCK AS_FREQ_100MHZ 
 
+set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Pro Edition"
+set_instance_assignment -name EXPORT_PARTITION_SNAPSHOT_FINAL blinking_led_static.qdb -to | -entity top
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
+set_global_assignment -name ENABLE_SIGNALTAP ON
+set_global_assignment -name USE_SIGNALTAP_FILE stp_yc.stp
+set_global_assignment -name SYSTEMVERILOG_FILE top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE blinking_led.sv
+set_global_assignment -name SYSTEMVERILOG_FILE top_counter.sv
+set_global_assignment -name SDC_FILE blinking_led.sdc
+set_global_assignment -name SIGNALTAP_FILE stp_yc.stp
