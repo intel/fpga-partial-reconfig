@@ -1,33 +1,47 @@
-# Copyright (C) 2001-2018 Intel Corporation. All rights reserved.
-# Your use of Intel Corporation's design tools, logic functions
-# and other software and tools, and its AMPP partner logic
-# functions, and any output files from any of the foregoing
-# (including device programming or simulation files), and any
-# associated documentation or information are expressly subject
-# to the terms and conditions of the Intel Program License
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2018  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
 # Subscription Agreement, the Intel Quartus Prime License Agreement,
-# the Intel MegaCore Function License Agreement, or other
-# applicable license agreement, including, without limitation,
-# that your use is for the sole purpose of programming logic
-# devices manufactured by Intel and sold by Intel or its
-# authorized distributors.  Please refer to the applicable
-# agreement for further details.
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 18.1.0 Build 222 09/21/2018 SJ Pro Edition
+# Date created = 10:42:48  September 25, 2018
+#
+# -------------------------------------------------------------------------- #
 
-
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.1.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "10:42:48  SEPTEMBER 25, 2018"
+set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Pro Edition"
 set_global_assignment -name FAMILY "Arria 10"
 set_global_assignment -name DEVICE 10AX115S2F45I1SG
 set_global_assignment -name TOP_LEVEL_ENTITY top
-
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_instance_assignment -name PARTITION pr_partition -to u_blinking_led -entity top
+set_instance_assignment -name PARTIAL_RECONFIGURATION_PARTITION ON -to u_blinking_led -entity top
+set_instance_assignment -name ENTITY_REBINDING blinking_led_slow -to u_blinking_led -entity top
+set_instance_assignment -name QDB_FILE_PARTITION output_files/blinking_led_static.qdb -to |
+set_global_assignment -name REVISION_TYPE PR_IMPL
+set_global_assignment -name SYSTEMVERILOG_FILE blinking_led_slow.sv
 set_global_assignment -name SDC_FILE jtag.sdc
 set_global_assignment -name SDC_FILE blinking_led.sdc
-
 set_global_assignment -name IP_FILE pr_ip.ip
-
-set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
-
-set_global_assignment -name REVISION_TYPE PR_Impl
-set_global_assignment -name SYSTEMVERILOG_FILE blinking_led_slow.sv
-set_instance_assignment -name QDB_FILE_PARTITION blinking_led_static.qdb -to |
-set_instance_assignment -name ENTITY_REBINDING blinking_led_slow -to u_blinking_led
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP "-40"
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
+set_global_assignment -name POWER_AUTO_COMPUTE_TJ ON
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name GENERATE_PR_RBF_FILE ON
 set_global_assignment -name ON_CHIP_BITSTREAM_DECOMPRESSION OFF
