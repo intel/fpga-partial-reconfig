@@ -18,7 +18,8 @@
 # Device setup
 #############################################################
 set_global_assignment -name FAMILY "Stratix 10"
-set_global_assignment -name DEVICE 1SG280LU3F50E3VG
+#set_global_assignment -name DEVICE 1SG280LU3F50E3VG
+set_global_assignment -name DEVICE 1SG280HU2F50E2VGS1
 
 #############################################################
 # Files and basic setup
@@ -94,11 +95,11 @@ set_global_assignment -name DEVICE_INITIALIZATION_CLOCK OSC_CLK_1_125MHZ
 #############################################################
 set_global_assignment -name REVISION_TYPE PR_IMPL
 
-set_instance_assignment -name QDB_FILE_PARTITION s10_pcie_devkit_pr_static.qdb -to |
+set_instance_assignment -name QDB_FILE_PARTITION output_files/s10_pcie_devkit_pr_static.qdb -to |
 set_instance_assignment -name ENTITY_REBINDING basic_arithmetic_persona_top -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
 
 set_global_assignment -name PRESERVE_UNUSED_XCVR_CHANNEL ON
-set_global_assignment -name LAST_QUARTUS_VERSION "18.0.0 Pro Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Pro Edition"
 
 #############################################################
 # SDC constraints - Note they are after the Qsys files

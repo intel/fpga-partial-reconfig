@@ -18,7 +18,8 @@
 # Device setup
 #############################################################
 set_global_assignment -name FAMILY "Stratix 10"
-set_global_assignment -name DEVICE 1SG280LU3F50E3VG
+#set_global_assignment -name DEVICE 1SG280LU3F50E3VG
+set_global_assignment -name DEVICE 1SG280HU2F50E2VGS1
 
 #############################################################
 # Files and basic setup
@@ -29,31 +30,11 @@ set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 #############################################################
 # SDC constraints - Note they are before the Qsys files
 #############################################################
-set_global_assignment -name SDC_FILE jtag.sdc
-set_global_assignment -name SDC_FILE s10_pcie_devkit_pr.sdc
 
 #############################################################
 # QSYS and IP Files
 #############################################################
-set_global_assignment -name QSYS_FILE source/common/reg_file/reg_file.qsys
-set_global_assignment -name QSYS_FILE source/common/emif_interface/emif_avmm_interface.qsys
-set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_clock_bridge.ip
-set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_mm_bridge.ip
-set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_pio_in.ip
-set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_pio_out.ip
-set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_reset_bridge.ip
-set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_global_reset.ip
-set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_mm_bridge_0.ip
-set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_mm_clock_crossing_bridge.ip
-set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/pr_region_clock.ip
-set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_clock_in.ip
-set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_reset_in.ip
-set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/emif_pipeline_bridge.ip
-set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/emif_bridge.ip
 
-set_global_assignment -name SYSTEMVERILOG_FILE source/basic_dsp_persona/basic_dsp_persona_top.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/basic_dsp_persona/basic_dsp_persona.sv
-set_global_assignment -name SYSTEMVERILOG_FILE source/basic_dsp_persona/basic_dsp_top.sv
 
 
 #############################################################
@@ -87,10 +68,8 @@ set_global_assignment -name DEVICE_INITIALIZATION_CLOCK OSC_CLK_1_125MHZ
 #############################################################
 # SignalTap
 #############################################################
-set_global_assignment -name IP_FILE source/common/sld_jtag_host/ip/sld_jtag_host.ip
 set_global_assignment -name ENABLE_SIGNALTAP ON
 set_global_assignment -name USE_SIGNALTAP_FILE basic_dsp_persona.stp
-set_global_assignment -name SIGNALTAP_FILE basic_dsp_persona.stp
 
 
 #############################################################
@@ -98,14 +77,36 @@ set_global_assignment -name SIGNALTAP_FILE basic_dsp_persona.stp
 #############################################################
 set_global_assignment -name REVISION_TYPE PR_IMPL
 
-set_instance_assignment -name QDB_FILE_PARTITION s10_pcie_devkit_pr_static.qdb -to |
+set_instance_assignment -name QDB_FILE_PARTITION output_files/s10_pcie_devkit_pr_static.qdb -to |
 set_instance_assignment -name ENTITY_REBINDING basic_dsp_persona_top -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
 
 set_global_assignment -name PRESERVE_UNUSED_XCVR_CHANNEL ON
-set_global_assignment -name LAST_QUARTUS_VERSION "18.0.0 Pro Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Pro Edition"
 
 #############################################################
 # SDC constraints - Note they are after the Qsys files
 #############################################################
-set_global_assignment -name SDC_FILE auxiliary.sdc
 
+set_global_assignment -name SDC_FILE jtag.sdc
+set_global_assignment -name SDC_FILE s10_pcie_devkit_pr.sdc
+set_global_assignment -name QSYS_FILE source/common/reg_file/reg_file.qsys
+set_global_assignment -name QSYS_FILE source/common/emif_interface/emif_avmm_interface.qsys
+set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_clock_bridge.ip
+set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_mm_bridge.ip
+set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_pio_in.ip
+set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_pio_out.ip
+set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_reset_bridge.ip
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_global_reset.ip
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_mm_bridge_0.ip
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_mm_clock_crossing_bridge.ip
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/pr_region_clock.ip
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_clock_in.ip
+set_global_assignment -name IP_FILE source/common/emif_interface/ip/emif_avmm_interface/emif_avmm_interface_reset_in.ip
+set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/emif_pipeline_bridge.ip
+set_global_assignment -name IP_FILE source/static_region/ip/pr_subsystem/emif_bridge.ip
+set_global_assignment -name SYSTEMVERILOG_FILE source/basic_dsp_persona/basic_dsp_persona_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/basic_dsp_persona/basic_dsp_persona.sv
+set_global_assignment -name SYSTEMVERILOG_FILE source/basic_dsp_persona/basic_dsp_top.sv
+set_global_assignment -name IP_FILE source/common/sld_jtag_host/ip/sld_jtag_host.ip
+set_global_assignment -name SIGNALTAP_FILE basic_dsp_persona.stp
+set_global_assignment -name SDC_FILE auxiliary.sdc
