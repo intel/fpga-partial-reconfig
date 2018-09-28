@@ -67,9 +67,9 @@ module s10_pcie_ref_design
    output wire        xcvr_tx_out7   
 );
 
-   wire [63:0]         pcie_dma_wr_master_address;
-   wire                pcie_dma_wr_master_read;
-   wire [4:0]          pcie_dma_wr_master_burstcount;
+   //wire [63:0]         pcie_dma_wr_master_address;
+   //wire                pcie_dma_wr_master_read;
+   //wire [4:0]          pcie_dma_wr_master_burstcount;
    
 
    
@@ -102,12 +102,12 @@ module s10_pcie_ref_design
       .s10_pcie_refclk_clk                                    ( ref_clk_clk ),
       .hip_ctrl_test_in                                       ( 0 ),
       .hip_ctrl_simu_mode_pipe                                ( 1'b0 ),
-      .pcie_dma_wr_master_address                             ( pcie_dma_wr_master_address ),
-      .pcie_dma_wr_master_read                                ( pcie_dma_wr_master_read ),
-      .pcie_dma_wr_master_readdata                            ( 256'b0 ),
-      .pcie_dma_wr_master_waitrequest                         ( 1'b0 ),
-      .pcie_dma_wr_master_burstcount                          ( pcie_dma_wr_master_burstcount ),
-      .pcie_dma_wr_master_readdatavalid                       ( 1'b1 ),
+      //.pcie_dma_wr_master_address                             ( pcie_dma_wr_master_address ),
+      //.pcie_dma_wr_master_read                                ( pcie_dma_wr_master_read ),
+      //.pcie_dma_wr_master_readdata                            ( 256'b0 ),
+      //.pcie_dma_wr_master_waitrequest                         ( 1'b0 ),
+      //.pcie_dma_wr_master_burstcount                          ( pcie_dma_wr_master_burstcount ),
+      //.pcie_dma_wr_master_readdatavalid                       ( 1'b1 ),
       .pcie_rstn_npor                                         ( pcie_rstn_npor ),
       .pcie_rstn_pin_perst                                    ( pcie_rstn_pin_perst ),
       .pipe_sim_only_sim_pipe_pclk_in                         ( 1'b0 ),
