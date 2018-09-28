@@ -1,0 +1,130 @@
+#! /bin/bash 
+#
+#     Copyright (C) 2017 Intel Corporation
+#
+#     Redistribution and use in source and binary forms, with or
+#     without modification, are permitted provided that the following
+#     conditions are met:
+#
+#     1. Redistributions of source code must retain the above
+#        copyright notice, this list of conditions and the following
+#        disclaimer.
+#     2. Redistributions in binary form must reproduce the above
+#        copyright notice, this list of conditions and the following
+#        disclaimer in the documentation and/or other materials
+#        provided with the distribution.
+#
+#     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND
+#     CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#     INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+#     MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#     DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+#     CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#     SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+#     NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+#     LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+#     HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+#     CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+#     OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+#     EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+
+_this_script=$(cd ${0%[\\/]*} && echo $(pwd 2>/dev/null)/${0##*/})
+_this_dir=$(dirname ${_this_script})
+
+SCRIPT_NAME="$(basename ${_this_script})"
+SOF=''
+CABLE=0
+PCIE_CARD=''
+DEVICE_INDEX=''
+
+function usage()
+{
+	echo
+	echo "Usage:" 
+	echo "-f=, --file="
+	echo "sof:   path to sof file to load"
+	echo "-c=, --cable="
+	echo "cable: non-zero jtag cable index"
+	echo "(e.g.  1)"
+	echo "-i=, --index="
+	echo "device index: location of the fpga device in the jtag chain"
+	echo "(e.g $SCRIPT_NAME -f=<sof> --cable=1 --device=0000:03:00.0)" 
+	echo
+	exit 1
+}
+
+for i in "$@"
+do
+case $i in
+	--file=*|-f=*)
+	SOF="${i#*=}"
+	echo "SOF is $SOF" 
+	;;
+	-c=*|--cable=*)
+	CABLE=${i#*=}
+	echo "Cable is $CABLE"
+	;;
+	-i=*|--index=*)
+	DEVICE_INDEX="${i#*=}"
+	echo "Chain location is $DEVICE_INDEX"
+	;;
+	-h|--help=*)
+	echo "Printing usage"
+	usage
+	;;
+	*)
+	echo "Error in parameters"
+	usage
+	;;
+esac
+done
+
+
+if [ -z "$SOF" ]
+then
+	echo 
+	echo "ERROR! No sof specified."
+	usage
+fi
+
+if  [  ! -e $SOF  ]
+then
+	echo
+	echo "ERROR! sof specified does not exist."
+	usage
+fi
+
+
+if [ 0 -eq $CABLE ]
+then
+	echo
+	echo "ERROR! No cable or invalid cable specified."
+	usage
+fi
+
+
+echo
+echo "Setting jtag clock to 6MHz"
+jtagconfig --setparam "$CABLE" JtagClock 6M
+
+$_this_dir/fpga-configure -d
+if [ $? != "0" ]
+then
+        echo
+        echo "Failed to disable upstream Advanced Error Reporting"
+        exit 1
+fi
+
+
+
+quartus_pgm -c "$CABLE" -m jtag -o "P;$SOF@$DEVICE_INDEX"
+
+$_this_dir/fpga-configure -e
+if [ $? != "0" ]
+then
+        echo
+        echo "Failed to enable upstream Advanced Error Reporting"
+        exit 1
+fi
+
