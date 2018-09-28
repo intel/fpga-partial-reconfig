@@ -1,301 +1,211 @@
 <?xml version="1.0" ?>
-<spirit:component xmlns:altera="http://www.altera.com/XMLSchema/IPXact/extensions" xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009">
-  <spirit:vendor>Intel Corporation</spirit:vendor>
-  <spirit:library>pr_subsystem_emif_clock_bridge</spirit:library>
-  <spirit:name>pr_subsystem_emif_clock_bridge</spirit:name>
-  <spirit:version>18.0</spirit:version>
-  <spirit:busInterfaces>
-    <spirit:busInterface>
-      <spirit:name>in_clk</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="18.0"></spirit:busType>
-      <spirit:slave></spirit:slave>
-      <spirit:portMaps>
-        <spirit:portMap>
-          <spirit:logicalPort>
-            <spirit:name>clk</spirit:name>
-          </spirit:logicalPort>
-          <spirit:physicalPort>
-            <spirit:name>in_clk</spirit:name>
-          </spirit:physicalPort>
-        </spirit:portMap>
-      </spirit:portMaps>
-      <spirit:parameters>
-        <spirit:parameter>
-          <spirit:name>clockRate</spirit:name>
-          <spirit:displayName>Clock rate</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="clockRate">0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>externallyDriven</spirit:name>
-          <spirit:displayName>Externally driven</spirit:displayName>
-          <spirit:value spirit:format="bool" spirit:id="externallyDriven">false</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>ptfSchematicName</spirit:name>
-          <spirit:displayName>PTF schematic name</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="ptfSchematicName"></spirit:value>
-        </spirit:parameter>
-      </spirit:parameters>
-    </spirit:busInterface>
-    <spirit:busInterface>
-      <spirit:name>out_clk</spirit:name>
-      <spirit:busType spirit:vendor="altera" spirit:library="altera" spirit:name="clock" spirit:version="18.0"></spirit:busType>
-      <spirit:master></spirit:master>
-      <spirit:portMaps>
-        <spirit:portMap>
-          <spirit:logicalPort>
-            <spirit:name>clk</spirit:name>
-          </spirit:logicalPort>
-          <spirit:physicalPort>
-            <spirit:name>out_clk</spirit:name>
-          </spirit:physicalPort>
-        </spirit:portMap>
-      </spirit:portMaps>
-      <spirit:parameters>
-        <spirit:parameter>
-          <spirit:name>associatedDirectClock</spirit:name>
-          <spirit:displayName>Associated direct clock</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="associatedDirectClock">in_clk</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>clockRate</spirit:name>
-          <spirit:displayName>Clock rate</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="clockRate">233250000</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>clockRateKnown</spirit:name>
-          <spirit:displayName>Clock rate known</spirit:displayName>
-          <spirit:value spirit:format="bool" spirit:id="clockRateKnown">true</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>externallyDriven</spirit:name>
-          <spirit:displayName>Externally driven</spirit:displayName>
-          <spirit:value spirit:format="bool" spirit:id="externallyDriven">false</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>ptfSchematicName</spirit:name>
-          <spirit:displayName>PTF schematic name</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="ptfSchematicName"></spirit:value>
-        </spirit:parameter>
-      </spirit:parameters>
-    </spirit:busInterface>
-  </spirit:busInterfaces>
-  <spirit:model>
-    <spirit:views>
-      <spirit:view>
-        <spirit:name>QUARTUS_SYNTH</spirit:name>
-        <spirit:envIdentifier>:quartus.altera.com:</spirit:envIdentifier>
-        <spirit:modelName>altera_clock_bridge</spirit:modelName>
-        <spirit:fileSetRef>
-          <spirit:localName>QUARTUS_SYNTH</spirit:localName>
-        </spirit:fileSetRef>
-      </spirit:view>
-    </spirit:views>
-    <spirit:ports>
-      <spirit:port>
-        <spirit:name>in_clk</spirit:name>
-        <spirit:wire>
-          <spirit:direction>in</spirit:direction>
-          <spirit:wireTypeDefs>
-            <spirit:wireTypeDef>
-              <spirit:typeName>STD_LOGIC</spirit:typeName>
-              <spirit:viewNameRef>QUARTUS_SYNTH</spirit:viewNameRef>
-            </spirit:wireTypeDef>
-          </spirit:wireTypeDefs>
-        </spirit:wire>
-      </spirit:port>
-      <spirit:port>
-        <spirit:name>out_clk</spirit:name>
-        <spirit:wire>
-          <spirit:direction>out</spirit:direction>
-          <spirit:wireTypeDefs>
-            <spirit:wireTypeDef>
-              <spirit:typeName>STD_LOGIC</spirit:typeName>
-              <spirit:viewNameRef>QUARTUS_SYNTH</spirit:viewNameRef>
-            </spirit:wireTypeDef>
-          </spirit:wireTypeDefs>
-        </spirit:wire>
-      </spirit:port>
-    </spirit:ports>
-  </spirit:model>
-  <spirit:vendorExtensions>
+<ipxact:component xmlns:altera="http://www.altera.com/XMLSchema/IPXact2014/extensions" xmlns:ipxact="http://www.accellera.org/XMLSchema/IPXACT/1685-2014">
+  <ipxact:vendor>Intel Corporation</ipxact:vendor>
+  <ipxact:library>pr_subsystem_emif_clock_bridge</ipxact:library>
+  <ipxact:name>pr_subsystem_emif_clock_bridge</ipxact:name>
+  <ipxact:version>18.1</ipxact:version>
+  <ipxact:busInterfaces>
+    <ipxact:busInterface>
+      <ipxact:name>in_clk</ipxact:name>
+      <ipxact:busType vendor="altera" library="altera" name="clock" version="18.1"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="altera" library="altera" name="clock" version="18.1"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>clk</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>in_clk</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:slave></ipxact:slave>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="clockRate" type="longint">
+          <ipxact:name>clockRate</ipxact:name>
+          <ipxact:displayName>Clock rate</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="externallyDriven" type="bit">
+          <ipxact:name>externallyDriven</ipxact:name>
+          <ipxact:displayName>Externally driven</ipxact:displayName>
+          <ipxact:value>false</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="ptfSchematicName" type="string">
+          <ipxact:name>ptfSchematicName</ipxact:name>
+          <ipxact:displayName>PTF schematic name</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>out_clk</ipxact:name>
+      <ipxact:busType vendor="altera" library="altera" name="clock" version="18.1"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="altera" library="altera" name="clock" version="18.1"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>clk</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>out_clk</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedDirectClock" type="string">
+          <ipxact:name>associatedDirectClock</ipxact:name>
+          <ipxact:displayName>Associated direct clock</ipxact:displayName>
+          <ipxact:value>in_clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="clockRate" type="longint">
+          <ipxact:name>clockRate</ipxact:name>
+          <ipxact:displayName>Clock rate</ipxact:displayName>
+          <ipxact:value>233250000</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="clockRateKnown" type="bit">
+          <ipxact:name>clockRateKnown</ipxact:name>
+          <ipxact:displayName>Clock rate known</ipxact:displayName>
+          <ipxact:value>true</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="externallyDriven" type="bit">
+          <ipxact:name>externallyDriven</ipxact:name>
+          <ipxact:displayName>Externally driven</ipxact:displayName>
+          <ipxact:value>false</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="ptfSchematicName" type="string">
+          <ipxact:name>ptfSchematicName</ipxact:name>
+          <ipxact:displayName>PTF schematic name</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+  </ipxact:busInterfaces>
+  <ipxact:model>
+    <ipxact:views>
+      <ipxact:view>
+        <ipxact:name>QUARTUS_SYNTH</ipxact:name>
+        <ipxact:envIdentifier>:quartus.altera.com:</ipxact:envIdentifier>
+        <ipxact:componentInstantiationRef>QUARTUS_SYNTH</ipxact:componentInstantiationRef>
+      </ipxact:view>
+    </ipxact:views>
+    <ipxact:instantiations>
+      <ipxact:componentInstantiation>
+        <ipxact:name>QUARTUS_SYNTH</ipxact:name>
+        <ipxact:moduleName>altera_clock_bridge</ipxact:moduleName>
+        <ipxact:fileSetRef>
+          <ipxact:localName>QUARTUS_SYNTH</ipxact:localName>
+        </ipxact:fileSetRef>
+        <ipxact:parameters></ipxact:parameters>
+      </ipxact:componentInstantiation>
+    </ipxact:instantiations>
+    <ipxact:ports>
+      <ipxact:port>
+        <ipxact:name>in_clk</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>in</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>out_clk</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+    </ipxact:ports>
+  </ipxact:model>
+  <ipxact:vendorExtensions>
     <altera:entity_info>
-      <spirit:vendor>Intel Corporation</spirit:vendor>
-      <spirit:library>pr_subsystem_emif_clock_bridge</spirit:library>
-      <spirit:name>altera_clock_bridge</spirit:name>
-      <spirit:version>18.0</spirit:version>
+      <ipxact:vendor>Intel Corporation</ipxact:vendor>
+      <ipxact:library>pr_subsystem_emif_clock_bridge</ipxact:library>
+      <ipxact:name>altera_clock_bridge</ipxact:name>
+      <ipxact:version>18.1</ipxact:version>
     </altera:entity_info>
     <altera:altera_module_parameters>
-      <spirit:parameters>
-        <spirit:parameter>
-          <spirit:name>DERIVED_CLOCK_RATE</spirit:name>
-          <spirit:displayName>Derived clock rate</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="DERIVED_CLOCK_RATE">233250000</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>EXPLICIT_CLOCK_RATE</spirit:name>
-          <spirit:displayName>Explicit clock rate</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="EXPLICIT_CLOCK_RATE">0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>NUM_CLOCK_OUTPUTS</spirit:name>
-          <spirit:displayName>Number of Clock Outputs</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="NUM_CLOCK_OUTPUTS">1</spirit:value>
-        </spirit:parameter>
-      </spirit:parameters>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="DERIVED_CLOCK_RATE" type="longint">
+          <ipxact:name>DERIVED_CLOCK_RATE</ipxact:name>
+          <ipxact:displayName>Derived clock rate</ipxact:displayName>
+          <ipxact:value>233250000</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="EXPLICIT_CLOCK_RATE" type="longint">
+          <ipxact:name>EXPLICIT_CLOCK_RATE</ipxact:name>
+          <ipxact:displayName>Explicit clock rate</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="NUM_CLOCK_OUTPUTS" type="int">
+          <ipxact:name>NUM_CLOCK_OUTPUTS</ipxact:name>
+          <ipxact:displayName>Number of Clock Outputs</ipxact:displayName>
+          <ipxact:value>1</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
     </altera:altera_module_parameters>
     <altera:altera_system_parameters>
-      <spirit:parameters>
-        <spirit:parameter>
-          <spirit:name>device</spirit:name>
-          <spirit:displayName>Device</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="device">1SG280LU3F50E3VGS2</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>deviceFamily</spirit:name>
-          <spirit:displayName>Device family</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="deviceFamily">Stratix 10</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>deviceSpeedGrade</spirit:name>
-          <spirit:displayName>Device Speed Grade</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="deviceSpeedGrade">1</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>generationId</spirit:name>
-          <spirit:displayName>Generation Id</spirit:displayName>
-          <spirit:value spirit:format="long" spirit:id="generationId">0</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>bonusData</spirit:name>
-          <spirit:displayName>bonusData</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="bonusData">bonusData 
-{
-}
-</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>hideFromIPCatalog</spirit:name>
-          <spirit:displayName>Hide from IP Catalog</spirit:displayName>
-          <spirit:value spirit:format="bool" spirit:id="hideFromIPCatalog">true</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>lockedInterfaceDefinition</spirit:name>
-          <spirit:displayName>lockedInterfaceDefinition</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="lockedInterfaceDefinition"><![CDATA[<boundaryDefinition>
-    <interfaces>
-        <interface>
-            <name>in_clk</name>
-            <type>clock</type>
-            <isStart>false</isStart>
-            <ports>
-                <port>
-                    <name>in_clk</name>
-                    <role>clk</role>
-                    <direction>Input</direction>
-                    <width>1</width>
-                    <lowerBound>0</lowerBound>
-                    <vhdlType>STD_LOGIC</vhdlType>
-                </port>
-            </ports>
-            <assignments>
-                <assignmentValueMap/>
-            </assignments>
-            <parameters>
-                <parameterValueMap>
-                    <entry>
-                        <key>clockRate</key>
-                        <value>0</value>
-                    </entry>
-                    <entry>
-                        <key>externallyDriven</key>
-                        <value>false</value>
-                    </entry>
-                    <entry>
-                        <key>ptfSchematicName</key>
-                    </entry>
-                </parameterValueMap>
-            </parameters>
-        </interface>
-        <interface>
-            <name>out_clk</name>
-            <type>clock</type>
-            <isStart>true</isStart>
-            <ports>
-                <port>
-                    <name>out_clk</name>
-                    <role>clk</role>
-                    <direction>Output</direction>
-                    <width>1</width>
-                    <lowerBound>0</lowerBound>
-                    <vhdlType>STD_LOGIC</vhdlType>
-                </port>
-            </ports>
-            <assignments>
-                <assignmentValueMap/>
-            </assignments>
-            <parameters>
-                <parameterValueMap>
-                    <entry>
-                        <key>associatedDirectClock</key>
-                        <value>in_clk</value>
-                    </entry>
-                    <entry>
-                        <key>clockRate</key>
-                        <value>233250000</value>
-                    </entry>
-                    <entry>
-                        <key>clockRateKnown</key>
-                        <value>true</value>
-                    </entry>
-                    <entry>
-                        <key>externallyDriven</key>
-                        <value>false</value>
-                    </entry>
-                    <entry>
-                        <key>ptfSchematicName</key>
-                    </entry>
-                </parameterValueMap>
-            </parameters>
-        </interface>
-    </interfaces>
-</boundaryDefinition>]]></spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>systemInfos</spirit:name>
-          <spirit:displayName>systemInfos</spirit:displayName>
-          <spirit:value spirit:format="string" spirit:id="systemInfos"><![CDATA[<systemInfosDefinition>
-    <connPtSystemInfos>
-        <entry>
-            <key>in_clk</key>
-            <value>
-                <connectionPointName>in_clk</connectionPointName>
-                <suppliedSystemInfos>
-                    <entry>
-                        <key>CLOCK_RATE</key>
-                        <value>233250000</value>
-                    </entry>
-                </suppliedSystemInfos>
-                <consumedSystemInfos/>
-            </value>
-        </entry>
-        <entry>
-            <key>out_clk</key>
-            <value>
-                <connectionPointName>out_clk</connectionPointName>
-                <suppliedSystemInfos/>
-                <consumedSystemInfos>
-                    <entry>
-                        <key>CLOCK_RATE</key>
-                        <value>233250000</value>
-                    </entry>
-                </consumedSystemInfos>
-            </value>
-        </entry>
-    </connPtSystemInfos>
-</systemInfosDefinition>]]></spirit:value>
-        </spirit:parameter>
-      </spirit:parameters>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="device" type="string">
+          <ipxact:name>device</ipxact:name>
+          <ipxact:displayName>Device</ipxact:displayName>
+          <ipxact:value>1SG280HU2F50E2VGS1</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="deviceFamily" type="string">
+          <ipxact:name>deviceFamily</ipxact:name>
+          <ipxact:displayName>Device family</ipxact:displayName>
+          <ipxact:value>Stratix 10</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="deviceSpeedGrade" type="string">
+          <ipxact:name>deviceSpeedGrade</ipxact:name>
+          <ipxact:displayName>Device Speed Grade</ipxact:displayName>
+          <ipxact:value>1</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="generationId" type="int">
+          <ipxact:name>generationId</ipxact:name>
+          <ipxact:displayName>Generation Id</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="bonusData" type="string">
+          <ipxact:name>bonusData</ipxact:name>
+          <ipxact:displayName>bonusData</ipxact:displayName>
+          <ipxact:value>bonusData &#xa;{&#xa;   element $system&#xa;   {&#xa;      datum _originalDeviceFamily&#xa;      {&#xa;         value = "Stratix 10";&#xa;         type = "String";&#xa;      }&#xa;   }&#xa;   element pr_subsystem_emif_clock_bridge&#xa;   {&#xa;      datum _originalVersion&#xa;      {&#xa;         value = "18.0";&#xa;         type = "String";&#xa;      }&#xa;   }&#xa;}&#xa;</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="hideFromIPCatalog" type="bit">
+          <ipxact:name>hideFromIPCatalog</ipxact:name>
+          <ipxact:displayName>Hide from IP Catalog</ipxact:displayName>
+          <ipxact:value>true</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="lockedInterfaceDefinition" type="string">
+          <ipxact:name>lockedInterfaceDefinition</ipxact:name>
+          <ipxact:displayName>lockedInterfaceDefinition</ipxact:displayName>
+          <ipxact:value>&lt;boundaryDefinition&gt;&#xa;    &lt;interfaces&gt;&#xa;        &lt;interface&gt;&#xa;            &lt;name&gt;in_clk&lt;/name&gt;&#xa;            &lt;type&gt;clock&lt;/type&gt;&#xa;            &lt;isStart&gt;false&lt;/isStart&gt;&#xa;            &lt;ports&gt;&#xa;                &lt;port&gt;&#xa;                    &lt;name&gt;in_clk&lt;/name&gt;&#xa;                    &lt;role&gt;clk&lt;/role&gt;&#xa;                    &lt;direction&gt;Input&lt;/direction&gt;&#xa;                    &lt;width&gt;1&lt;/width&gt;&#xa;                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;&#xa;                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;&#xa;                &lt;/port&gt;&#xa;            &lt;/ports&gt;&#xa;            &lt;assignments&gt;&#xa;                &lt;assignmentValueMap/&gt;&#xa;            &lt;/assignments&gt;&#xa;            &lt;parameters&gt;&#xa;                &lt;parameterValueMap&gt;&#xa;                    &lt;entry&gt;&#xa;                        &lt;key&gt;clockRate&lt;/key&gt;&#xa;                        &lt;value&gt;0&lt;/value&gt;&#xa;                    &lt;/entry&gt;&#xa;                    &lt;entry&gt;&#xa;                        &lt;key&gt;externallyDriven&lt;/key&gt;&#xa;                        &lt;value&gt;false&lt;/value&gt;&#xa;                    &lt;/entry&gt;&#xa;                    &lt;entry&gt;&#xa;                        &lt;key&gt;ptfSchematicName&lt;/key&gt;&#xa;                    &lt;/entry&gt;&#xa;                &lt;/parameterValueMap&gt;&#xa;            &lt;/parameters&gt;&#xa;        &lt;/interface&gt;&#xa;        &lt;interface&gt;&#xa;            &lt;name&gt;out_clk&lt;/name&gt;&#xa;            &lt;type&gt;clock&lt;/type&gt;&#xa;            &lt;isStart&gt;true&lt;/isStart&gt;&#xa;            &lt;ports&gt;&#xa;                &lt;port&gt;&#xa;                    &lt;name&gt;out_clk&lt;/name&gt;&#xa;                    &lt;role&gt;clk&lt;/role&gt;&#xa;                    &lt;direction&gt;Output&lt;/direction&gt;&#xa;                    &lt;width&gt;1&lt;/width&gt;&#xa;                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;&#xa;                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;&#xa;                &lt;/port&gt;&#xa;            &lt;/ports&gt;&#xa;            &lt;assignments&gt;&#xa;                &lt;assignmentValueMap/&gt;&#xa;            &lt;/assignments&gt;&#xa;            &lt;parameters&gt;&#xa;                &lt;parameterValueMap&gt;&#xa;                    &lt;entry&gt;&#xa;                        &lt;key&gt;associatedDirectClock&lt;/key&gt;&#xa;                        &lt;value&gt;in_clk&lt;/value&gt;&#xa;                    &lt;/entry&gt;&#xa;                    &lt;entry&gt;&#xa;                        &lt;key&gt;clockRate&lt;/key&gt;&#xa;                        &lt;value&gt;233250000&lt;/value&gt;&#xa;                    &lt;/entry&gt;&#xa;                    &lt;entry&gt;&#xa;                        &lt;key&gt;clockRateKnown&lt;/key&gt;&#xa;                        &lt;value&gt;true&lt;/value&gt;&#xa;                    &lt;/entry&gt;&#xa;                    &lt;entry&gt;&#xa;                        &lt;key&gt;externallyDriven&lt;/key&gt;&#xa;                        &lt;value&gt;false&lt;/value&gt;&#xa;                    &lt;/entry&gt;&#xa;                    &lt;entry&gt;&#xa;                        &lt;key&gt;ptfSchematicName&lt;/key&gt;&#xa;                    &lt;/entry&gt;&#xa;                &lt;/parameterValueMap&gt;&#xa;            &lt;/parameters&gt;&#xa;        &lt;/interface&gt;&#xa;    &lt;/interfaces&gt;&#xa;&lt;/boundaryDefinition&gt;</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="systemInfos" type="string">
+          <ipxact:name>systemInfos</ipxact:name>
+          <ipxact:displayName>systemInfos</ipxact:displayName>
+          <ipxact:value>&lt;systemInfosDefinition&gt;&#xa;    &lt;connPtSystemInfos&gt;&#xa;        &lt;entry&gt;&#xa;            &lt;key&gt;in_clk&lt;/key&gt;&#xa;            &lt;value&gt;&#xa;                &lt;connectionPointName&gt;in_clk&lt;/connectionPointName&gt;&#xa;                &lt;suppliedSystemInfos&gt;&#xa;                    &lt;entry&gt;&#xa;                        &lt;key&gt;CLOCK_RATE&lt;/key&gt;&#xa;                        &lt;value&gt;233250000&lt;/value&gt;&#xa;                    &lt;/entry&gt;&#xa;                &lt;/suppliedSystemInfos&gt;&#xa;                &lt;consumedSystemInfos/&gt;&#xa;            &lt;/value&gt;&#xa;        &lt;/entry&gt;&#xa;        &lt;entry&gt;&#xa;            &lt;key&gt;out_clk&lt;/key&gt;&#xa;            &lt;value&gt;&#xa;                &lt;connectionPointName&gt;out_clk&lt;/connectionPointName&gt;&#xa;                &lt;suppliedSystemInfos/&gt;&#xa;                &lt;consumedSystemInfos&gt;&#xa;                    &lt;entry&gt;&#xa;                        &lt;key&gt;CLOCK_RATE&lt;/key&gt;&#xa;                        &lt;value&gt;233250000&lt;/value&gt;&#xa;                    &lt;/entry&gt;&#xa;                &lt;/consumedSystemInfos&gt;&#xa;            &lt;/value&gt;&#xa;        &lt;/entry&gt;&#xa;    &lt;/connPtSystemInfos&gt;&#xa;&lt;/systemInfosDefinition&gt;</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
     </altera:altera_system_parameters>
     <altera:altera_interface_boundary>
       <altera:interface_mapping altera:name="in_clk" altera:internal="pr_subsystem_emif_clock_bridge.in_clk" altera:type="clock" altera:dir="end">
@@ -307,5 +217,5 @@
     </altera:altera_interface_boundary>
     <altera:altera_has_warnings>false</altera:altera_has_warnings>
     <altera:altera_has_errors>false</altera:altera_has_errors>
-  </spirit:vendorExtensions>
-</spirit:component>
+  </ipxact:vendorExtensions>
+</ipxact:component>
