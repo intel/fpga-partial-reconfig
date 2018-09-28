@@ -18,7 +18,8 @@
 # Device setup
 #############################################################
 set_global_assignment -name FAMILY "Stratix 10"
-set_global_assignment -name DEVICE 1SG280LU3F50E3VG
+# set_global_assignment -name DEVICE 1SG280LU3F50E3VG
+set_global_assignment -name DEVICE 1SG280HU2F50E2VGS1
 
 #############################################################
 # Files and basic setup
@@ -82,8 +83,8 @@ set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to u_top|design_core|pr
 set_instance_assignment -name ROUTE_REGION "X3 Y339 X28 Y360" -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|child_region_0|u_child_pr_logic
 set_instance_assignment -name PARTIAL_RECONFIGURATION_PARTITION ON -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|child_region_0|u_child_pr_logic -entity s10_pcie_ref_design
 
-set_instance_assignment -name QDB_FILE_PARTITION s10_pcie_devkit_hpr_static.qdb -to |
-set_instance_assignment -name QDB_FILE_PARTITION s10_pcie_devkit_hpr_ddr4_access_pr_partition_final.qdb -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
+set_instance_assignment -name QDB_FILE_PARTITION output_files/s10_pcie_devkit_hpr_static.qdb -to |
+set_instance_assignment -name QDB_FILE_PARTITION output_files/s10_pcie_devkit_hpr_ddr4_access_pr_partition_final.qdb -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
 set_instance_assignment -name ENTITY_REBINDING gol_persona_top -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|child_region_0|u_child_pr_logic
 set_instance_assignment -name ENTITY_REBINDING gol_persona_top -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|child_region_1|u_child_pr_logic
 
@@ -108,7 +109,7 @@ set_global_assignment -name OPTIMIZATION_MODE "AGGRESSIVE PERFORMANCE"
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
 
-set_global_assignment -name LAST_QUARTUS_VERSION "18.0.0 Pro Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Pro Edition"
 
 set_instance_assignment -name PLACE_REGION "X31 Y323 X50 Y342" -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|parent_pr_emif_avmm_pbridge
 set_instance_assignment -name RESERVE_PLACE_REGION OFF -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|parent_pr_emif_avmm_pbridge

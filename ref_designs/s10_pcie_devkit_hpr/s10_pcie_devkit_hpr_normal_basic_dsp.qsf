@@ -18,7 +18,8 @@
 # Device setup
 #############################################################
 set_global_assignment -name FAMILY "Stratix 10"
-set_global_assignment -name DEVICE 1SG280LU3F50E3VG
+# set_global_assignment -name DEVICE 1SG280LU3F50E3VG
+set_global_assignment -name DEVICE 1SG280HU2F50E2VGS1
 
 #############################################################
 # Files and basic setup
@@ -99,7 +100,7 @@ set_instance_assignment -name RESERVE_PLACE_REGION OFF -to u_top|design_core|pr_
 set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u_pr_core|u_reg_file|reg_file_mm_bridge
 set_instance_assignment -name REGION_NAME reg_file_mm_bridge -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u_pr_core|u_reg_file|reg_file_mm_bridge
 
-set_instance_assignment -name QDB_FILE_PARTITION s10_pcie_devkit_hpr_static.qdb -to |
+set_instance_assignment -name QDB_FILE_PARTITION output_files/s10_pcie_devkit_hpr_static.qdb -to |
 set_instance_assignment -name ENTITY_REBINDING basic_dsp_persona_top -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
 
 #############################################################
@@ -118,7 +119,7 @@ set_global_assignment -name ENABLE_ED_CRC_CHECK ON
 set_global_assignment -name MINIMUM_SEU_INTERVAL 0
 set_global_assignment -name ACTIVE_SERIAL_CLOCK AS_FREQ_100MHZ 
 
-set_global_assignment -name LAST_QUARTUS_VERSION "18.0.0 Pro Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Pro Edition"
 
 
 #############################################################
