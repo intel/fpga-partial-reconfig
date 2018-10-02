@@ -83,7 +83,15 @@ set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_one_on
 set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_two_on
 set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_three_on
 
-set_global_assignment -name LAST_QUARTUS_VERSION "18.0.0 Pro Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Pro Edition"
 set_global_assignment -name IP_FILE pr_ip.ip
 set_global_assignment -name GENERATE_PR_RBF_FILE ON
 set_global_assignment -name ON_CHIP_BITSTREAM_DECOMPRESSION OFF
+set_instance_assignment -name EXPORT_PARTITION_SNAPSHOT_FINAL blinking_led_static.qdb -to | -entity top
+set_instance_assignment -name EXPORT_PARTITION_SNAPSHOT_FINAL pr_parent_partition_default_final.qdb -to u_blinking_led -entity top
+set_global_assignment -name PROJECT_IP_REGENERATION_POLICY ALWAYS_REGENERATE_IP
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP "-40"
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
+set_global_assignment -name POWER_AUTO_COMPUTE_TJ ON
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
