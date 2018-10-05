@@ -129,43 +129,6 @@
     <boundary>
         <interfaces>
             <interface>
-                <name>app_nreset_status</name>
-                <type>reset</type>
-                <isStart>true</isStart>
-                <ports>
-                    <port>
-                        <name>app_nreset_status</name>
-                        <role>reset_n</role>
-                        <direction>Output</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                </ports>
-                <assignments>
-                    <assignmentValueMap/>
-                </assignments>
-                <parameters>
-                    <parameterValueMap>
-                        <entry>
-                            <key>associatedClock</key>
-                            <value>coreclkout_hip</value>
-                        </entry>
-                        <entry>
-                            <key>associatedDirectReset</key>
-                        </entry>
-                        <entry>
-                            <key>associatedResetSinks</key>
-                            <value>none</value>
-                        </entry>
-                        <entry>
-                            <key>synchronousEdges</key>
-                            <value>BOTH</value>
-                        </entry>
-                    </parameterValueMap>
-                </parameters>
-            </interface>
-            <interface>
                 <name>coreclkout_hip</name>
                 <type>clock</type>
                 <isStart>true</isStart>
@@ -206,25 +169,58 @@
                 </parameters>
             </interface>
             <interface>
-                <name>dk_hip</name>
+                <name>refclk</name>
+                <type>clock</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>refclk</name>
+                        <role>clk</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>clockRate</key>
+                            <value>100000000</value>
+                        </entry>
+                        <entry>
+                            <key>externallyDriven</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>ptfSchematicName</key>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
+                <name>npor</name>
                 <type>conduit</type>
                 <isStart>false</isStart>
                 <ports>
                     <port>
-                        <name>devkit_status</name>
-                        <role>devkit_status</role>
-                        <direction>Output</direction>
-                        <width>256</width>
+                        <name>npor</name>
+                        <role>npor</role>
+                        <direction>Input</direction>
+                        <width>1</width>
                         <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <vhdlType>STD_LOGIC</vhdlType>
                     </port>
                     <port>
-                        <name>devkit_ctrl</name>
-                        <role>devkit_ctrl</role>
+                        <name>pin_perst</name>
+                        <role>pin_perst</role>
                         <direction>Input</direction>
-                        <width>256</width>
+                        <width>1</width>
                         <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <vhdlType>STD_LOGIC</vhdlType>
                     </port>
                 </ports>
                 <assignments>
@@ -246,251 +242,14 @@
                 </parameters>
             </interface>
             <interface>
-                <name>dma_rd_master</name>
-                <type>avalon</type>
+                <name>app_nreset_status</name>
+                <type>reset</type>
                 <isStart>true</isStart>
                 <ports>
                     <port>
-                        <name>rd_dma_address_o</name>
-                        <role>address</role>
+                        <name>app_nreset_status</name>
+                        <role>reset_n</role>
                         <direction>Output</direction>
-                        <width>64</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>rd_dma_write_o</name>
-                        <role>write</role>
-                        <direction>Output</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                    <port>
-                        <name>rd_dma_write_data_o</name>
-                        <role>writedata</role>
-                        <direction>Output</direction>
-                        <width>256</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>rd_dma_wait_request_i</name>
-                        <role>waitrequest</role>
-                        <direction>Input</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                    <port>
-                        <name>rd_dma_burst_count_o</name>
-                        <role>burstcount</role>
-                        <direction>Output</direction>
-                        <width>5</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>rd_dma_byte_enable_o</name>
-                        <role>byteenable</role>
-                        <direction>Output</direction>
-                        <width>32</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                </ports>
-                <assignments>
-                    <assignmentValueMap/>
-                </assignments>
-                <parameters>
-                    <parameterValueMap>
-                        <entry>
-                            <key>adaptsTo</key>
-                        </entry>
-                        <entry>
-                            <key>addressGroup</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>addressUnits</key>
-                            <value>SYMBOLS</value>
-                        </entry>
-                        <entry>
-                            <key>alwaysBurstMaxBurst</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>associatedClock</key>
-                            <value>coreclkout_hip</value>
-                        </entry>
-                        <entry>
-                            <key>associatedReset</key>
-                            <value>app_nreset_status</value>
-                        </entry>
-                        <entry>
-                            <key>bitsPerSymbol</key>
-                            <value>8</value>
-                        </entry>
-                        <entry>
-                            <key>burstOnBurstBoundariesOnly</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>burstcountUnits</key>
-                            <value>WORDS</value>
-                        </entry>
-                        <entry>
-                            <key>constantBurstBehavior</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>dBSBigEndian</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>doStreamReads</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>doStreamWrites</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>holdTime</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>interleaveBursts</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>isAsynchronous</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>isBigEndian</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>isReadable</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>isWriteable</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>linewrapBursts</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>maxAddressWidth</key>
-                            <value>64</value>
-                        </entry>
-                        <entry>
-                            <key>maximumPendingReadTransactions</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>maximumPendingWriteTransactions</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>minimumReadLatency</key>
-                            <value>1</value>
-                        </entry>
-                        <entry>
-                            <key>minimumResponseLatency</key>
-                            <value>1</value>
-                        </entry>
-                        <entry>
-                            <key>prSafe</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>readLatency</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>readWaitTime</key>
-                            <value>1</value>
-                        </entry>
-                        <entry>
-                            <key>registerIncomingSignals</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>registerOutgoingSignals</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>setupTime</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>timingUnits</key>
-                            <value>Cycles</value>
-                        </entry>
-                        <entry>
-                            <key>waitrequestAllowance</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>writeWaitTime</key>
-                            <value>0</value>
-                        </entry>
-                    </parameterValueMap>
-                </parameters>
-            </interface>
-            <interface>
-                <name>dma_wr_master</name>
-                <type>avalon</type>
-                <isStart>true</isStart>
-                <ports>
-                    <port>
-                        <name>wr_dma_address_o</name>
-                        <role>address</role>
-                        <direction>Output</direction>
-                        <width>64</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>wr_dma_read_o</name>
-                        <role>read</role>
-                        <direction>Output</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                    <port>
-                        <name>wr_dma_read_data_i</name>
-                        <role>readdata</role>
-                        <direction>Input</direction>
-                        <width>256</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>wr_dma_wait_request_i</name>
-                        <role>waitrequest</role>
-                        <direction>Input</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                    <port>
-                        <name>wr_dma_burst_count_o</name>
-                        <role>burstcount</role>
-                        <direction>Output</direction>
-                        <width>5</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>wr_dma_read_data_valid_i</name>
-                        <role>readdatavalid</role>
-                        <direction>Input</direction>
                         <width>1</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC</vhdlType>
@@ -502,139 +261,19 @@
                 <parameters>
                     <parameterValueMap>
                         <entry>
-                            <key>adaptsTo</key>
-                        </entry>
-                        <entry>
-                            <key>addressGroup</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>addressUnits</key>
-                            <value>SYMBOLS</value>
-                        </entry>
-                        <entry>
-                            <key>alwaysBurstMaxBurst</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
                             <key>associatedClock</key>
                             <value>coreclkout_hip</value>
                         </entry>
                         <entry>
-                            <key>associatedReset</key>
-                            <value>app_nreset_status</value>
+                            <key>associatedDirectReset</key>
                         </entry>
                         <entry>
-                            <key>bitsPerSymbol</key>
-                            <value>8</value>
+                            <key>associatedResetSinks</key>
+                            <value>none</value>
                         </entry>
                         <entry>
-                            <key>burstOnBurstBoundariesOnly</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>burstcountUnits</key>
-                            <value>WORDS</value>
-                        </entry>
-                        <entry>
-                            <key>constantBurstBehavior</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>dBSBigEndian</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>doStreamReads</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>doStreamWrites</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>holdTime</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>interleaveBursts</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>isAsynchronous</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>isBigEndian</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>isReadable</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>isWriteable</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>linewrapBursts</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>maxAddressWidth</key>
-                            <value>64</value>
-                        </entry>
-                        <entry>
-                            <key>maximumPendingReadTransactions</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>maximumPendingWriteTransactions</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>minimumReadLatency</key>
-                            <value>1</value>
-                        </entry>
-                        <entry>
-                            <key>minimumResponseLatency</key>
-                            <value>1</value>
-                        </entry>
-                        <entry>
-                            <key>prSafe</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>readLatency</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>readWaitTime</key>
-                            <value>1</value>
-                        </entry>
-                        <entry>
-                            <key>registerIncomingSignals</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>registerOutgoingSignals</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>setupTime</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>timingUnits</key>
-                            <value>Cycles</value>
-                        </entry>
-                        <entry>
-                            <key>waitrequestAllowance</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>writeWaitTime</key>
-                            <value>0</value>
+                            <key>synchronousEdges</key>
+                            <value>BOTH</value>
                         </entry>
                     </parameterValueMap>
                 </parameters>
@@ -659,6 +298,46 @@
                         <width>1</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>associatedClock</key>
+                        </entry>
+                        <entry>
+                            <key>associatedReset</key>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
+                <name>dk_hip</name>
+                <type>conduit</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>devkit_status</name>
+                        <role>devkit_status</role>
+                        <direction>Output</direction>
+                        <width>256</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>devkit_ctrl</name>
+                        <role>devkit_ctrl</role>
+                        <direction>Input</direction>
+                        <width>256</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     </port>
                 </ports>
                 <assignments>
@@ -2544,265 +2223,20 @@
                 </parameters>
             </interface>
             <interface>
-                <name>npor</name>
-                <type>conduit</type>
+                <name>txs</name>
+                <type>avalon</type>
                 <isStart>false</isStart>
                 <ports>
                     <port>
-                        <name>npor</name>
-                        <role>npor</role>
-                        <direction>Input</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                    <port>
-                        <name>pin_perst</name>
-                        <role>pin_perst</role>
-                        <direction>Input</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                </ports>
-                <assignments>
-                    <assignmentValueMap/>
-                </assignments>
-                <parameters>
-                    <parameterValueMap>
-                        <entry>
-                            <key>associatedClock</key>
-                        </entry>
-                        <entry>
-                            <key>associatedReset</key>
-                        </entry>
-                        <entry>
-                            <key>prSafe</key>
-                            <value>false</value>
-                        </entry>
-                    </parameterValueMap>
-                </parameters>
-            </interface>
-            <interface>
-                <name>rd_dcm_master</name>
-                <type>avalon</type>
-                <isStart>true</isStart>
-                <ports>
-                    <port>
-                        <name>rd_dcm_address_o</name>
+                        <name>txs_address_i</name>
                         <role>address</role>
-                        <direction>Output</direction>
+                        <direction>Input</direction>
                         <width>64</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     </port>
                     <port>
-                        <name>rd_dcm_write_o</name>
-                        <role>write</role>
-                        <direction>Output</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                    <port>
-                        <name>rd_dcm_writedata_o</name>
-                        <role>writedata</role>
-                        <direction>Output</direction>
-                        <width>32</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>rd_dcm_read_o</name>
-                        <role>read</role>
-                        <direction>Output</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                    <port>
-                        <name>rd_dcm_byte_enable_o</name>
-                        <role>byteenable</role>
-                        <direction>Output</direction>
-                        <width>4</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>rd_dcm_wait_request_i</name>
-                        <role>waitrequest</role>
-                        <direction>Input</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                    <port>
-                        <name>rd_dcm_read_data_i</name>
-                        <role>readdata</role>
-                        <direction>Input</direction>
-                        <width>32</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>rd_dcm_read_data_valid_i</name>
-                        <role>readdatavalid</role>
-                        <direction>Input</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                </ports>
-                <assignments>
-                    <assignmentValueMap/>
-                </assignments>
-                <parameters>
-                    <parameterValueMap>
-                        <entry>
-                            <key>adaptsTo</key>
-                        </entry>
-                        <entry>
-                            <key>addressGroup</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>addressUnits</key>
-                            <value>SYMBOLS</value>
-                        </entry>
-                        <entry>
-                            <key>alwaysBurstMaxBurst</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>associatedClock</key>
-                            <value>coreclkout_hip</value>
-                        </entry>
-                        <entry>
-                            <key>associatedReset</key>
-                            <value>app_nreset_status</value>
-                        </entry>
-                        <entry>
-                            <key>bitsPerSymbol</key>
-                            <value>8</value>
-                        </entry>
-                        <entry>
-                            <key>burstOnBurstBoundariesOnly</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>burstcountUnits</key>
-                            <value>WORDS</value>
-                        </entry>
-                        <entry>
-                            <key>constantBurstBehavior</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>dBSBigEndian</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>doStreamReads</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>doStreamWrites</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>holdTime</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>interleaveBursts</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>isAsynchronous</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>isBigEndian</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>isReadable</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>isWriteable</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>linewrapBursts</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>maxAddressWidth</key>
-                            <value>64</value>
-                        </entry>
-                        <entry>
-                            <key>maximumPendingReadTransactions</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>maximumPendingWriteTransactions</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>minimumReadLatency</key>
-                            <value>1</value>
-                        </entry>
-                        <entry>
-                            <key>minimumResponseLatency</key>
-                            <value>1</value>
-                        </entry>
-                        <entry>
-                            <key>prSafe</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>readLatency</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>readWaitTime</key>
-                            <value>1</value>
-                        </entry>
-                        <entry>
-                            <key>registerIncomingSignals</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>registerOutgoingSignals</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>setupTime</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>timingUnits</key>
-                            <value>Cycles</value>
-                        </entry>
-                        <entry>
-                            <key>waitrequestAllowance</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>writeWaitTime</key>
-                            <value>0</value>
-                        </entry>
-                    </parameterValueMap>
-                </parameters>
-            </interface>
-            <interface>
-                <name>rd_dts_slave</name>
-                <type>avalon</type>
-                <isStart>false</isStart>
-                <ports>
-                    <port>
-                        <name>rd_dts_chip_select_i</name>
+                        <name>txs_chipselect_i</name>
                         <role>chipselect</role>
                         <direction>Input</direction>
                         <width>1</width>
@@ -2810,7 +2244,39 @@
                         <vhdlType>STD_LOGIC</vhdlType>
                     </port>
                     <port>
-                        <name>rd_dts_write_i</name>
+                        <name>txs_byteenable_i</name>
+                        <role>byteenable</role>
+                        <direction>Input</direction>
+                        <width>4</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>txs_readdata_o</name>
+                        <role>readdata</role>
+                        <direction>Output</direction>
+                        <width>32</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>txs_writedata_i</name>
+                        <role>writedata</role>
+                        <direction>Input</direction>
+                        <width>32</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>txs_read_i</name>
+                        <role>read</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                    <port>
+                        <name>txs_write_i</name>
                         <role>write</role>
                         <direction>Input</direction>
                         <width>1</width>
@@ -2818,31 +2284,15 @@
                         <vhdlType>STD_LOGIC</vhdlType>
                     </port>
                     <port>
-                        <name>rd_dts_burst_count_i</name>
-                        <role>burstcount</role>
-                        <direction>Input</direction>
-                        <width>5</width>
+                        <name>txs_readdatavalid_o</name>
+                        <role>readdatavalid</role>
+                        <direction>Output</direction>
+                        <width>1</width>
                         <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                        <vhdlType>STD_LOGIC</vhdlType>
                     </port>
                     <port>
-                        <name>rd_dts_address_i</name>
-                        <role>address</role>
-                        <direction>Input</direction>
-                        <width>8</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>rd_dts_write_data_i</name>
-                        <role>writedata</role>
-                        <direction>Input</direction>
-                        <width>256</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>rd_dts_wait_request_o</name>
+                        <name>txs_waitrequest_o</name>
                         <role>waitrequest</role>
                         <direction>Output</direction>
                         <width>1</width>
@@ -2882,11 +2332,11 @@
                         </entry>
                         <entry>
                             <key>addressSpan</key>
-                            <value>8192</value>
+                            <value>18446744073709551616</value>
                         </entry>
                         <entry>
                             <key>addressUnits</key>
-                            <value>WORDS</value>
+                            <value>SYMBOLS</value>
                         </entry>
                         <entry>
                             <key>alwaysBurstMaxBurst</key>
@@ -2957,7 +2407,7 @@
                         </entry>
                         <entry>
                             <key>maximumPendingReadTransactions</key>
-                            <value>0</value>
+                            <value>16</value>
                         </entry>
                         <entry>
                             <key>maximumPendingWriteTransactions</key>
@@ -3029,44 +2479,11 @@
                         </entry>
                         <entry>
                             <key>writeWaitStates</key>
-                            <value>0</value>
+                            <value>1</value>
                         </entry>
                         <entry>
                             <key>writeWaitTime</key>
-                            <value>0</value>
-                        </entry>
-                    </parameterValueMap>
-                </parameters>
-            </interface>
-            <interface>
-                <name>refclk</name>
-                <type>clock</type>
-                <isStart>false</isStart>
-                <ports>
-                    <port>
-                        <name>refclk</name>
-                        <role>clk</role>
-                        <direction>Input</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                </ports>
-                <assignments>
-                    <assignmentValueMap/>
-                </assignments>
-                <parameters>
-                    <parameterValueMap>
-                        <entry>
-                            <key>clockRate</key>
-                            <value>100000000</value>
-                        </entry>
-                        <entry>
-                            <key>externallyDriven</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>ptfSchematicName</key>
+                            <value>1</value>
                         </entry>
                     </parameterValueMap>
                 </parameters>
@@ -3498,116 +2915,70 @@
                 </parameters>
             </interface>
             <interface>
-                <name>txs</name>
+                <name>dma_rd_master</name>
                 <type>avalon</type>
-                <isStart>false</isStart>
+                <isStart>true</isStart>
                 <ports>
                     <port>
-                        <name>txs_address_i</name>
+                        <name>rd_dma_address_o</name>
                         <role>address</role>
-                        <direction>Input</direction>
+                        <direction>Output</direction>
                         <width>64</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     </port>
                     <port>
-                        <name>txs_chipselect_i</name>
-                        <role>chipselect</role>
-                        <direction>Input</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                    <port>
-                        <name>txs_byteenable_i</name>
-                        <role>byteenable</role>
-                        <direction>Input</direction>
-                        <width>4</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>txs_readdata_o</name>
-                        <role>readdata</role>
-                        <direction>Output</direction>
-                        <width>32</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>txs_writedata_i</name>
-                        <role>writedata</role>
-                        <direction>Input</direction>
-                        <width>32</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>txs_read_i</name>
-                        <role>read</role>
-                        <direction>Input</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                    <port>
-                        <name>txs_write_i</name>
+                        <name>rd_dma_write_o</name>
                         <role>write</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                    <port>
+                        <name>rd_dma_write_data_o</name>
+                        <role>writedata</role>
+                        <direction>Output</direction>
+                        <width>256</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>rd_dma_wait_request_i</name>
+                        <role>waitrequest</role>
                         <direction>Input</direction>
                         <width>1</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC</vhdlType>
                     </port>
                     <port>
-                        <name>txs_readdatavalid_o</name>
-                        <role>readdatavalid</role>
+                        <name>rd_dma_burst_count_o</name>
+                        <role>burstcount</role>
                         <direction>Output</direction>
-                        <width>1</width>
+                        <width>5</width>
                         <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     </port>
                     <port>
-                        <name>txs_waitrequest_o</name>
-                        <role>waitrequest</role>
+                        <name>rd_dma_byte_enable_o</name>
+                        <role>byteenable</role>
                         <direction>Output</direction>
-                        <width>1</width>
+                        <width>32</width>
                         <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     </port>
                 </ports>
                 <assignments>
-                    <assignmentValueMap>
-                        <entry>
-                            <key>embeddedsw.configuration.isFlash</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>embeddedsw.configuration.isMemoryDevice</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>embeddedsw.configuration.isNonVolatileStorage</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>embeddedsw.configuration.isPrintableDevice</key>
-                            <value>0</value>
-                        </entry>
-                    </assignmentValueMap>
+                    <assignmentValueMap/>
                 </assignments>
                 <parameters>
                     <parameterValueMap>
                         <entry>
-                            <key>addressAlignment</key>
-                            <value>DYNAMIC</value>
+                            <key>adaptsTo</key>
                         </entry>
                         <entry>
                             <key>addressGroup</key>
                             <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>addressSpan</key>
-                            <value>18446744073709551616</value>
                         </entry>
                         <entry>
                             <key>addressUnits</key>
@@ -3630,13 +3001,6 @@
                             <value>8</value>
                         </entry>
                         <entry>
-                            <key>bridgedAddressOffset</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>bridgesToMaster</key>
-                        </entry>
-                        <entry>
                             <key>burstOnBurstBoundariesOnly</key>
                             <value>false</value>
                         </entry>
@@ -3649,8 +3013,16 @@
                             <value>false</value>
                         </entry>
                         <entry>
-                            <key>explicitAddressSpan</key>
-                            <value>0</value>
+                            <key>dBSBigEndian</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>doStreamReads</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>doStreamWrites</key>
+                            <value>false</value>
                         </entry>
                         <entry>
                             <key>holdTime</key>
@@ -3661,19 +3033,19 @@
                             <value>false</value>
                         </entry>
                         <entry>
+                            <key>isAsynchronous</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
                             <key>isBigEndian</key>
                             <value>false</value>
                         </entry>
                         <entry>
-                            <key>isFlash</key>
+                            <key>isReadable</key>
                             <value>false</value>
                         </entry>
                         <entry>
-                            <key>isMemoryDevice</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>isNonVolatileStorage</key>
+                            <key>isWriteable</key>
                             <value>false</value>
                         </entry>
                         <entry>
@@ -3681,8 +3053,12 @@
                             <value>false</value>
                         </entry>
                         <entry>
+                            <key>maxAddressWidth</key>
+                            <value>64</value>
+                        </entry>
+                        <entry>
                             <key>maximumPendingReadTransactions</key>
-                            <value>8</value>
+                            <value>0</value>
                         </entry>
                         <entry>
                             <key>maximumPendingWriteTransactions</key>
@@ -3697,24 +3073,12 @@
                             <value>1</value>
                         </entry>
                         <entry>
-                            <key>minimumUninterruptedRunLength</key>
-                            <value>1</value>
-                        </entry>
-                        <entry>
                             <key>prSafe</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>printableDevice</key>
                             <value>false</value>
                         </entry>
                         <entry>
                             <key>readLatency</key>
                             <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>readWaitStates</key>
-                            <value>1</value>
                         </entry>
                         <entry>
                             <key>readWaitTime</key>
@@ -3737,39 +3101,23 @@
                             <value>Cycles</value>
                         </entry>
                         <entry>
-                            <key>transparentBridge</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
                             <key>waitrequestAllowance</key>
                             <value>0</value>
                         </entry>
                         <entry>
-                            <key>wellBehavedWaitrequest</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>writeLatency</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>writeWaitStates</key>
-                            <value>1</value>
-                        </entry>
-                        <entry>
                             <key>writeWaitTime</key>
-                            <value>1</value>
+                            <value>0</value>
                         </entry>
                     </parameterValueMap>
                 </parameters>
             </interface>
             <interface>
-                <name>wr_dcm_master</name>
+                <name>dma_wr_master</name>
                 <type>avalon</type>
                 <isStart>true</isStart>
                 <ports>
                     <port>
-                        <name>wr_dcm_address_o</name>
+                        <name>wr_dma_address_o</name>
                         <role>address</role>
                         <direction>Output</direction>
                         <width>64</width>
@@ -3777,23 +3125,7 @@
                         <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     </port>
                     <port>
-                        <name>wr_dcm_write_o</name>
-                        <role>write</role>
-                        <direction>Output</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                    <port>
-                        <name>wr_dcm_writedata_o</name>
-                        <role>writedata</role>
-                        <direction>Output</direction>
-                        <width>32</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>wr_dcm_read_o</name>
+                        <name>wr_dma_read_o</name>
                         <role>read</role>
                         <direction>Output</direction>
                         <width>1</width>
@@ -3801,15 +3133,15 @@
                         <vhdlType>STD_LOGIC</vhdlType>
                     </port>
                     <port>
-                        <name>wr_dcm_byte_enable_o</name>
-                        <role>byteenable</role>
-                        <direction>Output</direction>
-                        <width>4</width>
+                        <name>wr_dma_read_data_i</name>
+                        <role>readdata</role>
+                        <direction>Input</direction>
+                        <width>256</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     </port>
                     <port>
-                        <name>wr_dcm_wait_request_i</name>
+                        <name>wr_dma_wait_request_i</name>
                         <role>waitrequest</role>
                         <direction>Input</direction>
                         <width>1</width>
@@ -3817,15 +3149,15 @@
                         <vhdlType>STD_LOGIC</vhdlType>
                     </port>
                     <port>
-                        <name>wr_dcm_read_data_i</name>
-                        <role>readdata</role>
-                        <direction>Input</direction>
-                        <width>32</width>
+                        <name>wr_dma_burst_count_o</name>
+                        <role>burstcount</role>
+                        <direction>Output</direction>
+                        <width>5</width>
                         <lowerBound>0</lowerBound>
                         <vhdlType>STD_LOGIC_VECTOR</vhdlType>
                     </port>
                     <port>
-                        <name>wr_dcm_read_data_valid_i</name>
+                        <name>wr_dma_read_data_valid_i</name>
                         <role>readdatavalid</role>
                         <direction>Input</direction>
                         <width>1</width>
@@ -3967,6 +3299,248 @@
                         </entry>
                         <entry>
                             <key>waitrequestAllowance</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>writeWaitTime</key>
+                            <value>0</value>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
+                <name>rd_dts_slave</name>
+                <type>avalon</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>rd_dts_chip_select_i</name>
+                        <role>chipselect</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                    <port>
+                        <name>rd_dts_write_i</name>
+                        <role>write</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                    <port>
+                        <name>rd_dts_burst_count_i</name>
+                        <role>burstcount</role>
+                        <direction>Input</direction>
+                        <width>5</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>rd_dts_address_i</name>
+                        <role>address</role>
+                        <direction>Input</direction>
+                        <width>8</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>rd_dts_write_data_i</name>
+                        <role>writedata</role>
+                        <direction>Input</direction>
+                        <width>256</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>rd_dts_wait_request_o</name>
+                        <role>waitrequest</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap>
+                        <entry>
+                            <key>embeddedsw.configuration.isFlash</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>embeddedsw.configuration.isMemoryDevice</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>embeddedsw.configuration.isNonVolatileStorage</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>embeddedsw.configuration.isPrintableDevice</key>
+                            <value>0</value>
+                        </entry>
+                    </assignmentValueMap>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>addressAlignment</key>
+                            <value>DYNAMIC</value>
+                        </entry>
+                        <entry>
+                            <key>addressGroup</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>addressSpan</key>
+                            <value>8192</value>
+                        </entry>
+                        <entry>
+                            <key>addressUnits</key>
+                            <value>WORDS</value>
+                        </entry>
+                        <entry>
+                            <key>alwaysBurstMaxBurst</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>associatedClock</key>
+                            <value>coreclkout_hip</value>
+                        </entry>
+                        <entry>
+                            <key>associatedReset</key>
+                            <value>app_nreset_status</value>
+                        </entry>
+                        <entry>
+                            <key>bitsPerSymbol</key>
+                            <value>8</value>
+                        </entry>
+                        <entry>
+                            <key>bridgedAddressOffset</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>bridgesToMaster</key>
+                        </entry>
+                        <entry>
+                            <key>burstOnBurstBoundariesOnly</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>burstcountUnits</key>
+                            <value>WORDS</value>
+                        </entry>
+                        <entry>
+                            <key>constantBurstBehavior</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>explicitAddressSpan</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>holdTime</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>interleaveBursts</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>isBigEndian</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>isFlash</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>isMemoryDevice</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>isNonVolatileStorage</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>linewrapBursts</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>maximumPendingReadTransactions</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>maximumPendingWriteTransactions</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>minimumReadLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>minimumResponseLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>minimumUninterruptedRunLength</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>printableDevice</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>readLatency</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>readWaitStates</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>readWaitTime</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>registerIncomingSignals</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>registerOutgoingSignals</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>setupTime</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>timingUnits</key>
+                            <value>Cycles</value>
+                        </entry>
+                        <entry>
+                            <key>transparentBridge</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>waitrequestAllowance</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>wellBehavedWaitrequest</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>writeLatency</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>writeWaitStates</key>
                             <value>0</value>
                         </entry>
                         <entry>
@@ -4218,12 +3792,438 @@
                     </parameterValueMap>
                 </parameters>
             </interface>
+            <interface>
+                <name>rd_dcm_master</name>
+                <type>avalon</type>
+                <isStart>true</isStart>
+                <ports>
+                    <port>
+                        <name>rd_dcm_address_o</name>
+                        <role>address</role>
+                        <direction>Output</direction>
+                        <width>64</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>rd_dcm_write_o</name>
+                        <role>write</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                    <port>
+                        <name>rd_dcm_writedata_o</name>
+                        <role>writedata</role>
+                        <direction>Output</direction>
+                        <width>32</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>rd_dcm_read_o</name>
+                        <role>read</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                    <port>
+                        <name>rd_dcm_byte_enable_o</name>
+                        <role>byteenable</role>
+                        <direction>Output</direction>
+                        <width>4</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>rd_dcm_wait_request_i</name>
+                        <role>waitrequest</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                    <port>
+                        <name>rd_dcm_read_data_i</name>
+                        <role>readdata</role>
+                        <direction>Input</direction>
+                        <width>32</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>rd_dcm_read_data_valid_i</name>
+                        <role>readdatavalid</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>adaptsTo</key>
+                        </entry>
+                        <entry>
+                            <key>addressGroup</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>addressUnits</key>
+                            <value>SYMBOLS</value>
+                        </entry>
+                        <entry>
+                            <key>alwaysBurstMaxBurst</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>associatedClock</key>
+                            <value>coreclkout_hip</value>
+                        </entry>
+                        <entry>
+                            <key>associatedReset</key>
+                            <value>app_nreset_status</value>
+                        </entry>
+                        <entry>
+                            <key>bitsPerSymbol</key>
+                            <value>8</value>
+                        </entry>
+                        <entry>
+                            <key>burstOnBurstBoundariesOnly</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>burstcountUnits</key>
+                            <value>WORDS</value>
+                        </entry>
+                        <entry>
+                            <key>constantBurstBehavior</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>dBSBigEndian</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>doStreamReads</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>doStreamWrites</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>holdTime</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>interleaveBursts</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>isAsynchronous</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>isBigEndian</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>isReadable</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>isWriteable</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>linewrapBursts</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>maxAddressWidth</key>
+                            <value>64</value>
+                        </entry>
+                        <entry>
+                            <key>maximumPendingReadTransactions</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>maximumPendingWriteTransactions</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>minimumReadLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>minimumResponseLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>readLatency</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>readWaitTime</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>registerIncomingSignals</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>registerOutgoingSignals</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>setupTime</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>timingUnits</key>
+                            <value>Cycles</value>
+                        </entry>
+                        <entry>
+                            <key>waitrequestAllowance</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>writeWaitTime</key>
+                            <value>0</value>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
+                <name>wr_dcm_master</name>
+                <type>avalon</type>
+                <isStart>true</isStart>
+                <ports>
+                    <port>
+                        <name>wr_dcm_address_o</name>
+                        <role>address</role>
+                        <direction>Output</direction>
+                        <width>64</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>wr_dcm_write_o</name>
+                        <role>write</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                    <port>
+                        <name>wr_dcm_writedata_o</name>
+                        <role>writedata</role>
+                        <direction>Output</direction>
+                        <width>32</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>wr_dcm_read_o</name>
+                        <role>read</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                    <port>
+                        <name>wr_dcm_byte_enable_o</name>
+                        <role>byteenable</role>
+                        <direction>Output</direction>
+                        <width>4</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>wr_dcm_wait_request_i</name>
+                        <role>waitrequest</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                    <port>
+                        <name>wr_dcm_read_data_i</name>
+                        <role>readdata</role>
+                        <direction>Input</direction>
+                        <width>32</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>wr_dcm_read_data_valid_i</name>
+                        <role>readdatavalid</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>adaptsTo</key>
+                        </entry>
+                        <entry>
+                            <key>addressGroup</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>addressUnits</key>
+                            <value>SYMBOLS</value>
+                        </entry>
+                        <entry>
+                            <key>alwaysBurstMaxBurst</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>associatedClock</key>
+                            <value>coreclkout_hip</value>
+                        </entry>
+                        <entry>
+                            <key>associatedReset</key>
+                            <value>app_nreset_status</value>
+                        </entry>
+                        <entry>
+                            <key>bitsPerSymbol</key>
+                            <value>8</value>
+                        </entry>
+                        <entry>
+                            <key>burstOnBurstBoundariesOnly</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>burstcountUnits</key>
+                            <value>WORDS</value>
+                        </entry>
+                        <entry>
+                            <key>constantBurstBehavior</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>dBSBigEndian</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>doStreamReads</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>doStreamWrites</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>holdTime</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>interleaveBursts</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>isAsynchronous</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>isBigEndian</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>isReadable</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>isWriteable</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>linewrapBursts</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>maxAddressWidth</key>
+                            <value>64</value>
+                        </entry>
+                        <entry>
+                            <key>maximumPendingReadTransactions</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>maximumPendingWriteTransactions</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>minimumReadLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>minimumResponseLatency</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>readLatency</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>readWaitTime</key>
+                            <value>1</value>
+                        </entry>
+                        <entry>
+                            <key>registerIncomingSignals</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>registerOutgoingSignals</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>setupTime</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>timingUnits</key>
+                            <value>Cycles</value>
+                        </entry>
+                        <entry>
+                            <key>waitrequestAllowance</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>writeWaitTime</key>
+                            <value>0</value>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
         </interfaces>
     </boundary>
     <originalModuleInfo>
         <className>altera_pcie_a10_hip</className>
-        <version>17.1</version>
-        <displayName>Arria 10 Hard IP for PCI Express</displayName>
+        <version>18.1</version>
+        <displayName>Intel Arria 10/Cyclone 10 Hard IP for PCI Express</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
         <descriptors>
@@ -4248,7 +4248,7 @@
                 <systemInfotype>DESIGN_ENVIRONMENT</systemInfotype>
             </descriptor>
             <descriptor>
-                <parameterDefaultValue>Arria 10</parameterDefaultValue>
+                <parameterDefaultValue>device_family</parameterDefaultValue>
                 <parameterName>device_family</parameterName>
                 <parameterType>java.lang.String</parameterType>
                 <systemInfotype>DEVICE_FAMILY</systemInfotype>
@@ -4515,7 +4515,7 @@
         </entry>
         <entry>
             <key>testbench.partner.pcie_tb.version</key>
-            <value>17.1</value>
+            <value>18.1</value>
         </entry>
     </assignmentValueMap>
 </assignmentDefinition>]]></parameter>
@@ -4529,6 +4529,368 @@
   <parameter name="componentDefinition"><![CDATA[<componentDefinition>
     <boundary>
         <interfaces>
+            <interface>
+                <name>global_reset_n</name>
+                <type>reset</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>global_reset_n</name>
+                        <role>reset_n</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>associatedClock</key>
+                        </entry>
+                        <entry>
+                            <key>synchronousEdges</key>
+                            <value>NONE</value>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
+                <name>pll_ref_clk</name>
+                <type>clock</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>pll_ref_clk</name>
+                        <role>clk</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>clockRate</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>externallyDriven</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>ptfSchematicName</key>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
+                <name>oct</name>
+                <type>conduit</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>oct_rzqin</name>
+                        <role>oct_rzqin</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>associatedClock</key>
+                        </entry>
+                        <entry>
+                            <key>associatedReset</key>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
+                <name>mem</name>
+                <type>conduit</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>mem_ck</name>
+                        <role>mem_ck</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>mem_ck_n</name>
+                        <role>mem_ck_n</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>mem_a</name>
+                        <role>mem_a</role>
+                        <direction>Output</direction>
+                        <width>17</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>mem_act_n</name>
+                        <role>mem_act_n</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>mem_ba</name>
+                        <role>mem_ba</role>
+                        <direction>Output</direction>
+                        <width>2</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>mem_bg</name>
+                        <role>mem_bg</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>mem_cke</name>
+                        <role>mem_cke</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>mem_cs_n</name>
+                        <role>mem_cs_n</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>mem_odt</name>
+                        <role>mem_odt</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>mem_reset_n</name>
+                        <role>mem_reset_n</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>mem_par</name>
+                        <role>mem_par</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>mem_alert_n</name>
+                        <role>mem_alert_n</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>mem_dqs</name>
+                        <role>mem_dqs</role>
+                        <direction>Bidir</direction>
+                        <width>8</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>mem_dqs_n</name>
+                        <role>mem_dqs_n</role>
+                        <direction>Bidir</direction>
+                        <width>8</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>mem_dq</name>
+                        <role>mem_dq</role>
+                        <direction>Bidir</direction>
+                        <width>64</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>mem_dbi_n</name>
+                        <role>mem_dbi_n</role>
+                        <direction>Bidir</direction>
+                        <width>8</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>associatedClock</key>
+                        </entry>
+                        <entry>
+                            <key>associatedReset</key>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
+                <name>status</name>
+                <type>conduit</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>local_cal_success</name>
+                        <role>local_cal_success</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                    <port>
+                        <name>local_cal_fail</name>
+                        <role>local_cal_fail</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>associatedClock</key>
+                        </entry>
+                        <entry>
+                            <key>associatedReset</key>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
+                <name>emif_usr_reset_n</name>
+                <type>reset</type>
+                <isStart>true</isStart>
+                <ports>
+                    <port>
+                        <name>emif_usr_reset_n</name>
+                        <role>reset_n</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>associatedClock</key>
+                        </entry>
+                        <entry>
+                            <key>associatedDirectReset</key>
+                        </entry>
+                        <entry>
+                            <key>associatedResetSinks</key>
+                            <value>global_reset_n</value>
+                        </entry>
+                        <entry>
+                            <key>synchronousEdges</key>
+                            <value>NONE</value>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
+                <name>emif_usr_clk</name>
+                <type>clock</type>
+                <isStart>true</isStart>
+                <ports>
+                    <port>
+                        <name>emif_usr_clk</name>
+                        <role>clk</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>associatedDirectClock</key>
+                        </entry>
+                        <entry>
+                            <key>clockRate</key>
+                            <value>266666750</value>
+                        </entry>
+                        <entry>
+                            <key>clockRateKnown</key>
+                            <value>true</value>
+                        </entry>
+                        <entry>
+                            <key>externallyDriven</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>ptfSchematicName</key>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
             <interface>
                 <name>ctrl_amm_0</name>
                 <type>avalon</type>
@@ -4795,374 +5157,12 @@
                     </parameterValueMap>
                 </parameters>
             </interface>
-            <interface>
-                <name>emif_usr_clk</name>
-                <type>clock</type>
-                <isStart>true</isStart>
-                <ports>
-                    <port>
-                        <name>emif_usr_clk</name>
-                        <role>clk</role>
-                        <direction>Output</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                </ports>
-                <assignments>
-                    <assignmentValueMap/>
-                </assignments>
-                <parameters>
-                    <parameterValueMap>
-                        <entry>
-                            <key>associatedDirectClock</key>
-                        </entry>
-                        <entry>
-                            <key>clockRate</key>
-                            <value>266666750</value>
-                        </entry>
-                        <entry>
-                            <key>clockRateKnown</key>
-                            <value>true</value>
-                        </entry>
-                        <entry>
-                            <key>externallyDriven</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>ptfSchematicName</key>
-                        </entry>
-                    </parameterValueMap>
-                </parameters>
-            </interface>
-            <interface>
-                <name>emif_usr_reset_n</name>
-                <type>reset</type>
-                <isStart>true</isStart>
-                <ports>
-                    <port>
-                        <name>emif_usr_reset_n</name>
-                        <role>reset_n</role>
-                        <direction>Output</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                </ports>
-                <assignments>
-                    <assignmentValueMap/>
-                </assignments>
-                <parameters>
-                    <parameterValueMap>
-                        <entry>
-                            <key>associatedClock</key>
-                        </entry>
-                        <entry>
-                            <key>associatedDirectReset</key>
-                        </entry>
-                        <entry>
-                            <key>associatedResetSinks</key>
-                            <value>global_reset_n</value>
-                        </entry>
-                        <entry>
-                            <key>synchronousEdges</key>
-                            <value>NONE</value>
-                        </entry>
-                    </parameterValueMap>
-                </parameters>
-            </interface>
-            <interface>
-                <name>global_reset_n</name>
-                <type>reset</type>
-                <isStart>false</isStart>
-                <ports>
-                    <port>
-                        <name>global_reset_n</name>
-                        <role>reset_n</role>
-                        <direction>Input</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                </ports>
-                <assignments>
-                    <assignmentValueMap/>
-                </assignments>
-                <parameters>
-                    <parameterValueMap>
-                        <entry>
-                            <key>associatedClock</key>
-                        </entry>
-                        <entry>
-                            <key>synchronousEdges</key>
-                            <value>NONE</value>
-                        </entry>
-                    </parameterValueMap>
-                </parameters>
-            </interface>
-            <interface>
-                <name>mem</name>
-                <type>conduit</type>
-                <isStart>false</isStart>
-                <ports>
-                    <port>
-                        <name>mem_ck</name>
-                        <role>mem_ck</role>
-                        <direction>Output</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>mem_ck_n</name>
-                        <role>mem_ck_n</role>
-                        <direction>Output</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>mem_a</name>
-                        <role>mem_a</role>
-                        <direction>Output</direction>
-                        <width>17</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>mem_act_n</name>
-                        <role>mem_act_n</role>
-                        <direction>Output</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>mem_ba</name>
-                        <role>mem_ba</role>
-                        <direction>Output</direction>
-                        <width>2</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>mem_bg</name>
-                        <role>mem_bg</role>
-                        <direction>Output</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>mem_cke</name>
-                        <role>mem_cke</role>
-                        <direction>Output</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>mem_cs_n</name>
-                        <role>mem_cs_n</role>
-                        <direction>Output</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>mem_odt</name>
-                        <role>mem_odt</role>
-                        <direction>Output</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>mem_reset_n</name>
-                        <role>mem_reset_n</role>
-                        <direction>Output</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>mem_par</name>
-                        <role>mem_par</role>
-                        <direction>Output</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>mem_alert_n</name>
-                        <role>mem_alert_n</role>
-                        <direction>Input</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>mem_dqs</name>
-                        <role>mem_dqs</role>
-                        <direction>Bidir</direction>
-                        <width>8</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>mem_dqs_n</name>
-                        <role>mem_dqs_n</role>
-                        <direction>Bidir</direction>
-                        <width>8</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>mem_dq</name>
-                        <role>mem_dq</role>
-                        <direction>Bidir</direction>
-                        <width>64</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>mem_dbi_n</name>
-                        <role>mem_dbi_n</role>
-                        <direction>Bidir</direction>
-                        <width>8</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                </ports>
-                <assignments>
-                    <assignmentValueMap/>
-                </assignments>
-                <parameters>
-                    <parameterValueMap>
-                        <entry>
-                            <key>associatedClock</key>
-                        </entry>
-                        <entry>
-                            <key>associatedReset</key>
-                        </entry>
-                        <entry>
-                            <key>prSafe</key>
-                            <value>false</value>
-                        </entry>
-                    </parameterValueMap>
-                </parameters>
-            </interface>
-            <interface>
-                <name>oct</name>
-                <type>conduit</type>
-                <isStart>false</isStart>
-                <ports>
-                    <port>
-                        <name>oct_rzqin</name>
-                        <role>oct_rzqin</role>
-                        <direction>Input</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                </ports>
-                <assignments>
-                    <assignmentValueMap/>
-                </assignments>
-                <parameters>
-                    <parameterValueMap>
-                        <entry>
-                            <key>associatedClock</key>
-                        </entry>
-                        <entry>
-                            <key>associatedReset</key>
-                        </entry>
-                        <entry>
-                            <key>prSafe</key>
-                            <value>false</value>
-                        </entry>
-                    </parameterValueMap>
-                </parameters>
-            </interface>
-            <interface>
-                <name>pll_ref_clk</name>
-                <type>clock</type>
-                <isStart>false</isStart>
-                <ports>
-                    <port>
-                        <name>pll_ref_clk</name>
-                        <role>clk</role>
-                        <direction>Input</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                </ports>
-                <assignments>
-                    <assignmentValueMap/>
-                </assignments>
-                <parameters>
-                    <parameterValueMap>
-                        <entry>
-                            <key>clockRate</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>externallyDriven</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>ptfSchematicName</key>
-                        </entry>
-                    </parameterValueMap>
-                </parameters>
-            </interface>
-            <interface>
-                <name>status</name>
-                <type>conduit</type>
-                <isStart>false</isStart>
-                <ports>
-                    <port>
-                        <name>local_cal_success</name>
-                        <role>local_cal_success</role>
-                        <direction>Output</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                    <port>
-                        <name>local_cal_fail</name>
-                        <role>local_cal_fail</role>
-                        <direction>Output</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                </ports>
-                <assignments>
-                    <assignmentValueMap/>
-                </assignments>
-                <parameters>
-                    <parameterValueMap>
-                        <entry>
-                            <key>associatedClock</key>
-                        </entry>
-                        <entry>
-                            <key>associatedReset</key>
-                        </entry>
-                        <entry>
-                            <key>prSafe</key>
-                            <value>false</value>
-                        </entry>
-                    </parameterValueMap>
-                </parameters>
-            </interface>
         </interfaces>
     </boundary>
     <originalModuleInfo>
         <className>altera_emif</className>
-        <version>17.1</version>
-        <displayName>Arria 10 External Memory Interfaces</displayName>
+        <version>18.1</version>
+        <displayName>External Memory Interfaces Intel Arria 10 FPGA IP</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
         <descriptors>
@@ -5178,6 +5178,12 @@
                 <parameterName>SYS_INFO_DEVICE</parameterName>
                 <parameterType>java.lang.String</parameterType>
                 <systemInfotype>DEVICE</systemInfotype>
+            </descriptor>
+            <descriptor>
+                <parameterDefaultValue></parameterDefaultValue>
+                <parameterName>SYS_INFO_DEVICE_DIE_REVISIONS</parameterName>
+                <parameterType>[Ljava.lang.String;</parameterType>
+                <systemInfotype>DEVICE_DIE_REVISIONS</systemInfotype>
             </descriptor>
             <descriptor>
                 <parameterDefaultValue></parameterDefaultValue>
@@ -5894,6 +5900,178 @@
                 </parameters>
             </interface>
             <interface>
+                <name>emif_status</name>
+                <type>conduit</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>emif_status_local_cal_fail</name>
+                        <role>local_cal_fail</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                    <port>
+                        <name>emif_status_local_cal_success</name>
+                        <role>local_cal_success</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>associatedClock</key>
+                        </entry>
+                        <entry>
+                            <key>associatedReset</key>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
+                <name>emif_global_reset_n</name>
+                <type>reset</type>
+                <isStart>true</isStart>
+                <ports>
+                    <port>
+                        <name>emif_global_reset_n_reset_n</name>
+                        <role>reset_n</role>
+                        <direction>Output</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>associatedClock</key>
+                        </entry>
+                        <entry>
+                            <key>associatedDirectReset</key>
+                            <value>bar_avmm_reset</value>
+                        </entry>
+                        <entry>
+                            <key>associatedResetSinks</key>
+                            <value>bar_avmm_reset</value>
+                        </entry>
+                        <entry>
+                            <key>synchronousEdges</key>
+                            <value>NONE</value>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
+                <name>emif_usr_clk</name>
+                <type>clock</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>emif_usr_clk_clk</name>
+                        <role>clk</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>clockRate</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>externallyDriven</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>ptfSchematicName</key>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
+                <name>emif_usr_reset_n</name>
+                <type>reset</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>emif_usr_reset_n_reset_n</name>
+                        <role>reset_n</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>associatedClock</key>
+                        </entry>
+                        <entry>
+                            <key>synchronousEdges</key>
+                            <value>NONE</value>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
+                <name>pll_refclk</name>
+                <type>clock</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>pll_refclk_clk</name>
+                        <role>clk</role>
+                        <direction>Input</direction>
+                        <width>1</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC</vhdlType>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>clockRate</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>externallyDriven</key>
+                            <value>false</value>
+                        </entry>
+                        <entry>
+                            <key>ptfSchematicName</key>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
                 <name>emif_avmm</name>
                 <type>avalon</type>
                 <isStart>true</isStart>
@@ -6131,178 +6309,6 @@
                     </parameterValueMap>
                 </parameters>
             </interface>
-            <interface>
-                <name>emif_global_reset_n</name>
-                <type>reset</type>
-                <isStart>true</isStart>
-                <ports>
-                    <port>
-                        <name>emif_global_reset_n_reset_n</name>
-                        <role>reset_n</role>
-                        <direction>Output</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                </ports>
-                <assignments>
-                    <assignmentValueMap/>
-                </assignments>
-                <parameters>
-                    <parameterValueMap>
-                        <entry>
-                            <key>associatedClock</key>
-                        </entry>
-                        <entry>
-                            <key>associatedDirectReset</key>
-                            <value>bar_avmm_reset</value>
-                        </entry>
-                        <entry>
-                            <key>associatedResetSinks</key>
-                            <value>bar_avmm_reset</value>
-                        </entry>
-                        <entry>
-                            <key>synchronousEdges</key>
-                            <value>NONE</value>
-                        </entry>
-                    </parameterValueMap>
-                </parameters>
-            </interface>
-            <interface>
-                <name>emif_status</name>
-                <type>conduit</type>
-                <isStart>false</isStart>
-                <ports>
-                    <port>
-                        <name>emif_status_local_cal_fail</name>
-                        <role>local_cal_fail</role>
-                        <direction>Input</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                    <port>
-                        <name>emif_status_local_cal_success</name>
-                        <role>local_cal_success</role>
-                        <direction>Input</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                </ports>
-                <assignments>
-                    <assignmentValueMap/>
-                </assignments>
-                <parameters>
-                    <parameterValueMap>
-                        <entry>
-                            <key>associatedClock</key>
-                        </entry>
-                        <entry>
-                            <key>associatedReset</key>
-                        </entry>
-                        <entry>
-                            <key>prSafe</key>
-                            <value>false</value>
-                        </entry>
-                    </parameterValueMap>
-                </parameters>
-            </interface>
-            <interface>
-                <name>emif_usr_clk</name>
-                <type>clock</type>
-                <isStart>false</isStart>
-                <ports>
-                    <port>
-                        <name>emif_usr_clk_clk</name>
-                        <role>clk</role>
-                        <direction>Input</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                </ports>
-                <assignments>
-                    <assignmentValueMap/>
-                </assignments>
-                <parameters>
-                    <parameterValueMap>
-                        <entry>
-                            <key>clockRate</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>externallyDriven</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>ptfSchematicName</key>
-                        </entry>
-                    </parameterValueMap>
-                </parameters>
-            </interface>
-            <interface>
-                <name>emif_usr_reset_n</name>
-                <type>reset</type>
-                <isStart>false</isStart>
-                <ports>
-                    <port>
-                        <name>emif_usr_reset_n_reset_n</name>
-                        <role>reset_n</role>
-                        <direction>Input</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                </ports>
-                <assignments>
-                    <assignmentValueMap/>
-                </assignments>
-                <parameters>
-                    <parameterValueMap>
-                        <entry>
-                            <key>associatedClock</key>
-                        </entry>
-                        <entry>
-                            <key>synchronousEdges</key>
-                            <value>NONE</value>
-                        </entry>
-                    </parameterValueMap>
-                </parameters>
-            </interface>
-            <interface>
-                <name>pll_refclk</name>
-                <type>clock</type>
-                <isStart>false</isStart>
-                <ports>
-                    <port>
-                        <name>pll_refclk_clk</name>
-                        <role>clk</role>
-                        <direction>Input</direction>
-                        <width>1</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC</vhdlType>
-                    </port>
-                </ports>
-                <assignments>
-                    <assignmentValueMap/>
-                </assignments>
-                <parameters>
-                    <parameterValueMap>
-                        <entry>
-                            <key>clockRate</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>externallyDriven</key>
-                            <value>false</value>
-                        </entry>
-                        <entry>
-                            <key>ptfSchematicName</key>
-                        </entry>
-                    </parameterValueMap>
-                </parameters>
-            </interface>
         </interfaces>
     </boundary>
     <originalModuleInfo>
@@ -6523,15 +6529,15 @@
                     <consumedSystemInfos>
                         <entry>
                             <key>CLOCK_DOMAIN</key>
-                            <value>5</value>
+                            <value>-1</value>
                         </entry>
                         <entry>
                             <key>CLOCK_RATE</key>
-                            <value>0</value>
+                            <value>-1</value>
                         </entry>
                         <entry>
                             <key>RESET_DOMAIN</key>
-                            <value>5</value>
+                            <value>-1</value>
                         </entry>
                     </consumedSystemInfos>
                 </value>
@@ -6606,6 +6612,46 @@
                         </entry>
                         <entry>
                             <key>ptfSchematicName</key>
+                        </entry>
+                    </parameterValueMap>
+                </parameters>
+            </interface>
+            <interface>
+                <name>dk_hip</name>
+                <type>conduit</type>
+                <isStart>false</isStart>
+                <ports>
+                    <port>
+                        <name>devkit_ctrl</name>
+                        <role>devkit_ctrl</role>
+                        <direction>Output</direction>
+                        <width>256</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                    <port>
+                        <name>devkit_status</name>
+                        <role>devkit_status</role>
+                        <direction>Input</direction>
+                        <width>256</width>
+                        <lowerBound>0</lowerBound>
+                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
+                    </port>
+                </ports>
+                <assignments>
+                    <assignmentValueMap/>
+                </assignments>
+                <parameters>
+                    <parameterValueMap>
+                        <entry>
+                            <key>associatedClock</key>
+                        </entry>
+                        <entry>
+                            <key>associatedReset</key>
+                        </entry>
+                        <entry>
+                            <key>prSafe</key>
+                            <value>false</value>
                         </entry>
                     </parameterValueMap>
                 </parameters>
@@ -6706,51 +6752,11 @@
                     </parameterValueMap>
                 </parameters>
             </interface>
-            <interface>
-                <name>dk_hip</name>
-                <type>conduit</type>
-                <isStart>false</isStart>
-                <ports>
-                    <port>
-                        <name>devkit_ctrl</name>
-                        <role>devkit_ctrl</role>
-                        <direction>Output</direction>
-                        <width>256</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                    <port>
-                        <name>devkit_status</name>
-                        <role>devkit_status</role>
-                        <direction>Input</direction>
-                        <width>256</width>
-                        <lowerBound>0</lowerBound>
-                        <vhdlType>STD_LOGIC_VECTOR</vhdlType>
-                    </port>
-                </ports>
-                <assignments>
-                    <assignmentValueMap/>
-                </assignments>
-                <parameters>
-                    <parameterValueMap>
-                        <entry>
-                            <key>associatedClock</key>
-                        </entry>
-                        <entry>
-                            <key>associatedReset</key>
-                        </entry>
-                        <entry>
-                            <key>prSafe</key>
-                            <value>false</value>
-                        </entry>
-                    </parameterValueMap>
-                </parameters>
-            </interface>
         </interfaces>
     </boundary>
     <originalModuleInfo>
         <className>altpcie_devkit</className>
-        <version>17.1</version>
+        <version>18.1</version>
         <displayName>Development Kit : Pinout drivers</displayName>
     </originalModuleInfo>
     <systemInfoParameterDescriptors>
@@ -6799,91 +6805,91 @@
  </module>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="a10_pcie.dma_rd_master"
    end="a10_pcie.rd_dts_slave">
   <parameter name="baseAddress" value="0x00007fffffff0000" />
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="a10_pcie.dma_rd_master"
    end="a10_pcie.wr_dts_slave">
   <parameter name="baseAddress" value="0x00007fffffff2000" />
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="design_core.emif_avmm"
    end="ddr4_emif.ctrl_amm_0">
   <parameter name="baseAddress" value="0x0000" />
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="a10_pcie.rd_dcm_master"
    end="a10_pcie.txs">
   <parameter name="baseAddress" value="0x0000" />
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="a10_pcie.rxm_bar2"
    end="design_core.bar2_avmm">
   <parameter name="baseAddress" value="0x0000" />
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="a10_pcie.rxm_bar4"
    end="design_core.bar4_avmm">
   <parameter name="baseAddress" value="0x0000" />
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="a10_pcie.wr_dcm_master"
    end="a10_pcie.txs">
   <parameter name="baseAddress" value="0x0000" />
  </connection>
  <connection
    kind="clock"
-   version="17.1"
+   version="18.1"
    start="a10_pcie.coreclkout_hip"
    end="design_core.bar_avmm_clk" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.1"
    start="a10_pcie.coreclkout_hip"
    end="devkit_pins.clock" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.1"
    start="ddr4_emif.emif_usr_clk"
    end="design_core.emif_usr_clk" />
  <connection
    kind="conduit"
-   version="17.1"
+   version="18.1"
    start="devkit_pins.dk_hip"
    end="a10_pcie.dk_hip" />
  <connection
    kind="conduit"
-   version="17.1"
+   version="18.1"
    start="ddr4_emif.status"
    end="design_core.emif_status" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="a10_pcie.app_nreset_status"
    end="design_core.bar_avmm_reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="design_core.emif_global_reset_n"
    end="ddr4_emif.global_reset_n" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="ddr4_emif.emif_usr_reset_n"
    end="design_core.emif_usr_reset_n" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
