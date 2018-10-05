@@ -118,7 +118,7 @@ set_global_assignment -name IP_FILE source/common/sld_jtag_host/sld_jtag_host.ip
 #############################################################
 # QDB file partition assignments
 #############################################################
-set_instance_assignment -name QDB_FILE_PARTITION a10_pcie_devkit_cvp_static.qdb -to |
+set_instance_assignment -name QDB_FILE_PARTITION output_files/a10_pcie_devkit_cvp_static.qdb -to | -entity a10_pcie_ref_design
 
 #############################################################
 # Entity rebinding assignments
@@ -158,7 +158,7 @@ set_instance_assignment -name PLACE_REGION "X143 Y89 X221 Y138" -to u_top|design
 set_instance_assignment -name RESERVE_PLACE_REGION ON -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|child_region_1|u_child_pr_logic
 set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|child_region_1|u_child_pr_logic
 set_instance_assignment -name ROUTE_REGION "X141 Y87 X223 Y140" -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|child_region_1|u_child_pr_logic
-set_global_assignment -name LAST_QUARTUS_VERSION "18.0.0 Pro Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Pro Edition"
 set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_child_avmm_pbridge.ip
 set_global_assignment -name IP_FILE source/parent_persona/ip/parent_pr_subsystem/parent_pr_emif_avmm_pbridge_to_static.ip
 
@@ -168,7 +168,7 @@ set_global_assignment -name ON_CHIP_BITSTREAM_DECOMPRESSION OFF
 #############################################################
 # Timing Closure
 #############################################################
-set_instance_assignment -name PLACE_REGION "X51 Y163 X75 Y221" -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|parent_pr_emif_avmm_pbridge
+set_instance_assignment -name PLACE_REGION "X50 Y139 X76 Y221" -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|parent_pr_emif_avmm_pbridge
 set_instance_assignment -name RESERVE_PLACE_REGION OFF -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|parent_pr_emif_avmm_pbridge
 set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|parent_pr_emif_avmm_pbridge
 set_instance_assignment -name REGION_NAME parent_pr_emif_avmm_pbridge -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|parent_pr_emif_avmm_pbridge

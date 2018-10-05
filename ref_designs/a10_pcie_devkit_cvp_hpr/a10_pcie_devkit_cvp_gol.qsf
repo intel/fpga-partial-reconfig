@@ -114,8 +114,8 @@ set_global_assignment -name IP_FILE source/common/sld_jtag_host/sld_jtag_host.ip
 #############################################################
 # QDB file partition assignment
 #############################################################
-set_instance_assignment -name QDB_FILE_PARTITION a10_pcie_devkit_cvp_static.qdb -to |
-set_instance_assignment -name QDB_FILE_PARTITION a10_pcie_devkit_cvp_ddr4_access_pr_partition_final.qdb -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
+set_instance_assignment -name QDB_FILE_PARTITION output_files/a10_pcie_devkit_cvp_static.qdb -to | -entity a10_pcie_ref_design
+set_instance_assignment -name QDB_FILE_PARTITION output_files/a10_pcie_devkit_cvp_ddr4_access_pr_partition_final.qdb -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic -entity a10_pcie_ref_design
 
 #############################################################
 # Entity rebinding assignment
@@ -181,3 +181,4 @@ set_instance_assignment -name PLACE_REGION "X79 Y98 X118 Y126" -to u_top|design_
 set_instance_assignment -name RESERVE_PLACE_REGION OFF -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|mm_interconnect_2
 set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|mm_interconnect_2
 set_instance_assignment -name REGION_NAME mm_interconnect_2 -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic|u0|mm_interconnect_2
+set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Pro Edition"

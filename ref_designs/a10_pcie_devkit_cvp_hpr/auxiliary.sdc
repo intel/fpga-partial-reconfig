@@ -23,4 +23,7 @@
 set_false_path -from {u_top|design_core|ddr4_status_bus|u_synch_fail|d[0]} -to {u_top|design_core|ddr4_status_bus|u_synch_fail|c[0]}
 set_false_path -from {u_top|design_core|ddr4_status_bus|u_synch_success|d[0]} -to {u_top|design_core|ddr4_status_bus|u_synch_success|c[0]}
 set_clock_groups -asynchronous -group [get_clocks {u_top|ddr4_emif|ddr4_ctlr_emif_0_core_usr_clk}] -group [get_clocks {u_top|design_core|top_iopll|top_iopll_0|outclk_250mhz}]
-
+set_false_path -from {u_top|design_core|ddr4_status_bus|u_synch_fail|c[2]} -to {u_top|design_core|ddr4_calibration_interface|pcie_subsystem_pio_0|readdata[0]}
+set_false_path -from {u_top|design_core|ddr4_status_bus|u_synch_success|c[2]} -to {u_top|design_core|ddr4_calibration_interface|pcie_subsystem_pio_0|readdata[1]}
+set_false_path -to {u_top|ddr4_emif|ddr4_ctlr_emif_0|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|tile_gen[1].tile_ctrl_inst~hmc_reg0}
+set_false_path -from {u_top|a10_pcie|a10_pcie|g_rst_sync.syncrstn_avmm_sriov.app_rstn_altpcie_reset_delay_sync_altpcie_a10_hip_hwtcl|sync_rst[0]} -to {u_top|ddr4_emif|ddr4_ctlr_emif_0|arch|arch_inst|io_tiles_wrap_inst|io_tiles_inst|tile_gen[1].tile_ctrl_inst~_Duplicate_1~hmc_reg0}
