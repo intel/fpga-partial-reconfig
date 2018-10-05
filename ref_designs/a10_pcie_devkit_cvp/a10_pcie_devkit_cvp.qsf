@@ -467,3 +467,14 @@ set_global_assignment -name ON_CHIP_BITSTREAM_DECOMPRESSION OFF
 set_instance_assignment -name PLACE_REGION "X77 Y176 X77 Y176" -to emif_avmm_bridge
 set_instance_assignment -name RESERVE_PLACE_REGION OFF -to emif_avmm_bridge
 set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to emif_avmm_bridge
+set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Pro Edition"
+set_global_assignment -name PROJECT_IP_REGENERATION_POLICY ALWAYS_REGENERATE_IP
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP "-40"
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
+set_global_assignment -name POWER_AUTO_COMPUTE_TJ ON
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_instance_assignment -name EXPORT_PARTITION_SNAPSHOT_FINAL a10_pcie_devkit_cvp_static.qdb -to | -entity a10_pcie_ref_design
+set_instance_assignment -name PARTITION_COLOUR 4294924384 -to a10_pcie_ref_design -entity a10_pcie_ref_design
+set_instance_assignment -name PARTITION_COLOUR 4294945278 -to auto_fab_0 -entity a10_pcie_ref_design
+set_instance_assignment -name PARTITION_COLOUR 4294918079 -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic -entity a10_pcie_ref_design

@@ -25,7 +25,6 @@ set_global_assignment -name DEVICE 10AX115S2F45I1SG
 #############################################################
 set_global_assignment -name TOP_LEVEL_ENTITY a10_pcie_ref_design
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
-set_global_assignment -name PRESERVE_UNUSED_XCVR_CHANNEL ON
 
 #############################################################
 # SDC constraints - Note they are before the Qsys files
@@ -86,11 +85,12 @@ set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_
 set_global_assignment -name IP_FILE source/common/reg_file/ip/reg_file/reg_file_pio_in.ip
 
 set_global_assignment -name PRESERVE_UNUSED_XCVR_CHANNEL ON
-
+set_instance_assignment -name PARTITION pr_partition -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
+set_instance_assignment -name PARTIAL_RECONFIGURATION_PARTITION ON -to u_top|design_core|pr_region_wrapper|pr_persona_wrapper|u_pr_logic
 #############################################################
 # QDB file partition assignment
 #############################################################
-set_instance_assignment -name QDB_FILE_PARTITION a10_pcie_devkit_cvp_static.qdb -to |
+set_instance_assignment -name QDB_FILE_PARTITION output_files/a10_pcie_devkit_cvp_static.qdb -to | -entity a10_pcie_ref_design
 
 #############################################################
 # Entity rebinding assignment
@@ -108,3 +108,4 @@ set_global_assignment -name SDC_FILE auxiliary.sdc
 set_global_assignment -name REVISION_TYPE PR_IMPL
 set_global_assignment -name GENERATE_PR_RBF_FILE ON
 set_global_assignment -name ON_CHIP_BITSTREAM_DECOMPRESSION OFF
+set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Pro Edition"
