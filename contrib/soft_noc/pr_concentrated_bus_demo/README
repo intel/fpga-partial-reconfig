@@ -1,0 +1,35 @@
+Compilation was done using Quartus 20.3.
+
+To compile the design from a command line:
+
+(You may want to comment out some of the PR persona revision compiles as the 
+adder* PR persona revisions take a long time to compile)
+
+> run_compile.sh
+
+
+To compile the design from the gui:
+
+> quartus blinking_led.qpf &
+
+Then press the compile button to compile the blinking_led base revision.
+
+After compiling the base revions, you can compile the PR persona revisions by
+changing the revision and doing a compile for that revision.
+
+
+The base revision compilation (blinking_led) will create a design where pipelined 
+buses run through a 3x4 sector PR region containing the blinking_led design from 
+the PR Tutorial. Rows and columns are carved out of the PR region to accomodate 
+the pipelined bus which uses ALM flops. Opening the Chip Planner after 
+compilation best shows the structure.
+
+There are 5 PR persona revisions included in this design that can be compiled for
+the PR region. The pipelined bus structure is the same for all since it is part
+of the static region. The PR personas are:
+
+1) blinking_led_default (same as PR tutorial)
+2) blinking_led_empty   (same as PR tutorial)
+3) blinking_led_slow    (same as PR tutorial)
+4) adder_grid_1d	(artificial systolic adder array)
+5) adder_grid_2d	(more complicated artificial systolic adder array)

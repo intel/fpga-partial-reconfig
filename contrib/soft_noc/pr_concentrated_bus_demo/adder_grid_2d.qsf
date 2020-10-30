@@ -1,0 +1,202 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2020  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and any partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details, at
+# https://fpgasoftware.intel.com/eula.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 20.1.0 Build 177 04/06/2020 SC Pro Edition
+# Date created = 18:49:53  June 01, 2020
+#
+# -------------------------------------------------------------------------- #
+
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 20.1.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "18:49:53  JUNE 01, 2020"
+set_instance_assignment -name PARTITION pr_partition -to u_blinking_led -entity top
+set_instance_assignment -name PARTIAL_RECONFIGURATION_PARTITION ON -to u_blinking_led -entity top
+set_global_assignment -name FAMILY Agilex
+set_global_assignment -name DEVICE AGFA014R24A2E2VR0
+set_global_assignment -name TOP_LEVEL_ENTITY top
+set_instance_assignment -name QDB_FILE_PARTITION blinking_led_static.qdb -to | -entity top
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_instance_assignment -name SLEW_RATE 1 -to led_zero_on -entity top
+set_instance_assignment -name SLEW_RATE 1 -to led_one_on -entity top
+set_instance_assignment -name SLEW_RATE 1 -to led_two_on -entity top
+set_instance_assignment -name SLEW_RATE 1 -to led_three_on -entity top
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to clock -entity top
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_zero_on -entity top
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_one_on -entity top
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_two_on -entity top
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_three_on -entity top
+set_global_assignment -name STRATIXV_CONFIGURATION_SCHEME "AVST X16"
+set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
+set_global_assignment -name ENABLE_ED_CRC_CHECK ON
+set_global_assignment -name MINIMUM_SEU_INTERVAL 0
+set_global_assignment -name ACTIVE_SERIAL_CLOCK AS_FREQ_100MHZ
+set_global_assignment -name LAST_QUARTUS_VERSION "20.3.0 Pro Edition"
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
+set_global_assignment -name FLOW_ENABLE_HYPER_RETIMER_FAST_FORWARD OFF
+set_instance_assignment -name VIRTUAL_PIN ON -to led_zero_on -entity top
+set_instance_assignment -name VIRTUAL_PIN ON -to led_one_on -entity top
+set_instance_assignment -name VIRTUAL_PIN ON -to led_two_on -entity top
+set_instance_assignment -name VIRTUAL_PIN ON -to led_three_on -entity top
+set_instance_assignment -name VIRTUAL_PIN ON -to north_in* -entity top
+set_instance_assignment -name VIRTUAL_PIN ON -to south_in* -entity top
+set_instance_assignment -name VIRTUAL_PIN ON -to east_in* -entity top
+set_instance_assignment -name VIRTUAL_PIN ON -to west_in* -entity top
+set_instance_assignment -name VIRTUAL_PIN ON -to north_out* -entity top
+set_instance_assignment -name VIRTUAL_PIN ON -to south_out* -entity top
+set_instance_assignment -name VIRTUAL_PIN ON -to east_out* -entity top
+set_instance_assignment -name VIRTUAL_PIN ON -to west_out* -entity top
+set_instance_assignment -name PLACE_REGION "64 167 278 174" -to north_in_reg*
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to north_in_reg*
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to north_in_reg*
+set_instance_assignment -name REGION_NAME north_in_reg -to north_in_reg*
+set_instance_assignment -name PLACE_REGION "64 167 278 174" -to north_out*~reg0
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to north_out*~reg0
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to north_out*~reg0
+set_instance_assignment -name REGION_NAME north_out_reg -to north_out*~reg0
+set_instance_assignment -name PLACE_REGION "64 36 278 43" -to south_in_reg*
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to south_in_reg*
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to south_in_reg*
+set_instance_assignment -name REGION_NAME south_in -to south_in_reg*
+set_instance_assignment -name PLACE_REGION "64 36 278 43" -to south_out*~reg0
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to south_out*~reg0
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to south_out*~reg0
+set_instance_assignment -name REGION_NAME south_out_reg -to south_out*~reg0
+set_instance_assignment -name PLACE_REGION "95 44 98 166" -to north_to_south_sector_size[0].*
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to north_to_south_sector_size[0].*
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to north_to_south_sector_size[0].*
+set_instance_assignment -name REGION_NAME north_to_south_sector_size[0] -to north_to_south_sector_size[0].*
+set_instance_assignment -name PLACE_REGION "95 44 98 166" -to south_to_north_sector_size[0].*
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to south_to_north_sector_size[0].*
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to south_to_north_sector_size[0].*
+set_instance_assignment -name REGION_NAME south_to_north_sector_size[0] -to south_to_north_sector_size[0].*
+set_instance_assignment -name PLACE_REGION "149 44 152 166" -to north_to_south_sector_size[1].*
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to north_to_south_sector_size[1].*
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to north_to_south_sector_size[1].*
+set_instance_assignment -name REGION_NAME north_to_south_sector_size[1] -to north_to_south_sector_size[1].*
+set_instance_assignment -name PLACE_REGION "149 44 152 166" -to south_to_north_sector_size[1].*
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to south_to_north_sector_size[1].*
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to south_to_north_sector_size[1].*
+set_instance_assignment -name REGION_NAME south_to_north_sector_size[1] -to south_to_north_sector_size[1].*
+set_instance_assignment -name PLACE_REGION "191 44 194 166" -to north_to_south_sector_size[2].*
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to north_to_south_sector_size[2].*
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to north_to_south_sector_size[2].*
+set_instance_assignment -name REGION_NAME north_to_south_sector_size[2] -to north_to_south_sector_size[2].*
+set_instance_assignment -name PLACE_REGION "191 44 194 166" -to south_to_north_sector_size[2].*
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to south_to_north_sector_size[2].*
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to south_to_north_sector_size[2].*
+set_instance_assignment -name REGION_NAME south_to_north_sector_size[2] -to south_to_north_sector_size[2].*
+set_instance_assignment -name PLACE_REGION "245 44 248 166" -to north_to_south_sector_size[3].*
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to north_to_south_sector_size[3].*
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to north_to_south_sector_size[3].*
+set_instance_assignment -name REGION_NAME north_to_south_sector_size[3] -to north_to_south_sector_size[3].*
+set_instance_assignment -name PLACE_REGION "245 44 248 166" -to south_to_north_sector_size[3].*
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to south_to_north_sector_size[3].*
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to south_to_north_sector_size[3].*
+set_instance_assignment -name REGION_NAME south_to_north_sector_size[3] -to south_to_north_sector_size[3].*
+set_instance_assignment -name PLACE_REGION "280 44 288 166" -to east_in_reg*
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to east_in_reg*
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to east_in_reg*
+set_instance_assignment -name REGION_NAME east_in_reg -to east_in_reg*
+set_instance_assignment -name PLACE_REGION "280 44 288 166" -to east_out*~reg0
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to east_out*~reg0
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to east_out*~reg0
+set_instance_assignment -name REGION_NAME east_out_reg -to east_out*~reg0
+set_instance_assignment -name PLACE_REGION "55 44 63 166" -to west_in_reg*
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to west_in_reg*
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to west_in_reg*
+set_instance_assignment -name REGION_NAME west_in -to west_in_reg*
+set_instance_assignment -name PLACE_REGION "55 44 63 166" -to west_out*~reg0
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to west_out*~reg0
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to west_out*~reg0
+set_instance_assignment -name REGION_NAME west_out_reg -to west_out*~reg0
+set_instance_assignment -name PLACE_REGION "64 156 279 156" -to east_to_west_sector_size[0].*top*
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to east_to_west_sector_size[0].*top*
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to east_to_west_sector_size[0].*top*
+set_instance_assignment -name REGION_NAME east_to_west_sector_size[0]_top -to east_to_west_sector_size[0].*top*
+set_instance_assignment -name PLACE_REGION "64 135 279 135" -to east_to_west_sector_size[0].*bot*
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to east_to_west_sector_size[0].*bot*
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to east_to_west_sector_size[0].*bot*
+set_instance_assignment -name REGION_NAME east_to_west_sector_size[0]_bot -to east_to_west_sector_size[0].*bot*
+set_instance_assignment -name PLACE_REGION "64 115 279 115" -to east_to_west_sector_size[1].*top*
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to east_to_west_sector_size[1].*top*
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to east_to_west_sector_size[1].*top*
+set_instance_assignment -name REGION_NAME east_to_west_sector_size[1]_top -to east_to_west_sector_size[1].*top*
+set_instance_assignment -name PLACE_REGION "64 94 279 94" -to east_to_west_sector_size[1].*bot*
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to east_to_west_sector_size[1].*bot*
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to east_to_west_sector_size[1].*bot*
+set_instance_assignment -name PLACE_REGION "64 75 279 75" -to east_to_west_sector_size[2].*top*
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to east_to_west_sector_size[2].*top*
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to east_to_west_sector_size[2].*top*
+set_instance_assignment -name REGION_NAME east_to_west_sector_size[2]_top -to east_to_west_sector_size[2].*top*
+set_instance_assignment -name PLACE_REGION "64 53 279 53" -to east_to_west_sector_size[2].*bot*
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to east_to_west_sector_size[2].*bot*
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to east_to_west_sector_size[2].*bot*
+set_instance_assignment -name REGION_NAME west_to_east_sector_size[2]_bot -to east_to_west_sector_size[2].*bot*
+set_instance_assignment -name PLACE_REGION "64 156 279 156" -to west_to_east_sector_size[0].*top*
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to west_to_east_sector_size[0].*top*
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to west_to_east_sector_size[0].*top*
+set_instance_assignment -name REGION_NAME west_to_east_sector_size[0]_top -to west_to_east_sector_size[0].*top*
+set_instance_assignment -name PLACE_REGION "64 135 279 135" -to west_to_east_sector_size[0].*bot*
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to west_to_east_sector_size[0].*bot*
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to west_to_east_sector_size[0].*bot*
+set_instance_assignment -name REGION_NAME west_to_east_sector_size[0]_bot -to west_to_east_sector_size[0].*bot*
+set_instance_assignment -name PLACE_REGION "64 115 279 115" -to west_to_east_sector_size[1].*top*
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to west_to_east_sector_size[1].*top*
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to west_to_east_sector_size[1].*top*
+set_instance_assignment -name REGION_NAME west_to_east_sector_size[1]_top -to west_to_east_sector_size[1].*top*
+set_instance_assignment -name PLACE_REGION "64 94 279 94" -to west_to_east_sector_size[1].*bot*
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to west_to_east_sector_size[1].*bot*
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to west_to_east_sector_size[1].*bot*
+set_instance_assignment -name REGION_NAME west_to_east_sector_size[1]_bot -to west_to_east_sector_size[1].*bot*
+set_instance_assignment -name PLACE_REGION "64 75 279 75" -to west_to_east_sector_size[2].*top*
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to west_to_east_sector_size[2].*top*
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to west_to_east_sector_size[2].*top*
+set_instance_assignment -name REGION_NAME west_to_east_sector_size[2]_top -to west_to_east_sector_size[2].*top*
+set_instance_assignment -name PLACE_REGION "64 53 279 53" -to west_to_east_sector_size[2].*bot*
+set_instance_assignment -name RESERVE_PLACE_REGION OFF -to west_to_east_sector_size[2].*bot*
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to west_to_east_sector_size[2].*bot*
+set_instance_assignment -name REGION_NAME west_to_east_sector_size[2]_bot -to west_to_east_sector_size[2].*bot*
+set_instance_assignment -name PLACE_REGION "X64 Y44 X94 Y52;X99 Y44 X148 Y52;X153 Y44 X190 Y52;X195 Y44 X244 Y52;X249 Y44 X279 Y52;X64 Y54 X94 Y74;X99 Y54 X148 Y74;X153 Y54 X190 Y74;X195 Y54 X244 Y74;X249 Y54 X279 Y74;X64 Y76 X94 Y93;X99 Y76 X148 Y93;X153 Y76 X190 Y93;X195 Y76 X244 Y93;X249 Y76 X279 Y93;X64 Y95 X94 Y114;X99 Y95 X148 Y114;X153 Y95 X190 Y114;X195 Y95 X244 Y114;X249 Y95 X279 Y114;X64 Y116 X94 Y134;X99 Y116 X148 Y134;X153 Y116 X190 Y134;X195 Y116 X244 Y134;X249 Y116 X279 Y134;X64 Y136 X94 Y155;X99 Y136 X148 Y155;X153 Y136 X190 Y155;X195 Y136 X244 Y155;X249 Y136 X279 Y155;X64 Y157 X94 Y166;X99 Y157 X148 Y166;X153 Y157 X190 Y166;X195 Y157 X244 Y166;X249 Y157 X279 Y166" -to u_blinking_led
+set_instance_assignment -name RESERVE_PLACE_REGION ON -to u_blinking_led
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to u_blinking_led
+set_instance_assignment -name REGION_NAME u_blinking_led -to u_blinking_led
+set_instance_assignment -name ROUTE_REGION "X63 Y43 X280 Y167" -to u_blinking_led
+set_instance_assignment -name RESERVE_ROUTE_REGION OFF -to u_blinking_led
+set_instance_assignment -name PARTITION_COLOUR 4289593276 -to top -entity top
+set_instance_assignment -name PARTITION_COLOUR 4284678115 -to u_blinking_led -entity top
+set_global_assignment -name POWER_USE_PVA OFF
+set_global_assignment -name POWER_DEFAULT_TOGGLE_RATE 30%
+set_global_assignment -name POWER_AND_THERMAL_CALCULATOR_EXPORT_FILE blinking_led.qptc
+set_global_assignment -name POWER_OUTPUT_SAF_NAME .saf
+set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE 30%
+set_global_assignment -name FLOW_ENABLE_POWER_ANALYZER ON
+set_global_assignment -name FLOW_DISABLE_ASSEMBLER ON
+set_global_assignment -name ALLOW_REGISTER_RETIMING ON
+set_global_assignment -name FAST_PRESERVE OFF -entity top
+set_global_assignment -name OPTIMIZATION_MODE "SUPERIOR PERFORMANCE"
+set_global_assignment -name GLOBAL_PLACEMENT_EFFORT "HIGH EFFORT" -tag best_from_dse_compilation
+set_global_assignment -name SEED 2 -tag best_from_dse_compilation
+set_instance_assignment -name ENTITY_REBINDING adder_grid_2d -to u_blinking_led -entity top
+set_global_assignment -name REVISION_TYPE PR_IMPL
+set_global_assignment -name SYSTEMVERILOG_FILE adder_grid_2d.sv
+set_global_assignment -name SYSTEMVERILOG_FILE top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE top_counter.sv
+set_global_assignment -name SDC_FILE blinking_led.sdc
+set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 2

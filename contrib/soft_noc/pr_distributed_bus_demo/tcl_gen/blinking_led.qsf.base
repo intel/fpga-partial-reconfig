@@ -1,0 +1,101 @@
+# Copyright (c) Intel Corporation
+#  
+# Permission is hereby granted, free of charge, to any person obtaining a
+# copy of this software and associated documentation files (the
+# "Software"), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to
+# permit persons to whom the Software is furnished to do so, subject to
+# the following conditions:
+#  
+# The above copyright notice and this permission notice shall be included
+# in all copies or substantial portions of the Software.
+#  
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+# OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+# IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+# CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+# TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+# SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+set_global_assignment -name FAMILY Agilex
+set_global_assignment -name DEVICE AGFA014R24A2E2VR0
+
+set_global_assignment -name TOP_LEVEL_ENTITY top
+set_global_assignment -name SYSTEMVERILOG_FILE top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE blinking_led.sv
+set_global_assignment -name SYSTEMVERILOG_FILE top_counter.sv
+set_global_assignment -name SDC_FILE blinking_led.sdc
+
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+
+set_instance_assignment -name SLEW_RATE 1 -to led_zero_on -entity top
+set_instance_assignment -name SLEW_RATE 1 -to led_one_on -entity top
+set_instance_assignment -name SLEW_RATE 1 -to led_two_on -entity top
+set_instance_assignment -name SLEW_RATE 1 -to led_three_on -entity top
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to clock -entity top
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_zero_on -entity top
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_one_on -entity top
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_two_on -entity top
+set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_three_on -entity top
+
+set_global_assignment -name ENABLE_OCT_DONE OFF
+set_global_assignment -name STRATIXV_CONFIGURATION_SCHEME "AVST X16"
+set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
+set_global_assignment -name ENABLE_ED_CRC_CHECK ON
+set_global_assignment -name MINIMUM_SEU_INTERVAL 0
+set_global_assignment -name ACTIVE_SERIAL_CLOCK AS_FREQ_100MHZ
+set_global_assignment -name LAST_QUARTUS_VERSION "20.3.0 Pro Edition"
+
+# PR items
+set_instance_assignment -name PARTITION pr_partition -to u_blinking_led -entity top
+set_instance_assignment -name PARTIAL_RECONFIGURATION_PARTITION ON -to u_blinking_led -entity top
+set_instance_assignment -name PLACE_REGION "X64 Y44 X279 Y166" -to u_blinking_led
+set_instance_assignment -name RESERVE_PLACE_REGION ON -to u_blinking_led
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to u_blinking_led
+set_instance_assignment -name REGION_NAME u_blinking_led -to u_blinking_led
+set_instance_assignment -name ROUTE_REGION "X63 Y43 X280 Y167" -to u_blinking_led
+set_instance_assignment -name RESERVE_ROUTE_REGION OFF -to u_blinking_led
+set_global_assignment -name REVISION_TYPE PR_BASE
+set_instance_assignment -name EXPORT_PARTITION_SNAPSHOT_FINAL blinking_led_static.qdb -to | -entity top
+
+set_instance_assignment -name VIRTUAL_PIN ON -to led_zero_on -entity top
+set_instance_assignment -name VIRTUAL_PIN ON -to led_one_on -entity top
+set_instance_assignment -name VIRTUAL_PIN ON -to led_two_on -entity top
+set_instance_assignment -name VIRTUAL_PIN ON -to led_three_on -entity top
+
+set_instance_assignment -name VIRTUAL_PIN ON -to dummy_in -entity top
+set_instance_assignment -name VIRTUAL_PIN ON -to dummy_out -entity top
+
+set_instance_assignment -name VIRTUAL_PIN ON -to north_in* -entity top
+set_instance_assignment -name VIRTUAL_PIN ON -to south_in* -entity top
+set_instance_assignment -name VIRTUAL_PIN ON -to east_in* -entity top
+set_instance_assignment -name VIRTUAL_PIN ON -to west_in* -entity top
+set_instance_assignment -name VIRTUAL_PIN ON -to north_out* -entity top
+set_instance_assignment -name VIRTUAL_PIN ON -to south_out* -entity top
+set_instance_assignment -name VIRTUAL_PIN ON -to east_out* -entity top
+set_instance_assignment -name VIRTUAL_PIN ON -to west_out* -entity top
+
+# Power Analyzer
+set_global_assignment -name POWER_USE_PVA OFF
+set_global_assignment -name POWER_DEFAULT_TOGGLE_RATE 30%
+set_global_assignment -name POWER_AND_THERMAL_CALCULATOR_EXPORT_FILE blinking_led.qptc
+set_global_assignment -name POWER_OUTPUT_SAF_NAME .saf
+set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE 30%
+set_global_assignment -name FLOW_ENABLE_POWER_ANALYZER ON
+
+# Disable Assembler
+set_global_assignment -name FLOW_DISABLE_ASSEMBLER ON
+
+# Enable Register Retiming
+set_global_assignment -name ALLOW_REGISTER_RETIMING ON
+
+set_instance_assignment -name PARTITION_COLOUR 4294941250 -to top -entity top
+set_instance_assignment -name PARTITION_COLOUR 4282292479 -to u_blinking_led -entity top
+set_global_assignment -name FLOW_ENABLE_HYPER_RETIMER_FAST_FORWARD OFF
+
+set_global_assignment -name OPTIMIZATION_MODE "SUPERIOR PERFORMANCE"
+set_global_assignment -name GLOBAL_PLACEMENT_EFFORT "HIGH EFFORT"
+set_global_assignment -name SEED 2 
+
