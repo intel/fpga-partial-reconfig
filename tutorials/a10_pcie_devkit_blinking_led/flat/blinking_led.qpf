@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2018 Intel Corporation. All rights reserved.
+# Copyright (C) 2001-2020 Intel Corporation. All rights reserved.
 # Your use of Intel Corporation's design tools, logic functions
 # and other software and tools, and its AMPP partner logic
 # functions, and any output files from any of the foregoing
@@ -14,7 +14,7 @@
 # agreement for further details.
 
 
-QUARTUS_VERSION = "16.0"
+QUARTUS_VERSION = "20.3"
 
 # Revisions
 
