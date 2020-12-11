@@ -1,4 +1,4 @@
-// Copyright (c) 2001-2018 Intel Corporation
+// Copyright (c) 2001-2020 Intel Corporation
 //  
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
@@ -26,22 +26,21 @@
 `timescale 1 ps / 1 ps
 `default_nettype none
 
-module blinking_led_empty (
+module blinking_led_empty(
 
-   // clock
-   input wire clock,
-   input wire [31:0] counter,
-
-
-   // Control signals for the LEDs
-   output wire led_two_on,
-   output wire led_three_on
-
+	// clock
+	input wire clock,
+	input wire [31:0] counter,
+	
+	
+	// Control signals for the LEDs
+	output wire led_two_on,
+	output wire led_three_on
 );
 
 
-   // LED is active low
-   assign  led_two_on  = 1'b0;
-   assign  led_three_on  = 1'b0;
+	// LED is active low
+	assign led_two_on = 1'b0;
+	assign led_three_on = 1'b0;
 
-endmodule
+	endmodule

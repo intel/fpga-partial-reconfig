@@ -1,8 +1,8 @@
 # -------------------------------------------------------------------------- #
 #
-# Copyright (C) 2018  Intel Corporation. All rights reserved.
+# Copyright (C) 2020  Intel Corporation. All rights reserved.
 # Your use of Intel Corporation's design tools, logic functions 
-# and other software and tools, and its AMPP partner logic 
+# and other software and tools, and any partner logic 
 # functions, and any output files from any of the foregoing 
 # (including device programming or simulation files), and any 
 # associated documentation or information are expressly subject 
@@ -12,22 +12,23 @@
 # agreement, including, without limitation, that your use is for
 # the sole purpose of programming logic devices manufactured by
 # Intel and sold by Intel or its authorized distributors.  Please
-# refer to the applicable agreement for further details.
+# refer to the applicable agreement for further details, at
+# https://fpgasoftware.intel.com/eula.
 #
 # -------------------------------------------------------------------------- #
 #
 # Quartus Prime
-# Version 18.1.0 Build 222 09/21/2018 SJ Pro Edition
-# Date created = 11:07:50  September 25, 2018
+# Version 20.3.0 Build 158 09/24/2020 SC Pro Edition
+# Date created = 09:54:50  November 05, 2020
 #
 # -------------------------------------------------------------------------- #
 
-QUARTUS_VERSION = "18.1"
-DATE = "11:07:50  September 25, 2018"
+QUARTUS_VERSION = "20.3"
+DATE = "09:54:50  November 05, 2020"
 
 # Revisions
 
-PROJECT_REVISION = "blinking_led_default"
-PROJECT_REVISION = "blinking_led_empty"
-PROJECT_REVISION = "blinking_led_slow"
 PROJECT_REVISION = "blinking_led"
+PROJECT_REVISION = "blinking_led_slow"
+PROJECT_REVISION = "blinking_led_empty"
+PROJECT_REVISION = "blinking_led_default"

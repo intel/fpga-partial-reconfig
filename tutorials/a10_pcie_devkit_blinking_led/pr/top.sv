@@ -1,4 +1,4 @@
-// Copyright (c) 2001-2018 Intel Corporation
+// Copyright (c) 2001-2020 Intel Corporation
 //  
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
@@ -127,14 +127,14 @@ module top (
    ////////////////////////////////////////////////////////////////////////
    pr_ip u_pr_ip
    (
-      .clk           (clock),
-      .nreset        (1'b1),
-      .freeze        (freeze),
-      .pr_start      (1'b0),            // ignored for JTAG
-      .status        (pr_ip_status),
-      .data          (16'b0),
-      .data_valid    (1'b0),
-      .data_ready    ()
+       .clk           (clock),
+       .nreset        (1'b1),
+       .freeze        (freeze),
+       .pr_start      (1'b0),            // ignored for JTAG
+       .status        (pr_ip_status),
+       .data          (16'b0),
+       .data_valid    (1'b0),
+       .data_ready    ()
    );
 
 endmodule

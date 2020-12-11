@@ -28,28 +28,28 @@
 
 module blinking_led_slow (
 
-    // clock
-    input wire clock,
-    input wire [31:0] counter,
-
-
-    // Control signals for the LEDs
-    output wire led_two_on,
-    output wire led_three_on
+	// clock
+	input wire clock,
+	input wire [31:0] counter,
+	
+	
+	// Control signals for the LEDs
+	output wire led_two_on,
+	output wire led_three_on
 );
 
-   localparam COUNTER_TAP = 27;
-    reg led_two_on_r;
-    reg led_three_on_r;
-
-
-    assign led_two_on   = led_two_on_r;
-    assign led_three_on = led_three_on_r;
-    
-    always_ff @(posedge clock)
-    begin
-        led_three_on_r <= counter[COUNTER_TAP];
-        led_two_on_r   <= counter[COUNTER_TAP];
-    end
+	localparam COUNTER_TAP = 27;
+	reg led_two_on_r;
+	reg led_three_on_r;
+	
+	
+	assign led_two_on = led_two_on_r;
+	assign led_three_on = led_three_on_r;
+ 
+	always_ff @(posedge clock)
+	begin
+	led_two_on_r <= counter[COUNTER_TAP];
+	led_three_on_r <= counter[COUNTER_TAP];
+	end
 
 endmodule

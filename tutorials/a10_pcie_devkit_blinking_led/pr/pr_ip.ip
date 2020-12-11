@@ -3,14 +3,14 @@
   <ipxact:vendor>Intel Corporation</ipxact:vendor>
   <ipxact:library>pr_ip</ipxact:library>
   <ipxact:name>alt_pr_0</ipxact:name>
-  <ipxact:version>18.1</ipxact:version>
+  <ipxact:version>19.1.0</ipxact:version>
   <ipxact:busInterfaces>
     <ipxact:busInterface>
       <ipxact:name>clk</ipxact:name>
-      <ipxact:busType vendor="altera" library="altera" name="clock" version="18.1"></ipxact:busType>
+      <ipxact:busType vendor="altera" library="altera" name="clock" version="20.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="altera" library="altera" name="clock" version="18.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="altera" library="altera" name="clock" version="20.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -44,10 +44,10 @@
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>nreset</ipxact:name>
-      <ipxact:busType vendor="altera" library="altera" name="reset" version="18.1"></ipxact:busType>
+      <ipxact:busType vendor="altera" library="altera" name="reset" version="20.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="altera" library="altera" name="reset" version="18.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="altera" library="altera" name="reset" version="20.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -76,10 +76,10 @@
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>pr_start</ipxact:name>
-      <ipxact:busType vendor="altera" library="altera" name="conduit" version="18.1"></ipxact:busType>
+      <ipxact:busType vendor="altera" library="altera" name="conduit" version="20.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="altera" library="altera" name="conduit" version="18.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="altera" library="altera" name="conduit" version="20.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -113,10 +113,10 @@
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>freeze</ipxact:name>
-      <ipxact:busType vendor="altera" library="altera" name="conduit" version="18.1"></ipxact:busType>
+      <ipxact:busType vendor="altera" library="altera" name="conduit" version="20.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="altera" library="altera" name="conduit" version="18.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="altera" library="altera" name="conduit" version="20.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -150,10 +150,10 @@
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>status</ipxact:name>
-      <ipxact:busType vendor="altera" library="altera" name="conduit" version="18.1"></ipxact:busType>
+      <ipxact:busType vendor="altera" library="altera" name="conduit" version="20.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="altera" library="altera" name="conduit" version="18.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="altera" library="altera" name="conduit" version="20.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -187,10 +187,10 @@
     </ipxact:busInterface>
     <ipxact:busInterface>
       <ipxact:name>avst_sink</ipxact:name>
-      <ipxact:busType vendor="altera" library="altera" name="avalon_streaming" version="18.1"></ipxact:busType>
+      <ipxact:busType vendor="altera" library="altera" name="avalon_streaming" version="20.3"></ipxact:busType>
       <ipxact:abstractionTypes>
         <ipxact:abstractionType>
-          <ipxact:abstractionRef vendor="altera" library="altera" name="avalon_streaming" version="18.1"></ipxact:abstractionRef>
+          <ipxact:abstractionRef vendor="altera" library="altera" name="avalon_streaming" version="20.3"></ipxact:abstractionRef>
           <ipxact:portMaps>
             <ipxact:portMap>
               <ipxact:logicalPort>
@@ -427,7 +427,7 @@
       <ipxact:vendor>Intel Corporation</ipxact:vendor>
       <ipxact:library>pr_ip</ipxact:library>
       <ipxact:name>alt_pr</ipxact:name>
-      <ipxact:version>18.1</ipxact:version>
+      <ipxact:version>19.1.0</ipxact:version>
     </altera:entity_info>
     <altera:altera_module_parameters>
       <ipxact:parameters>
@@ -484,7 +484,7 @@
         <ipxact:parameter parameterId="EXT_HOST_TARGET_DEVICE_FAMILY" type="string">
           <ipxact:name>EXT_HOST_TARGET_DEVICE_FAMILY</ipxact:name>
           <ipxact:displayName>Target device family for external host</ipxact:displayName>
-          <ipxact:value>Stratix V</ipxact:value>
+          <ipxact:value>Arria 10</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="DATA_WIDTH_INDEX" type="int">
           <ipxact:name>DATA_WIDTH_INDEX</ipxact:name>
@@ -563,7 +563,18 @@
         <ipxact:parameter parameterId="bonusData" type="string">
           <ipxact:name>bonusData</ipxact:name>
           <ipxact:displayName>bonusData</ipxact:displayName>
-          <ipxact:value>bonusData &#xa;{&#xa;   element alt_pr_0&#xa;   {&#xa;      datum _sortIndex&#xa;      {&#xa;         value = "0";&#xa;         type = "int";&#xa;      }&#xa;   }&#xa;}&#xa;</ipxact:value>
+          <ipxact:value>bonusData 
+{
+   element alt_pr_0
+   {
+      datum _sortIndex
+      {
+         value = "0";
+         type = "int";
+      }
+   }
+}
+</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="hideFromIPCatalog" type="bit">
           <ipxact:name>hideFromIPCatalog</ipxact:name>
@@ -578,11 +589,36 @@
         <ipxact:parameter parameterId="systemInfos" type="string">
           <ipxact:name>systemInfos</ipxact:name>
           <ipxact:displayName>systemInfos</ipxact:displayName>
-          <ipxact:value>&lt;systemInfosDefinition&gt;&#xa;    &lt;connPtSystemInfos/&gt;&#xa;&lt;/systemInfosDefinition&gt;</ipxact:value>
+          <ipxact:value>&lt;systemInfosDefinition&gt;
+    &lt;connPtSystemInfos&gt;
+        &lt;entry&gt;
+            &lt;key&gt;avmm_slave&lt;/key&gt;
+            &lt;value&gt;
+                &lt;connectionPointName&gt;avmm_slave&lt;/connectionPointName&gt;
+                &lt;suppliedSystemInfos/&gt;
+                &lt;consumedSystemInfos&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;ADDRESS_MAP&lt;/key&gt;
+                        &lt;value&gt;&amp;lt;address-map&amp;gt;&amp;lt;slave name='avmm_slave' start='0x0' end='0x40' datawidth='32' /&amp;gt;&amp;lt;/address-map&amp;gt;&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;ADDRESS_WIDTH&lt;/key&gt;
+                        &lt;value&gt;6&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;MAX_SLAVE_DATA_WIDTH&lt;/key&gt;
+                        &lt;value&gt;32&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/consumedSystemInfos&gt;
+            &lt;/value&gt;
+        &lt;/entry&gt;
+    &lt;/connPtSystemInfos&gt;
+&lt;/systemInfosDefinition&gt;</ipxact:value>
         </ipxact:parameter>
       </ipxact:parameters>
     </altera:altera_system_parameters>
     <altera:altera_interface_boundary>
+      <altera:interface_mapping altera:name="avmm_slave" altera:internal="alt_pr_0.avmm_slave"></altera:interface_mapping>
       <altera:interface_mapping altera:name="avst_sink" altera:internal="alt_pr_0.avst_sink" altera:type="avalon_streaming" altera:dir="end">
         <altera:port_mapping altera:name="data" altera:internal="data"></altera:port_mapping>
         <altera:port_mapping altera:name="data_ready" altera:internal="data_ready"></altera:port_mapping>
@@ -594,6 +630,7 @@
       <altera:interface_mapping altera:name="freeze" altera:internal="alt_pr_0.freeze" altera:type="conduit" altera:dir="end">
         <altera:port_mapping altera:name="freeze" altera:internal="freeze"></altera:port_mapping>
       </altera:interface_mapping>
+      <altera:interface_mapping altera:name="interrupt" altera:internal="alt_pr_0.interrupt"></altera:interface_mapping>
       <altera:interface_mapping altera:name="nreset" altera:internal="alt_pr_0.nreset" altera:type="reset" altera:dir="end">
         <altera:port_mapping altera:name="nreset" altera:internal="nreset"></altera:port_mapping>
       </altera:interface_mapping>
