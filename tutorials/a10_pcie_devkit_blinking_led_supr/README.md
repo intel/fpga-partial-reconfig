@@ -1,6 +1,6 @@
 # Arria 10 Blinking LED Static Update Partial Reconfiguration Tutorial for the Arria 10 GX FPGA Development Kit
 
-This readme file accompanies the Arria 10 Blinking LED Statix Update Partial Reconfiguration (PR) Tutorial for the Arria 10 GX FPGA Development Kit. This directory contains the design files for the Static Update PR (SUPR) tutorial. This version of the design has been verified using Quartus Prime Pro v18.0.
+This readme file accompanies the Arria 10 Blinking LED Statix Update Partial Reconfiguration (PR) Tutorial for the Arria 10 GX FPGA Development Kit. This directory contains the design files for the Static Update PR (SUPR) tutorial. This version of the design has been verified using Quartus Prime Pro v20.3.
 
 This readme file contains the following information:
 
@@ -21,6 +21,6 @@ This readme file contains the following information:
 
 ## System Requirements
 
-*  Quartus Prime Pro Edition software version 18.0
+*  Quartus Prime Pro Edition software version 20.3
 *  [Arria 10 GX FPGA Development Kit](https://www.altera.com/products/boards_and_kits/dev-kits/altera/kit-a10-gx-fpga.html)
 
