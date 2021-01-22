@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2018 Intel Corporation. All rights reserved.
+# Copyright (C) 2001-2020 Intel Corporation. All rights reserved.
 # Your use of Intel Corporation's design tools, logic functions
 # and other software and tools, and its AMPP partner logic
 # functions, and any output files from any of the foregoing
@@ -48,7 +48,8 @@ set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_zero_on
 set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_one_on
 set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_two_on
 set_instance_assignment -name CURRENT_STRENGTH_NEW 12MA -to led_three_on
-set_global_assignment -name LAST_QUARTUS_VERSION "18.0.0 Pro Edition"
+set_instance_assignment -name EXPORT_PARTITION_SNAPSHOT_FINAL blinking_led_static.qdb -to | -entity top
+set_global_assignment -name LAST_QUARTUS_VERSION "20.3.0 Pro Edition"
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
 set_global_assignment -name POWER_AUTO_COMPUTE_TJ ON
