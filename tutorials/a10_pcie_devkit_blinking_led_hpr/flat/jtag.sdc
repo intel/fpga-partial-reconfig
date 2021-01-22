@@ -1,4 +1,4 @@
-# Copyright (c) 2001-2018 Intel Corporation
+# Copyright (c) 2001-2020 Intel Corporation
 #  
 # Permission is hereby granted, free of charge, to any person obtaining a
 # copy of this software and associated documentation files (the
@@ -105,7 +105,8 @@ proc set_tck_timing_spec { } {
     set tck_t_period $ub2_safe_t_period
     create_clock -name {altera_reserved_tck} -period $tck_t_period [get_ports {altera_reserved_tck}]
     
-    set_clock_groups -asynchronous -group {altera_reserved_tck}
+    # Comment this out, and instead make altera_reserved_tck exclusive from only named clocks
+    #set_clock_groups -asynchronous -group {altera_reserved_tck}
 }
 proc get_tck_delay_max { } {
     set tck_blaster_tco_max 14.603

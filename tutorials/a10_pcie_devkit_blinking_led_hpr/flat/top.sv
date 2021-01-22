@@ -91,9 +91,12 @@ module top (
    assign  led_zero_on_w   = count_d[COUNTER_TAP];
    
 
-
-   assign led_two_on_w    = freeze ? 1'b1 : pr_led_two_on;
-   assign led_three_on_w  = freeze ? 1'b1 : pr_led_three_on;
+   ////////////////////////////////////////////////////////////////////////
+   // Only freeze child output, to see that parent still functions during
+   // PR
+   ////////////////////////////////////////////////////////////////////////
+   assign led_two_on_w    = pr_led_two_on;
+   assign led_three_on_w  = pr_led_three_on;
 
 
    ////////////////////////////////////////////////////////////////////////
@@ -125,16 +128,16 @@ module top (
    // 
    // This tutorial implements PR over JTAG
    ////////////////////////////////////////////////////////////////////////
-   //pr_ip u_pr_ip
-   //(
-   //    .clk           (clock),
-   //    .nreset        (1'b1),
-   //    .freeze        (freeze),
-   //    .pr_start      (1'b0),            // ignored for JTAG
-   //    .status        (pr_ip_status),
-   //    .data          (16'b0),
-   //    .data_valid    (1'b0),
-   //    .data_ready    ()
-   //);
+   pr_ip u_pr_ip
+   (
+      .clk           (clock),
+      .nreset        (1'b1),
+      .freeze        (freeze),
+      .pr_start      (1'b0),            // ignored for JTAG
+      .status        (pr_ip_status),
+      .data          (16'b0),
+      .data_valid    (1'b0),
+      .data_ready    ()
+   );
 
 endmodule

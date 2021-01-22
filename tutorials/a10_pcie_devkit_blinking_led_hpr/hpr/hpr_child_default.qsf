@@ -24,7 +24,7 @@
 
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "13:04:27  JULY 23, 2018"
-set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Pro Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "20.3.0 Pro Edition"
 set_global_assignment -name FAMILY "Arria 10"
 set_global_assignment -name DEVICE 10AX115S2F45I1SG
 set_global_assignment -name TOP_LEVEL_ENTITY top
@@ -34,9 +34,9 @@ set_instance_assignment -name PARTIAL_RECONFIGURATION_PARTITION ON -to u_blinkin
 set_instance_assignment -name PARTITION pr_parent_partition -to u_blinking_led -entity top
 set_instance_assignment -name PARTIAL_RECONFIGURATION_PARTITION ON -to u_blinking_led -entity top
 set_instance_assignment -name ENTITY_REBINDING blinking_led_child -to u_blinking_led|u_blinking_led_child -entity top
-set_instance_assignment -name QDB_FILE_PARTITION output_files/blinking_led_static.qdb -to | -entity top
+set_instance_assignment -name QDB_FILE_PARTITION blinking_led_static.qdb -to | -entity top
 set_global_assignment -name REVISION_TYPE PR_IMPL
-set_instance_assignment -name QDB_FILE_PARTITION output_files/pr_parent_partition_default_final.qdb -to u_blinking_led -entity top
+set_instance_assignment -name QDB_FILE_PARTITION pr_parent_partition_default_final.qdb -to u_blinking_led -entity top
 set_global_assignment -name SYSTEMVERILOG_FILE blinking_led_child.sv
 set_global_assignment -name SDC_FILE jtag.sdc
 set_global_assignment -name SDC_FILE blinking_led.sdc
