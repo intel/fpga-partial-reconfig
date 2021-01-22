@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2018 Intel Corporation. All rights reserved.
+# Copyright (C) 2001-2020 Intel Corporation. All rights reserved.
 # Your use of Intel Corporation's design tools, logic functions
 # and other software and tools, and its AMPP partner logic
 # functions, and any output files from any of the foregoing
@@ -467,7 +467,7 @@ set_global_assignment -name ON_CHIP_BITSTREAM_DECOMPRESSION OFF
 set_instance_assignment -name PLACE_REGION "X77 Y176 X77 Y176" -to emif_avmm_bridge
 set_instance_assignment -name RESERVE_PLACE_REGION OFF -to emif_avmm_bridge
 set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to emif_avmm_bridge
-set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Pro Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "20.3.0 Pro Edition"
 set_global_assignment -name PROJECT_IP_REGENERATION_POLICY ALWAYS_REGENERATE_IP
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP "-40"
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100

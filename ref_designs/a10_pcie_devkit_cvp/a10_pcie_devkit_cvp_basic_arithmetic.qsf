@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2018 Intel Corporation. All rights reserved.
+# Copyright (C) 2001-2020 Intel Corporation. All rights reserved.
 # Your use of Intel Corporation's design tools, logic functions
 # and other software and tools, and its AMPP partner logic
 # functions, and any output files from any of the foregoing
@@ -88,7 +88,7 @@ set_instance_assignment -name PARTIAL_RECONFIGURATION_PARTITION ON -to u_top|des
 #############################################################
 # QDB file partition assignment
 #############################################################
-set_instance_assignment -name QDB_FILE_PARTITION output_files/a10_pcie_devkit_cvp_static.qdb -to | -entity a10_pcie_ref_design
+set_instance_assignment -name QDB_FILE_PARTITION a10_pcie_devkit_cvp_static.qdb -to | -entity a10_pcie_ref_design
 
 #############################################################
 # Entity rebinding assignment
@@ -106,4 +106,4 @@ set_global_assignment -name SDC_FILE auxiliary.sdc
 set_global_assignment -name REVISION_TYPE PR_IMPL
 set_global_assignment -name GENERATE_PR_RBF_FILE ON
 set_global_assignment -name ON_CHIP_BITSTREAM_DECOMPRESSION OFF
-set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Pro Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "20.3.0 Pro Edition"
