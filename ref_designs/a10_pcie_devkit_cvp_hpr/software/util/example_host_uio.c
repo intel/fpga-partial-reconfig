@@ -1,45 +1,3 @@
-// Copyright (c) 2001-2018 Intel Corporation
-//  
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to
-// permit persons to whom the Software is furnished to do so, subject to
-// the following conditions:
-//  
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//  
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-// IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-// CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-// TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-// SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-// Copyright (c) 2001-2018 Intel Corporation
-//  
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to
-// permit persons to whom the Software is furnished to do so, subject to
-// the following conditions:
-//  
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//  
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-// IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-// CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-// TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-// SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
 /*
  *     Copyright (C) 2017 Intel Corporation
  *
@@ -81,9 +39,6 @@
 #include <time.h>
 #include <getopt.h>
 #include <sys/mman.h>
-#include <sys/ioctl.h>
-
-#include "fpga-ioctl.h"
 
 #define PR_PERSONA_ID 0x00
 #define PR_CONTROL_REGISTER 0x10
@@ -116,33 +71,189 @@ static uint32_t number_of_runs;
 static uint32_t verbose;
 
 
-int read_pr(int fd, int offset) {
+struct test_handle {
+	void *arg;
+	int (*read_u32)(void *, uint32_t, uint32_t *);
+	int (*write_u32)(void *, uint32_t, uint32_t);
+};
 
-    rw_arg_t rw_args;
-    rw_args.offset = offset;
+struct uio_handle {
+	int fd;
+	int size;
+	void *iomem;
+};
+int uio_find_dev_num(const char *uio_name) 
+{
+	int i, ret, name_len;
+	FILE *fh;
+	char *retp;
+	char buf[80];
 
-    if (ioctl(fd, FPGA_PR_REGION_READ, &rw_args) == -1)
-    {
-        perror("query_apps ioctl read_pr");
-    }
+	if (uio_name == NULL) {
+		printf("no name provided\n");
+		return -EINVAL;
+	}
 
-    return rw_args.data;
+	name_len = strnlen(uio_name, sizeof(buf));
 
+	if (name_len >= sizeof(buf)) {
+		printf("uio_name is too big\n");
+		return -EINVAL;
+	}
+
+	for (i = 0; 1; i++) {
+		ret = snprintf(buf, sizeof(buf),
+			"/sys/class/uio/uio%d/name", i);	
+
+		if (ret >= sizeof(buf)) {
+			printf("filename is too long for %d\n", i);
+			i = -EINVAL;
+			break;
+		}
+
+		fh = fopen(buf, "r");
+		
+		if (fh == NULL) {
+			printf("failed to find uio number for %s\n", uio_name);
+			i = -ENOENT;
+			break;
+		}
+
+		retp = fgets(buf, sizeof(buf), fh);
+
+		fclose(fh);
+
+		if (!retp) {
+			printf("failed to read name for uid%d\n", i);
+			i = -ENOENT;
+			break;
+		}
+
+		if (!strncmp(buf, uio_name, name_len)) {
+			break;
+		}
+	}
+
+	return i;
 }
 
-int write_pr(int fd, int offset, int data) {
+struct uio_handle *uio_open(int uio_num) 
+{
+	struct uio_handle *uioh = NULL;
+	int ret;
+	char fname[64];
 
-    rw_arg_t rw_args;
-    rw_args.offset = offset;
-    rw_args.data = data;
+	uioh = malloc(sizeof(*uioh));
+	if (!uioh) {
+		printf("failed to malloc uio_handle\n");
+		return NULL;
+	}
 
-    if (ioctl(fd, FPGA_PR_REGION_WRITE, &rw_args) == -1)
-    {
-        perror("query_apps ioctl write_pr");
-    }
+	ret = snprintf(fname, sizeof(fname),
+			"/sys/class/uio/uio%d/maps/map0/size",
+			uio_num);
 
-    return offset;
+	if (ret >= sizeof(fname)) {
+		printf("path to size is too long\n");
+		goto error;
+	}
 
+	FILE *fh = fopen(fname, "r");
+	if (!fh) {
+		printf("failed to open %s\n", fname);
+		goto error;
+	}
+
+	ret = fscanf(fh, "0x%x", &uioh->size);
+	fclose(fh);
+
+	if (ret < 0) {
+		printf("fscanf of size failed: %d\n", ret);
+		goto error;
+	}
+
+	if (uioh->size <= 0) {
+		printf("bad size read: %d\n", uioh->size);
+		goto error;
+	}
+
+	printf("region size is 0x%x\n", uioh->size);
+
+	ret = snprintf(fname, sizeof(fname), "/dev/uio%d", uio_num);
+
+	if (ret >= sizeof(fname)) {
+		printf("path to dev is too long\n");
+		goto error;
+	}
+
+	uioh->fd = open(fname, O_RDWR);
+
+	if (uioh->fd < 0) {
+		printf("failed to open %s\n", fname);
+		goto error;
+	}
+
+	uioh->iomem = mmap(NULL, uioh->size, PROT_READ|PROT_WRITE, MAP_SHARED, uioh->fd, 0*getpagesize());
+
+	if (uioh->iomem == MAP_FAILED) {
+		printf("mmap failed\n");
+		close(uioh->fd);
+		goto error;
+	}
+
+	return uioh;
+
+error:
+	if (uioh)
+		free(uioh);
+	return NULL;
+}
+
+void uio_close(struct uio_handle *uioh)
+{
+
+	munmap(uioh->iomem, uioh->size);
+	close(uioh->fd);
+	free(uioh);
+}
+
+int uio_read_u32(void *h, uint32_t offset, uint32_t *pdata)
+{
+	struct uio_handle *uioh = h;
+	uint32_t *p;
+	if (!uioh) {
+		printf("%s bad uioh\n", __func__);
+		return EINVAL;
+	}
+
+	if (offset >= uioh->size) {
+		printf("%s bad offset %u >= %u \n", __func__, offset, uioh->size);
+		return EINVAL;
+	}
+
+	p = uioh->iomem + offset;
+	*pdata = *p;
+	return 0;
+}
+
+int uio_write_u32(void *h, uint32_t offset, uint32_t data)
+{
+
+	struct uio_handle *uioh = h;
+	uint32_t *p;
+	if (!uioh) {
+		printf("%s bad uioh\n", __func__);
+		return EINVAL;
+	}
+
+	if (offset >= uioh->size) {
+		printf("%s bad offset %u >= %u \n", __func__, offset, uioh->size);
+		return EINVAL;
+	}
+
+	p = uioh->iomem + offset;
+	*p = data;
+	return 0;
 }
 
 static void print_exe_time(struct timespec begin, struct timespec end )
@@ -171,16 +282,13 @@ static void print_exe_time(struct timespec begin, struct timespec end )
 	return;
 }
 
-static void reset_pr_logic(uint32_t verbose, uint32_t region_offset, int fd)
+static void reset_pr_logic(struct test_handle *th, uint32_t verbose, uint32_t region_offset)
 {
 
 	VERBOSE_MESSAGE("\tPerforming PR Logic Reset\n");
-	//(*th->write_u32)(th->arg, (PR_CONTROL_REGISTER + region_offset), 0);
-	write_pr(fd, PR_CONTROL_REGISTER + region_offset, 0);
-	//(*th->write_u32)(th->arg, (PR_CONTROL_REGISTER + region_offset), 1);
-	write_pr(fd, PR_CONTROL_REGISTER + region_offset, 1);
-	//(*th->write_u32)(th->arg, (PR_CONTROL_REGISTER + region_offset), 0);
-	write_pr(fd, PR_CONTROL_REGISTER + region_offset, 0);
+	(*th->write_u32)(th->arg, (PR_CONTROL_REGISTER + region_offset), 0);
+	(*th->write_u32)(th->arg, (PR_CONTROL_REGISTER + region_offset), 1);
+	(*th->write_u32)(th->arg, (PR_CONTROL_REGISTER + region_offset), 0);
 	VERBOSE_MESSAGE("\tPR Logic Reset complete\n");
 
 }
@@ -228,7 +336,7 @@ int check_result_64(uint64_t expected_value, uint64_t returned_value)
 }
 
 #define ADDER_INPUT_SIZE 32
-static int do_basic_math_persona(uint32_t number_of_runs, uint32_t verbose, uint32_t region_offset, int fd)
+static int do_basic_math_persona(struct test_handle *th, uint32_t number_of_runs, uint32_t verbose, uint32_t region_offset)
 {
 	uint32_t data;
 	uint32_t i;
@@ -236,22 +344,19 @@ static int do_basic_math_persona(uint32_t number_of_runs, uint32_t verbose, uint
 	uint32_t increment = 0;
 
 	printf("\tThis is BasicArithmetic Persona\n\n");
-	reset_pr_logic(verbose, region_offset, fd);
+	reset_pr_logic(th, verbose, region_offset);
 
 	for( i = 1; i <= number_of_runs; i++) {
 
-		printf("Beginning test %d of %d\n", i, number_of_runs); 
-		reset_pr_logic(verbose, region_offset, fd);
+		printf("Beginning test %d of %d\n", i, number_of_runs);
+		reset_pr_logic(th, verbose, region_offset);
 		generate_random_number(&operand, &increment, ADDER_INPUT_SIZE);
 		VERBOSE_MESSAGE("\tWrite to PR_OPERAND value: 0x%08X\n", operand);
-		//(*th->write_u32)(th->arg, (PR_OPERAND + region_offset), operand);
-		write_pr(fd, PR_OPERAND + region_offset, operand);
+		(*th->write_u32)(th->arg, (PR_OPERAND + region_offset), operand);
 		VERBOSE_MESSAGE("\tWrite to PR_OPERAND value: 0x%08X\n", increment);
-		//(*th->write_u32)(th->arg, (PR_INCR + region_offset), increment);
-		write_pr(fd, PR_INCR + region_offset, increment);
+		(*th->write_u32)(th->arg, (PR_INCR + region_offset), increment);
 		data = 0x0;
-		//(*th->read_u32)(th->arg, (PR_RESULT + region_offset), &data);
-		data = read_pr(fd, PR_RESULT + region_offset);
+		(*th->read_u32)(th->arg, (PR_RESULT + region_offset), &data);
 		VERBOSE_MESSAGE("\tPerformed:\t0x%08X + 0x%08X\n\tResult Read:\t0x%08X\n\tExpected\t0x%08X\n", operand, increment, data, (uint32_t) (operand + increment));
 		if(check_result_32(operand + increment, data))
 			exit(EXIT_FAILURE);
@@ -263,7 +368,7 @@ static int do_basic_math_persona(uint32_t number_of_runs, uint32_t verbose, uint
 	return 0;
 }
 #define DSP_INPUT_SIZE 27
-static int do_basic_dsp_persona(uint32_t number_of_runs, uint32_t verbose, uint32_t region_offset, int fd)
+static int do_basic_dsp_persona(struct test_handle *th, uint32_t number_of_runs, uint32_t verbose, uint32_t region_offset)
 {
 	uint32_t data;
 	uint64_t result = 0;
@@ -272,26 +377,22 @@ static int do_basic_dsp_persona(uint32_t number_of_runs, uint32_t verbose, uint3
 	uint32_t arg_b = 0;
 
 	printf("\tThis is the Multiplication Persona\n\n");
-	reset_pr_logic(verbose, region_offset, fd);
+	reset_pr_logic(th, verbose, region_offset);
 
 	for( i = 1; i <= number_of_runs; i++)
 	{
 		printf("Beginning test %d of %d\n", i, number_of_runs);
-		reset_pr_logic(verbose, region_offset, fd);
+		reset_pr_logic(th, verbose, region_offset);
 		generate_random_number(&arg_a, &arg_b, DSP_INPUT_SIZE);
 		VERBOSE_MESSAGE("\tWrite to PR_OPERAND value: 0x%08X\n", arg_a);
-		//(*th->write_u32)(th->arg, (PR_OPERAND + region_offset), arg_a);
-		write_pr(fd, PR_OPERAND + region_offset, arg_a);
+		(*th->write_u32)(th->arg, (PR_OPERAND + region_offset), arg_a);
 		VERBOSE_MESSAGE("\tWrite to PR_OPERAND value: 0x%08X\n", arg_b);
-		//(*th->write_u32)(th->arg, (PR_INCR + region_offset), arg_b);
-		write_pr(fd, PR_INCR + region_offset, arg_b);
+		(*th->write_u32)(th->arg, (PR_INCR + region_offset), arg_b);
 		data = 0x0;
-		//(*th->read_u32)(th->arg, (PR_HOST_REGISTER_1 + region_offset), &data);
-		data = read_pr(fd, PR_HOST_REGISTER_1 + region_offset);
+		(*th->read_u32)(th->arg, (PR_HOST_REGISTER_1 + region_offset), &data);
 		result = data;
 		result = (result << 32);
-		//(*th->read_u32)(th->arg, (PR_HOST_REGISTER_0 + region_offset), &data);
-		data = read_pr(fd, PR_HOST_REGISTER_0 + region_offset);
+		(*th->read_u32)(th->arg, (PR_HOST_REGISTER_0 + region_offset), &data);
 		result += data;
 		VERBOSE_MESSAGE("\tPerformed:\t0x%08X * 0x%08X \n\tResult Read:\t0x%08jX\n\tExpected:\t0x%08jX\n", arg_a, arg_b, result, (uint64_t)((uint64_t)arg_a * (uint64_t)arg_b));
 		if(check_result_64((uint64_t)((uint64_t)arg_a * (uint64_t)arg_b), result))
@@ -314,34 +415,29 @@ static int do_basic_dsp_persona(uint32_t number_of_runs, uint32_t verbose, uint3
 #define DDR4_ADDRESS_MAX 1 << 25
 #define DDR4_CAL_MASK 3
 #define DDR4_CAL_OFFSET 0x10010
-static int run_ddr4_address_sweep(uint32_t base_address, uint32_t final_offset, uint32_t calibration, uint32_t verbose, uint32_t region_offset, int fd)
+static int run_ddr4_address_sweep(struct test_handle *th, uint32_t base_address, uint32_t final_offset, uint32_t calibration, uint32_t verbose, uint32_t region_offset)
 {
 	uint32_t data = 0;
 	uint32_t busy = 0;
 	
 	data = base_address;
-	//(*th->write_u32)(th->arg, (DDR4_MEM_ADDRESS + region_offset), data);
-	write_pr(fd, DDR4_MEM_ADDRESS + region_offset, data);
+	(*th->write_u32)(th->arg, (DDR4_MEM_ADDRESS + region_offset), data);
 	data = final_offset;
-	//(*th->write_u32)(th->arg, (DDR4_FINAL_OFFSET + region_offset), data);
-	write_pr(fd, DDR4_FINAL_OFFSET + region_offset, data);
+	(*th->write_u32)(th->arg, (DDR4_FINAL_OFFSET + region_offset), data);
 	data = 0 | (1 << DDR4_START_MASK) | (calibration << DDR4_CAL_MASK);
-	//(*th->write_u32)(th->arg, (PR_CONTROL_REGISTER + region_offset), data);
-	write_pr(fd, PR_CONTROL_REGISTER + region_offset, data);
+	(*th->write_u32)(th->arg, (PR_CONTROL_REGISTER + region_offset), data);
 	data = 0 | (0 << DDR4_START_MASK) | (calibration << DDR4_CAL_MASK);
-	//(*th->write_u32)(th->arg, (PR_CONTROL_REGISTER + region_offset), data);	
-	write_pr(fd, PR_CONTROL_REGISTER + region_offset, data);
+	(*th->write_u32)(th->arg, (PR_CONTROL_REGISTER + region_offset), data);	
 
 	do {
 		data = 0;
-		//(*th->read_u32)(th->arg, (DDR4_BUSY_REGISTER + region_offset), &data);
-		data = read_pr(fd, DDR4_BUSY_REGISTER + region_offset);
+		(*th->read_u32)(th->arg, (DDR4_BUSY_REGISTER + region_offset), &data);
 		busy = data;
 	} while(busy);
 
 	return 0;	
 }
-static int do_ddr4_access_persona (uint32_t seed, uint32_t number_of_runs, uint32_t verbose, uint32_t region_offset, int fd)
+static int do_ddr4_access_persona (struct  test_handle *th, uint32_t seed, uint32_t number_of_runs, uint32_t verbose, uint32_t region_offset)
 {
 	uint32_t data;
 	uint32_t calibration = 0;
@@ -350,10 +446,9 @@ static int do_ddr4_access_persona (uint32_t seed, uint32_t number_of_runs, uint3
 	uint32_t i = 0;
 
 	printf("This is the DDR4 Access Persona\n");
-	reset_pr_logic(verbose, region_offset, fd);
+	reset_pr_logic(th, verbose, region_offset);
 	VERBOSE_MESSAGE("\tChecking DDR4 Calibration\n");
-	//(*th->read_u32)(th->arg, (DDR4_CAL_OFFSET + 0), &data);
-	data = read_pr(fd, DDR4_CAL_OFFSET + 0);
+	(*th->read_u32)(th->arg, (DDR4_CAL_OFFSET + 0), &data);
 
 	if(data != 2) {
 		printf("DDR4 Calibration Failed\n");
@@ -365,19 +460,16 @@ static int do_ddr4_access_persona (uint32_t seed, uint32_t number_of_runs, uint3
 	VERBOSE_MESSAGE("\tStarting Test cases\n");
 
 	for( i = 1; i <= number_of_runs; i++) {
-		reset_pr_logic(verbose, region_offset, fd);
+		reset_pr_logic(th, verbose, region_offset);
 		printf("Beginning test %d of %d\n", i, number_of_runs);
 		uint32_t rand_ready = 0;
 		VERBOSE_MESSAGE("\tDDR4 lfsr Seed 0x%08X Loading\n", seed);
 		data = seed;
-		//(*th->write_u32)(th->arg, (DDR4_SEED_ADDRESS + region_offset), data);
-		write_pr(fd, DDR4_SEED_ADDRESS + region_offset, data);
+		(*th->write_u32)(th->arg, (DDR4_SEED_ADDRESS + region_offset), data);
 		data = 0 | (1 << DDR4_LOAD_SEED_MASK);
-		//(*th->write_u32)(th->arg, (PR_CONTROL_REGISTER + region_offset), data);
-		write_pr(fd, PR_CONTROL_REGISTER + region_offset, data);
+		(*th->write_u32)(th->arg, (PR_CONTROL_REGISTER + region_offset), data);
 		data=0;
-		//(*th->read_u32)(th->arg, (DDR4_SEED_ADDRESS + region_offset), &data);
-		data = read_pr(fd, DDR4_SEED_ADDRESS + region_offset);
+		(*th->read_u32)(th->arg, (DDR4_SEED_ADDRESS + region_offset), &data);
 
 		if(data != seed) {
 			printf("ERROR: failed to load seed \n");
@@ -393,17 +485,15 @@ static int do_ddr4_access_persona (uint32_t seed, uint32_t number_of_runs, uint3
 		}
 
 		VERBOSE_MESSAGE("\tTest case %d:\n\tSweeping Addresses 0x%08X to 0x%08X\n",i , base_address, base_address+final_offset);
-		run_ddr4_address_sweep(base_address,final_offset, calibration, verbose, region_offset, fd);
+		run_ddr4_address_sweep(th,base_address,final_offset, calibration, verbose, region_offset);
 		VERBOSE_MESSAGE("\tFinished test case %d\n",i);
 		VERBOSE_MESSAGE("\tChecking result for test case %d\n", i);
 		data = 0;
-		//(*th->read_u32)(th->arg, (PERFORMANCE_COUNTER + region_offset), &data);
-		data = read_pr(fd, PERFORMANCE_COUNTER + region_offset);
-		VERBOSE_MESSAGE("\tPercent of passing writes = %0.2f%% \n", ((float)data/(float)final_offset) * 100.0);
-		printf("Perfromance counter returned %d\n", data);
+		(*th->read_u32)(th->arg, (PERFORMANCE_COUNTER + region_offset), &data);
+		VERBOSE_MESSAGE("\tPercent of passing writes = %0.2f%% \n", (data/final_offset) * 100.0);
 
 		if(data != final_offset + 1) {
-			printf("\tDDR4 Access failed %0d of %0d (%0.2f%%) writes\n", final_offset - data, final_offset, ((float)(final_offset - data)/(float)final_offset) * 100.0);
+			printf("\tDDR4 Access failed %0d of %0d (%0.2f%%) writes\n", final_offset - data, final_offset, (data/final_offset) * 100.0);
 			exit(EXIT_FAILURE);
 		}
 		printf("Test %d of %d PASS\n", i, number_of_runs);
@@ -445,7 +535,7 @@ static void print_board(uint64_t board)
 	return;
 }
 
-static void run_gol_accelerated(uint32_t top_half, uint32_t bottom_half, uint32_t number_of_runs, uint32_t verbose, uint32_t region_offset, int fd)
+static void run_gol_accelerated(struct  test_handle *th, uint32_t top_half, uint32_t bottom_half, uint32_t number_of_runs, uint32_t verbose, uint32_t region_offset)
 {
 
 	struct timespec begin;
@@ -455,23 +545,16 @@ static void run_gol_accelerated(uint32_t top_half, uint32_t bottom_half, uint32_
 	
 	printf("Loading GOL data over PCIe, starting timer\n");
 	clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &begin);
-	//(*th->write_u32)(th->arg, (GOL_TOP_HALF + region_offset), top_half);
-	write_pr(fd, GOL_TOP_HALF + region_offset, top_half);
-	//(*th->write_u32)(th->arg, (GOL_BOT_HALF + region_offset), bottom_half);
-	write_pr(fd, GOL_BOT_HALF + region_offset, bottom_half);
-	//(*th->write_u32)(th->arg, (GOL_COUNTER_LIMIT_ADDRESS + region_offset), number_of_runs);
-	write_pr(fd, GOL_COUNTER_LIMIT_ADDRESS + region_offset, number_of_runs);
-	//(*th->write_u32)(th->arg, (PR_CONTROL_REGISTER + region_offset), (0 << GOL_START_MASK));
-	write_pr(fd, PR_CONTROL_REGISTER + region_offset, (0 << GOL_START_MASK));
-	//(*th->write_u32)(th->arg, (PR_CONTROL_REGISTER + region_offset), (1 << GOL_START_MASK));
-	write_pr(fd, PR_CONTROL_REGISTER + region_offset, (1 << GOL_START_MASK));
-	//(*th->write_u32)(th->arg, (PR_CONTROL_REGISTER + region_offset), (0 << GOL_START_MASK));
-	write_pr(fd, PR_CONTROL_REGISTER + region_offset, (0 << GOL_START_MASK));
+	(*th->write_u32)(th->arg, (GOL_TOP_HALF + region_offset), top_half);
+	(*th->write_u32)(th->arg, (GOL_BOT_HALF + region_offset), bottom_half);
+	(*th->write_u32)(th->arg, (GOL_COUNTER_LIMIT_ADDRESS + region_offset), number_of_runs);
+	(*th->write_u32)(th->arg, (PR_CONTROL_REGISTER + region_offset), (0 << GOL_START_MASK));
+	(*th->write_u32)(th->arg, (PR_CONTROL_REGISTER + region_offset), (1 << GOL_START_MASK));
+	(*th->write_u32)(th->arg, (PR_CONTROL_REGISTER + region_offset), (0 << GOL_START_MASK));
 	
 	do {
 		data = 0;
-		//(*th->read_u32)(th->arg, (GOL_BUSY_REG + region_offset), &data);
-		data = read_pr(fd, GOL_BUSY_REG + region_offset);
+		(*th->read_u32)(th->arg, (GOL_BUSY_REG + region_offset), &data);
 		busy = data;
 	} while(busy);
 	
@@ -560,7 +643,7 @@ static uint64_t run_gol_verify(uint64_t board, uint32_t number_of_runs, uint32_t
 	return current_board;
 }
 
-static int do_gol_persona (uint32_t seed, uint32_t number_of_runs, uint32_t verbose, uint32_t region_offset, int fd)
+static int do_gol_persona (struct  test_handle *th, uint32_t seed, uint32_t number_of_runs, uint32_t verbose, uint32_t region_offset)
 {
 	
 	uint32_t top_half=0;
@@ -571,21 +654,19 @@ static int do_gol_persona (uint32_t seed, uint32_t number_of_runs, uint32_t verb
 	uint64_t host_generated_result=0;
 	printf("This is the Game of Life Persona\n");
 
-	reset_pr_logic(verbose, region_offset, fd);
+	reset_pr_logic(th, verbose, region_offset);
 	generate_random_number(&top_half, &bottom_half, 32);
 	VERBOSE_MESSAGE("\tInitial GOL Board:\n");
 	VERBOSE_MESSAGE("\t%08X %08X\n", top_half,bottom_half);
 	if(verbose == 1)
 		print_board(((uint64_t) ((uint64_t)top_half << 32)) | ((uint64_t) bottom_half));
-	run_gol_accelerated(top_half, bottom_half, number_of_runs, verbose, region_offset, fd);
-		reset_pr_logic(verbose, region_offset, fd);
+	run_gol_accelerated(th,top_half, bottom_half, number_of_runs, verbose, region_offset);
+		reset_pr_logic(th, verbose, region_offset);
 
 	top_half_final = 0;
 	bottom_half_final = 0;
-	//(*th->read_u32)(th->arg, (GOL_TOP_END + region_offset), &top_half_final);
-	top_half_final = read_pr(fd, GOL_TOP_END + region_offset);
-	//(*th->read_u32)(th->arg, (GOL_BOT_END + region_offset), &bottom_half_final);
-	bottom_half_final = read_pr(fd, GOL_BOT_END + region_offset);
+	(*th->read_u32)(th->arg, (GOL_TOP_END + region_offset), &top_half_final);
+	(*th->read_u32)(th->arg, (GOL_BOT_END + region_offset), &bottom_half_final);
 	VERBOSE_MESSAGE("\t%08X %08X\n", top_half_final,bottom_half_final);
 
 	accelerated_result = ((uint64_t) ((uint64_t)(top_half_final) << 32)) | ((uint64_t) bottom_half_final);
@@ -608,7 +689,7 @@ static int do_gol_persona (uint32_t seed, uint32_t number_of_runs, uint32_t verb
 
 #define HPR_A_CHILD_0 0x4000
 #define HPR_A_CHILD_1 0x8000
-static int do_hpr_config_a(uint32_t seed, uint32_t number_of_runs, uint32_t verbose, uint32_t region_offset, int fd)
+static int do_hpr_config_a(struct  test_handle *th, uint32_t seed, uint32_t number_of_runs, uint32_t verbose, uint32_t region_offset)
 {
 	uint32_t id_child_0 = 0;
 	uint32_t id_child_1 = 0;
@@ -616,27 +697,25 @@ static int do_hpr_config_a(uint32_t seed, uint32_t number_of_runs, uint32_t verb
 	int ret_1;
 	printf("This is a HPR Persona with configuration A\n");
 	printf("Checking Child regions\n");
-	//(*th->read_u32)(th->arg, (PR_PERSONA_ID + HPR_A_CHILD_0), &id_child_0);
-	id_child_0 = read_pr(fd, PR_PERSONA_ID + HPR_A_CHILD_0);
-	//(*th->read_u32)(th->arg, (PR_PERSONA_ID + HPR_A_CHILD_1), &id_child_1);
-	id_child_1 = read_pr(fd, PR_PERSONA_ID + HPR_A_CHILD_1);
+	(*th->read_u32)(th->arg, (PR_PERSONA_ID + HPR_A_CHILD_0), &id_child_0);
+	(*th->read_u32)(th->arg, (PR_PERSONA_ID + HPR_A_CHILD_1), &id_child_1);
 	printf("====Child==== 0\n");
 	
 	switch (id_child_0) {
 	case PERSONA_ID_BASIC_ARITHMETIC:
-		ret_0 = do_basic_math_persona(number_of_runs, verbose, HPR_A_CHILD_0, fd);
+		ret_0 = do_basic_math_persona(th, number_of_runs, verbose, HPR_A_CHILD_0);
 		break;
 
 	case PERSONA_ID_BASIC_DSP:
-		ret_0 = do_basic_dsp_persona(number_of_runs, verbose,HPR_A_CHILD_0, fd);
+		ret_0 = do_basic_dsp_persona(th, number_of_runs, verbose,HPR_A_CHILD_0);
 		break;
 
 	case PERSONA_ID_DDR4_ACCESS:
-		ret_0 = do_ddr4_access_persona(seed, number_of_runs, verbose,HPR_A_CHILD_0, fd);
+		ret_0 = do_ddr4_access_persona(th, seed, number_of_runs, verbose,HPR_A_CHILD_0);
 		break;
 
 	case PERSONA_ID_GOL_ACCELERATOR:
-		ret_0 = do_gol_persona(seed, number_of_runs, verbose, HPR_A_CHILD_0, fd);
+		ret_0 = do_gol_persona(th, seed, number_of_runs, verbose, HPR_A_CHILD_0);
 		break;
 
 	default:
@@ -647,23 +726,23 @@ static int do_hpr_config_a(uint32_t seed, uint32_t number_of_runs, uint32_t verb
 	printf("====Child 1====\n");
 	switch (id_child_1) {
 	case PERSONA_ID_BASIC_ARITHMETIC:
-		ret_1 = do_basic_math_persona(number_of_runs, verbose,HPR_A_CHILD_1, fd);
+		ret_1 = do_basic_math_persona(th, number_of_runs, verbose,HPR_A_CHILD_1);
 		break;
 
 	case PERSONA_ID_BASIC_DSP:
-		ret_1 = do_basic_dsp_persona(number_of_runs, verbose,HPR_A_CHILD_1, fd);
+		ret_1 = do_basic_dsp_persona(th, number_of_runs, verbose,HPR_A_CHILD_1);
 		break;
 
 	case PERSONA_ID_DDR4_ACCESS:
-		ret_1 = do_ddr4_access_persona(seed, number_of_runs, verbose,HPR_A_CHILD_1, fd);
+		ret_1 = do_ddr4_access_persona(th, seed, number_of_runs, verbose,HPR_A_CHILD_1);
 		break;
 
 	case PERSONA_ID_GOL_ACCELERATOR:
-		ret_1 = do_gol_persona(seed, number_of_runs, verbose,HPR_A_CHILD_1, fd);
+		ret_1 = do_gol_persona(th, seed, number_of_runs, verbose,HPR_A_CHILD_1);
 		break;
 
 	default:
-		printf("unknown PR ID value 0x%x\n", id_child_1);
+		printf("unknown PR ID value 0x%x\n", id_child_0);
 		ret_1 = -EINVAL;
 	}
 	ret_0 = ret_0 & ret_1;
@@ -684,12 +763,11 @@ static void usage(const char *prog_name)
 
 int main(int argc, char **argv) 
 {
-	char *file_name = "/dev/fpga_pcie";
 	uint32_t data;
 	int ret;
+	int uio_num=-1;
+	struct test_handle th;
 	int opt;
-	int persona_id = 0;
-	int fd;
 
 	verbose = 0;
 	number_of_runs = 3;
@@ -703,13 +781,6 @@ int main(int argc, char **argv)
 		{"device", required_argument, 0, 'd'},
 		{0, 0, 0, 0}
 	} ;
-
-	fd = open(file_name, O_RDWR);
-	if (fd == -1)
-	{
-		perror("Char device file open");
-		return 2;
-	}
 
 	while((opt = getopt_long(argc, argv, "vd:s:n:h", long_options, NULL)) != -1){
 		switch(opt){
@@ -725,6 +796,9 @@ int main(int argc, char **argv)
 			case 's':
 				seed = (uint32_t) strtol(optarg, &optarg, 10);
 				break;
+			case 'd':
+				uio_num = uio_find_dev_num(optarg);
+				break;
 			case ':':
 			case '?':
 			default:
@@ -736,31 +810,45 @@ int main(int argc, char **argv)
 
 	srand(seed);
 
-	persona_id = read_pr(fd, PR_PERSONA_ID);
-	if (!persona_id)
+	if (uio_num < 0) {
+		printf("\nError: No PCIe device specified.\n");
+		usage(argv[0]);
+	}
+
+	struct uio_handle *uioh = uio_open(uio_num);
+
+	if (!uioh){
+		printf("\nError: uio failed to open.\n");
+		usage(argv[0]);
+	}
+
+	if (uio_read_u32(uioh, PR_PERSONA_ID, &data))
 		printf("read failed\n");
 	else
-		printf("Persona ID: 0x%08X\n", persona_id);
+		printf("Persona ID: 0x%08X\n", data);
 
-	switch (persona_id) {
+	th.arg = uioh;
+	th.read_u32 = uio_read_u32;
+	th.write_u32 = uio_write_u32;
+	switch (data) {
 	case PERSONA_ID_BASIC_ARITHMETIC:
-		ret = do_basic_math_persona(number_of_runs, verbose, 0, fd);
+		ret = do_basic_math_persona(&th, number_of_runs, verbose, 0);
 		break;
 
 	case PERSONA_ID_BASIC_DSP:
-		ret = do_basic_dsp_persona(number_of_runs, verbose, 0, fd);
+		ret = do_basic_dsp_persona(&th, number_of_runs, verbose, 0);
 		break;
 
 	case PERSONA_ID_DDR4_ACCESS:
-		ret = do_ddr4_access_persona(seed, number_of_runs, verbose, 0, fd);
+		ret = do_ddr4_access_persona(&th, seed, number_of_runs, verbose, 0);
 		break;
 
 	case PERSONA_ID_GOL_ACCELERATOR:
-		ret = do_gol_persona(seed, number_of_runs, verbose, 0, fd);
+		ret = do_gol_persona(&th, seed, number_of_runs, verbose, 0);
 		break;
 
 	case PERSONA_ID_HPR_PARENT_ALPHA:
-		ret = do_hpr_config_a(seed, number_of_runs, verbose, 0, fd);
+		ret = do_hpr_config_a(&th, seed, number_of_runs, verbose, 0);
 		break;
 
 	default:
@@ -768,6 +856,6 @@ int main(int argc, char **argv)
 		ret = -EINVAL;
 	}
 
-	close (fd);
+	uio_close(uioh);
 	return ret;
 }
