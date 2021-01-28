@@ -1,6 +1,6 @@
 # Arria 10 Hierarchical Partial Reconfiguration over PCIe Reference Design
 
-This readme file accompanies the Arria 10 PR over PCIe reference design using hierarchical partial reconfiguration (HPR) for the Arria 10 GX FPGA Development Kit. This version of the design has been verified using Quartus Prime Pro v20.3
+This readme file accompanies the Arria 10 PR over PCIe reference design using hierarchical partial reconfiguration (HPR) for the Arria 10 GX FPGA Development Kit. This version of the design has been verified using Quartus Prime Pro v20.3.
 
 This readme file contains the following information:
 
