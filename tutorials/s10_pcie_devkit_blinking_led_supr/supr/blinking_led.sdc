@@ -19,8 +19,8 @@
 # TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-# The clock is defined as a 50MHz clock (10ns period)
-create_clock -name {clock} -period 20.00 -waveform { 0.00 10.00 } [get_ports {clock}]
+# The clock is defined as a 100MHz clock (10ns period)
+create_clock -name {clock} -period 10.00 -waveform { 0.00 5.00 } [get_ports {clock}]
 
 # allocating a 1ns flight time for LED control signals on the board
 set_output_delay -clock clock 1 [get_ports {led_*_on}]

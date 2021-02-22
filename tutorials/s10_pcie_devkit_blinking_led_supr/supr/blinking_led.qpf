@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2018 Intel Corporation. All rights reserved.
+# Copyright (C) 2001-2020 Intel Corporation. All rights reserved.
 # Your use of Intel Corporation's design tools, logic functions
 # and other software and tools, and its AMPP partner logic
 # functions, and any output files from any of the foregoing
@@ -16,9 +16,9 @@
 
 # -------------------------------------------------------------------------- #
 #
-# Copyright (C) 2017  Intel Corporation. All rights reserved.
+# Copyright (C) 2020  Intel Corporation. All rights reserved.
 # Your use of Intel Corporation's design tools, logic functions 
-# and other software and tools, and its AMPP partner logic 
+# and other software and tools, and any partner logic 
 # functions, and any output files from any of the foregoing 
 # (including device programming or simulation files), and any 
 # associated documentation or information are expressly subject 
@@ -28,18 +28,19 @@
 # agreement, including, without limitation, that your use is for
 # the sole purpose of programming logic devices manufactured by
 # Intel and sold by Intel or its authorized distributors.  Please
-# refer to the applicable agreement for further details.
+# refer to the applicable agreement for further details, at
+# https://fpgasoftware.intel.com/eula.
 #
 # -------------------------------------------------------------------------- #
 #
 # Quartus Prime
-# Version 18.0.0 Internal Build 42 10/09/2017 TO Pro Edition
-# Date created = 17:19:16  October 11, 2017
+# Version 20.3.0 Build 158 09/24/2020 SC Pro Edition
+# Date created = 14:17:14  February 22, 2021
 #
 # -------------------------------------------------------------------------- #
 
-QUARTUS_VERSION = "18.0"
-DATE = "17:19:16  October 11, 2017"
+QUARTUS_VERSION = "20.3"
+DATE = "14:17:14  February 22, 2021"
 
 # Revisions
 
