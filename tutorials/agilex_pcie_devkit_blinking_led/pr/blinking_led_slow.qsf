@@ -1,0 +1,68 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2021  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and any partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details, at
+# https://fpgasoftware.intel.com/eula.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 21.1.0 Build 169 03/24/2021 SC Pro Edition
+# Date created = 11:43:35  April 29, 2021
+#
+# -------------------------------------------------------------------------- #
+
+set_global_assignment -name FAMILY Agilex
+set_global_assignment -name DEVICE AGFB014R24A2E2VR0
+set_global_assignment -name TOP_LEVEL_ENTITY top
+set_global_assignment -name SYSTEMVERILOG_FILE blinking_led_slow.sv
+set_global_assignment -name SYSTEMVERILOG_FILE top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE blinking_led.sv
+set_global_assignment -name SYSTEMVERILOG_FILE top_counter.sv
+set_global_assignment -name SDC_FILE blinking_led.sdc
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+
+set_location_assignment PIN_G26 -to clock
+set_location_assignment PIN_C30 -to led_zero_on
+set_location_assignment PIN_A30 -to led_one_on
+set_location_assignment PIN_D31 -to led_two_on
+set_location_assignment PIN_B31 -to led_three_on
+set_instance_assignment -name IO_STANDARD "1.2 V" -to led_zero_on
+set_instance_assignment -name IO_STANDARD "1.2 V" -to led_one_on
+set_instance_assignment -name IO_STANDARD "1.2 V" -to led_two_on
+set_instance_assignment -name IO_STANDARD "1.2 V" -to led_three_on
+set_instance_assignment -name SLEW_RATE 1 -to led_zero_on
+set_instance_assignment -name SLEW_RATE 1 -to led_one_on
+set_instance_assignment -name SLEW_RATE 1 -to led_two_on
+set_instance_assignment -name SLEW_RATE 1 -to led_three_on
+
+set_global_assignment -name STRATIXV_CONFIGURATION_SCHEME "AVST X16"
+set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
+set_global_assignment -name ENABLE_ED_CRC_CHECK ON
+set_global_assignment -name MINIMUM_SEU_INTERVAL 0
+set_global_assignment -name ACTIVE_SERIAL_CLOCK AS_FREQ_100MHZ
+set_instance_assignment -name PARTITION pr_partition -to u_blinking_led -entity top
+set_instance_assignment -name PARTIAL_RECONFIGURATION_PARTITION ON -to u_blinking_led -entity top
+set_instance_assignment -name PLACE_REGION "X163 Y4 X182 Y23" -to u_blinking_led
+set_instance_assignment -name ROUTE_REGION "X161 Y2 X184 Y25" -to u_blinking_led
+set_instance_assignment -name RESERVE_PLACE_REGION ON -to u_blinking_led
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to u_blinking_led
+set_instance_assignment -name REGION_NAME u_blinking_led -to u_blinking_led
+set_instance_assignment -name RESERVE_ROUTE_REGION OFF -to u_blinking_led
+set_instance_assignment -name ENTITY_REBINDING blinking_led_slow -to u_blinking_led -entity top
+set_global_assignment -name REVISION_TYPE PR_IMPL
+set_instance_assignment -name QDB_FILE_PARTITION blinking_led_static.qdb -to | -entity top
+
+
+set_global_assignment -name LAST_QUARTUS_VERSION "21.1.0 Pro Edition"
