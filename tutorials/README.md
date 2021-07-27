@@ -17,3 +17,6 @@ This directory contains tutorials related to the Intel FPGA Partial Reconfigurat
 - [Stratix 10 GX FPGA Devkit Blinking LED HPR Tutorial](s10_pcie_devkit_blinking_led_hpr/) - Contains Stratix 10 hierarchical PR (HPR) tutorial
 - [Stratix 10 GX FPGA Devkit Blinking LED PR + Signal Tap Tutorial](s10_pcie_devkit_blinking_led_stp/) - Contains Debugging Stratix 10 PR using Signal Tap tutorial
 - [Stratix 10 GX FPGA Devkit Blinking LED SUPR Tutorial](s10_pcie_devkit_blinking_led_supr/) - Contains Stratix 10 static update PR (SUPR) tutorial
+
+### Agilex
+- [Agilex F-Series FPGA Devkit Blinking LED PR Tutorial](agilex_pcie_devkit_blinking_led/) - Contains Agilex traditional PR tutorial
