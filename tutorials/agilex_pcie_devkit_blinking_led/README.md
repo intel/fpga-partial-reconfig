@@ -1,6 +1,6 @@
 # Agilex Blinking LED Partial Reconfiguration Tutorial for the Agilex F-Series FPGA Development Kit
 
-This readme file accompanies the Agilex Blinking LED Partial Reconfiguration Tutorial for the Agilex GX FPGA Development Kit. This directory contains the design files for the traditional PR tutorial. This version of the design has been verified using Quartus Prime Pro v20.3.
+This readme file accompanies the Agilex Blinking LED Partial Reconfiguration Tutorial for the Agilex F-Series FPGA Development Kit. This directory contains the design files for the traditional PR tutorial. This version of the design has been verified using Quartus Prime Pro v21.1.
 
 This readme file contains the following information:
 
