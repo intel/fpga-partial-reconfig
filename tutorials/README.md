@@ -20,3 +20,4 @@ This directory contains tutorials related to the Intel FPGA Partial Reconfigurat
 
 ### Agilex
 - [Agilex F-Series FPGA Devkit Blinking LED PR Tutorial](agilex_pcie_devkit_blinking_led/) - Contains Agilex traditional PR tutorial
+- [Agilex F-Series FPGA Devkit Blinking LED HPR Tutorial](agilex_pcie_devkit_blinking_led_hpr/) - Contains Agilex hierarchical PR (HPR) tutorial
