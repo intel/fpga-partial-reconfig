@@ -1,6 +1,4 @@
-set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.0.0
-set_global_assignment -name PROJECT_CREATION_TIME_DATE "14:16:35  FEBRUARY 07, 2018"
-# Copyright (C) 2001-2018 Intel Corporation. All rights reserved.
+# Copyright (C) 2001-2021 Intel Corporation. All rights reserved.
 # Your use of Intel Corporation's design tools, logic functions
 # and other software and tools, and its AMPP partner logic
 # functions, and any output files from any of the foregoing
@@ -17,7 +15,7 @@ set_global_assignment -name PROJECT_CREATION_TIME_DATE "14:16:35  FEBRUARY 07, 2
 
 
 set_global_assignment -name FAMILY "Stratix 10"
-set_global_assignment -name DEVICE 1SG280LU3F50E3VGS1
+set_global_assignment -name DEVICE 1SG280LU3F50E3VG
 set_global_assignment -name TOP_LEVEL_ENTITY top
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 # -------------------------------------------------------------------------- #
@@ -61,7 +59,7 @@ set_global_assignment -name ENABLE_ED_CRC_CHECK ON
 set_global_assignment -name MINIMUM_SEU_INTERVAL 0
 set_global_assignment -name ACTIVE_SERIAL_CLOCK AS_FREQ_100MHZ
 
-set_global_assignment -name LAST_QUARTUS_VERSION "18.0.0 Pro Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "21.3.0 Pro Edition"
 set_instance_assignment -name QDB_FILE_PARTITION blinking_led_static.qdb -to | -entity top
 set_instance_assignment -name ENTITY_REBINDING blinking_led_empty -to u_blinking_led -entity top
 set_global_assignment -name SYSTEMVERILOG_FILE blinking_led_empty.sv

@@ -1,25 +1,4 @@
-// Copyright (c) 2001-2018 Intel Corporation
-//  
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to
-// permit persons to whom the Software is furnished to do so, subject to
-// the following conditions:
-//  
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//  
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-// IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-// CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-// TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-// SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-// Copyright (c) 2001-2018 Intel Corporation
+// Copyright (c) 2001-2021 Intel Corporation
 //  
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
@@ -73,6 +52,7 @@ module blinking_led (
    reg led_three_on_r;
 	//==================
 	//Uncomment this block to enable Signal Tap
+
     sld_host u_sld_hostled_two_on (
 		.tck	(tck),	//   input,  width = 1, connect_to_bridge_host.tck
 		.tms	(tms),	//   input,  width = 1,                       .tms
@@ -81,7 +61,17 @@ module blinking_led (
 		.ena	(ena),	//   input,  width = 1,                       .ena
 		.tdo	(tdo)	//  output,  width = 1,                       .tdo
 	);
+
 	//==================
+   
+	//==================
+	//Uncomment this block to enable Signal Tap
+
+	config_reset_release_endpoint u_config_reset_release_endpoint (
+		.conf_reset (0'b0)  //   input,  width = 1, conf_reset_in.reset
+	);
+	//==================
+	
    assign led_two_on   = led_two_on_r;
    assign led_three_on = led_three_on_r;
    
@@ -89,5 +79,7 @@ module blinking_led (
       led_three_on_r <= counter[COUNTER_TAP];
       led_two_on_r   <= counter[COUNTER_TAP];
    end
+
+	
 
 endmodule
