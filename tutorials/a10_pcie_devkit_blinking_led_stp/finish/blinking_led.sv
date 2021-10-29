@@ -1,4 +1,4 @@
-// Copyright (c) 2001-2020 Intel Corporation
+// Copyright (c) 2001-2021 Intel Corporation
 
 //  
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -64,6 +64,15 @@ module blinking_led (
 	);
 	//==================
 
+	//==================
+   //Uncomment this block to enable Signal Tap
+	
+    config_reset_release_endpoint u_config_reset_release_endpoint (
+       .conf_reset (0'b0)  //   input,  width = 1, conf_reset_in.reset
+    );
+   //==================
+
+	
    assign led_two_on   = led_two_on_r;
    assign led_three_on = led_three_on_r;
    

@@ -1,8 +1,6 @@
-
-
 # -------------------------------------------------------------------------- #
 #
-# Copyright (C) 2020  Intel Corporation. All rights reserved.
+# Copyright (C) 2021  Intel Corporation. All rights reserved.
 # Your use of Intel Corporation's design tools, logic functions 
 # and other software and tools, and any partner logic 
 # functions, and any output files from any of the foregoing 
@@ -20,13 +18,13 @@
 # -------------------------------------------------------------------------- #
 #
 # Quartus Prime
-# Version 20.3.0 Build 158 09/24/2020 SC Pro Edition
-# Date created = 17:15:48  November 24, 2020
+# Version 21.3.0 Build 170 09/23/2021 SC Pro Edition
+# Date created = 01:15:05  October 20, 2021
 #
 # -------------------------------------------------------------------------- #
 
-QUARTUS_VERSION = "20.3"
-DATE = "17:15:48  November 24, 2020"
+QUARTUS_VERSION = "21.3"
+DATE = "01:15:05  October 20, 2021"
 
 # Revisions
 

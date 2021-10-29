@@ -1,6 +1,6 @@
 # Signal Tap Tutorial for Intel Arria 10 Partial Reconfiguration Design
 
-This readme file accompanies the Signal Tap Tutorial for Intel Arria 10 Partial Reconfiguration Design. This directory contains the design files for the PR + signal tap tutorial. This version of the design has been verified using Quartus Prime Pro v20.3.
+This readme file accompanies the Signal Tap Tutorial for Intel Arria 10 Partial Reconfiguration Design. This directory contains the design files for the PR + signal tap tutorial. This version of the design has been verified using Quartus Prime Pro v21.3.
 
 This readme file contains the following information:
 
@@ -22,6 +22,8 @@ This readme file contains the following information:
 	* blinking_led_empty.sv--System Verilog file that causes the LEDs to stay ON.	
 	* blinking_led_slow.qsf--Quartus Prime project file containing the assignments and settings for blinking_led_slow persona.
 	* blinking_led_slow.sv--System Verilog file that causes the LEDs to blink slower.
+	* pr_ip.ip--IP variation file for instantiating PR IP core in the design
+	* jtag.sdc--Timing constraints for JTAG
 
 *  **finish/** - This directory contains the traditional PR + Signal Tap version of the design. The following are the complete set of files you will be creating with this tutorial:
 	* blinking_led.sv--System Verilog file that causes the LEDs to blink using a 32-bit counter.
@@ -39,6 +41,7 @@ This readme file contains the following information:
 	* top.sv--top-level file containing the PR implementation of the design.
 	* sld_agent.ip--IP variation file for instantiating SLD JTAG Bridge Agent Intel FPGA IP in the design
 	* sld_host.ip--IP variation file for instantiating SLD JTAG Bridge Host Intel FPGA IP in the design
+	* config_reset_release_endpoint.ip--IP variation file for instantiating Intel Configuration Reset Release to Endpoint Debug Logic IP in the design
 	* stp_default.stp--The signal tap file for the default persona
 	* stp_empty.stp--The signal tap file for the empty persona
 	* stp_slow.stp--The signal tap file for the slow persona
@@ -50,6 +53,6 @@ This readme file contains the following information:
 
 ## System Requirements
 
-*  Quartus Prime Pro Edition software version 20.3
+*  Quartus Prime Pro Edition software version 21.3
 *  [FPGA Development Kit](https://www.intel.com/content/www/us/en/programmable/products/boards_and_kits/all-development-kits.html)
 
