@@ -66,9 +66,8 @@ set_global_assignment -name ACTIVE_SERIAL_CLOCK AS_FREQ_100MHZ
 
 set_global_assignment -name LAST_QUARTUS_VERSION "21.3.0 Pro Edition"
 
-set_global_assignment -name IP_FILE sld_agent.ip
-set_global_assignment -name IP_FILE sld_host.ip
 set_global_assignment -name ENABLE_SIGNALTAP ON
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
 set_global_assignment -name PROJECT_IP_REGENERATION_POLICY NEVER_REGENERATE_IP
+set_instance_assignment -name EXPORT_PARTITION_SNAPSHOT_FINAL blinking_led_static.qdb -to | -entity top

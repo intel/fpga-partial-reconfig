@@ -66,10 +66,6 @@ set_global_assignment -name SYSTEMVERILOG_FILE blinking_led_empty.sv
 set_global_assignment -name SYSTEMVERILOG_FILE top.sv
 set_global_assignment -name SYSTEMVERILOG_FILE top_counter.sv
 set_global_assignment -name SDC_FILE blinking_led.sdc
-set_global_assignment -name IP_FILE sld_agent.ip
-set_global_assignment -name IP_FILE sld_host.ip
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
 set_global_assignment -name ENABLE_SIGNALTAP ON
-set_global_assignment -name USE_SIGNALTAP_FILE stp_empty.stp
-set_global_assignment -name SIGNALTAP_FILE stp_empty.stp
