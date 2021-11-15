@@ -35,7 +35,8 @@ module blinking_led_empty (
 	//==================
 	//Uncomment this block to enable Signal Tap
 	/*
-    input wire tck,
+    input wire reset,
+	input wire tck,
 	input wire tms,
 	input wire tdi,
 	input wire vir_tdi,
