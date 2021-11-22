@@ -68,7 +68,7 @@ module blinking_led (
 	//Uncomment this block to enable Signal Tap
     /*
     config_reset_release_endpoint u_config_reset_release_endpoint (
-       .conf_reset (0'b0)  //   input,  width = 1, conf_reset_in.reset
+       .conf_reset (reset)  //   input,  width = 1, conf_reset_in.reset
     );
     */
 	//==================
