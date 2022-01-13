@@ -39,6 +39,11 @@ module top (
    ////////////////////////////////////////////////////////////////////////
    input wire clock,
    ////////////////////////////////////////////////////////////////////////
+   // reset signal for Intel Configuration Reset Release Endpoint to Debug 
+   // Logic IP
+   ////////////////////////////////////////////////////////////////////////
+   input wire connect_to_conf_rst,
+   ////////////////////////////////////////////////////////////////////////
    // Control signals for the LEDs
    ////////////////////////////////////////////////////////////////////////
    output reg led_zero_on,
@@ -135,6 +140,7 @@ module top (
 		
 		//===================
 		//Uncomment this block to enable Signal Tap
+		.reset (connect_to_conf_rst),
 		.tck	(tck),	//   input,  width = 1, connect_to_bridge_host.tck
 		.tms	(tms),	//   input,  width = 1,                       .tms
 		.tdi	(tdi),	//   input,  width = 1,                       .tdi
