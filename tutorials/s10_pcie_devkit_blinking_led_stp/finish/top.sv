@@ -87,9 +87,6 @@ module top (
 
    //Static Region Driven LED
    assign  led_zero_on_w   = count_d[COUNTER_TAP];
-   
-
-
    assign led_two_on_w    = pr_led_two_on;
    assign led_three_on_w  = pr_led_three_on;
 
@@ -113,6 +110,20 @@ module top (
 	//==============
 	
    ////////////////////////////////////////////////////////////////////////
+   //instance of the Reset Release IP
+   ////////////////////////////////////////////////////////////////////////	
+
+	//Uncomment this block to enable Signal Tap
+	/*
+	wire connect_to_conf_rst;
+
+	reset_release u_reset_release (
+		.ninit_done (connect_to_conf_rst)  //  output,  width = 1, ninit_done.ninit_done
+    );
+	*/
+	//==============
+	
+   ////////////////////////////////////////////////////////////////////////
    // instance of the default counter
    ////////////////////////////////////////////////////////////////////////
 
@@ -132,6 +143,7 @@ module top (
 		
 		//===================
 		//Uncomment this block to enable Signal Tap
+		.reset (connect_to_conf_rst),
 		.tck	(tck),	//   input,  width = 1, connect_to_bridge_host.tck
 		.tms	(tms),	//   input,  width = 1,                       .tms
 		.tdi	(tdi),	//   input,  width = 1,                       .tdi
