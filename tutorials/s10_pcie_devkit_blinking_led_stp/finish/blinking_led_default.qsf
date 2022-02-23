@@ -71,6 +71,7 @@ set_instance_assignment -name QDB_FILE_PARTITION blinking_led_static.qdb -to | -
 set_instance_assignment -name ENTITY_REBINDING blinking_led -to u_blinking_led -entity top
 set_global_assignment -name ENABLE_SIGNALTAP ON
 set_global_assignment -name USE_SIGNALTAP_FILE stp_default.stp
+set_global_assignment -name SIGNALTAP_FILE stp_default.stp
 set_global_assignment -name PROJECT_IP_REGENERATION_POLICY NEVER_REGENERATE_IP
 
 #set_global_assignment -name VID_OPERATION_MODE "PMBUS MASTER"

@@ -114,13 +114,13 @@ module top (
    ////////////////////////////////////////////////////////////////////////	
 
 	//Uncomment this block to enable Signal Tap
-	/*
+	
 	wire connect_to_conf_rst;
 
 	reset_release u_reset_release (
 		.ninit_done (connect_to_conf_rst)  //  output,  width = 1, ninit_done.ninit_done
     );
-	*/
+	
 	//==============
 	
    ////////////////////////////////////////////////////////////////////////
