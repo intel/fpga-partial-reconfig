@@ -37,6 +37,7 @@ This readme file contains the following information:
 	* top.sv--top-level file containing the PR implementation of the design.
 	* sld_agent.ip--IP variation file for instantiating SLD JTAG Bridge Agent Intel FPGA IP in the design
 	* sld_host.ip--IP variation file for instantiating SLD JTAG Bridge Host Intel FPGA IP in the design
+	* reset_release.ip--IP variation file for instantiating Reset Release Intel FPGA IP in the design
 	* config_reset_release_endpoint.ip--IP variation file for instantiating Intel Configuration Reset Release Endpoint to Debug Logic IP in the design
 	* stp_default.stp--The signal tap file for the default persona
 	* stp_empty.stp--The signal tap file for the empty persona
