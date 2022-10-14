@@ -1,0 +1,96 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2022  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and any partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details, at
+# https://fpgasoftware.intel.com/eula.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 22.3.0 Internal Build 47 06/27/2022 SC Pro Edition
+# Date created = 17:10:04  July 05, 2022
+#
+# -------------------------------------------------------------------------- #
+
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 22.3.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "17:10:04  JULY 05, 2022"
+set_global_assignment -name FAMILY Agilex
+set_global_assignment -name DEVICE AGFB014R24B2E2V
+set_global_assignment -name TOP_LEVEL_ENTITY top
+set_global_assignment -name SYSTEMVERILOG_FILE top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE blinking_led.sv
+set_global_assignment -name SYSTEMVERILOG_FILE top_counter.sv
+
+set_instance_assignment -name QDB_FILE_PARTITION blinking_led_static.qdb -to | -entity top
+set_global_assignment -name SDC_FILE blinking_led.sdc
+
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+
+set_location_assignment PIN_G26 -to clock
+set_location_assignment PIN_B31 -to led_zero_on
+set_location_assignment PIN_D31 -to led_one_on
+set_location_assignment PIN_A30 -to led_two_on
+set_location_assignment PIN_C30 -to led_three_on
+set_instance_assignment -name IO_STANDARD "TRUE DIFFERENTIAL SIGNALING" -to clock -entity top
+set_instance_assignment -name IO_STANDARD "1.2 V" -to led_zero_on -entity top
+set_instance_assignment -name IO_STANDARD "1.2 V" -to led_one_on -entity top
+set_instance_assignment -name IO_STANDARD "1.2 V" -to led_two_on -entity top
+set_instance_assignment -name IO_STANDARD "1.2 V" -to led_three_on -entity top
+set_instance_assignment -name SLEW_RATE 1 -to led_zero_on -entity top
+set_instance_assignment -name SLEW_RATE 1 -to led_one_on -entity top
+set_instance_assignment -name SLEW_RATE 1 -to led_two_on -entity top
+set_instance_assignment -name SLEW_RATE 1 -to led_three_on -entity top
+set_global_assignment -name STRATIXV_CONFIGURATION_SCHEME "AVST X16"
+set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
+set_global_assignment -name ENABLE_ED_CRC_CHECK ON
+set_global_assignment -name MINIMUM_SEU_INTERVAL 0
+
+set_global_assignment -name PWRMGT_SLAVE_DEVICE_TYPE ED8401
+set_global_assignment -name PWRMGT_SLAVE_DEVICE0_ADDRESS 47
+set_global_assignment -name PWRMGT_SLAVE_DEVICE1_ADDRESS 00
+set_global_assignment -name PWRMGT_SLAVE_DEVICE2_ADDRESS 00
+set_global_assignment -name ACTIVE_SERIAL_CLOCK AS_FREQ_100MHZ
+set_global_assignment -name USE_PWRMGT_SCL SDM_IO14
+set_global_assignment -name USE_PWRMGT_SDA SDM_IO11
+set_global_assignment -name USE_CONF_DONE SDM_IO16
+
+set_global_assignment -name PWRMGT_VOLTAGE_OUTPUT_FORMAT "LINEAR FORMAT"
+set_global_assignment -name PWRMGT_LINEAR_FORMAT_N "-13"
+set_global_assignment -name IP_FILE reset_release.ip
+
+set_instance_assignment -name PARTITION pr_partition -to u_blinking_led -entity top
+set_instance_assignment -name PARTIAL_RECONFIGURATION_PARTITION ON -to u_blinking_led -entity top
+set_instance_assignment -name PARTITION supr_partition -to u_top_counter -entity top
+set_instance_assignment -name PARTIAL_RECONFIGURATION_PARTITION ON -to u_top_counter -entity top
+set_instance_assignment -name PLACE_REGION "X166 Y199 X170 Y203" -to u_blinking_led
+set_instance_assignment -name RESERVE_PLACE_REGION ON -to u_blinking_led
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to u_blinking_led
+set_instance_assignment -name REGION_NAME pr_partition -to u_blinking_led
+set_instance_assignment -name ROUTE_REGION "X165 Y198 X171 Y204" -to u_blinking_led
+set_instance_assignment -name RESERVE_ROUTE_REGION OFF -to u_blinking_led
+set_instance_assignment -name PLACE_REGION "X173 Y199 X177 Y203" -to u_top_counter
+set_instance_assignment -name RESERVE_PLACE_REGION ON -to u_top_counter
+set_instance_assignment -name CORE_ONLY_PLACE_REGION ON -to u_top_counter
+set_instance_assignment -name REGION_NAME supr_partition -to u_top_counter
+set_instance_assignment -name ROUTE_REGION "X172 Y198 X178 Y204" -to u_top_counter
+set_instance_assignment -name RESERVE_ROUTE_REGION OFF -to u_top_counter
+
+set_global_assignment -name LAST_QUARTUS_VERSION "22.3.0 Pro Edition"
+set_instance_assignment -name PARTITION_COLOUR 4294954046 -to top -entity top
+set_instance_assignment -name PARTITION_COLOUR 4289422079 -to auto_fab_0 -entity top
+set_instance_assignment -name PARTITION_COLOUR 4287037350 -to u_blinking_led -entity top
+set_instance_assignment -name PARTITION_COLOUR 4291642111 -to u_top_counter -entity top
+set_instance_assignment -name ENTITY_REBINDING blinking_led_slow -to u_blinking_led -entity top
+set_global_assignment -name REVISION_TYPE PR_IMPL
+set_instance_assignment -name QDB_FILE_PARTITION blinking_led_supr_partition_final.qdb -to u_top_counter -entity top
