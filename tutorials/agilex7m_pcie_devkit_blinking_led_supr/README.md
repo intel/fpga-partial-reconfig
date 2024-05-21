@@ -1,14 +1,14 @@
-# Agilex Blinking LED Static Update Partial Reconfiguration Tutorial for the Agilex M-Series FPGA Development Kit
+# Blinking LED Static Update Partial Reconfiguration Tutorial for the Agilex 7 M-Series FPGA Development Kit
 
-This readme file accompanies the Agilex Blinking LED Statix Update Partial Reconfiguration (PR) Tutorial for the Agilex M-Series FPGA Development Kit. This directory contains the design files for the Static Update PR (SUPR) tutorial. This version of the design has been verified using Quartus Prime Pro v23.4.
+This readme file accompanies the Blinking LED Statix Update Partial Reconfiguration (PR) Tutorial for the Agilex 7 M-Series FPGA Development Kit. This directory contains the design files for the Static Update PR (SUPR) tutorial. This version of the design has been verified using Quartus Prime Pro v23.4.
 
 This readme file contains the following information:
 
-*  Agilex Blinking LED Partial Reconfiguration Tutorial Contents--lists the contents of this tutorial.
+*  Agilex 7 Blinking LED Partial Reconfiguration Tutorial Contents--lists the contents of this tutorial.
 *  Technical Documentation--directs you where to find documentation for Agilex Blinking LED Partial Reconfiguration and SUPR walkthrough.
 *  System Requirements--lists the system requirements.
 
-## Agilex Blinking LED Partial Reconfiguration Tutorial Contents
+## Agilex 7 Blinking LED Partial Reconfiguration Tutorial Contents
 
 *  **flat/** - This directory contains the *flat* version of the design.
 

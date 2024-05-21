@@ -1,14 +1,14 @@
-# Agilex Blinking LED Partial Reconfiguration Tutorial for the Agilex F-Series FPGA Development Kit
+# Blinking LED Partial Reconfiguration Tutorial for the Agilex 7 F-Series FPGA Development Kit
 
-This readme file accompanies the Agilex Blinking LED Partial Reconfiguration Tutorial for the Agilex F-Series FPGA Development Kit. This directory contains the design files for the traditional PR tutorial. This version of the design has been verified using Quartus Prime Pro v21.1.
+This readme file accompanies the Blinking LED Partial Reconfiguration Tutorial for the Agilex F-Series FPGA Development Kit. This directory contains the design files for the traditional PR tutorial. This version of the design has been verified using Quartus Prime Pro v23.3.
 
 This readme file contains the following information:
 
-*  Agilex Blinking LED Partial Reconfiguration Tutorial Contents--lists the contents of this tutorial.
-*  Technical Documentation--directs you where to find documentation for Agilex Blinking LED Partial Reconfiguration walkthrough.
+*  Agilex 7 Blinking LED Partial Reconfiguration Tutorial Contents--lists the contents of this tutorial.
+*  Technical Documentation--directs you where to find documentation for Agilex 7 Blinking LED Partial Reconfiguration walkthrough.
 *  System Requirements--lists the system requirements.
 
-## Agilex Blinking LED Partial Reconfiguration Tutorial Contents
+## Agilex 7 Blinking LED Partial Reconfiguration Tutorial Contents
 
 *  **flat/** - This directory contains the *flat* version of the design.
 
@@ -21,6 +21,6 @@ This readme file contains the following information:
 
 ## System Requirements
 
-*  Quartus Prime Pro Edition software version 21.1
+*  Quartus Prime Pro Edition software version 23.3
 *  [Agilex FPGA Development Kit] (https://www.intel.com/content/www/us/en/products/details/fpga/development-kits/agilex.html)
 

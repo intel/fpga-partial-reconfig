@@ -1,11 +1,11 @@
-# Signal Tap Tutorial for Intel Agilex Partial Reconfiguration Design
+# Signal Tap Tutorial for Intel Agilex 7 Partial Reconfiguration Designs
 
-This readme file accompanies the Signal Tap Tutorial for Intel Agilex 7 Partial Reconfiguration Design. This directory contains the design files for the PR + signal tap tutorial. This version of the design has been verified using Quartus Prime Pro v21.4.
+This readme file accompanies the Signal Tap Tutorial for Intel Agilex 7 Partial Reconfiguration Design. This directory contains the design files for the PR + signal tap tutorial. This version of the design has been verified using Quartus Prime Pro v23.3.
 
 This readme file contains the following information:
 
-*  Signal Tap Tutorial for Intel Agilex Partial Reconfiguration Design Contents--lists the contents of this tutorial.
-*  Technical Documentation--directs you where to find documentation for Agilex Blinking LED Partial Reconfiguration walkthrough.
+*  Signal Tap Tutorial for Intel Agilex 7 Partial Reconfiguration Design Contents--lists the contents of this tutorial.
+*  Technical Documentation--directs you where to find documentation for Agilex 7 Blinking LED Partial Reconfiguration walkthrough.
 *  System Requirements--lists the system requirements.
 
 ## Signal Tap Tutorial for Intel Agilex Partial Reconfiguration Design Contents
@@ -50,6 +50,6 @@ This readme file contains the following information:
 
 ## System Requirements
 
-*  Quartus Prime Pro Edition software version 21.4
+*  Quartus Prime Pro Edition software version 23.3
 *  [Agilex FPGA Development Kit](https://www.intel.com/content/www/us/en/products/details/fpga/development-kits/agilex.html)
 
