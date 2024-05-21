@@ -36,4 +36,4 @@ This directory contains tutorials related to the Intel FPGA Partial Reconfigurat
 
 ### Agilex 5
 
-- [Agilex 5 E-Series FPGA Devkit PR + Simulation Tutorial](agilex7f_pcie_devkit_pr_sim/) - Contains Agilex 5 PR design simulation tutorial
+- [Agilex 5 E-Series FPGA Devkit PR + Simulation Tutorial](agilex5e_pcie_devkit_pr_sim/) - Contains Agilex 5 PR design simulation tutorial
