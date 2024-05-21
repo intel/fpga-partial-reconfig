@@ -22,5 +22,5 @@ This readme file contains the following information:
 ## System Requirements
 
 *  Quartus Prime Pro Edition software version 23.4
-*  [FPGA Development Kit](https://www.intel.com/content/www/us/en/products/details/fpga/development-kits/agilex.html)
+*  [Agilex 7 FPGA Development Kit](https://www.intel.com/content/www/us/en/products/details/fpga/development-kits/agilex.html)
 

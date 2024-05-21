@@ -26,7 +26,7 @@ This directory contains tutorials related to the Intel FPGA Partial Reconfigurat
 - [Agilex 7 F-Series FPGA Devkit Blinking LED PR + Signal Tap Tutorial](agilex7f_pcie_devkit_blinking_led_stp/) - Contains Debugging Agilex 7 PR using Signal Tap tutorial
 - [Agilex 7 F-Series FPGA Devkit Blinking LED SUPR Tutorial](agilex7f_pcie_devkit_blinking_led_supr/) - Contains Agilex 7 static update PR (SUPR) tutorial
 - [Agilex 7 F-Series FPGA Devkit Blinking LED PR via Configuration Pins Tutorial](agilex7f_external_pr_configuration/) - Contains Agilex 7 Partial Reconfiguration via Configuration Pins (External Host) tutorial
-- [Agilex 7 F-Series FPGA Devkit PR + Simulation Tutorial](agilex7f_pcie_devkit_pr_sim/) - Contains Agilex 7 PR design simulation tutorial
+- [Agilex 7 F-Series FPGA Devkit PR + Simulation Tutorial](agilex7_pcie_devkit_pr_sim/) - Contains Agilex 7 PR design simulation tutorial
 
 - [Agilex 7 M-Series FPGA Devkit Blinking LED PR Tutorial](agilex7m_pcie_devkit_blinking_led/) - Contains Agilex traditional PR tutorial
 - [Agilex 7 M-Series FPGA Devkit Blinking LED HPR Tutorial](agilex7m_pcie_devkit_blinking_led_hpr/) - Contains Agilex hierarchical PR (HPR) tutorial
@@ -36,4 +36,4 @@ This directory contains tutorials related to the Intel FPGA Partial Reconfigurat
 
 ### Agilex 5
 
-- [Agilex 5 E-Series FPGA Devkit PR + Simulation Tutorial](agilex5e_pcie_devkit_pr_sim/) - Contains Agilex 5 PR design simulation tutorial
+- [Agilex 5 E-Series FPGA Devkit PR + Simulation Tutorial](agilex5_pcie_devkit_pr_sim/) - Contains Agilex 5 PR design simulation tutorial
