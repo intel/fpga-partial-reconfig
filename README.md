@@ -23,3 +23,4 @@ The Partial Reconfiguration Design Flow is supported in the Intel Quartus Prime&
 ![PR Logo](quartus-prime-partial-reconfiguration-diagram.jpg?raw=true)
 
 More information available at [http://www.01.org/fpga-partial-reconfig](http://www.01.org/fpga-partial-reconfig)
+
